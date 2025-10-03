@@ -1,227 +1,69 @@
-/* * ملف style.css الكامل - يحتوي على جميع التنسيقات
- */
-
-/* تحديد خط عربي مناسب وإزالة الهوامش الافتراضية */
+/* تنسيقات عامة للموقع */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9; /* خلفية رمادية فاتحة */
+    /* اختيار خط عربي واضح وداعم للترميز */
+    font-family: Tahoma, 'Droid Arabic Kufi', sans-serif; 
     color: #333;
-    direction: rtl; /* دعم اللغة العربية */
-    text-align: right; 
+    /* تحديد الاتجاه اليمين لليسار ضروري للمحتوى العربي */
+    direction: rtl; 
+    text-align: right;
+    /* مسافة بسيطة من الأسفل لضمان عدم التصاق المحتوى */
+    padding-bottom: 50px; 
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
+/* تنسيق شريط التنقل (Navbar) ليناسب اللغة العربية */
+.navbar-nav .nav-link {
+    /* زيادة المسافة بين الروابط */
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 }
 
-a:hover {
-    text-decoration: underline;
+/* تنسيق القسم الترحيبي (Hero Section) */
+#home {
+    background-color: #e9ecef; /* لون خلفية رمادي فاتح */
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-height: 80vh; /* ضمان ألا يقل الارتفاع عن 80% من الشاشة */
 }
 
-/* ----------------------------------------------------- */
-/* تنسيق الواجهة الاحترافية (index.html) */
-/* ----------------------------------------------------- */
-
-/* التنسيقات الأساسية للقائمة العلوية (Navbar) */
-.navbar {
-    background-color: #007bff; /* خلفية زرقاء قوية */
-    color: white;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px 5%; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+/* تنسيق العناوين والأزرار في القسم الترحيبي */
+#home h1 {
+    font-size: 2.5rem; /* حجم كبير للعنوان الرئيسي */
 }
-
-.logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: white;
-}
-
-/* تنسيق الروابط داخل القائمة */
-.nav-links {
-    list-style: none; 
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 5px 0;
-    transition: border-bottom 0.3s; 
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    border-bottom: 2px solid white; 
-}
-
-/* إخفاء أيقونة القائمة الجانبية في شاشات سطح المكتب */
-.menu-icon {
-    display: none;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-/* ----------------------------------------------------- */
-
-/* تنسيق قسم البطل (Hero Section) */
-.hero-section {
-    text-align: center;
-    padding: 100px 20px;
-    background-color: #f4f4f9; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hero-section h1 {
-    font-size: 3em;
-    color: #333;
-    margin-bottom: 10px;
-    max-width: 800px;
-}
-
-.hero-subtitle {
-    font-size: 1.2em;
-    color: #555;
-    margin-bottom: 30px;
-    max-width: 600px;
-}
-
-/* تنسيق زر الحث على الإجراء (Call to Action Button) */
-.cta-button {
-    background-color: #ffc107; /* لون أصفر/ذهبي */
-    color: #333;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
+#home .btn-lg {
+    font-size: 1.25rem;
+    padding: 10px 30px;
     border-radius: 5px;
-    font-size: 1.1em;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.cta-button:hover {
-    background-color: #e0a800; 
+/* تنسيق قسم المشاريع الجديد (Portfolio Section) */
+#projects {
+    background-color: #f8f9fa; /* لون خلفية خفيف لقسم المشاريع لتمييزه */
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-/* ----------------------------------------------------- */
-
-/* تنسيق زر الواتساب العائم (WhatsApp Button) */
-.whatsapp-button {
-    position: fixed; 
-    bottom: 20px;
-    left: 20px; /* وضعه في الزاوية اليسرى السفلية */
-    background-color: #25d366; 
-    color: white;
-    padding: 10px 15px;
-    border-radius: 50px; 
-    text-decoration: none;
-    font-size: 1.1em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1000; 
+.project-card {
+    /* تأثير انتقال سلس عند التفاعل */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none;
+    border-radius: 8px;
+    /* ظل خفيف للبطاقة */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    text-align: right !important; /* التأكد من محاذاة النص داخل البطاقة لليمين */
 }
 
-.whatsapp-button i {
-    margin-left: 8px; 
-    font-size: 1.2em;
+.project-card:hover {
+    /* رفع البطاقة قليلاً عند المرور عليها لخلق تفاعل بصري */
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-.whatsapp-button:hover {
-    background-color: #128c7e;
-    text-decoration: none;
-}
-
-
-/* ----------------------------------------------------- */
-/* تنسيقات الـ CV (لصفحة about.html أو إذا أردت استخدامها لاحقاً) */
-/* ----------------------------------------------------- */
-
-header {
-    background-color: #007bff; 
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-.subtitle {
-    font-size: 1.2em;
-    margin-top: 5px;
-}
-
-section {
-    padding: 20px 5%; 
-    margin: 20px auto;
-    max-width: 900px; 
-    background-color: white;
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-h2 {
-    color: #007bff; 
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.skills ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap; 
-}
-
-.skills li {
-    background-color: #e2eafc;
-    color: #007bff;
-    padding: 8px 15px;
-    margin: 5px 10px 5px 0; 
-    border-radius: 20px;
-    font-weight: bold;
-}
-
-.job {
-    margin-bottom: 20px;
-    border-right: 4px solid #007bff; 
-    padding-right: 15px;
-}
-
-.job h3 {
-    margin: 0 0 5px 0;
-    color: #333;
-}
-
-.job p {
-    margin: 0;
-    font-size: 0.9em;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-    margin-top: 30px;
-    font-size: 0.9em;
+/* تنسيق شاشات الجوال (Media Query) */
+@media (max-width: 768px) {
+    #home h1 {
+        font-size: 2rem;
+    }
+    #home {
+        min-height: 60vh;
+    }
 }

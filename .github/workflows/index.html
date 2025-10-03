@@ -1,39 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد | واجهة الموقع الرئيسية</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>موقع محمد - برمجة وتطوير</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">مـحـمـد</div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">الرئيسية</a></li>
-            <li><a href="about.html">سيرتي (About)</a></li>
-            <li><a href="#">اتصل بنا</a></li>
-        </ul>
-        <div class="menu-icon">
-             <i class="fas fa-bars"></i>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">المشاريع</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">سيرتي (About)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">اتصل بنا</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     
-    <div class="hero-section">
-        <h1>أصنع لك حضوراً رقمياً لا يُنسى.</h1>
-        <p class="hero-subtitle">مطور ويب طموح، نحول أفكارك إلى مواقع أنيقة ومميزة تتجاوز توقعاتك.</p>
-        <a href="about.html" class="cta-button">اكتشف مهاراتي الآن</a>
-    </div>
+    <header id="home" class="py-5 text-center d-flex align-items-center" style="min-height: 80vh;">
+        <div class="container">
+            <h1 class="display-3 fw-bold">أصنع لك حضوراً رقمياً لا يُنسى.</h1>
+            <p class="lead mt-4 mb-5">مطور ويب طموح، نحول أفكارك إلى مواقع أنيقة ومميزة تتجاوز توقعاتك.</p>
+            <a href="#projects" class="btn btn-warning btn-lg me-3">اكتشف مهاراتي الآن</a>
+            <a href="#" class="btn btn-success btn-lg">هل تحتاج لمساعدة؟</a>
+        </div>
+    </header>
 
-    <a href="https://wa.me/00966XXXXXX" target="_blank" class="whatsapp-button">
-        <i class="fab fa-whatsapp"></i> هل تحتاج لمساعدة؟
-    </a>
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">مشاريعي المختارة</h2>
+            
+            <div class="row">
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card project-card">
+                        <div class="card-body text-end">
+                            <h5 class="card-title fw-bold">مُنشئ السيرة الذاتية</h5>
+                            <p class="card-text">تطبيق ويب يتيح لك كتابة سيرتك الذاتية وتنسيقها وطباعتها بسهولة.</p>
+                            <a href="#" target="_blank" class="btn btn-primary">اذهب للمشروع</a>
+                        </div>
+                    </div>
+                </div>
 
-    <footer>
-        <p>&copy; 2025 محمد. كل الحقوق محفوظة.</p>
-    </footer>
-
+                <div class="col-md-6 mb-4">
+                    <div class="card project-card">
+                        <div class="card-body text-end">
+                            <h5 class="card-title fw-bold">تطبيق إدارة المهام</h5>
+                            <p class="card-text">تطبيق بسيط لإدارة المهام اليومية (To-Do List) باستخدام HTML و JavaScript.</p>
+                            <a href="#" target="_blank" class="btn btn-primary">اذهب للمشروع</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

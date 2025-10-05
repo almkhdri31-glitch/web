@@ -55,11 +55,17 @@ a:hover {
     align-items: center;
 }
 
-/* ✨ التعديل الجوهري للوجو: خط صغير وخطوط أنيقة ومظهر منبثق ✨ */
+/* ✨ اللوجو: تنسيق أنيق وخط صغير ومظهر منبثق (3D Effect) ✨ */
+.logo {
+    /* ضمان أن اللوجو لا يأخذ مساحة كبيرة جداً في الهيدر */
+    flex-shrink: 0; 
+}
+
 .logo a {
     color: #f0f0f0;
     line-height: 1.1; /* تقريب السطور */
-    padding: 5px 0; /* لزيادة المساحة حوله */
+    display: block;
+    padding: 0; /* إزالة البادينج الزائد */
 }
 
 .logo-ar {
@@ -67,7 +73,6 @@ a:hover {
     font-size: 0.85em; /* خط صغير جداً */
     font-weight: bold;
     color: #2ecc71; /* تقنية المعلومات باللون الأخضر */
-    /* تأثير الظل البسيط لمنحه مظهر منبثق (3D) */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
 }
 
@@ -89,6 +94,14 @@ a:hover {
     color: #fff;
     font-size: 1.5em;
     cursor: pointer;
+    /* ضمان أن زر القائمة لا يتأثر بتكبير اللوجو */
+    flex-shrink: 0; 
+    margin-right: 15px; /* مسافة بسيطة من اللوجو على الجوال */
+}
+
+.main-nav {
+    /* ضمان أن القائمة تأخذ المساحة المتبقية على سطح المكتب */
+    flex-grow: 1; 
 }
 
 .main-nav ul {
@@ -96,6 +109,7 @@ a:hover {
     display: flex;
     margin: 0;
     padding: 0;
+    justify-content: flex-end; /* دفع القائمة لليسار */
 }
 
 .main-nav ul li a {
@@ -332,15 +346,21 @@ a:hover {
     }
 
     .main-header .container {
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* منع اللوجو والقائمة من النزول لسطر جديد */
     }
 
     /* إظهار زر القائمة وإخفاء القائمة افتراضياً */
     .menu-toggle {
         display: block;
+        order: 1; /* وضعه في أقصى اليسار */
+    }
+    
+    .logo {
+        order: 2; /* وضعه في أقصى اليمين */
     }
     
     .main-nav {
+        order: 3;
         width: 100%;
         max-height: 0;
         overflow: hidden;

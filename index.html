@@ -178,6 +178,13 @@
             color: #ffc107; 
         }
 
+        /* تنسيق الشعار في قسم من نحن */
+        .about-logo-container {
+             max-width: 300px; /* للتحكم في حجم الشعار */
+             margin: 0 auto 20px;
+             text-align: center;
+        }
+
 
         /* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
         @media (max-width: 768px) {
@@ -332,8 +339,12 @@
         
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="it_professional_image.jpg" class="img-fluid rounded shadow-sm" alt="صورة توضيحية لخبراء تقنية معلومات" loading="lazy">
-                <small class="d-block mt-2 text-muted text-center">**ملاحظة:** يرجى استبدال "it_professional_image.jpg" بصورة مناسبة لك.</small>
+                
+                <div class="about-logo-container">
+                    <img src="it_logo.jpg" class="img-fluid rounded shadow-sm" alt="شعار منصة IT للحلول الذكية" loading="lazy">
+                </div>
+                
+
             </div>
             <div class="col-lg-6">
                 <p class="lead fw-bold text-dark">

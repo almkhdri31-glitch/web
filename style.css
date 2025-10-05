@@ -10,7 +10,7 @@
 }
 
 body {
-    /* تطبيق الخط العربي 'Cairo' الذي استخدمته في الاندكس */
+    /* تطبيق الخط العربي 'Cairo' */
     font-family: 'Cairo', sans-serif; 
     font-size: 16px; 
     line-height: 1.6;
@@ -55,22 +55,21 @@ a:hover {
     align-items: center;
 }
 
-/* ✨ اللوجو: تنسيق أنيق وخط صغير ومظهر منبثق (3D Effect) ✨ */
+/* 🚀 اللوجو (أقصى اليمين): خط أكبر كما طلبت 🚀 */
 .logo {
-    /* ضمان أن اللوجو لا يأخذ مساحة كبيرة جداً في الهيدر */
     flex-shrink: 0; 
 }
 
 .logo a {
     color: #f0f0f0;
-    line-height: 1.1; /* تقريب السطور */
+    line-height: 1.1; 
     display: block;
-    padding: 0; /* إزالة البادينج الزائد */
+    padding: 0; 
 }
 
 .logo-ar {
     display: block;
-    font-size: 0.85em; /* خط صغير جداً */
+    font-size: 1.0em; /* تم تكبيره ليصبح بحجم النص العادي وأكثر وضوحاً */
     font-weight: bold;
     color: #2ecc71; /* تقنية المعلومات باللون الأخضر */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
@@ -78,29 +77,27 @@ a:hover {
 
 .logo-en {
     display: block;
-    font-size: 0.65em; /* خط أصغر لـ Information Technology */
+    font-size: 0.8em; /* تم تكبيره ليكون أوضح */
     color: #bdbdbd; 
     text-transform: uppercase;
     font-weight: normal;
-    letter-spacing: 0.5px; /* تباعد بسيط للحروف */
+    letter-spacing: 0.5px; 
 }
 /* نهاية تعديل اللوجو */
 
 
 .menu-toggle {
-    display: none; /* إخفاء زر القائمة في عرض سطح المكتب */
+    display: none; 
     background: none;
     border: none;
     color: #fff;
     font-size: 1.5em;
     cursor: pointer;
-    /* ضمان أن زر القائمة لا يتأثر بتكبير اللوجو */
     flex-shrink: 0; 
-    margin-right: 15px; /* مسافة بسيطة من اللوجو على الجوال */
+    margin-right: 15px; 
 }
 
 .main-nav {
-    /* ضمان أن القائمة تأخذ المساحة المتبقية على سطح المكتب */
     flex-grow: 1; 
 }
 
@@ -109,7 +106,7 @@ a:hover {
     display: flex;
     margin: 0;
     padding: 0;
-    justify-content: flex-end; /* دفع القائمة لليسار */
+    justify-content: flex-end; 
 }
 
 .main-nav ul li a {
@@ -143,24 +140,26 @@ a:hover {
     background-color: #121212;
 }
 
+/* 📉 العنوان الترحيبي (منتصف الصفحة): خط أصغر وأنيق 📉 */
 .hero-title {
-    font-size: 3em; 
+    font-size: 2.2em; /* تم تخفيضه ليظهر أنيقاً */
     font-weight: 900;
     margin-bottom: 0.3em;
 }
 
 .highlight-text {
-    color: #2ecc71; /* إبراز اسم المنصة */
+    color: #2ecc71; 
 }
 
 .hero-subtitle {
-    font-size: 1.2em;
+    font-size: 1.05em; /* خط أصغر وأنيق */
     margin-bottom: 40px;
     color: #bdbdbd;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
+/* ... (باقي أكواد Hero كما هي) ... */
 
 .main-cta-button {
     display: inline-block;
@@ -341,22 +340,27 @@ a:hover {
 */
 @media (max-width: 768px) {
     
+    /* 📉 تصغير الخط الترحيبي على الجوال ليصبح أنيقاً 📉 */
     .hero-title {
-        font-size: 2.5em; /* تصغير الخط على الجوال */
+        font-size: 1.8em; /* أصغر حجم ممكن ليكون أنيقاً */
     }
 
+    .hero-subtitle {
+        font-size: 1em; 
+    }
+    
     .main-header .container {
-        flex-wrap: nowrap; /* منع اللوجو والقائمة من النزول لسطر جديد */
+        flex-wrap: nowrap; 
     }
 
     /* إظهار زر القائمة وإخفاء القائمة افتراضياً */
     .menu-toggle {
         display: block;
-        order: 1; /* وضعه في أقصى اليسار */
+        order: 1; 
     }
     
     .logo {
-        order: 2; /* وضعه في أقصى اليمين */
+        order: 2; 
     }
     
     .main-nav {
@@ -368,7 +372,7 @@ a:hover {
     }
 
     .main-nav.active {
-        max-height: 300px; /* فتح القائمة عند تفعيلها بالـ JS */
+        max-height: 300px; 
     }
     
     .main-nav ul {

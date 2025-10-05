@@ -55,7 +55,7 @@ a:hover {
     align-items: center;
 }
 
-/* اللوجو (أقصى اليمين): خط أكبر كما طلبت */
+/* اللوجو: خط أكبر وواضح كما طلبت */
 .logo {
     flex-shrink: 0; 
 }
@@ -185,7 +185,7 @@ a:hover {
 
 .services-grid {
     display: grid;
-    /* التنسيق الافتراضي لسطح المكتب: عمودين أو أكثر */
+    /* مرونة عرض 3 بطاقات أو أكثر على سطح المكتب */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
@@ -339,9 +339,9 @@ a:hover {
 */
 @media (max-width: 768px) {
     
-    /* 1. حل مشكلة التنقل المزدحم وتشويه الهيدر */
+    /* حل مشكلة التكدس في الهيدر وعرض القائمة بشكل صحيح */
     .main-header .container {
-        flex-wrap: wrap; /* تسمح بمرور قائمة التنقل (main-nav) إلى سطر جديد تحت اللوجو والزر */
+        flex-wrap: wrap; 
     }
 
     /* العنوان الترحيبي على الجوال: أصغر وأنيق */
@@ -362,7 +362,6 @@ a:hover {
     /* اللوجو في أقصى اليمين */
     .logo {
         order: 2; 
-        /* تعديل إضافي لضمان محاذاة اللوجو بشكل أفضل مع زر القائمة */
         align-self: center;
         margin-left: auto;
     }
@@ -392,7 +391,7 @@ a:hover {
         text-align: center;
     }
 
-    /* 2. حل مشكلة تكديس مربعات الخدمات */
+    /* حل مشكلة تكديس مربعات الخدمات وعرضها عمودياً */
     .services-grid {
         grid-template-columns: 1fr; /* عمود واحد فقط على الجوال */
     }

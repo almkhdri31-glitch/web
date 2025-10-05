@@ -1,8 +1,18 @@
 /*
 ====================================
-  التنسيقات الأساسية وإعادة الضبط
+  المتغيرات (Variables) والتنسيقات الأساسية
 ====================================
 */
+:root {
+    --primary-color: #2ecc71; /* الأخضر التكنولوجي */
+    --secondary-color: #3498db; /* لون ثانوي للاستخدام المستقبلي */
+    --background-dark: #121212; /* خلفية داكنة جداً */
+    --background-light-dark: #1e1e1e; /* خلفية أفتح قليلاً للعناصر */
+    --text-light: #f0f0f0; /* لون النص الأساسي */
+    --text-muted: #bdbdbd; /* لون النص الثانوي */
+    --font-cairo: 'Cairo', sans-serif;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,27 +20,24 @@
 }
 
 body {
-    /* تطبيق الخط العربي 'Cairo' */
-    font-family: 'Cairo', sans-serif; 
+    font-family: var(--font-cairo); 
     font-size: 16px; 
     line-height: 1.6;
-    background-color: #121212; /* خلفية داكنة */
-    color: #f0f0f0; /* لون النص الأساسي */
-    direction: rtl; /* اتجاه الكتابة من اليمين لليسار */
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    direction: rtl; 
 }
 
-/* التنسيق الأساسي للروابط */
 a {
-    color: #2ecc71; /* لون أخضر جذاب للروابط */
+    color: var(--primary-color); 
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:hover {
-    color: #38c172;
+    color: #38c172; /* تفتيح بسيط عند التحويم */
 }
 
-/* تنسيق حاوية المحتوى لتوسيطه */
 .container {
     width: 90%;
     max-width: 1200px; 
@@ -44,9 +51,12 @@ a:hover {
 ====================================
 */
 .main-header {
-    background-color: #1e1e1e;
+    background-color: var(--background-light-dark);
     padding: 15px 0;
     border-bottom: 1px solid #333;
+    position: sticky; /* لجعل القائمة ثابتة */
+    top: 0;
+    z-index: 1000;
 }
 
 .main-header .container {
@@ -55,13 +65,11 @@ a:hover {
     align-items: center;
 }
 
-/* اللوجو: خط أكبر وواضح كما طلبت */
-.logo {
-    flex-shrink: 0; 
-}
+/* اللوجو */
+.logo { flex-shrink: 0; }
 
 .logo a {
-    color: #f0f0f0;
+    color: var(--text-light);
     line-height: 1.1; 
     display: block;
     padding: 0; 
@@ -69,27 +77,26 @@ a:hover {
 
 .logo-ar {
     display: block;
-    font-size: 1.0em; /* حجم مناسب وواضح */
+    font-size: 1.0em; 
     font-weight: bold;
-    color: #2ecc71; 
+    color: var(--primary-color); 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
 }
 
 .logo-en {
     display: block;
     font-size: 0.8em; 
-    color: #bdbdbd; 
+    color: var(--text-muted); 
     text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 0.5px; 
 }
 
-
 .menu-toggle {
     display: none; 
     background: none;
     border: none;
-    color: #fff;
+    color: var(--text-light);
     font-size: 1.5em;
     cursor: pointer;
     flex-shrink: 0; 
@@ -111,18 +118,19 @@ a:hover {
 .main-nav ul li a {
     padding: 10px 15px;
     display: block;
-    color: #f0f0f0;
+    color: var(--text-light);
     font-size: 1em;
+    transition: all 0.3s; /* لتنسيق حالة النشاط بشكل أفضل */
 }
 
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
-    color: #2ecc71;
+    color: var(--primary-color);
 }
 
 .cta-nav-link {
-    background-color: #2ecc71;
-    color: #121212 !important; 
+    background-color: var(--primary-color);
+    color: var(--background-dark) !important; 
     border-radius: 5px;
     font-weight: bold;
     padding: 8px 15px !important;
@@ -135,44 +143,104 @@ a:hover {
 */
 .hero-section {
     padding: 100px 0;
-    text-align: center;
-    background-color: #121212;
+    /* تمت إزالة text-align: center; ليصبح المحتوى محاذياً لليمين افتراضياً */
+    background-color: var(--background-dark);
 }
 
-/* العنوان الترحيبي (منتصف الصفحة): خط أصغر وأنيق */
 .hero-title {
-    font-size: 2.2em; 
+    font-size: 3em; /* تكبير الخط ليكون أكثر جاذبية */
     font-weight: 900;
     margin-bottom: 0.3em;
 }
 
 .highlight-text {
-    color: #2ecc71; 
+    color: var(--primary-color); 
 }
 
 .hero-subtitle {
-    font-size: 1.05em; 
+    font-size: 1.25em; /* تكبير الخط قليلاً */
     margin-bottom: 40px;
-    color: #bdbdbd;
+    color: var(--text-muted);
+    /* لضمان المحاذاة لليمين في تصميم RTL */
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .main-cta-button {
     display: inline-block;
     padding: 15px 30px;
-    background-color: #2ecc71;
-    color: #121212;
-    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    border-radius: 50px; /* جعل الزر أكثر استدارة */
     font-weight: bold;
     font-size: 1.1em;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.main-cta-button i {
+    margin-right: 8px;
 }
 
 .main-cta-button:hover {
     background-color: #27ae60;
+    transform: translateY(-2px); /* تأثير رفع بسيط */
 }
+
+
+/*
+====================================
+  تنسيق قسم النصيحة السريعة (Quick Tip)
+  (إضافة جديدة لتركيز أمني)
+====================================
+*/
+.quick-tip-section {
+    padding: 40px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tip-card {
+    background-color: var(--background-light-dark); 
+    border: 2px solid var(--primary-color); 
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    max-width: 850px; 
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.15); 
+    transition: transform 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: scale(1.01); 
+}
+
+.tip-icon i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    /* تأثير النبض البسيط لتنبيه المستخدم لنصيحة أمنية */
+    animation: pulse 1.5s infinite; 
+}
+
+.tip-title {
+    font-size: 1.8em;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tip-content {
+    font-size: 1.1em;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
 
 /*
 ====================================
@@ -185,7 +253,6 @@ a:hover {
 
 .services-grid {
     display: grid;
-    /* مرونة عرض 3 بطاقات أو أكثر على سطح المكتب */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
@@ -193,7 +260,7 @@ a:hover {
 }
 
 .service-card {
-    background-color: #1e1e1e;
+    background-color: var(--background-light-dark);
     padding: 30px;
     border-radius: 8px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -202,28 +269,30 @@ a:hover {
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color); /* إبراز عند التحويم */
 }
 
 .card-icon i {
     font-size: 3em;
-    color: #2ecc71;
+    color: var(--primary-color);
     margin-bottom: 15px;
 }
 
 .service-card h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-    color: #f0f0f0;
+    color: var(--text-light);
 }
 
 .service-card p {
-    color: #bdbdbd;
+    color: var(--text-muted);
     margin-bottom: 20px;
 }
 
 .card-link {
     font-weight: bold;
+    color: var(--primary-color);
 }
 
 /*
@@ -234,18 +303,18 @@ a:hover {
 .contact-section {
     padding: 60px 0;
     text-align: center;
-    background-color: #1e1e1e;
+    background-color: var(--background-light-dark);
     border-top: 1px solid #333;
 }
 
 .contact-section h2 {
-    font-size: 2em;
-    color: #2ecc71;
+    font-size: 2.2em;
+    color: var(--primary-color);
     margin-bottom: 10px;
 }
 
 .contact-section p {
-    color: #bdbdbd;
+    color: var(--text-muted);
     margin-bottom: 30px;
 }
 
@@ -267,7 +336,7 @@ a:hover {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #f0f0f0;
+    color: var(--text-light);
 }
 
 .contact-form input[type="text"],
@@ -287,8 +356,8 @@ a:hover {
 }
 
 .submit-button {
-    background-color: #2ecc71;
-    color: #121212;
+    background-color: var(--primary-color);
+    color: var(--background-dark);
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
@@ -300,7 +369,6 @@ a:hover {
 
 .submit-button:hover {
     background-color: #27ae60;
-    color: #121212;
 }
 
 /*
@@ -310,7 +378,7 @@ a:hover {
 */
 .main-footer {
     background-color: #1e1e1e;
-    color: #bdbdbd;
+    color: var(--text-muted);
     padding: 20px 0;
     font-size: 0.9em;
     border-top: 1px solid #333;
@@ -323,13 +391,13 @@ a:hover {
 }
 
 .social-links a {
-    color: #bdbdbd;
+    color: var(--text-muted);
     margin-right: 15px;
     font-size: 1.3em;
 }
 
 .social-links a:hover {
-    color: #2ecc71;
+    color: var(--primary-color);
 }
 
 /*
@@ -339,18 +407,17 @@ a:hover {
 */
 @media (max-width: 768px) {
     
-    /* حل مشكلة التكدس في الهيدر وعرض القائمة بشكل صحيح */
     .main-header .container {
         flex-wrap: wrap; 
     }
 
-    /* العنوان الترحيبي على الجوال: أصغر وأنيق */
+    /* العنوان الترحيبي على الجوال */
     .hero-title {
-        font-size: 1.8em; 
+        font-size: 2.2em; 
     }
 
     .hero-subtitle {
-        font-size: 1em; 
+        font-size: 1.05em; 
     }
     
     /* إظهار زر القائمة في أقصى اليسار */
@@ -393,10 +460,10 @@ a:hover {
 
     /* حل مشكلة تكديس مربعات الخدمات وعرضها عمودياً */
     .services-grid {
-        grid-template-columns: 1fr; /* عمود واحد فقط على الجوال */
+        grid-template-columns: 1fr; 
     }
 
-    /* باقي تنسيقات الفوتر كما هي */
+    /* تنسيق الفوتر */
     .main-footer .container {
         flex-direction: column;
         text-align: center;

@@ -1,13 +1,13 @@
 /* ============================================== */
-/* 1. الإعدادات الأساسية والألوان */
+/* 1. الإعدادات الأساسية والألوان والمظهر الداكن */
 /* ============================================== */
 :root {
     --primary-color: #FFC107; /* اللون الذهبي/الأصفر للأيقونات واللمسات */
-    --accent-color: #00A693; /* لون ثانوي */
-    --background-dark: #1f1f1f; /* خلفية داكنة */
-    --card-bg: #2a2a2a; /* خلفية البطاقات (أغمق قليلاً) */
-    --text-light: #E0E0E0; /* لون النص الرئيسي */
-    --text-muted: #B0B0B0; /* لون النص الثانوي */
+    --accent-color: #00A693; /* لون ثانوي جذاب */
+    --background-dark: #121212; /* خلفية داكنة جداً (مثل OLED) */
+    --card-bg: #1f1f1f; /* خلفية البطاقات الأنيقة */
+    --text-light: #F0F0F0; 
+    --text-muted: #B0B0B0; 
 }
 
 * {
@@ -18,59 +18,82 @@
 
 body {
     font-family: 'Cairo', sans-serif;
-    background-color: var(--background-dark); /* الخلفية السوداء/الداكنة */
+    background-color: var(--background-dark); 
     color: var(--text-light);
     line-height: 1.6;
     direction: rtl; 
-    padding-top: 60px; /* مسافة للـ Header الثابت */
+    padding-top: 70px; /* مسافة كافية للهيدر الثابت */
+    transition: background-color 0.3s;
 }
 
 .container {
     width: 95%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+h1, h2 {
+    color: #FFFFFF;
+}
+
 /* ============================================== */
-/* 2. شريط التنقل (HEADER & NAV) */
+/* 2. شريط التنقل (HEADER & NAV) - ثابت وأنيق */
 /* ============================================== */
 .main-header {
     background: #191919; 
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     position: fixed; 
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main-header .logo a {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--primary-color);
 }
 
-.main-nav ul {
-    list-style: none;
-    display: flex;
-}
-
 .main-nav a {
-    color: var(--text-light);
+    color: var(--text-muted);
     padding: 0.5rem 1rem;
+    transition: color 0.3s ease, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-    color: var(--primary-color);
+    color: var(--text-light);
+    border-bottom-color: var(--primary-color);
+}
+
+.cta-nav-link {
+    background-color: var(--primary-color);
+    color: var(--card-bg) !important;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    border-bottom: none !important;
+}
+
+.cta-nav-link:hover {
+    background-color: #e0ac00;
 }
 
 .menu-toggle {
     display: none; 
     background: none;
     border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
+    color: var(--primary-color); 
+    font-size: 1.8rem;
     cursor: pointer;
 }
 
@@ -78,30 +101,38 @@ body {
 /* 3. منطقة الترحيب (HERO SECTION) */
 /* ============================================== */
 .hero-section {
-    padding: 3rem 0;
+    padding: 4rem 0;
     text-align: center;
-    background-color: #242424; 
-    margin-bottom: 3rem;
-    border-bottom: 3px solid var(--primary-color);
+    background-color: #1a1a1a; 
+    margin-bottom: 4rem;
+    border-bottom: 5px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) inset;
 }
 
 .it-tag {
-    background-color: var(--primary-color); /* شريط أصفر */
+    background-color: var(--primary-color); 
     color: #000;
     display: inline-block;
     padding: 5px 15px;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: 700;
+    font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
 }
 
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
 
 /* ============================================== */
-/* 4. البطاقات (Service Cards) */
+/* 4. البطاقات الاحترافية (Service Cards) */
 /* ============================================== */
 .main-content {
     display: grid;
@@ -111,45 +142,198 @@ body {
 }
 
 .service-card {
-    background: var(--card-bg); /* خلفية البطاقات الداكنة */
-    padding: 2rem;
+    background: var(--card-bg); 
+    padding: 2.5rem;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     border: 1px solid #333; 
 }
 
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+}
+
 .card-icon {
-    font-size: 3.5rem;
-    color: var(--primary-color); /* الأيقونات الصفراء */
-    margin-bottom: 1rem;
+    font-size: 3.8rem;
+    color: var(--primary-color); 
+    margin-bottom: 1.5rem;
+}
+
+.service-card h2 {
+    font-size: 1.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.service-card p {
+    color: var(--text-muted);
+}
+
+.card-link {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
 }
 
 /* ============================================== */
-/* 5. التجاوب للجوال */
+/* 5. تنسيق نماذج CV الاحترافية (FORM STYLING) */
+/* ============================================== */
+
+.data-entry-form {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-section {
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--card-bg, #1f1f1f); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+}
+
+.form-section h2 {
+    font-size: 1.6rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color, #FFC107);
+    border-bottom: 2px solid #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 8px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #2a2a2a; /* حقل الإدخال الداكن */
+    color: var(--text-light);
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.input-field:focus {
+    border-color: var(--primary-color, #FFC107);
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    outline: none;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+
+/* تنسيق قسم الصورة الشخصية */
+.cv-photo-upload {
+    text-align: center;
+    border: 2px dashed #444;
+}
+
+.photo-area {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.upload-link {
+    color: var(--accent-color);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    /* تنسيق زر الإرسال */
+    background-color: var(--primary-color);
+    color: var(--background-dark) !important;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* ============================================== */
+/* 6. التذييل (FOOTER) */
+/* ============================================== */
+.main-footer {
+    background: #0a0a0a;
+    color: rgba(240, 240, 240, 0.6);
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+/* ============================================== */
+/* 7. التجاوب (MEDIA QUERIES) - اللمسة الاحترافية للجوال */
 /* ============================================== */
 
 @media (max-width: 768px) {
-    /* تطبيق قائمة الهامبرغر */
+    
+    .menu-toggle {
+        display: block; 
+    }
+    
     .main-nav {
+        /* إخفاء القائمة بشكل احترافي */
         display: none; 
         flex-direction: column;
         width: 100%;
+        background: #191919;
         position: absolute;
         top: 60px; 
+        left: 0;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+        border-top: 1px solid #333;
     }
     
     .main-nav.active {
         display: flex;
+        animation: slideDown 0.3s ease-out; /* حركة ظهور احترافية */
     }
-
+    
     .main-nav ul {
         flex-direction: column;
         width: 100%;
+        text-align: right;
+        padding: 10px 0;
     }
 
-    .menu-toggle {
-        display: block; 
+    .main-nav ul li {
+        width: 100%;
+        border-bottom: 1px solid #333;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr; /* عمود واحد للنماذج على الجوال */
+    }
+    
+    @keyframes slideDown {
+        from { transform: translateY(-10%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
     }
 }

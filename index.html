@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" crossorigin="anonymous" /> 
     
     <style>
-        /* (*** تم حذف تنسيقات CSS غير المتغيرة للاختصار ***) */
-
         /* تنسيقات أساسية للخط والاتجاه */
         body {
             font-family: 'Tahoma', 'Arial', sans-serif;
@@ -26,7 +24,8 @@
         .navbar {
             border-bottom: 3px solid #ffc107; 
         }
-        /* ... بقية تنسيقات الـ Navbar ... */
+
+        /* تنسيق شعار تقنية المعلومات داخل الناف بار */
         .it-logo-badge-navbar {
             background-color: #ffc107; 
             color: #212529; 
@@ -50,6 +49,7 @@
             color: #ffc107 !important; 
         }
         
+        /* تنسيق الأيقونة المضافة في شريط التنقل */
         .nav-item .email-icon {
             color: #ffc107; 
             margin-inline-start: 10px;
@@ -60,45 +60,9 @@
         .nav-item .email-icon:hover {
             color: #ffffff;
         }
-        /* ... نهاية تنسيقات الـ Navbar ... */
 
 
-        /* ==================================== */
-        /* تنسيقات الشريط الإخباري الجديد */
-        /* ==================================== */
-        #news-ticker {
-            background-color: #ffc107; /* الخلفية الصفراء */
-            color: #212529; /* لون النص الداكن */
-            padding: 5px 0;
-            overflow: hidden; /* إخفاء النص الزائد خارج الشريط */
-            white-space: nowrap; /* منع النص من الالتفاف */
-        }
-        
-        .ticker-content {
-            display: inline-block;
-            padding-inline-start: 100%; /* يبدأ النص من خارج الشاشة (اليسار) */
-            animation: ticker-move 30s linear infinite; /* حركة مستمرة */
-            font-weight: 500;
-        }
-        
-        /* تعريف حركة التمرير */
-        @keyframes ticker-move {
-            0% {
-                transform: translateX(0); /* البداية */
-            }
-            100% {
-                /* النهاية: ينتقل النص بعرضه بالكامل إلى اليسار (الخروج من اليمين) */
-                transform: translateX(-100%); 
-            }
-        }
-        
-        /* توقف الحركة عند التمرير بالماوس */
-        #news-ticker:hover .ticker-content {
-            animation-play-state: paused;
-        }
-        
-        /* ... بقية التنسيقات (Header, Services, Contact) ... */
-
+        /* تنسيق قسم الترويسة (Header) */
         #home {
             background-color: #212529; 
             color: white;
@@ -109,6 +73,7 @@
             justify-content: center;
         }
 
+        /* تنسيق حاوية صورة البانر (الخلفية) - تحسين الشفافية */
         .banner-image-container {
             background-image: url('security_ai_bg.jpg'); 
             background-size: cover;
@@ -124,6 +89,7 @@
             z-index: 1; 
         }
 
+        /* إضافة طبقة شفافة (Overlay) لتحسين رؤية النص */
         .banner-image-container::before {
             content: '';
             position: absolute;
@@ -134,11 +100,13 @@
             background-color: rgba(33, 37, 41, 0.7); 
         }
         
+        /* تأكد أن محتوى الهيدر فوق الخلفية */
         #home .container {
             z-index: 2; 
             position: relative;
         }
 
+        /* تنسيق الأزرار الأساسية (Warning) */
         .btn-warning {
             color: #212529;
             background-color: #ffc107;
@@ -151,6 +119,7 @@
             border-color: #e0a800;
         }
         
+        /* تنسيق بطاقات الخدمات داخل الهيدر */
         .service-card-in-header {
             background-color: rgba(255, 255, 255, 0.1); 
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -165,10 +134,12 @@
             transform: translateY(-5px);
         }
         
+        /* تلوين الأيقونات باللون الأصفر */
         .service-card-in-header .fa-3x {
             color: #ffc107 !important;
         }
         
+        /* تنسيق حقول النموذج في قسم التواصل */
         #contact .form-control {
             background-color: #343a40; 
             color: white; 
@@ -258,22 +229,116 @@
         </div>
     </nav>
     
-    <div id="news-ticker">
-        <div class="ticker-content">
-            <i class="fas fa-check-circle me-2"></i> منصة IT للحلول الذكية: خبيرك في الأمن السيبراني والتطوير. | <i class="fas fa-bolt me-2"></i> عروض خاصة على خدمات فحص الاختراق للأسبوع الحالي! | <i class="fas fa-rocket me-2"></i> تعرف على أحدث أدوات الذكاء الاصطناعي في البرمجة. | <i class="fas fa-check-circle me-2"></i> منصة IT للحلول الذكية: خبيرك في الأمن السيبراني والتطوير. 
-        </div>
-    </div>
     <header id="home" class="text-center text-white">
-        </header>
+        <div class="banner-image-container"></div> 
+
+        <div class="container py-5">
+            <h2 class="fw-bold text-warning mb-4">مرحباً بك في منصة IT للحلول الذكية</h2>
+            
+            <p class="lead mt-4 mb-5">
+                نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها.
+            </p>
+            
+            <section id="services-in-header" class="mb-5">
+                <div class="row text-center justify-content-center">
+                    
+                    <div class="col-md-4 mb-4 service-card-col">
+                        <div class="p-4 rounded h-100 service-card-in-header">
+                            <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                            <h4 class="fw-bold">الأمن السيبراني</h4>
+                            <p>فحص الثغرات والتحليل الأمني لضمان حماية موقعك.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4 service-card-col">
+                        <div class="p-4 rounded h-100 service-card-in-header">
+                            <i class="fas fa-code fa-3x mb-3"></i>
+                            <h4 class="fw-bold">التطوير والبرمجة</h4>
+                            <p>بناء مواقع ويب وتطبيقات بمقاييس عالية الجودة.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4 service-card-col">
+                        <div class="p-4 rounded h-100 service-card-in-header">
+                            <i class="fas fa-laptop-code fa-3x mb-3"></i>
+                            <h4 class="fw-bold">دعم تقني متقدم</h4>
+                            <p>حلول تقنية واستشارات متخصصة في المجال التقني.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                 <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-warning btn-lg">ابدأ بإنشاء سيرتك الذاتية الآن</a>
+                
+                 <a href="#contact" class="btn btn-outline-light btn-lg">تواصل معنا الآن</a>
+            </div>
+        </div>
+    </header>
 
     <section id="about" class="container my-5 py-5">
-        </section>
+        <h2 class="text-center mb-5 fw-bold text-dark border-bottom border-warning pb-2 d-inline-block">قصتنا ومن نحن</h2>
+        
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="it_professional_image.jpg" class="img-fluid rounded shadow-sm" alt="صورة توضيحية لخبراء تقنية معلومات" loading="lazy">
+                <small class="d-block mt-2 text-muted text-center">**ملاحظة:** يرجى استبدال "it_professional_image.jpg" بصورة مناسبة لك.</small>
+            </div>
+            <div class="col-lg-6">
+                <p class="lead fw-bold text-dark">
+                    منصة **IT للحلول الذكية** هي نتاج خبرة متراكمة في عالم التقنية والأمن الرقمي.
+                </p>
+                <p>
+                    مؤسس هذه المنصة هو **محمد، خبير الأمن السيبراني والمطور والهاكر الأخلاقي**. نحن نؤمن بأن التقنية يجب أن تكون آمنة وفعالة ومتاحة للجميع. ولهذا، نوفر الدعم الفني وخدمات **اختبار الاختراق**، بالإضافة إلى حلول تطوير الويب المتكاملة.
+                </p>
+                
+                <p class="mb-0">
+                    **هدفنا** هو تمكين عملائنا من التطور في عالم رقمي سريع التغير، مع ضمان **أعلى مستويات الحماية والأمن السيبراني** لجميع مشاريعهم.
+                </p>
+                
+                <a href="#services-in-header" class="btn btn-dark mt-4">اكتشف خدماتنا</a>
+            </div>
+        </div>
+    </section>
     
     <section id="contact" class="bg-dark py-5">
-        </section>
-    
+        <div class="container text-white">
+            <h3 class="fw-bold text-warning text-center mb-5">تواصل معنا لبدء مشروعك</h3>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form action="#" method="POST">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label visually-hidden">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="الاسم الكامل" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="emailAddress" class="form-label visually-hidden">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="emailAddress" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="messageText" class="form-label visually-hidden">الرسالة</label>
+                            <textarea class="form-control" id="messageText" rows="5" placeholder="أخبرنا عن مشروعك أو استفسارك التقني..." required></textarea>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-warning btn-lg fw-bold">
+                                <i class="fas fa-paper-plane me-2"></i> إرسال الرسالة
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-dark text-white text-center py-3 border-top border-warning">
-        </footer>
+        <div class="container">
+            <p class="mb-0">حقوق النشر &copy; 2025 منصة تقنية. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

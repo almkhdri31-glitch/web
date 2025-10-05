@@ -1,201 +1,155 @@
-/* تنسيقات أساسية للخط والاتجاه */
+/* ============================================== */
+/* 1. الإعدادات الأساسية والألوان */
+/* ============================================== */
+:root {
+    --primary-color: #FFC107; /* اللون الذهبي/الأصفر للأيقونات واللمسات */
+    --accent-color: #00A693; /* لون ثانوي */
+    --background-dark: #1f1f1f; /* خلفية داكنة */
+    --card-bg: #2a2a2a; /* خلفية البطاقات (أغمق قليلاً) */
+    --text-light: #E0E0E0; /* لون النص الرئيسي */
+    --text-muted: #B0B0B0; /* لون النص الثانوي */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Tahoma', 'Arial', sans-serif;
-    direction: rtl;
-    text-align: right;
-    background-color: #f8f9fa; /* لون خلفية فاتح */
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--background-dark); /* الخلفية السوداء/الداكنة */
+    color: var(--text-light);
+    line-height: 1.6;
+    direction: rtl; 
+    padding-top: 60px; /* مسافة للـ Header الثابت */
 }
 
-/* تنسيق شريط التنقل (Navbar) */
-.navbar {
-    border-bottom: 3px solid #ffc107; /* خط أصفر (Warning) ليتناسب مع ألوان الأمن */
+.container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* تنسيق شعار تقنية المعلومات داخل الناف بار */
-.it-logo-badge-navbar {
-    background-color: #ffc107; /* خلفية صفراء بارزة */
-    color: #212529; /* نص أسود */
-    padding: 5px 10px;
-    border-radius: 6px; 
-    text-align: center;
-    line-height: 1.1;
-    font-size: 0.9rem; 
+/* ============================================== */
+/* 2. شريط التنقل (HEADER & NAV) */
+/* ============================================== */
+.main-header {
+    background: #191919; 
+    padding: 1rem 0;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.it-logo-badge-navbar p {
-    margin: 0; 
+.main-header .logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
-.nav-link {
-    font-weight: 500;
-    margin-inline-start: 15px;
-    transition: color 0.3s;
-}
-
-.nav-link:hover {
-    color: #ffc107 !important; /* تغيير لون الرابط عند المرور فوقه */
-}
-
-/* تنسيق قسم الترويسة (Header) */
-#home {
-    background-color: #212529; /* لون داكن موحد */
-    color: white;
-    position: relative; 
-}
-
-/* تنسيق حاوية صورة البانر (الخلفية من هنا) */
-.banner-image-container {
-    background-image: url('security_ai_bg.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* تثبيت الخلفية لإحساس احترافي */
-    min-height: 250px; /* ارتفاع البانر */
-    position: relative; 
-    overflow: hidden; 
-}
-
-
-/* تنسيق الأزرار الأساسية (Warning) */
-.btn-warning {
-    color: #212529;
-    background-color: #ffc107;
-    border-color: #ffc107;
-    font-weight: bold;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
-    border-color: #e0a800;
-}
-
-/* تنسيق بطاقات المشاريع */
-.project-card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-    border-radius: 10px;
-    border-bottom: 5px solid; 
-}
-
-.project-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* تنسيق رؤوس البطاقات (Headers) في قسم المشاريع */
-.card-header {
-    border-radius: 0.25rem 0.25rem 0 0 !important;
-    border-bottom: none !important;
-    font-size: 0.9rem;
-}
-
-/* تنسيق أيقونات التقنية داخل البطاقة */
-.tech-icons i {
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.tech-icons i:hover {
-    opacity: 1;
-}
-
-/* تنسيق لون الحدود السفلية للبطاقات بناءً على التصنيف */
-.project-card.border-danger { border-color: #dc3545 !important; }
-.project-card.border-warning { border-color: #ffc107 !important; }
-.project-card.border-info { border-color: #17a2b8 !important; }
-
-
-/* تنسيق قسم الخبرات (About/Skills) */
-#about {
-    background-color: #ffffff;
-}
-
-/* تنسيق شرائط التقدم */
-.progress {
-    height: 25px;
-    border-radius: 0.5rem;
-    background-color: #e9ecef;
-}
-
-.progress-bar {
+.main-nav ul {
+    list-style: none;
     display: flex;
-    justify-content: flex-end; 
-    padding-inline-end: 10px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: width 1.5s ease-in-out; 
 }
 
-/* تنسيق شريط تحذير البرمجة (الأصفر) ليكون النص داكناً */
-.progress-bar.bg-warning {
-    color: #212529; 
+.main-nav a {
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
 }
 
-/* تنسيق قسم التواصل الاجتماعي (Contact) */
-.hover-grow {
-    transition: transform 0.3s;
-    color: #ffc107 !important; 
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-color);
 }
 
-.hover-grow:hover {
-    transform: scale(1.2); 
-    color: #ffecb3 !important; 
+.menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-/* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
+/* ============================================== */
+/* 3. منطقة الترحيب (HERO SECTION) */
+/* ============================================== */
+.hero-section {
+    padding: 3rem 0;
+    text-align: center;
+    background-color: #242424; 
+    margin-bottom: 3rem;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.it-tag {
+    background-color: var(--primary-color); /* شريط أصفر */
+    color: #000;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+
+/* ============================================== */
+/* 4. البطاقات (Service Cards) */
+/* ============================================== */
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+
+.service-card {
+    background: var(--card-bg); /* خلفية البطاقات الداكنة */
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    border: 1px solid #333; 
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color); /* الأيقونات الصفراء */
+    margin-bottom: 1rem;
+}
+
+/* ============================================== */
+/* 5. التجاوب للجوال */
+/* ============================================== */
+
 @media (max-width: 768px) {
+    /* تطبيق قائمة الهامبرغر */
+    .main-nav {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; 
+    }
     
-    /* تقليل حجم الخط الرئيسي في الهيدر ليتناسب مع الشاشة */
-    #home .display-3 {
-        font-size: 1.8rem !important; /* تم تخفيض الحجم أكثر ليصبح أجمل على الجوال */
+    .main-nav.active {
+        display: flex;
     }
 
-    /* تقليل حجم الخط الثانوي في الهيدر */
-    #home .lead {
-        font-size: 0.9rem !important;
-    }
-    
-    /* تنسيق مربع الشعار لتقنية المعلومات على الجوال */
-    .it-logo-badge-navbar {
-        padding: 4px 8px; 
-        font-size: 0.75rem; /* تصغير حجم الخط ليتناسب مع الناف بار */
-    }
-    
-    /* تنسيق الأزرار في الهيدر لتبدو أقل ضخامة */
-    #home .btn-lg {
-        font-size: 0.85rem;
-        padding: 8px 15px; /* تقليل حجم التبطين */
-        flex-grow: 1; /* للسماح لهم بتوزيع المساحة بشكل متساوٍ عند الحاجة */
-        min-width: 45%; /* ضمان أن اثنين على الأقل يتسعان في صف واحد */
-        margin-bottom: 5px; /* إضافة هامش سفلي إذا كانت في أكثر من صف */
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
     }
 
-    /* تقليل الهامش العمودي لقسم الهيدر */
-    #home .container.py-5 {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
-    }
-
-    /* تصغير حجم خطوط العناوين H2 و H4 */
-    h2 {
-        font-size: 1.75rem !important;
-    }
-    h4 {
-        font-size: 1.2rem !important;
-    }
-    
-    /* ضمان أن الأيقونات في قسم التواصل لا تكون كبيرة جداً */
-    #contact .fs-1 {
-        font-size: 1.5rem !important;
-        gap: 20px !important;
-    }
-    
-    /* ضمان أن شرائط التقدم تظهر بشكل جيد */
-    .progress {
-        height: 18px; /* تقليل ارتفاع الشريط */
-    }
-
-    .progress-bar {
-        font-size: 0.75rem; /* تصغير خط النسبة داخل الشريط */
+    .menu-toggle {
+        display: block; 
     }
 }

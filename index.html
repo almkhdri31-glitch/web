@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة تقنية | دعم وخدمات</title>
     
-    <meta name="description" content="منصة IT للحلول الذكية: يقدمها محمد، خبير الأمن السيبراني والهاكر الأخلاقي. خدمات فحص الاختراق، تطوير الويب، والدعم التقني المتقدم."/>
-    <meta name="keywords" content="أمن سيبراني، محمد، هكر أخلاقي، برمجة، تطوير ويب، دعم تقني، اختبار اختراق، حلول تقنية"/>
+    <meta name="description" content="منصة IT للحلول الذكية: يقدمها محمد، خبير الأمن السيبراني والهاكر الأخلاقي. خدمات فحص الاختراق، تطوير الويب، والسيرة الذاتية المتقدمة."/>
+    <meta name="keywords" content="أمن سيبراني، محمد، هكر أخلاقي، برمجة، تطوير ويب، دعم تقني، اختبار اختراق، سيرة ذاتية CV"/>
     <meta name="author" content="محمد - خبير أمن سيبراني ومطور"/>
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' https://api.web3forms.com;"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' https://api.web3forms.com https://my-first-site-gold-seven.vercel.app;"/>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" crossorigin="anonymous" /> 
@@ -144,7 +144,7 @@
         .service-card-in-header .fa-3x {
             color: #ffc107 !important;
         }
-        
+
         /* تنسيق حقول النموذج في قسم التواصل */
         #contact .form-control {
             background-color: #343a40; 
@@ -154,6 +154,17 @@
         
         #contact .form-control::placeholder {
             color: #ccc; 
+        }
+
+        /* ====== تنسيق قسم السيرة الذاتية الجديد ====== */
+        #cv-service {
+            background-color: #ffffff; 
+            border-top: 5px solid #ffc107; 
+        }
+        
+        #cv-service .icon-large {
+            color: #212529; 
+            font-size: 4rem;
         }
 
         /* تنسيق أيقونات التواصل الاجتماعي في التذييل */
@@ -228,7 +239,7 @@
                         <a class="nav-link" href="#home">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services-in-header">الخدمات</a>
+                        <a class="nav-link" href="#cv-service">السيرة الذاتية</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">من نحن</a>
@@ -286,13 +297,36 @@
             </section>
             
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                 <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-warning btn-lg">ابدأ بإنشاء سيرتك الذاتية الآن</a>
+                 <a href="#cv-service" class="btn btn-warning btn-lg">اطلب سيرة ذاتية احترافية الآن</a> 
                 
                  <a href="#contact" class="btn btn-outline-light btn-lg">تواصل معنا الآن</a>
             </div>
         </div>
     </header>
 
+    <section id="cv-service" class="py-5">
+        <div class="container my-4">
+            <h2 class="text-center mb-5 fw-bold text-dark border-bottom border-warning pb-2 d-inline-block">صمم سيرتك الذاتية (CV) باحترافية</h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+                    <i class="fas fa-file-alt icon-large mb-3"></i>
+                    <h3 class="fw-bold">منصة IT لإنشاء السيرة الذاتية (CV)</h3>
+                    <p class="lead">استخدم الأداة المصممة خصيصاً من قبل خبير لتنسيق سيرتك الذاتية بشكل احترافي وجاهز للطباعة والتقديم.</p>
+                </div>
+                
+                <div class="col-lg-6 text-center">
+                    <p class="mb-4">
+                        الخدمة متاحة الآن! أنشئ ملفك الشخصي المتميز في دقائق معدودة.
+                    </p>
+                    <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-warning btn-lg fw-bold">
+                        <i class="fas fa-magic me-2"></i> ابدأ بتصميم سيرتك الذاتية الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="about" class="container my-5 py-5">
         <h2 class="text-center mb-5 fw-bold text-dark border-bottom border-warning pb-2 d-inline-block">قصتنا ومن نحن</h2>
         
@@ -327,19 +361,20 @@
                     <form action="https://api.web3forms.com/submit" method="POST">
                         
                         <input type="hidden" name="access_key" value="b2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
+                        
                         <div class="mb-3">
                             <label for="fullName" class="form-label visually-hidden">الاسم الكامل</label>
-                            <input type="text" class="form-control" id="fullName" name="الاسم" placeholder="الاسم الكامل" required>
+                            <input type="text" class="form-control" id="fullName" name="name" placeholder="الاسم الكامل" required>
                         </div>
                         
                         <div class="mb-3">
                             <label for="emailAddress" class="form-label visually-hidden">البريد الإلكتروني</label>
-                            <input type="email" class="form-control" id="emailAddress" name="البريد_الإلكتروني" placeholder="البريد الإلكتروني" required>
+                            <input type="email" class="form-control" id="emailAddress" name="email" placeholder="البريد الإلكتروني" required>
                         </div>
                         
                         <div class="mb-4">
                             <label for="messageText" class="form-label visually-hidden">الرسالة</label>
-                            <textarea class="form-control" id="messageText" name="الرسالة" rows="5" placeholder="أخبرنا عن مشروعك أو استفسارك التقني..." required></textarea>
+                            <textarea class="form-control" id="messageText" name="message" rows="5" placeholder="أخبرنا عن مشروعك أو استفسارك التقني..." required></textarea>
                         </div>
                         
                         <div class="d-grid">

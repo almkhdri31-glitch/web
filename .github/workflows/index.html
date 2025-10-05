@@ -6,8 +6,9 @@
     <title>تقنية المعلومات | للحلول الذكية والأمن السيبراني</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css"> 
+    
+    </head>
 <body>
 
     <header class="main-header">
@@ -184,9 +185,9 @@
                 tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
             }
             
-            // 4. منطق الإرسال الفعلي (إصلاح مشكلة عدم الإرسال)
+            // 4. منطق الإرسال الفعلي (إصلاح مشكلة عدم الإرسال والتوجيه)
             const contactForm = document.getElementById('contact-form');
-            // مفتاح Web3Forms الذي لديك (من صورك المرفقة)
+            // مفتاح Web3Forms الذي لديك
             const WEB3FORMS_ACCESS_KEY = "b2ed5633-7b5f-46c3-b087-5bb11a7da5a0"; 
             
             if (contactForm) {
@@ -234,17 +235,16 @@
                         const result = await response.json();
 
                         if (response.ok && result.success) {
-                            // التوجيه الناجح لصفحة الشكر
-                            window.location.href = 'شكراً.html'; 
+                            // التنبيه بدلاً من التوجيه لصفحة الشكر لتجنب خطأ 404
+                            alert("شكراً لك يا محمد! تم إرسال رسالتك بنجاح.");
+                            contactForm.reset(); // تفريغ النموذج
                         } else {
                             console.error("Web3Forms Error:", result);
                             alert("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.");
-                            window.location.href = 'error.html'; 
                         }
                     } catch (error) {
                         console.error("Network or API Error:", error);
                         alert("عذراً، حدث خطأ في الاتصال بالشبكة. يرجى المحاولة لاحقاً.");
-                        window.location.href = 'error.html';
                     } finally {
                         isSubmitting = false;
                         submitButton.disabled = false;

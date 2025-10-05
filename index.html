@@ -82,10 +82,15 @@
                 تواصل معنا اليوم لتحصل على استشارة مجانية حول احتياجاتك في الأمن السيبراني أو التطوير.
             </p>
             
-            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm">
                 
                 <input type="hidden" name="access_key" value="b2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
                 <input type="hidden" name="subject" value="رسالة جديدة من موقع CyberDev">
+                
+                <input type="hidden" name="redirect" value="http://YourDomain.com/thank-you.html">
+                <input type="hidden" name="error_redirect" value="http://YourDomain.com/error.html">
+
+                <input type="checkbox" name="botcheck" id="botcheck" style="display: none;">
 
                 <div class="form-group">
                     <label for="name">الاسم:</label>
@@ -93,7 +98,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">البريد الإلكتروني:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required title="الرجاء إدخال بريد إلكتروني صحيح">
                 </div>
                 <div class="form-group">
                     <label for="message">رسالتك:</label>
@@ -116,8 +121,25 @@
     </footer>
 
     <script>
+        // 🚀 التحقق من الإيميل وتفعيل القائمة
+        
+        // تفعيل قائمة التنقل على الجوال
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('active');
+        });
+
+        // التحقق المخصص من صحة البريد الإلكتروني لمنع الإرسال الوهمي
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const emailInput = document.getElementById('email');
+            const emailValue = emailInput.value;
+            // تعبير نمطي بسيط للتحقق من التنسيق (لا يزال يسمح بالتنسيق الأساسي)
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            
+            if (!emailRegex.test(emailValue)) {
+                e.preventDefault(); // منع إرسال النموذج
+                alert("⚠️ خطأ في الإدخال: الإيميل غير صحيح. الرجاء إدخال بريد إلكتروني فعال بصيغة example@domain.com.");
+                emailInput.focus();
+            }
         });
     </script>
 </body>

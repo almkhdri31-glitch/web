@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة الفحص الأمني السريع | محمد</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <style>
+        .scan-container {
+            min-height: 70vh;
+            padding-top: 50px;
+        }
+        .scan-card {
+            background-color: #ffffff;
+            border: 1px solid #ffc107;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .results-section {
+            display: none; /* يتم إظهارها بالجافاسكريبت */
+            margin-top: 30px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container scan-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card scan-card p-4">
+                    <h2 class="text-center fw-bold text-dark mb-4">أداة تقييم الوضع الأمني السريع</h2>
+                    <p class="text-center lead text-secondary">
+                        أجب عن الأسئلة التالية لمعرفة مدى أمان جهازك وعاداتك الرقمية.
+                    </p>
+
+                    <div id="scan-questions">
+                        
+                        <div class="mb-3 p-3 border-bottom">
+                            <label class="fw-bold mb-2">1. هل تستخدم كلمة مرور موحدة (نفس الكلمة) لأكثر من حساب؟</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" id="q1_yes" value="high_risk">
+                                <label class="form-check-label" for="q1_yes">نعم، دائماً</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" id="q1_no" value="low_risk" checked>
+                                <label class="form-check-label" for="q1_no">لا، أستخدم كلمات مرور مختلفة لكل حساب</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 p-3 border-bottom">
+                            <label class="fw-bold mb-2">2. هل تقوم بتحديث نظام التشغيل والتطبيقات بشكل دوري؟</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" id="q2_yes" value="low_risk" checked>
+                                <label class="form-check-label" for="q2_yes">نعم، دائماً وبمجرد توفر التحديث</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" id="q2_no" value="high_risk">
+                                <label class="form-check-label" for="q2_no">لا، غالباً ما أتجاهل التحديثات</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 p-3">
+                            <label class="fw-bold mb-2">3. هل لديك برنامج حماية (Antivirus) موثوق مثبت على جهازك؟</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" id="q3_yes" value="low_risk" checked>
+                                <label class="form-check-label" for="q3_yes">نعم، أستخدم برنامج حماية معروف</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" id="q3_no" value="high_risk">
+                                <label class="form-check-label" for="q3_no">لا، ليس لدي برنامج حماية</label>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button id="start-scan-btn" class="btn btn-warning btn-lg fw-bold w-75">ابدأ الفحص الأمني</button>
+                        </div>
+                    </div>
+                    
+                    <div id="scan-progress" class="text-center mt-4" style="display: none;">
+                        <p class="lead text-dark">جاري تحليل الوضع الأمني لجهازك...</p>
+                        <div class="progress" style="height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar-value">0%</div>
+                        </div>
+                        <p class="small mt-2" id="scan-status-text">جاري فحص إعدادات الحماية...</p>
+                    </div>
+
+                    <div id="scan-results" class="results-section p-4 border border-warning">
+                        <h3 class="text-danger fw-bold mb-3">نتائج الفحص الأمني:</h3>
+                        <p class="lead" id="assessment-summary"></p>
+                        
+                        <div id="recommendations-list" class="list-group list-group-flush">
+                            </div>
+
+                        <div class="text-center mt-5">
+                            <p class="small text-muted">تم هذا التقييم بواسطة **محمد الخبير** في الأمن السبراني.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('start-scan-btn').addEventListener('click', () => {
+            
+            // 1. إخفاء الأسئلة وإظهار شريط التقدم
+            document.getElementById('scan-questions').style.display = 'none';
+            document.getElementById('scan-progress').style.display = 'block';
+
+            let progress = 0;
+            const progressBar = document.getElementById('progress-bar-value');
+            const statusText = document.getElementById('scan-status-text');
+            const statusMessages = [
+                'جاري التحقق من كلمات المرور والتشفير...',
+                'فحص الثغرات المحتملة في متصفح الويب...',
+                'تدقيق تحديثات نظام التشغيل والأمان...',
+                'تحليل الوضع الأمني العام للجهاز...'
+            ];
+
+            const interval = setInterval(() => {
+                progress += 5;
+                if (progress <= 100) {
+                    progressBar.style.width = progress + '%';
+                    progressBar.textContent = progress + '%';
+                    
+                    // تغيير رسائل الحالة
+                    if (progress >= 10 && progress < 35) {
+                        statusText.textContent = statusMessages[0];
+                    } else if (progress >= 35 && progress < 60) {
+                        statusText.textContent = statusMessages[1];
+                    } else if (progress >= 60 && progress < 85) {
+                        statusText.textContent = statusMessages[2];
+                    } else if (progress >= 85 && progress < 100) {
+                        statusText.textContent = statusMessages[3];
+                    }
+                    
+                } else {
+                    clearInterval(interval);
+                    // 2. عند الانتهاء، حساب النتائج وعرضها
+                    showResults();
+                }
+            }, 80); // سرعة وهمية للفحص
+
+        });
+
+        function showResults() {
+            document.getElementById('scan-progress').style.display = 'none';
+            document.getElementById('scan-results').style.display = 'block';
+
+            // حساب مستوى المخاطر بناءً على الإجابات
+            let riskCount = 0;
+            const answers = [
+                document.querySelector('input[name="q1"]:checked').value,
+                document.querySelector('input[name="q2"]:checked').value,
+                document.querySelector('input[name="q3"]:checked').value
+            ];
+
+            // تحديد المخاطر والتوصيات
+            let recommendations = [];
+
+            if (answers[0] === 'high_risk') {
+                riskCount++;
+                recommendations.push({
+                    title: '🛑 خطر: كلمات مرور موحدة',
+                    advice: 'قم فوراً باستخدام مدير كلمات مرور (مثل Bitwarden أو LastPass) لتوليد وتخزين كلمات مرور قوية وفريدة لكل موقع.',
+                    color: 'danger'
+                });
+            }
+            
+            if (answers[1] === 'high_risk') {
+                riskCount++;
+                recommendations.push({
+                    title: '🟠 تحذير: تجاهل التحديثات',
+                    advice: 'التحديثات تسد الثغرات الأمنية! تأكد من تفعيل التحديث التلقائي لنظام التشغيل وكل تطبيقاتك (خصوصاً المتصفحات).',
+                    color: 'warning'
+                });
+            }
+
+            if (answers[2] === 'high_risk') {
+                riskCount++;
+                recommendations.push({
+                    title: '🔴 خطر شديد: لا يوجد برنامج حماية',
+                    advice: 'يجب تثبيت برنامج حماية موثوق (مثل Kaspersky أو Avast أو Bitdefender) يوفر حماية في الوقت الفعلي ضد البرامج الضارة والفيروسات.',
+                    color: 'danger'
+                });
+            }
+
+
+            let summaryText = '';
+            if (riskCount >= 2) {
+                summaryText = '🔴 الوضع الأمني لجهازك **ضعيف جداً** ويحتوي على مخاطر عالية. يرجى مراجعة التوصيات أدناه.';
+                progressBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
+                progressBar.classList.add('bg-danger');
+            } else if (riskCount === 1) {
+                summaryText = '🟠 الوضع الأمني لجهازك **متوسط** ويحتاج إلى بعض التحسينات الهامة.';
+                progressBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
+                progressBar.classList.add('bg-warning');
+            } else {
+                summaryText = '✅ الوضع الأمني لجهازك **جيد جداً**. استمر في تطبيق أفضل الممارسات الأمنية.';
+                recommendations.push({
+                    title: '🌟 نصيحة إضافية: تفعيل المصادقة الثنائية (2FA)',
+                    advice: 'لزيادة الأمان، قم بتفعيل خاصية المصادقة الثنائية على جميع حساباتك الهامة (البريد، البنوك، الشبكات الاجتماعية).',
+                    color: 'info'
+                });
+                progressBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
+                progressBar.classList.add('bg-success');
+            }
+
+            document.getElementById('assessment-summary').textContent = summaryText;
+
+            // عرض التوصيات
+            const recommendationsList = document.getElementById('recommendations-list');
+            recommendationsList.innerHTML = ''; // تفريغ القائمة
+
+            recommendations.forEach(rec => {
+                const listItem = document.createElement('div');
+                listItem.className = `list-group-item list-group-item-action list-group-item-${rec.color} flex-column align-items-start mb-2`;
+                listItem.innerHTML = `
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1 fw-bold">${rec.title}</h5>
+                    </div>
+                    <p class="mb-1">${rec.advice}</p>
+                `;
+                recommendationsList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>

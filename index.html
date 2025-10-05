@@ -3,96 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد | منصة الأمن والتطوير الشاملة</title>
+    <title>محمد | الأمن السيبراني والتطوير</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="main-header">
-        <div class="logo">
-            <a href="index.html">محمد | CyberDev</a>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo">
+                <a href="index.html">محمد | CyberDev</a>
+            </div>
+            <button class="menu-toggle" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="#cyber-security">الأمن السيبراني</a></li>
+                    <li><a href="#development">البرمجة والتطوير</a></li>
+                    <li><a href="tools/cv-builder.html" class="cta-nav-link">منشئ السيرة الذاتية</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <button class="menu-toggle" aria-label="فتح القائمة">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <nav class="main-nav" id="main-nav">
-            <ul>
-                <li><a href="index.html" class="active">الرئيسية</a></li>
-                <li><a href="#cyber-security">الأمن السيبراني</a></li>
-                <li><a href="#development">البرمجة والتطوير</a></li>
-                <li><a href="tools/cv-builder.html" class="cta-nav-link">منشئ السيرة الذاتية (أداة)</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section class="hero-section">
         <div class="container">
-            <h1 class="hero-title">التقاطع بين **الأمن** و **الابتكار**</h1>
+            <div class="it-tag">تقنية المعلومات</div>
+            <h1 class="hero-title">الذكية</h1>
             <p class="hero-subtitle">
-                مرحباً بك! أنا محمد، **خبير أمن سيبراني وهكر أخلاقي ومطور**. منصة لتبادل المعرفة والأدوات المبتكرة.
+                نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها.
             </p>
-            <div class="cta-buttons">
-                <a href="#cyber-security" class="btn btn-primary">ابدأ باستكشاف الأمن</a>
-                <a href="tools/cv-builder.html" class="btn btn-secondary">جرب منشئ السيرة الذاتية 🚀</a>
-            </div>
         </div>
     </section>
 
     <main class="main-content container">
         
-        <section id="cyber-security" class="service-section">
-            <div class="section-icon"><i class="fas fa-shield-alt"></i></div>
-            <h2>الأمن السيبراني والهندسة العكسية</h2>
+        <section id="cyber-security" class="service-card">
+            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+            <h2>الأمن السيبراني</h2>
             <p>
-                نصائح متقدمة، أدوات فحص ثغرات، ومقالات عن الهكر الأخلاقي للحفاظ على أمانك الرقمي.
+                فحص الثغرات والتحليل الأمني لضمان حماية موقعك.
             </p>
-            <a href="cyber-security/articles.html" class="read-more">اكتشف المزيد في الأمن &rarr;</a>
+            <a href="#" class="card-link">المزيد</a>
         </section>
 
-        <section id="development" class="service-section">
-            <div class="section-icon"><i class="fas fa-code"></i></div>
-            <h2>البرمجة والتطوير الاحترافي</h2>
+        <section id="development" class="service-card">
+            <div class="card-icon"><i class="fas fa-code"></i></div>
+            <h2>التطوير والبرمجة</h2>
             <p>
-                مشاريع برمجية بلغات Python وJavaScript، ودورات عن تطوير تطبيقات الويب المتجاوبة.
+                بناء مواقع ويب وتطبيقات بمقاييس عالية الجودة.
             </p>
-            <a href="development/projects.html" class="read-more">شاهد المشاريع البرمجية &rarr;</a>
+            <a href="#" class="card-link">المزيد</a>
         </section>
 
-        <section id="tools" class="service-section special-tool">
-            <div class="section-icon"><i class="fas fa-tools"></i></div>
-            <h2>الأدوات التفاعلية المبتكرة</h2>
-            <p>
-                توفير خدمات وأدوات مساعدة مثل **منشئ السيرة الذاتية الفوري** (الذي طلبته)، ومحولات النصوص، وغيرها.
-            </p>
-            <a href="tools/cv-builder.html" class="read-more">انتقل لجميع الأدوات &rarr;</a>
-        </section>
+        </main>
 
-    </main>
-
-    <footer class="main-footer">
+    <footer class="main-footer" id="contact">
         <div class="container">
-            <p>&copy; <span id="current-year"></span> محمد. جميع الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-            </div>
+            <p>&copy; 2024 محمد. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
     <script>
-        // كود بسيط لتبديل قائمة الهامبرغر
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('active');
         });
-
-        // تحديث السنة في التذييل تلقائياً
-        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>

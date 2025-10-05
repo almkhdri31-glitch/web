@@ -61,37 +61,19 @@ a:hover {
 
 .main-header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* المحاذاة لليمين بعد إزالة الشعار */
     align-items: center;
 }
 
-/* اللوجو الجديد القائم على الصورة */
-.logo { 
-    flex-shrink: 0; 
-    display: flex;
-    align-items: center;
-}
-
-.site-logo {
-    /* حجم الشعار المثالي لسطح المكتب */
-    height: 35px; 
-    width: auto;
-    transition: transform 0.3s;
-}
-
-.site-logo:hover {
-    transform: scale(1.05);
-}
+/* تم حذف تنسيقات .logo و .site-logo هنا */
 
 .menu-toggle {
-    display: none; 
     background: none;
     border: none;
     color: var(--text-light);
     font-size: 1.5em;
     cursor: pointer;
     flex-shrink: 0; 
-    margin-right: 15px; 
 }
 
 .main-nav {
@@ -138,7 +120,8 @@ a:hover {
 }
 
 .hero-title {
-    font-size: 3em; 
+    /* تصغير حجم الخط الأبيض: من 3em إلى 2.5em */
+    font-size: 2.5em; 
     font-weight: 900;
     margin-bottom: 0.3em;
 }
@@ -154,25 +137,7 @@ a:hover {
     max-width: 700px;
 }
 
-.main-cta-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: var(--primary-color);
-    color: var(--background-dark);
-    border-radius: 50px; 
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.main-cta-button i {
-    margin-right: 8px;
-}
-
-.main-cta-button:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px); 
-}
+/* تم حذف تنسيقات .main-cta-button هنا */
 
 
 /*
@@ -395,15 +360,12 @@ a:hover {
 @media (max-width: 768px) {
     
     .main-header .container {
+        /* الترتيب الآن يعتمد على القائمة وزر التبديل فقط */
         flex-wrap: wrap; 
+        justify-content: space-between;
     }
     
-    /* تصحيح حجم اللوجو على الجوال ليناسب رمز القائمة */
-    .site-logo {
-        height: 28px; 
-    }
-    
-    /* العنوان الترحيبي على الجوال */
+    /* تصغير حجم الخط الأبيض أكثر على الجوال */
     .hero-title {
         font-size: 1.8em; 
     }
@@ -412,22 +374,13 @@ a:hover {
         font-size: 0.95em; 
     }
     
-    /* إظهار زر القائمة في أقصى اليسار */
+    /* ترتيب عناصر الهيدر للجوال */
     .menu-toggle {
         display: block;
         order: 1; 
+        margin-right: 0;
     }
     
-    /* اللوجو في أقصى اليمين */
-    .logo {
-        order: 2; 
-        align-self: center;
-        margin-left: auto;
-        /* تعديل مسافة اللوجو عن زر القائمة */
-        margin-right: 15px; 
-    }
-    
-    /* قائمة التنقل تأخذ عرض 100% وتنزل إلى سطر جديد */
     .main-nav {
         order: 3;
         width: 100%;

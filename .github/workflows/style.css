@@ -60,12 +60,11 @@ a:hover {
 }
 
 .main-header .container {
+    /* تم التغيير لعدم وجود لوجو */
     display: flex;
-    justify-content: flex-end; /* المحاذاة لليمين بعد إزالة الشعار */
+    justify-content: flex-end; 
     align-items: center;
 }
-
-/* تم حذف تنسيقات .logo و .site-logo هنا */
 
 .menu-toggle {
     background: none;
@@ -117,10 +116,29 @@ a:hover {
 .hero-section {
     padding: 100px 0;
     background-color: var(--background-dark);
+    /* ====== كود الخلفية ====== */
+    background-image: url('security_ai_bg.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    position: relative;
+    z-index: 1; 
+}
+
+/* التظليل لجعل النص مقروءاً */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); 
+    z-index: -1;
 }
 
 .hero-title {
-    /* تصغير حجم الخط الأبيض: من 3em إلى 2.5em */
+    /* تصغير حجم الخط الأبيض على سطح المكتب */
     font-size: 2.5em; 
     font-weight: 900;
     margin-bottom: 0.3em;
@@ -136,8 +154,6 @@ a:hover {
     color: var(--text-muted);
     max-width: 700px;
 }
-
-/* تم حذف تنسيقات .main-cta-button هنا */
 
 
 /*
@@ -360,7 +376,6 @@ a:hover {
 @media (max-width: 768px) {
     
     .main-header .container {
-        /* الترتيب الآن يعتمد على القائمة وزر التبديل فقط */
         flex-wrap: wrap; 
         justify-content: space-between;
     }

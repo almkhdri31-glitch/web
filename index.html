@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع محمد - برمجة وتطوير</title>
+    <title>محمد | خبير أمن سبراني وهاكر أخلاقي</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
+             <a class="navbar-brand fw-bold text-warning" href="#">محمد الخبير</a> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,57 +21,205 @@
                         <a class="nav-link" href="#home">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">المشاريع</a>
+                        <a class="nav-link" href="#projects">مشاريعي الأمنية والبرمجية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">سيرتي (About)</a>
+                        <a class="nav-link" href="#about">الخبرات والمهارات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">اتصل بنا</a>
+                        <a class="nav-link" href="#contact">اتصل بي</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <header id="home" class="py-5 text-center d-flex align-items-center" style="min-height: 80vh;">
-        <div class="container">
-            <h1 class="display-3 fw-bold">أصنع لك حضوراً رقمياً لا يُنسى.</h1>
-            <p class="lead mt-4 mb-5">مطور ويب طموح، نحول أفكارك إلى مواقع أنيقة ومميزة تتجاوز توقعاتك.</p>
-            <a href="#projects" class="btn btn-warning btn-lg me-3">اكتشف مهاراتي الآن</a>
-            <a href="#" class="btn btn-success btn-lg">هل تحتاج لمساعدة؟</a>
+    <header id="home" class="text-center bg-dark text-white">
+        
+        <div class="banner-image-container py-5">
+            <div class="container d-flex align-items-center justify-content-center" style="min-height: 250px;">
+                </div>
+        </div>
+
+        <div class="container py-5">
+            <h1 class="display-3 fw-bold text-warning">أصنع لك حضوراً رقمياً لا يُنسى.</h1>
+            <p class="lead mt-4 mb-5">
+                خبرة عميقة في **الأمن السبراني**، **التطوير**، و**البرمجة**. أنظمة رقمية مؤمنة وفعالة.
+            </p>
+            
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                 <a href="#projects" class="btn btn-warning btn-lg">استعراض المشاريع والمهارات</a>
+                
+                 <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-outline-light btn-lg">عرض السيرة الذاتية الكاملة</a>
+
+                 <a href="https://github.com/your-username" target="_blank" class="btn btn-outline-info btn-lg">ملفي على GitHub</a>
+            </div>
         </div>
     </header>
 
-    <section id="projects" class="py-5">
+    <section id="projects" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">مشاريعي المختارة</h2>
+            <h2 class="text-center mb-5 fw-bold">مشاريعي الأمنية والبرمجية</h2>
             
             <div class="row">
                 
-                <div class="col-md-6 mb-4">
-                    <div class="card project-card">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card project-card h-100 shadow-lg border-danger">
+                        <div class="card-header bg-danger text-white text-center fw-bold py-2">
+                            مشروع أمن سبراني (Cyber Security)
+                        </div>
                         <div class="card-body text-end">
-                            <h5 class="card-title fw-bold">مُنشئ السيرة الذاتية</h5>
-                            <p class="card-text">تطبيق ويب يتيح لك كتابة سيرتك الذاتية وتنسيقها وطباعتها بسهولة.</p>
-                            <a href="#" target="_blank" class="btn btn-primary">اذهب للمشروع</a>
+                            <h5 class="card-title fw-bold text-danger">أداة فحص الثغرات الآلية (Vuln Scanner)</h5>
+                            <p class="card-text small mb-4">
+                                تطوير سكريبت **Python** متقدم للكشف الآلي عن **أكثر من 50 ثغرة** في تطبيقات الويب، مما يقلل من وقت الفحص الأولي بنسبة 70%.
+                            </p>
+                            
+                            <div class="tech-icons mb-3 text-center">
+                                <i class="fab fa-python fa-2x mx-2 text-info" title="Python"></i>
+                                <i class="fas fa-terminal fa-2x mx-2 text-secondary" title="Bash/CLI"></i>
+                                <i class="fas fa-network-wired fa-2x mx-2 text-danger" title="Network Analysis"></i>
+                            </div>
+
+                            <a href="#" target="_blank" class="btn btn-outline-dark w-100 mt-2">عرض التفاصيل / GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 mb-4">
-                    <div class="card project-card">
+                 <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card project-card h-100 shadow-lg border-warning">
+                        <div class="card-header bg-warning text-dark text-center fw-bold py-2">
+                             مشروع تطوير (Full-Stack Development)
+                        </div>
                         <div class="card-body text-end">
-                            <h5 class="card-title fw-bold">تطبيق إدارة المهام</h5>
-                            <p class="card-text">تطبيق بسيط لإدارة المهام اليومية (To-Do List) باستخدام HTML و JavaScript.</p>
-                            <a href="#" target="_blank" class="btn btn-primary">اذهب للمشروع</a>
+                            <h5 class="card-title fw-bold">نظام إدارة المهام المشفر (Secure Task Manager)</h5>
+                            <p class="card-text small mb-4">
+                                تطبيق ويب كامل باستخدام إطار عمل **Django**، تم تصميمه بمعايير أمنية عالية، بما في ذلك تشفير البيانات الثابتة والمتحركة.
+                            </p>
+                            
+                            <div class="tech-icons mb-3 text-center">
+                                <i class="fab fa-python fa-2x mx-2 text-success" title="Django/Python"></i>
+                                <i class="fas fa-database fa-2x mx-2 text-primary" title="PostgreSQL"></i>
+                                <i class="fab fa-js-square fa-2x mx-2 text-warning" title="JavaScript"></i>
+                            </div>
+
+                            <a href="#" target="_blank" class="btn btn-outline-dark w-100 mt-2">عرض المشروع</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card project-card h-100 shadow-lg border-info">
+                        <div class="card-header bg-info text-white text-center fw-bold py-2">
+                            تحليل بيانات وأمن (Data & Security)
+                        </div>
+                        <div class="card-body text-end">
+                            <h5 class="card-title fw-bold text-info">منصة تحليل سجلات الشبكة (Real-Time Log Analyzer)</h5>
+                            <p class="card-text small mb-4">
+                                واجهة مستخدم تفاعلية (React) تستقبل سجلات الشبكة وتحللها لحظياً باستخدام خوارزميات الذكاء الاصطناعي للكشف الفوري عن الأنشطة المشبوهة.
+                            </p>
+                            
+                            <div class="tech-icons mb-3 text-center">
+                                <i class="fab fa-react fa-2x mx-2 text-info" title="React/Frontend"></i>
+                                <i class="fas fa-chart-line fa-2x mx-2 text-success" title="Data Visualization"></i>
+                                <i class="fas fa-cogs fa-2x mx-2 text-secondary" title="AI/ML"></i>
+                            </div>
+
+                            <a href="#" target="_blank" class="btn btn-outline-dark w-100 mt-2">عرض على Demo</a>
                         </div>
                     </div>
                 </div>
                 
             </div>
+            
+            <div class="text-center mt-4">
+                 <a href="https://github.com/your-username?tab=repositories" class="btn btn-dark btn-lg" target="_blank">شاهد جميع المشاريع على GitHub</a>
+            </div>
         </div>
     </section>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">خبراتي التقنية ومستوى الإتقان</h2>
+            
+            <div class="row">
+                
+                <div class="col-lg-6 mb-4">
+                    <h4 class="text-danger fw-bold mb-3 text-end">مهارات الأمن السيبراني <i class="fas fa-shield-alt me-2"></i></h4>
+                    
+                    <label class="d-block mb-1 text-end">اختبار الاختراق (Pen Testing)</label>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                    </div>
+
+                    <label class="d-block mb-1 text-end">هندسة أمن الويب (Secure Web Design)</label>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                    </div>
+                    
+                    <label class="d-block mb-1 text-end">تحليل الثغرات (Vulnerability Analysis)</label>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <h4 class="text-warning fw-bold mb-3 text-end">لغات وأطر العمل (Programming & Frameworks) <i class="fas fa-code me-2"></i></h4>
+                    
+                    <label class="d-block mb-1 text-end">Python (Django, Flask)</label>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                    </div>
+
+                    <label class="d-block mb-1 text-end">JavaScript (React/Node.js)</label>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                    </div>
+                    
+                    <label class="d-block mb-1 text-end">إدارة قواعد البيانات (SQL/NoSQL)</label>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 text-center bg-dark text-white">
+        <div class="container">
+            <h2 class="mb-4 fw-bold text-warning">تواصل معي</h2>
+            <p class="lead mb-5">
+                للاستفسارات الأمنية، فرص العمل أو الشراكات، يمكنك التواصل مباشرة عبر القنوات التالية:
+            </p>
+            
+            <div class="d-flex justify-content-center gap-5 fs-1">
+                
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="text-white-50 hover-grow">
+                     <i class="fab fa-linkedin"></i>
+                </a>
+
+                <a href="https://github.com/your-username" target="_blank" class="text-white-50 hover-grow">
+                     <i class="fab fa-github"></i>
+                </a>
+                
+                <a href="mailto:your.email@example.com" class="text-white-50 hover-grow">
+                     <i class="fas fa-envelope"></i>
+                </a>
+                
+                <a href="https://twitter.com/your-handle" target="_blank" class="text-white-50 hover-grow">
+                     <i class="fab fa-twitter"></i>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3 border-top border-warning">
+        <div class="container">
+            <p class="mb-0">حقوق النشر &copy; 2025 محمد. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> 
 </body>
 </html>

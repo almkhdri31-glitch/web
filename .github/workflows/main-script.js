@@ -1,6 +1,6 @@
 /**
  * =======================================================
- * ملف JavaScript الرئيسي والنهائي (main-script.js)
+ * ملف JavaScript المستقر والنهائي (main-script.js)
  * الوظيفة: التحصين الأمني، تفعيل واجهة المستخدم، والإرسال المحلي الفعال (محاكاة).
  * =======================================================
  */
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
     }
 
-    // ج. التحصين والإرسال المحلي لنموذج الاتصال (استعادة الوظيفة القديمة)
+    // ج. التحصين والإرسال المحلي لنموذج الاتصال (النموذج الذي كان يعمل لديك)
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData = new FormData(contactForm);
                 const name = sanitizeInput(formData.get('name'));
 
-                // تم التوجيه إلى صفحة الشكر الجاهزة لديك
+                // التوجيه إلى صفحة الشكر الجاهزة لديك
                 window.location.href = 'شكراً.html'; 
 
             }, 1000); // تأخير بسيط لمحاكاة الإرسال

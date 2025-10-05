@@ -44,6 +44,19 @@
         .nav-link:hover {
             color: #ffc107 !important; 
         }
+        
+        /* تنسيق الأيقونة المضافة في شريط التنقل */
+        .nav-item .email-icon {
+            color: #ffc107; /* اللون الأصفر */
+            margin-inline-start: 10px;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+
+        .nav-item .email-icon:hover {
+            color: #ffffff;
+        }
+
 
         /* تنسيق قسم الترويسة (Header) */
         #home {
@@ -86,19 +99,13 @@
         @media (max-width: 768px) {
             
             /* تقليل حجم الخط الرئيسي في الهيدر ليتناسب مع الشاشة */
-            #home .display-3 {
-                font-size: 1.8rem !important; 
+            #home h2 {
+                font-size: 1.5rem !important; 
             }
 
             /* تقليل حجم الخط الثانوي في الهيدر */
             #home .lead {
                 font-size: 0.9rem !important;
-            }
-            
-            /* تنسيق مربع الشعار لتقنية المعلومات على الجوال */
-            .it-logo-badge-navbar {
-                padding: 4px 8px; 
-                font-size: 0.75rem; 
             }
             
             /* تنسيق الأزرار في الهيدر لتبدو أقل ضخامة */
@@ -137,8 +144,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#home">الرئيسية</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">تواصل معنا</a>
+                    <li class="nav-item d-flex align-items-center">
+                         <a class="nav-link" href="mailto:almkhdri31@gmail.com" title="تواصل عبر البريد الإلكتروني">
+                            <i class="fas fa-envelope email-icon"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -152,7 +161,7 @@
         </div>
 
         <div class="container py-5">
-            <h1 class="display-3 fw-bold text-warning">أهلاً بك في منصة دعم تقنية المعلومات.</h1>
+            <h2 class="fw-bold text-warning mb-4">أهلاً بك في منصة دعم تقنية المعلومات</h2>
             <p class="lead mt-4 mb-5">
                 نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها. كما نقدم خدمة إنشاء سيرة ذاتية مجانية للزوار.
             </p>
@@ -164,21 +173,6 @@
             </div>
         </div>
     </header>
-
-    <section id="contact" class="py-5 text-center bg-white">
-        <div class="container">
-            <h2 class="mb-4 fw-bold text-dark">تواصل معنا</h2>
-            <p class="lead mb-5 text-secondary">
-                نحن هنا للمساعدة. يمكنك مراسلتنا مباشرة عبر البريد الإلكتروني:
-            </p>
-            
-            <div class="d-flex justify-content-center">
-                <a href="mailto:almkhdri31@gmail.com" class="btn btn-outline-dark btn-lg fw-bold fs-4">
-                     <i class="fas fa-envelope me-3 text-warning"></i> almkhdri31@gmail.com 
-                </a>
-            </div>
-        </div>
-    </section>
 
     <footer class="bg-dark text-white text-center py-3 border-top border-warning">
         <div class="container">

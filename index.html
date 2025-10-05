@@ -10,37 +10,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        .quick-tip-section {
-            padding: 40px 0;
-        }
-
+        /* تنسيق قسم النصيحة السريعة */
+        .quick-tip-section { padding: 40px 0; }
         .tip-card {
-            background-color: #242424; /* لون أغمق قليلاً من الخلفية */
-            border: 2px solid #2ecc71; /* إطار أخضر جذاب */
+            background-color: #242424; 
+            border: 2px solid #2ecc71; 
             border-radius: 10px;
             padding: 25px;
             text-align: center;
-            max-width: 800px; /* لتقييد عرض البطاقة في المنتصف */
-            margin: 0 auto;
+            max-width: 800px; 
+            margin: 0 auto 40px auto; 
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
+        .tip-icon i { font-size: 2.5em; color: #2ecc71; margin-bottom: 10px; }
+        .tip-title { font-size: 1.6em; color: #f0f0f0; margin-bottom: 10px; }
+        .tip-content { font-size: 1.1em; color: #bdbdbd; line-height: 1.5; }
 
-        .tip-icon i {
-            font-size: 2.5em;
-            color: #2ecc71;
-            margin-bottom: 10px;
+        /* تنسيق قسم المساعد الذكي الجديد */
+        .ai-assistant-container {
+            padding: 40px 0;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
         }
 
-        .tip-title {
-            font-size: 1.6em;
+        .assistant-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .assistant-form textarea {
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #292929;
             color: #f0f0f0;
-            margin-bottom: 10px;
+            resize: vertical;
+            font-size: 1em;
         }
 
-        .tip-content {
+        .assistant-form button {
+            padding: 12px 20px;
+            background-color: #3498db; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .assistant-form button:hover {
+            background-color: #2980b9;
+        }
+        
+        .ai-answer-box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #3498db;
+            border-radius: 8px;
+            background-color: #292929;
             color: #bdbdbd;
-            line-height: 1.5;
+            min-height: 50px;
+            font-size: 1em;
+            text-align: right;
+            line-height: 1.6;
+            white-space: pre-wrap; /* للحفاظ على تنسيق الرد من الذكاء الاصطناعي */
+        }
+
+        /* حالة التحميل */
+        .loading-text::after {
+            content: '...';
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
     </style>
 </head>
@@ -62,6 +111,7 @@
                 <ul>
                     <li><a href="index.html" class="active">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#ai-assistant-section">اسأل الخبير</a></li>
                     <li><a href="#contact-section">اتصل بنا</a></li>
                     <li><a href="https://my-first-site-gold-seven.vercel.app/" class="cta-nav-link" target="_blank">منشئ السيرة الذاتية</a></li>
                 </ul>
@@ -88,6 +138,24 @@
                 <p id="security-tip-text" class="tip-content">
                     تأكد دائماً من أن برامج مكافحة الفيروسات (Antivirus) على جهازك محدّثة لآخر إصدار، فهي خط دفاعك الأول ضد البرمجيات الخبيثة.
                 </p>
+            </div>
+        </section>
+        
+        <section id="ai-assistant-section" class="ai-assistant-container">
+            <h2 style="text-align: center; color: #f0f0f0;">🤖 اسأل الخبير الذكي (مدعوم بـ Gemini)</h2>
+            <p style="text-align: center; color: #bdbdbd; margin-bottom: 20px;">
+                اطرح سؤالك حول الأمن السيبراني، البرمجة، أو التطوير. سيجيبك محمد بصفته خبيراً محترفاً.
+            </p>
+            
+            <form id="aiQuestionForm" class="assistant-form">
+                <textarea id="userQuestionInput" 
+                          placeholder="مثال: ما هي أفضل الممارسات لتأمين حسابات GitHub الخاصة بي؟" 
+                          rows="4" required></textarea>
+                <button type="submit" id="submitBtn">أرسل السؤال الآن</button>
+            </form>
+            
+            <div class="ai-answer-box">
+                <p id="aiAnswerText" class="answer-text">سيظهر الرد من الذكاء الاصطناعي هنا...</p>
             </div>
         </section>
         
@@ -189,7 +257,7 @@
         });
 
         // ============================================
-        // JavaScript لتغيير النصيحة الأمنية (القسم الجديد)
+        // JavaScript لتغيير النصيحة الأمنية
         // ============================================
         const securityTips = [
             "نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة، خاصة البريد الإلكتروني والبنوك، فهي تمنع 99% من محاولات الاختراق.",
@@ -209,6 +277,54 @@
 
         // عرض نصيحة عشوائية عند تحميل الصفحة
         window.addEventListener('load', displayRandomTip);
+        // ============================================
+
+
+        // ============================================
+        // JavaScript للمساعد الذكي (AI Assistant)
+        // هذا هو الجزء الذي يتصل بملف ask.js الموجود في الـ Root (المجلد الرئيسي)
+        // ============================================
+        document.getElementById('aiQuestionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const question = document.getElementById('userQuestionInput').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const answerText = document.getElementById('aiAnswerText');
+            
+            // تغيير حالة الزر والنص أثناء الانتظار
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جاري تحليل السؤال...';
+            answerText.className = 'loading-text';
+            answerText.textContent = 'الخبير الذكي يفكر... قد يستغرق الأمر بضع ثوان.';
+
+            try {
+                // ****** التعديل الحاسم هنا: المسار هو /ask بدلاً من /api/ask ******
+                const response = await fetch('/ask', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: question })
+                });
+
+                const data = await response.json();
+                answerText.className = 'answer-text'; // إعادة تعيين الفئة
+
+                if (response.ok) {
+                    // عرض الإجابة النظيفة
+                    answerText.textContent = data.answer;
+                } else {
+                    // عرض رسالة الخطأ
+                    answerText.textContent = `عذراً، حدث خطأ: ${data.error || 'فشل في الاتصال بالخادم.'}. تأكد من وضع مفتاح GEMINI_API_KEY بشكل صحيح في إعدادات Vercel.`;
+                }
+
+            } catch (error) {
+                answerText.textContent = 'عذراً، حدث خطأ في الشبكة. يرجى المحاولة مرة أخرى.';
+                console.error('Fetch Error:', error);
+            } finally {
+                // إعادة تفعيل الزر بعد الانتهاء
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'أرسل السؤال الآن';
+            }
+        });
         // ============================================
     </script>
 </body>

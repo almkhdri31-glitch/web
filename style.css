@@ -55,11 +55,28 @@ a:hover {
     align-items: center;
 }
 
+/* ✨ تعديل اللوجو الجديد (التنسيق) ✨ */
 .logo a {
-    font-size: 1.8em;
-    font-weight: 900;
     color: #f0f0f0;
+    line-height: 1.2; 
 }
+
+.logo-ar {
+    display: block;
+    font-size: 0.9em; /* خط صغير */
+    font-weight: bold;
+    color: #f0f0f0; /* أبيض */
+}
+
+.logo-en {
+    display: block;
+    font-size: 0.7em; /* خط أصغر */
+    color: #bdbdbd; /* رمادي فاتح */
+    text-transform: uppercase;
+    font-weight: normal;
+}
+/* نهاية تعديل اللوجو */
+
 
 .menu-toggle {
     display: none; /* إخفاء زر القائمة في عرض سطح المكتب */

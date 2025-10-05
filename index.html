@@ -14,8 +14,12 @@
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">CyberDev</a>
+                <a href="index.html" class="custom-logo-text">
+                    <span class="logo-ar">تقنية المعلومات</span>
+                    <span class="logo-en">Information Technology</span>
+                </a>
             </div>
+            
             <button class="menu-toggle" aria-label="فتح القائمة">
                 <i class="fas fa-bars"></i>
             </button>
@@ -121,8 +125,6 @@
     </footer>
 
     <script>
-        // 🚀 التحقق من الإيميل وتفعيل القائمة
-        
         // تفعيل قائمة التنقل على الجوال
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('active');
@@ -132,7 +134,6 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             const emailInput = document.getElementById('email');
             const emailValue = emailInput.value;
-            // تعبير نمطي بسيط للتحقق من التنسيق (لا يزال يسمح بالتنسيق الأساسي)
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             
             if (!emailRegex.test(emailValue)) {

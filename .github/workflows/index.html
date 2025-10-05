@@ -148,7 +148,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // 1. تفعيل قائمة التنقل (إصلاح مشكلة الخطوط الثلاثة والروابط)
+            // 1. تفعيل قائمة التنقل
             const menuToggle = document.querySelector('.menu-toggle');
             const mainNav = document.querySelector('.main-nav');
             if (menuToggle && mainNav) {
@@ -165,7 +165,7 @@
                 });
             }
 
-            // 2. تحديث السنة (وظيفة الواجهة)
+            // 2. تحديث السنة
             const currentYear = new Date().getFullYear();
             const yearElement = document.getElementById('current-year');
             if (yearElement) {
@@ -186,7 +186,7 @@
                 tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
             }
             
-            // 4. منطق الإرسال الفعلي (إصلاح مشكلة عدم الإرسال والتوجيه)
+            // 4. منطق الإرسال الفعلي (تم تعديل رسالة الشكر هنا)
             const contactForm = document.getElementById('contact-form');
             // مفتاح Web3Forms الذي لديك
             const WEB3FORMS_ACCESS_KEY = "b2ed5633-7b5f-46c3-b087-5bb11a7da5a0"; 
@@ -236,8 +236,8 @@
                         const result = await response.json();
 
                         if (response.ok && result.success) {
-                            // التنبيه بدلاً من التوجيه لصفحة الشكر لتجنب خطأ 404
-                            alert("شكراً لك يا محمد! تم إرسال رسالتك بنجاح.");
+                            // رسالة شكر عامة وغير مخصصة (كما طلبت)
+                            alert("شكراً لك! تم إرسال رسالتك بنجاح.");
                             contactForm.reset(); // تفريغ النموذج
                         } else {
                             console.error("Web3Forms Error:", result);

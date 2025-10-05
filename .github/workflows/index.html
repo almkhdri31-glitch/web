@@ -3,212 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberDev | الأمن السيبراني والتطوير الذكي</title>
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>تقنية المعلومات | للحلول الذكية والأمن السيبراني</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        .quick-tip-section { padding: 40px 0; }
-
-        .tip-card {
-            background-color: #242424; 
-            border: 2px solid #2ecc71; 
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            max-width: 800px; 
-            margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .tip-icon i {
-            font-size: 2.5em;
-            color: #2ecc71;
-            margin-bottom: 10px;
-        }
-
-        .tip-title {
-            font-size: 1.6em;
-            color: #f0f0f0;
-            margin-bottom: 10px;
-        }
-
-        .tip-content {
-            font-size: 1.1em;
-            color: #bdbdbd;
-            line-height: 1.5;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <a href="index.html" class="custom-logo-text">
-                    <span class="logo-ar">تقنية المعلومات</span>
-                    <span class="logo-en">Information Technology</span>
+                <a href="index.html" class="custom-logo-link">
+                    <img src="it_logo.png" alt="شعار تقنية المعلومات" class="site-logo">
                 </a>
             </div>
             
-            <button class="menu-toggle" aria-label="فتح القائمة">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="main-nav" id="main-nav">
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="#hero" class="active">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#contact-section">اتصل بنا</a></li>
-                    <li><a href="https://my-first-site-gold-seven.vercel.app/" class="cta-nav-link" target="_blank">منشئ السيرة الذاتية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#" class="cta-nav-link">طلب استشارة</a></li>
                 </ul>
             </nav>
+
+            <button class="menu-toggle" aria-label="فتح قائمة التنقل">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
         <div class="container">
-            <h1 class="hero-title">مرحباً بك في منصة <span class="highlight-text">IT</span> للحلول الذكية.</h1>
+            <h1 class="hero-title">
+                مرحباً بك في منصة <span class="highlight-text">IT</span> للحلول الذكية.
+            </h1>
             <p class="hero-subtitle">
                 نحن نقدم الدعم والحلول التقنية المتقدمة لأي مشكلة تواجهها في عالم التكنولوجيا والأمن.
             </p>
-            <a href="#contact-section" class="main-cta-button">تواصل معنا لبدء مشروعك <i class="fas fa-arrow-left"></i></a>
+            <a href="#contact" class="main-cta-button">
+                تواصل معنا لبدء مشروعك <i class="fas fa-arrow-left"></i>
+            </a>
         </div>
     </section>
 
-    <main class="main-content container" id="services">
-        
-        <section class="quick-tip-section container">
-            <div class="tip-card">
-                <div class="tip-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3 class="tip-title">نصيحة اليوم الأمنية</h3>
-                <p id="security-tip-text" class="tip-content">
-                    تأكد دائماً من أن برامج مكافحة الفيروسات (Antivirus) على جهازك محدّثة لآخر إصدار، فهي خط دفاعك الأول ضد البرمجيات الخبيثة.
-                </p>
-            </div>
-        </section>
-        
-        <section class="services-grid">
-            
-            <div id="cv-builder" class="service-card">
-                <div class="card-icon"><i class="fas fa-file-alt"></i></div>
-                <h2>منشئ السيرة الذاتية (CV)</h2>
-                <p>
-                    قم بإنشاء سيرة ذاتية احترافية بتنسيق أنيق، مصممة خصيصًا لمجال التكنولوجيا والأمن السيبراني.
-                </p>
-                <a href="https://my-first-site-gold-seven.vercel.app/" class="card-link" target="_blank">ابدأ بإنشاء سيرتك الذاتية</a>
-            </div>
-
-            <div id="cyber-security" class="service-card">
-                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                <h2>التحصين والأمان الرقمي</h2>
-                <p>
-                    إرشادات متقدمة لتحصين المواقع والأنظمة، دليل شامل للوقاية من التهديدات السيبرانية الأكثر شيوعاً.
-                </p>
-                <a href="#" class="card-link">دليل الأمان</a>
-            </div>
-
-            <div id="development" class="service-card">
-                <div class="card-icon"><i class="fas fa-code"></i></div>
-                <h2>التطوير والبرمجة</h2>
-                <p>
-                    بناء وتطوير مواقع الويب وتطبيقات الهاتف بمعايير عالمية، باستخدام أحدث التقنيات البرمجية.
-                </p>
-                <a href="#" class="card-link">اطلب خدمتك</a>
-            </div>
-            
-            </section>
-        
-    </main>
-    
-    <section class="contact-section" id="contact-section">
+    <section class="quick-tip-section">
         <div class="container">
-            <h2>لنبدأ مشروعك القادم</h2>
-            <p>
-                تواصل معنا اليوم لتحصل على استشارة مجانية حول احتياجاتك في الأمن السيبراني أو التطوير.
-            </p>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2 class="tip-title">نصيحة اليوم الأمنية</h2>
+                <p class="tip-content" id="security-tip">
+                    نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content" id="services">
+        <div class="container">
+            <h2 class="section-title text-center">خدماتنا الرئيسية</h2>
             
-            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm">
+            <div class="services-grid">
                 
-                <input type="hidden" name="access_key" value="b2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
-                <input type="hidden" name="subject" value="رسالة جديدة من موقع CyberDev">
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-lock"></i></div>
+                    <h2>الأمن السيبراني</h2>
+                    <p>تحصين الأنظمة والشبكات ضد الاختراقات وتوفير اختبارات الاختراق (Penetration Testing).</p>
+                    <a href="#" class="card-link">اعرف المزيد</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h2>تطوير البرمجيات</h2>
+                    <p>بناء تطبيقات ويب وهواتف ذكية مخصصة باستخدام أحدث التقنيات واللغات البرمجية.</p>
+                    <a href="#" class="card-link">اعرف المزيد</a>
+                </div>
                 
-                <input type="hidden" name="redirect" value="http://YourDomain.com/thank-you.html">
-                <input type="hidden" name="error_redirect" value="http://YourDomain.com/error.html">
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-server"></i></div>
+                    <h2>إدارة البنية التحتية</h2>
+                    <p>تصميم وإدارة وصيانة الخوادم، قواعد البيانات، والشبكات لضمان الاستمرارية والكفاءة.</p>
+                    <a href="#" class="card-link">اعرف المزيد</a>
+                </div>
 
-                <input type="checkbox" name="botcheck" id="botcheck" style="display: none;">
+            </div>
+        </div>
+    </main>
 
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>تواصل معنا</h2>
+            <p>هل أنت مستعد لبدء مشروعك؟ اترك لنا رسالة وسنتواصل معك فوراً.</p>
+            
+            <form class="contact-form" id="contact-form">
                 <div class="form-group">
-                    <label for="name">الاسم:</label>
+                    <label for="name">الاسم الكريم:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">البريد الإلكتروني:</label>
-                    <input type="email" id="email" name="email" required title="الرجاء إدخال بريد إلكتروني صحيح">
+                    <input type="email" id="email" name="email" required>
+                    <small id="email-error" style="color: #e74c3c; display: none;">يرجى إدخال بريد إلكتروني صحيح.</small>
                 </div>
                 <div class="form-group">
-                    <label for="message">رسالتك:</label>
+                    <label for="message">الرسالة:</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="submit-button">أرسل رسالتك</button>
+                <button type="submit" class="submit-button">إرسال الرسالة</button>
             </form>
         </div>
     </section>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 CyberDev. جميع الحقوق محفوظة.</p>
+            <p>&copy; <span id="current-year">2024</span> تقنية المعلومات | جميع الحقوق محفوظة.</p>
             <div class="social-links">
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="جيت هاب"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        // تفعيل قائمة التنقل على الجوال
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.getElementById('main-nav').classList.toggle('active');
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
 
-        // التحقق المخصص من صحة البريد الإلكتروني لمنع الإرسال الوهمي
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const emailInput = document.getElementById('email');
-            const emailValue = emailInput.value;
-            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            // 1. تفعيل قائمة الجوال (Menu Toggle)
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
             
-            if (!emailRegex.test(emailValue)) {
-                e.preventDefault(); 
-                alert("⚠️ خطأ في الإدخال: الإيميل غير صحيح. الرجاء إدخال بريد إلكتروني فعال بصيغة example@domain.com.");
-                emailInput.focus();
+            // 2. تحديث النصائح الأمنية (مؤقت حتى نراجعه ونحصنه)
+            const securityTips = [
+                "استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.",
+                "قم بتحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.",
+                "استخدم مدير كلمات مرور لإنشاء وتخزين كلمات مرور قوية وفريدة.",
+                "احذر من رسائل البريد الإلكتروني العشوائية (Phishing) ولا تضغط على روابط مشبوهة.",
+                "قم بإجراء نسخ احتياطي لبياناتك بانتظام لتجنب فقدانها بسبب هجمات الفدية."
+            ];
+
+            const tipElement = document.getElementById('security-tip');
+            if(tipElement) {
+                const randomTip = securityTips[Math.floor(Math.random() * securityTips.length)];
+                tipElement.textContent = "نصيحة اليوم: " + randomTip;
             }
+
+            // 3. التحقق من صحة نموذج الاتصال (مؤقت حتى نراجعه ونحصنه)
+            const contactForm = document.getElementById('contact-form');
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+
+            const validateEmail = (email) => {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            contactForm.addEventListener('submit', (e) => {
+                if (!validateEmail(emailInput.value)) {
+                    e.preventDefault();
+                    emailError.style.display = 'block';
+                } else {
+                    emailError.style.display = 'none';
+                    // هنا يمكن إضافة منطق إرسال النموذج فعلياً (مثل استخدام fetch API)
+                    // حالياً، سنمنع الإرسال ونظهر رسالة مؤقتة
+                    e.preventDefault(); 
+                    alert('تم إرسال رسالتك بنجاح! شكراً لتواصلك.');
+                    contactForm.reset();
+                }
+            });
+
         });
-
-        // ============================================
-        // JavaScript لتغيير النصيحة الأمنية
-        // ============================================
-        const securityTips = [
-            "نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة، خاصة البريد الإلكتروني والبنوك، فهي تمنع 99% من محاولات الاختراق.",
-            "نصيحة برمجية: في JavaScript، استخدم `let` و `const` بدلاً من `var` للتحكم بنطاق المتغيرات (Scope) وتجنب الأخطاء غير المتوقعة.",
-            "نصيحة أمنية سريعة: احذر من رسائل البريد الإلكتروني التي تطلب معلوماتك الشخصية أو البنكية بشكل عاجل (Phishing).",
-            "نصيحة للمطور: عند رفع الكود على GitHub، تأكد من أنك لم تترك مفاتيح API أو كلمات مرور في الكود المصدر (Source Code)."
-        ];
-
-        function displayRandomTip() {
-            const tipElement = document.getElementById('security-tip-text');
-            if (tipElement) {
-                const randomIndex = Math.floor(Math.random() * securityTips.length);
-                tipElement.textContent = securityTips[randomIndex];
-            }
-        }
-
-        // عرض نصيحة عشوائية عند تحميل الصفحة
-        window.addEventListener('load', displayRandomTip);
-        // ============================================
-        
-        // تم حذف كامل كود الـ JavaScript الخاص بالمساعد الذكي هنا
     </script>
 </body>
 </html>

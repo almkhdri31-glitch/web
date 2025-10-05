@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد | الأمن السيبراني والتطوير</title>
+    <title>CyberDev | الأمن السيبراني والتطوير الذكي</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="main-header">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container">
             <div class="logo">
-                <a href="index.html">محمد | CyberDev</a>
+                <a href="index.html">CyberDev</a>
             </div>
             <button class="menu-toggle" aria-label="فتح القائمة">
                 <i class="fas fa-bars"></i>
@@ -21,10 +24,10 @@
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
                     <li><a href="#cyber-security">الأمن السيبراني</a></li>
-                    <li><a href="#development">البرمجة والتطوير</a></li>
+                    <li><a href="#development">التطوير والبرمجة</a></li>
                     <li><a href="tools/cv-builder.html" class="cta-nav-link">منشئ السيرة الذاتية</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,43 +35,62 @@
 
     <section class="hero-section">
         <div class="container">
-            <div class="it-tag">تقنية المعلومات</div>
-            <h1 class="hero-title">الذكية</h1>
+            <h1 class="hero-title">مرحباً بك في منصة CyberDev للحلول الذكية.</h1>
             <p class="hero-subtitle">
-                نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها.
+                نحن نقدم الدعم والحلول التقنية المتقدمة لأي تحدٍ تواجهه في عالم التكنولوجيا والأمن.
             </p>
+            <a href="#contact" class="main-cta-button">تواصل معنا لبدء مشروعك <i class="fas fa-arrow-left"></i></a>
         </div>
     </section>
 
-    <main class="main-content container">
+    <main class="main-content container" id="services">
         
-        <section id="cyber-security" class="service-card">
-            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-            <h2>الأمن السيبراني</h2>
-            <p>
-                فحص الثغرات والتحليل الأمني لضمان حماية موقعك.
-            </p>
-            <a href="#" class="card-link">المزيد</a>
-        </section>
+        <section class="services-grid">
+            
+            <div id="cyber-security" class="service-card">
+                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2>الأمن السيبراني</h2>
+                <p>
+                    فحص الثغرات، الاختبار الاختراقي (Pentesting)، والتحليل الأمني لضمان حصانة موقعك وأنظمتك ضد أي تهديد.
+                </p>
+                <a href="#" class="card-link">استكشف المزيد</a>
+            </div>
 
-        <section id="development" class="service-card">
-            <div class="card-icon"><i class="fas fa-code"></i></div>
-            <h2>التطوير والبرمجة</h2>
-            <p>
-                بناء مواقع ويب وتطبيقات بمقاييس عالية الجودة.
-            </p>
-            <a href="#" class="card-link">المزيد</a>
-        </section>
+            <div id="development" class="service-card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h2>التطوير والبرمجة</h2>
+                <p>
+                    بناء وتطوير مواقع الويب وتطبيقات الهاتف بمعايير عالمية، باستخدام أحدث التقنيات البرمجية.
+                </p>
+                <a href="#" class="card-link">اطلب خدمتك</a>
+            </div>
+            
+            <div id="support" class="service-card">
+                <div class="card-icon"><i class="fas fa-headset"></i></div>
+                <h2>الدعم التقني</h2>
+                <p>
+                    حلول دعم متقدمة واستشارات تقنية متخصصة لمساعدتك في التغلب على أي مشكلة تقنية معقدة.
+                </p>
+                <a href="#" class="card-link">تحدث مع خبير</a>
+            </div>
 
-        </main>
+        </section>
+        
+    </main>
 
     <footer class="main-footer" id="contact">
         <div class="container">
-            <p>&copy; 2024 محمد. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2024 CyberDev. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
         </div>
     </footer>
 
     <script>
+        // كود التجاوب (Toggle) للقائمة لم يتم المساس به
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('active');
         });

@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" crossorigin="anonymous" /> 
     
     <style>
+        /* (*** تم حذف تنسيقات CSS غير المتغيرة للاختصار ***) */
+
         /* تنسيقات أساسية للخط والاتجاه */
         body {
             font-family: 'Tahoma', 'Arial', sans-serif;
@@ -138,6 +140,17 @@
         .service-card-in-header .fa-3x {
             color: #ffc107 !important;
         }
+        
+        /* تنسيق حقول النموذج في قسم التواصل */
+        #contact .form-control {
+            background-color: #343a40; /* لون الخلفية الداكن */
+            color: white; /* لون النص أبيض */
+            border: 1px solid #ffc107; /* إطار أصفر مميز */
+        }
+        
+        #contact .form-control::placeholder {
+            color: #ccc; /* لون تلميح أقل حدة */
+        }
 
 
         /* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
@@ -147,13 +160,11 @@
             #home h2 {
                 font-size: 1.5rem !important; 
             }
-
-            /* تقليل حجم الخط الثانوي في الهيدر */
+            /* بقية تنسيقات الجوال... */
             #home .lead {
                 font-size: 0.9rem !important;
             }
             
-            /* تنسيق الأزرار في الهيدر لتبدو أقل ضخامة */
             #home .btn-lg {
                 font-size: 0.85rem;
                 padding: 8px 15px; 
@@ -162,19 +173,16 @@
                 margin-bottom: 5px; 
             }
             
-            /* إلغاء الـ padding الافتراضي لترك مساحة لـ 100vh */
             #home .container.py-5 {
                 padding-top: 2rem !important;
                 padding-bottom: 2rem !important;
             }
             
-            /* على الجوال: جعل بطاقات الخدمات تأخذ العرض الكامل */
             .service-card-col {
                 flex: 0 0 100%; 
                 max-width: 100%;
             }
             
-            /* مسافات إضافية بين البطاقات على الجوال */
             .service-card-in-header {
                 margin-bottom: 15px; 
             }
@@ -210,6 +218,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">تواصل معنا</a>
                     </li>
                     <li class="nav-item d-none d-lg-flex align-items-center">
                          <a class="nav-link" href="mailto:almkhdri31@gmail.com" title="تواصل عبر البريد الإلكتروني">
@@ -263,7 +274,7 @@
             <div class="d-flex flex-wrap justify-content-center gap-3">
                  <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-warning btn-lg">ابدأ بإنشاء سيرتك الذاتية الآن</a>
                 
-                 <a href="mailto:almkhdri31@gmail.com" class="btn btn-outline-light btn-lg">تواصل عبر البريد الإلكتروني</a>
+                 <a href="#contact" class="btn btn-outline-light btn-lg">تواصل معنا الآن</a>
             </div>
         </div>
     </header>
@@ -274,7 +285,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <img src="it_professional_image.jpg" class="img-fluid rounded shadow-sm" alt="صورة توضيحية لخبراء تقنية معلومات" loading="lazy">
-                <small class="d-block mt-2 text-muted text-center"> </small>
+                <small class="d-block mt-2 text-muted text-center">**ملاحظة:** يرجى استبدال "it_professional_image.jpg" بصورة مناسبة لك.</small>
             </div>
             <div class="col-lg-6">
                 <p class="lead fw-bold text-dark">
@@ -293,13 +304,36 @@
         </div>
     </section>
     
-    <section id="contact" class="bg-dark text-white py-5">
-        <div class="container text-center">
-            <h3 class="fw-bold text-warning mb-4">هل لديك استفسار؟</h3>
-            <p class="lead mb-4">تواصل معنا لبدء مشروعك أو للحصول على استشارة أمنية وتقنية متخصصة.</p>
-             <a href="mailto:almkhdri31@gmail.com" class="btn btn-outline-warning btn-lg">
-                <i class="fas fa-envelope me-2"></i> تواصل عبر البريد الإلكتروني الآن
-            </a>
+    <section id="contact" class="bg-dark py-5">
+        <div class="container text-white">
+            <h3 class="fw-bold text-warning text-center mb-5">تواصل معنا لبدء مشروعك</h3>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form action="#" method="POST">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label visually-hidden">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="الاسم الكامل" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="emailAddress" class="form-label visually-hidden">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="emailAddress" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="messageText" class="form-label visually-hidden">الرسالة</label>
+                            <textarea class="form-control" id="messageText" rows="5" placeholder="أخبرنا عن مشروعك أو استفسارك التقني..." required></textarea>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-warning btn-lg fw-bold">
+                                <i class="fas fa-paper-plane me-2"></i> إرسال الرسالة
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 

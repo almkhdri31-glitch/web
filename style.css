@@ -1,69 +1,100 @@
-/* تنسيقات عامة للموقع */
+/* تنسيقات أساسية للخط والاتجاه */
 body {
-    /* اختيار خط عربي واضح وداعم للترميز */
-    font-family: Tahoma, 'Droid Arabic Kufi', sans-serif; 
-    color: #333;
-    /* تحديد الاتجاه اليمين لليسار ضروري للمحتوى العربي */
-    direction: rtl; 
+    font-family: 'Tahoma', 'Arial', sans-serif;
+    direction: rtl;
     text-align: right;
-    /* مسافة بسيطة من الأسفل لضمان عدم التصاق المحتوى */
-    padding-bottom: 50px; 
+    background-color: #f8f9fa; /* لون خلفية فاتح */
 }
 
-/* تنسيق شريط التنقل (Navbar) ليناسب اللغة العربية */
-.navbar-nav .nav-link {
-    /* زيادة المسافة بين الروابط */
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+/* تنسيق شريط التنقل (Navbar) */
+.navbar {
+    border-bottom: 3px solid #ffc107; /* خط أصفر (Warning) ليتناسب مع ألوان الأمن */
 }
 
-/* تنسيق القسم الترحيبي (Hero Section) */
+.nav-link {
+    font-weight: 500;
+    margin-inline-start: 15px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important; /* تغيير لون الرابط عند المرور فوقه */
+}
+
+/* تنسيق قسم الترويسة (Header) - مع الصورة الجديدة (security_ai_bg.jpg) */
 #home {
-    background-color: #e9ecef; /* لون خلفية رمادي فاتح */
-    padding-top: 100px;
-    padding-bottom: 100px;
-    min-height: 80vh; /* ضمان ألا يقل الارتفاع عن 80% من الشاشة */
+    /* تم رفع طبقة التعتيم (Opacity) لضمان وضوح النص فوق الصورة */
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('security_ai_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    /* تثبيت الخلفية عند التمرير يعطي مظهراً احترافياً */
+    background-attachment: fixed; 
+    color: white;
 }
 
-/* تنسيق العناوين والأزرار في القسم الترحيبي */
-#home h1 {
-    font-size: 2.5rem; /* حجم كبير للعنوان الرئيسي */
-}
-#home .btn-lg {
-    font-size: 1.25rem;
-    padding: 10px 30px;
-    border-radius: 5px;
-}
-
-/* تنسيق قسم المشاريع الجديد (Portfolio Section) */
-#projects {
-    background-color: #f8f9fa; /* لون خلفية خفيف لقسم المشاريع لتمييزه */
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
+/* تنسيق بطاقات المشاريع */
 .project-card {
-    /* تأثير انتقال سلس عند التفاعل */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
     border: none;
-    border-radius: 8px;
-    /* ظل خفيف للبطاقة */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-    text-align: right !important; /* التأكد من محاذاة النص داخل البطاقة لليمين */
+    border-radius: 10px;
 }
 
 .project-card:hover {
-    /* رفع البطاقة قليلاً عند المرور عليها لخلق تفاعل بصري */
-    transform: translateY(-5px); 
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: translateY(-5px); /* رفع البطاقة قليلاً عند المرور عليها */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* تنسيق شاشات الجوال (Media Query) */
-@media (max-width: 768px) {
-    #home h1 {
-        font-size: 2rem;
-    }
-    #home {
-        min-height: 60vh;
-    }
+/* تنسيق الأزرار الأساسية (Warning) */
+.btn-warning {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    font-weight: bold;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+
+/* تنسيق قسم الخبرات (About/Skills) */
+#about {
+    background-color: #ffffff;
+}
+
+/* تنسيق الأيقونات في قسم المهارات */
+.fa-shield-alt, .fa-lock, .fa-bug {
+    color: #dc3545; /* لون الأمان */
+}
+
+/* تنسيق شرائط التقدم */
+.progress {
+    height: 25px;
+    border-radius: 0.5rem;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: flex-end; /* وضع النسبة على اليمين */
+    padding-inline-end: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: width 1.5s ease-in-out; 
+}
+
+/* تنسيق شريط تحذير البرمجة (الأصفر) ليكون النص داكناً */
+.progress-bar.bg-warning {
+    color: #212529; 
+}
+
+/* تنسيق قسم التواصل الاجتماعي (Contact) */
+.hover-grow {
+    transition: transform 0.3s;
+    color: #ffc107 !important; /* لون الأيقونات يكون أصفر (Warning) */
+}
+
+.hover-grow:hover {
+    transform: scale(1.2); /* تكبير الأيقونة عند المرور عليها */
+    color: #ffecb3 !important; /* لون أفتح عند التكبير */
 }

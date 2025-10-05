@@ -77,7 +77,7 @@
             font-size: 1em;
             text-align: right;
             line-height: 1.6;
-            white-space: pre-wrap; /* للحفاظ على تنسيق الرد من الذكاء الاصطناعي */
+            white-space: pre-wrap;
         }
 
         /* حالة التحميل */
@@ -250,7 +250,7 @@
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             
             if (!emailRegex.test(emailValue)) {
-                e.preventDefault(); // منع إرسال النموذج
+                e.preventDefault(); 
                 alert("⚠️ خطأ في الإدخال: الإيميل غير صحيح. الرجاء إدخال بريد إلكتروني فعال بصيغة example@domain.com.");
                 emailInput.focus();
             }
@@ -269,7 +269,6 @@
         function displayRandomTip() {
             const tipElement = document.getElementById('security-tip-text');
             if (tipElement) {
-                // اختيار نصيحة عشوائية
                 const randomIndex = Math.floor(Math.random() * securityTips.length);
                 tipElement.textContent = securityTips[randomIndex];
             }
@@ -282,7 +281,7 @@
 
         // ============================================
         // JavaScript للمساعد الذكي (AI Assistant)
-        // هذا هو الجزء الذي يتصل بملف ask.js الموجود في الـ Root (المجلد الرئيسي)
+        // هذا هو الجزء الذي يتصل بملف ask.js الموجود في الهيكلية الجديدة
         // ============================================
         document.getElementById('aiQuestionForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -298,26 +297,27 @@
             answerText.textContent = 'الخبير الذكي يفكر... قد يستغرق الأمر بضع ثوان.';
 
             try {
-                // ****** التعديل الحاسم هنا: المسار هو /ask بدلاً من /api/ask ******
-                const response = await fetch('/ask', { 
+                // ****** التعديل الحاسم هنا: المسار هو /شبكة الإنترنت/واجهة برمجة التطبيقات/ask ******
+                const response = await fetch('/شبكة الإنترنت/واجهة برمجة التطبيقات/ask', { 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ question: question })
                 });
 
                 const data = await response.json();
-                answerText.className = 'answer-text'; // إعادة تعيين الفئة
+                answerText.className = 'answer-text'; 
 
                 if (response.ok) {
                     // عرض الإجابة النظيفة
                     answerText.textContent = data.answer;
                 } else {
-                    // عرض رسالة الخطأ
-                    answerText.textContent = `عذراً، حدث خطأ: ${data.error || 'فشل في الاتصال بالخادم.'}. تأكد من وضع مفتاح GEMINI_API_KEY بشكل صحيح في إعدادات Vercel.`;
+                    // عرض رسالة الخطأ من الخادم
+                    answerText.textContent = `عذراً، حدث خطأ: ${data.error || 'فشل في الاتصال بالخادم.'}. تذكر: تأكد من حفظ مفتاح GEMINI_API_KEY في Vercel.`;
                 }
 
             } catch (error) {
-                answerText.textContent = 'عذراً، حدث خطأ في الشبكة. يرجى المحاولة مرة أخرى.';
+                // خطأ في الشبكة أو عدم العثور على المسار
+                answerText.textContent = 'عذراً، حدث خطأ في الشبكة. يرجى التأكد من أن الملفات موجودة في المسار الصحيح وإعادة المحاولة.';
                 console.error('Fetch Error:', error);
             } finally {
                 // إعادة تفعيل الزر بعد الانتهاء

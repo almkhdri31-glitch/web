@@ -1,218 +1,437 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تقنية المعلومات | للحلول الذكية والأمن السيبراني</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/*
+====================================
+  المتغيرات (Variables) والتنسيقات الأساسية
+====================================
+*/
+:root {
+    --primary-color: #2ecc71; /* الأخضر التكنولوجي */
+    --secondary-color: #3498db; /* لون ثانوي للاستخدام المستقبلي */
+    --background-dark: #121212; /* خلفية داكنة جداً */
+    --background-light-dark: #1e1e1e; /* خلفية أفتح قليلاً للعناصر */
+    --text-light: #f0f0f0; /* لون النص الأساسي */
+    --text-muted: #bdbdbd; /* لون النص الثانوي */
+    --font-cairo: 'Cairo', sans-serif;
+}
 
-    <header class="main-header">
-        <div class="container">
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#hero" class="active">الرئيسية</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
-                    <li><a href="#" class="cta-nav-link">طلب استشارة</a></li>
-                </ul>
-            </nav>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-            <button class="menu-toggle" aria-label="فتح قائمة التنقل">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+body {
+    font-family: var(--font-cairo); 
+    font-size: 16px; 
+    line-height: 1.6;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    direction: rtl; 
+}
 
-    <section class="hero-section" id="hero">
-        <div class="container">
-            <h1 class="hero-title">
-                مرحباً بك في منصة <span class="highlight-text">IT</span> للحلول الذكية.
-            </h1>
-            <p class="hero-subtitle">
-                نحن نقدم الدعم والحلول التقنية المتقدمة لأي مشكلة تواجهها في عالم التكنولوجيا والأمن.
-            </p>
-            </div>
-    </section>
+a {
+    color: var(--primary-color); 
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-    <section class="quick-tip-section">
-        <div class="container">
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h2 class="tip-title">نصيحة اليوم الأمنية</h2>
-                <p class="tip-content" id="security-tip">
-                    نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.
-                </p>
-            </div>
-        </div>
-    </section>
+a:hover {
+    color: #38c172; 
+}
 
-    <main class="main-content" id="services">
-        <div class="container">
-            <h2 class="section-title text-center">خدماتنا الرئيسية</h2>
-            
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-lock"></i></div>
-                    <h2>الأمن السيبراني</h2>
-                    <p>تحصين الأنظمة والشبكات ضد الاختراقات وتوفير اختبارات الاختراق (Penetration Testing).</p>
-                    <a href="#" class="card-link">اعرف المزيد</a>
-                </div>
+.container {
+    width: 90%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 15px;
+}
 
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-code"></i></div>
-                    <h2>تطوير البرمجيات</h2>
-                    <p>بناء تطبيقات ويب وهواتف ذكية مخصصة باستخدام أحدث التقنيات واللغات البرمجية.</p>
-                    <a href="#" class="card-link">اعرف المزيد</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-server"></i></div>
-                    <h2>إدارة البنية التحتية</h2>
-                    <p>تصميم وإدارة وصيانة الخوادم، قواعد البيانات، والشبكات لضمان الاستمرارية والكفاءة.</p>
-                    <a href="#" class="card-link">اعرف المزيد</a>
-                </div>
+/*
+====================================
+  تنسيقات الهيدر (Header) وقائمة التنقل
+====================================
+*/
+.main-header {
+    background-color: var(--background-light-dark);
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
 
-            </div>
-        </div>
-    </main>
+.main-header .container {
+    /* تم التغيير لعدم وجود لوجو */
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+}
 
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2>تواصل معنا</h2>
-            <p>هل أنت مستعد لبدء مشروعك؟ اترك لنا رسالة وسنتواصل معك فوراً.</p>
-            
-            <form class="contact-form" id="contact-form">
-                <div class="form-group">
-                    <label for="name">الاسم الكريم:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">البريد الإلكتروني:</label>
-                    <input type="email" id="email" name="email" required>
-                    <small id="email-error" style="color: #e74c3c; display: none;">يرجى إدخال بريد إلكتروني صحيح.</small>
-                </div>
-                <div class="form-group">
-                    <label for="message">الرسالة:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">إرسال الرسالة</button>
-            </form>
-        </div>
-    </section>
+.menu-toggle {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5em;
+    cursor: pointer;
+    flex-shrink: 0; 
+}
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; <span id="current-year">2024</span> تقنية المعلومات | جميع الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="جيت هاب"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
+.main-nav {
+    flex-grow: 1; 
+}
 
-    <script>
-        // دالة لتنظيف مدخلات المستخدم ومنع هجمات XSS
-        const sanitizeInput = (text) => {
-            if (!text) return '';
-            // تحويل الرموز الخطيرة إلى ما يقابلها من كيانات HTML
-            let sanitized = text.replace(/&/g, '&amp;')
-                                .replace(/</g, '&lt;')
-                                .replace(/>/g, '&gt;')
-                                .replace(/"/g, '&quot;')
-                                .replace(/'/g, '&#39;');
-            return sanitized.trim();
-        };
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end; 
+}
 
-        // دالة محسّنة للتحقق من صحة البريد الإلكتروني (التحقق من جانب العميل)
-        const validateEmail = (email) => {
-            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            return re.test(String(email).toLowerCase());
-        };
+.main-nav ul li a {
+    padding: 10px 15px;
+    display: block;
+    color: var(--text-light);
+    font-size: 1em;
+    transition: all 0.3s; 
+}
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentYear = new Date().getFullYear();
-            document.getElementById('current-year').textContent = currentYear;
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: var(--primary-color);
+}
 
-            // 1. تفعيل قائمة الجوال (Menu Toggle)
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
+.cta-nav-link {
+    background-color: var(--primary-color);
+    color: var(--background-dark) !important; 
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 8px 15px !important;
+}
 
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-            });
-            
-            // 2. تحديث النصائح الأمنية 
-            const securityTips = [
-                "استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.",
-                "قم بتحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.",
-                "استخدم مدير كلمات مرور لإنشاء وتخزين كلمات مرور قوية وفريدة.",
-                "احذر من رسائل البريد الإلكتروني العشوائية (Phishing) ولا تضغط على روابط مشبوهة.",
-                "قم بإجراء نسخ احتياطي لبياناتك بانتظام لتجنب فقدانها بسبب هجمات الفدية."
-            ];
+/*
+====================================
+  تنسيقات قسم البطل (Hero Section)
+====================================
+*/
+.hero-section {
+    padding: 100px 0;
+    background-color: var(--background-dark);
+    /* ====== كود الخلفية ====== */
+    background-image: url('security_ai_bg.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    position: relative;
+    z-index: 1; 
+}
 
-            const tipElement = document.getElementById('security-tip');
-            if(tipElement) {
-                const randomIndex = Math.floor(Math.random() * securityTips.length);
-                tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
-            }
+/* التظليل لجعل النص مقروءاً */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); 
+    z-index: -1;
+}
 
-            // 3. التحصين الفعلي لنموذج الاتصال
-            const contactForm = document.getElementById('contact-form');
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            const emailError = document.getElementById('email-error');
-            const submitButton = contactForm.querySelector('.submit-button');
+.hero-title {
+    /* تصغير حجم الخط الأبيض على سطح المكتب */
+    font-size: 2.5em; 
+    font-weight: 900;
+    margin-bottom: 0.3em;
+}
 
-            let isSubmitting = false;
+.highlight-text {
+    color: var(--primary-color); 
+}
 
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault(); 
+.hero-subtitle {
+    font-size: 1.25em; 
+    margin-bottom: 40px;
+    color: var(--text-muted);
+    max-width: 700px;
+}
 
-                if (isSubmitting) {
-                    return; 
-                }
 
-                if (!validateEmail(emailInput.value)) {
-                    emailError.style.display = 'block';
-                    return;
-                } else {
-                    emailError.style.display = 'none';
-                }
+/*
+====================================
+  تنسيق قسم النصيحة السريعة (Quick Tip)
+====================================
+*/
+.quick-tip-section {
+    padding: 40px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-                isSubmitting = true;
-                submitButton.disabled = true;
-                submitButton.textContent = 'جاري الإرسال...';
-                
-                // التنظيف والتحصين الأمني للمدخلات
-                const formPayload = {
-                    name: sanitizeInput(nameInput.value),
-                    email: emailInput.value, 
-                    message: sanitizeInput(messageInput.value)
-                };
+.tip-card {
+    background-color: var(--background-light-dark); 
+    border: 2px solid var(--primary-color); 
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    max-width: 850px; 
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.15); 
+    transition: transform 0.3s ease;
+}
 
-                // محاكاة عملية الإرسال الناجحة:
-                setTimeout(() => {
-                    alert(`تم إرسال رسالتك بنجاح يا ${formPayload.name}! شكراً لتواصلك.`);
-                    contactForm.reset();
-                    
-                    // إعادة تهيئة الحالة بعد الانتهاء
-                    isSubmitting = false;
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'إرسال الرسالة';
-                }, 1500); 
-            });
+.tip-card:hover {
+    transform: scale(1.01); 
+}
 
-        });
-    </script>
-</body>
-</html>
+.tip-icon i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite; 
+}
+
+.tip-title {
+    font-size: 1.8em;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tip-content {
+    font-size: 1.1em;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+
+/*
+====================================
+  تنسيقات الخدمات (Services Grid)
+====================================
+*/
+.main-content {
+    padding: 60px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.service-card {
+    background-color: var(--background-light-dark);
+    padding: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #333;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color); 
+}
+
+.card-icon i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.service-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+.service-card p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.card-link {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/*
+====================================
+  تنسيق قسم الاتصال (Contact Form)
+====================================
+*/
+.contact-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--background-light-dark);
+    border-top: 1px solid #333;
+}
+
+.contact-section h2 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 30px auto 0;
+    padding: 30px;
+    background-color: #242424; 
+    border-radius: 8px;
+    text-align: right;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical; 
+}
+
+.submit-button {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #27ae60;
+}
+
+/*
+====================================
+  تنسيقات الفوتر (Footer)
+====================================
+*/
+.main-footer {
+    background-color: #1e1e1e;
+    color: var(--text-muted);
+    padding: 20px 0;
+    font-size: 0.9em;
+    border-top: 1px solid #333;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--text-muted);
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/*
+====================================
+  تنسيقات استجابة الجوال (Media Queries)
+====================================
+*/
+@media (max-width: 768px) {
+    
+    .main-header .container {
+        flex-wrap: wrap; 
+        justify-content: space-between;
+    }
+    
+    /* تصغير حجم الخط الأبيض أكثر على الجوال */
+    .hero-title {
+        font-size: 1.8em; 
+    }
+
+    .hero-subtitle {
+        font-size: 0.95em; 
+    }
+    
+    /* ترتيب عناصر الهيدر للجوال */
+    .menu-toggle {
+        display: block;
+        order: 1; 
+        margin-right: 0;
+    }
+    
+    .main-nav {
+        order: 3;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        padding-top: 0;
+    }
+
+    .main-nav.active {
+        max-height: 300px; 
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    
+    .main-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* حل مشكلة تكديس مربعات الخدمات وعرضها عمودياً */
+    .services-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    /* تنسيق الفوتر */
+    .main-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        margin-top: 10px;
+    }
+}

@@ -25,8 +25,7 @@
                 <ul>
                     <li><a href="index.html" class="active">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#cyber-security">الأمن السيبراني</a></li>
-                    <li><a href="#development">التطوير والبرمجة</a></li>
+                    <li><a href="#contact-section">اتصل بنا</a></li>
                     <li><a href="tools/cv-builder.html" class="cta-nav-link">منشئ السيرة الذاتية</a></li>
                 </ul>
             </nav>
@@ -39,7 +38,7 @@
             <p class="hero-subtitle">
                 نحن نقدم الدعم والحلول التقنية المتقدمة لأي تحدٍ تواجهه في عالم التكنولوجيا والأمن.
             </p>
-            <a href="#contact" class="main-cta-button">تواصل معنا لبدء مشروعك <i class="fas fa-arrow-left"></i></a>
+            <a href="#contact-section" class="main-cta-button">تواصل معنا لبدء مشروعك <i class="fas fa-arrow-left"></i></a>
         </div>
     </section>
 
@@ -77,8 +76,32 @@
         </section>
         
     </main>
+    
+    <section class="contact-section" id="contact-section">
+        <div class="container">
+            <h2>لنبدأ مشروعك القادم</h2>
+            <p>
+                تواصل معنا اليوم لتحصل على استشارة مجانية حول احتياجاتك في الأمن السيبراني أو التطوير.
+            </p>
+            <form action="#" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">الاسم:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">رسالتك:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">أرسل رسالتك</button>
+            </form>
+        </div>
+    </section>
 
-    <footer class="main-footer" id="contact">
+    <footer class="main-footer">
         <div class="container">
             <p>&copy; 2024 CyberDev. جميع الحقوق محفوظة.</p>
             <div class="social-links">
@@ -90,7 +113,7 @@
     </footer>
 
     <script>
-        // كود التجاوب (Toggle) للقائمة لم يتم المساس به
+        // سكريبت إظهار وإخفاء القائمة في الجوال
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('active');
         });

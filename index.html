@@ -6,9 +6,7 @@
     <title>CyberDev | الأمن السيبراني والتطوير الذكي</title>
     
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -34,7 +32,7 @@
 
     <section class="hero-section">
         <div class="container">
-            <h1 class="hero-title">مرحباً بك في منصة CyberDev للحلول الذكية.</h1>
+            <h1 class="hero-title">مرحباً بك في منصة <span class="highlight-text">CyberDev</span> للحلول الذكية.</h1>
             <p class="hero-subtitle">
                 نحن نقدم الدعم والحلول التقنية المتقدمة لأي تحدٍ تواجهه في عالم التكنولوجيا والأمن.
             </p>
@@ -83,7 +81,12 @@
             <p>
                 تواصل معنا اليوم لتحصل على استشارة مجانية حول احتياجاتك في الأمن السيبراني أو التطوير.
             </p>
-            <form action="#" method="POST" class="contact-form">
+            
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                
+                <input type="hidden" name="access_key" value="b2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
+                <input type="hidden" name="subject" value="رسالة جديدة من موقع CyberDev">
+
                 <div class="form-group">
                     <label for="name">الاسم:</label>
                     <input type="text" id="name" name="name" required>
@@ -113,7 +116,6 @@
     </footer>
 
     <script>
-        // سكريبت إظهار وإخفاء القائمة في الجوال
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('active');
         });

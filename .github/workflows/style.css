@@ -45,7 +45,7 @@ body {
 
 /* تنسيق حاوية صورة البانر (الخلفية من هنا) */
 .banner-image-container {
-    background-image: url('security_ai_bg.jpg'); 
+    background-image: url('security_ai_bg.jpg'); /* تأكد من وجود صورة security_ai_bg.jpg */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -145,21 +145,40 @@ body {
 /* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
 @media (max-width: 768px) {
     
-    /* تقليل حجم الخط الرئيسي في الهيدر */
+    /* تقليل حجم الخط الرئيسي في الهيدر ليتناسب مع الشاشة */
     #home .display-3 {
-        font-size: 2.2rem !important; 
+        font-size: 1.8rem !important; /* تم تخفيض الحجم أكثر ليصبح أجمل على الجوال */
     }
 
+    /* تقليل حجم الخط الثانوي في الهيدر */
+    #home .lead {
+        font-size: 0.9rem !important;
+    }
+    
     /* تنسيق مربع الشعار لتقنية المعلومات على الجوال */
     .it-logo-badge-navbar {
         padding: 4px 8px; 
-        font-size: 0.8rem; /* تصغير حجم الخط على الجوال */
+        font-size: 0.75rem; /* تصغير حجم الخط ليتناسب مع الناف بار */
+    }
+    
+    /* تنسيق الأزرار في الهيدر لتبدو أقل ضخامة */
+    #home .btn-lg {
+        font-size: 0.85rem;
+        padding: 8px 15px; /* تقليل حجم التبطين */
     }
 
-    /* تنسيق الأزرار في الهيدر */
-    #home .btn-lg {
-        font-size: 0.9rem;
-        padding: 10px 20px;
+    /* تقليل الهامش العمودي لقسم الهيدر */
+    #home .container.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* تصغير حجم خطوط العناوين H2 و H4 */
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    h4 {
+        font-size: 1.2rem !important;
     }
     
     /* ضمان أن الأيقونات في قسم التواصل لا تكون كبيرة جداً */
@@ -170,6 +189,10 @@ body {
     
     /* ضمان أن شرائط التقدم تظهر بشكل جيد */
     .progress {
-        height: 20px;
+        height: 18px; /* تقليل ارتفاع الشريط */
+    }
+
+    .progress-bar {
+        font-size: 0.75rem; /* تصغير خط النسبة داخل الشريط */
     }
 }

@@ -65,31 +65,22 @@ a:hover {
     align-items: center;
 }
 
-/* اللوجو */
-.logo { flex-shrink: 0; }
-
-.logo a {
-    color: var(--text-light);
-    line-height: 1.1; 
-    display: block;
-    padding: 0; 
+/* اللوجو الجديد القائم على الصورة */
+.logo { 
+    flex-shrink: 0; 
+    display: flex;
+    align-items: center;
 }
 
-.logo-ar {
-    display: block;
-    font-size: 1.0em; 
-    font-weight: bold;
-    color: var(--primary-color); 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
+.site-logo {
+    /* **تصحيح الحجم لسطح المكتب:** ليصبح بحجم الأيقونة */
+    height: 25px; 
+    width: auto;
+    transition: transform 0.3s;
 }
 
-.logo-en {
-    display: block;
-    font-size: 0.8em; 
-    color: var(--text-muted); 
-    text-transform: uppercase;
-    font-weight: normal;
-    letter-spacing: 0.5px; 
+.site-logo:hover {
+    transform: scale(1.05);
 }
 
 .menu-toggle {
@@ -399,7 +390,6 @@ a:hover {
 /*
 ====================================
   تنسيقات استجابة الجوال (Media Queries)
-  **تعديلات دقيقة لأحجام الخطوط على الجوال**
 ====================================
 */
 @media (max-width: 768px) {
@@ -407,23 +397,19 @@ a:hover {
     .main-header .container {
         flex-wrap: wrap; 
     }
-
-    /* 1. تصغير حجم اللوجو لتوفير مساحة في الـ Header */
-    .logo-ar {
-        font-size: 0.9em; 
+    
+    /* **تصحيح حجم اللوجو على الجوال** */
+    .site-logo {
+        height: 20px; /* حجم صغير جداً مثل أيقونة إنستجرام */
     }
-    .logo-en {
-        font-size: 0.7em; 
-    }
-
-    /* 2. تصغير حجم العنوان الترحيبي */
+    
+    /* العنوان الترحيبي على الجوال */
     .hero-title {
-        font-size: 1.8em; /* تم تقليله من 2.2em */
+        font-size: 1.8em; 
     }
 
-    /* 3. تصغير حجم النص الفرعي */
     .hero-subtitle {
-        font-size: 0.95em; /* تم تقليله من 1.05em */
+        font-size: 0.95em; 
     }
     
     /* إظهار زر القائمة في أقصى اليسار */
@@ -437,6 +423,8 @@ a:hover {
         order: 2; 
         align-self: center;
         margin-left: auto;
+        /* تعديل مسافة اللوجو عن زر القائمة */
+        margin-right: 15px; 
     }
     
     /* قائمة التنقل تأخذ عرض 100% وتنزل إلى سطر جديد */

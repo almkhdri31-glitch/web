@@ -152,8 +152,8 @@
 
             const tipElement = document.getElementById('security-tip');
             if(tipElement) {
-                const randomTip = securityTips[Math.floor(Math.random() * securityTips.length)];
-                tipElement.textContent = "نصيحة اليوم: " + randomTip;
+                const randomIndex = Math.floor(Math.random() * securityTips.length);
+                tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
             }
 
             // 3. التحقق من صحة نموذج الاتصال (مؤقت حتى نراجعه ونحصنه)

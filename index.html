@@ -129,6 +129,24 @@
     </footer>
 
     <script>
+        // دالة لتنظيف مدخلات المستخدم ومنع هجمات XSS
+        const sanitizeInput = (text) => {
+            if (!text) return '';
+            // تحويل الرموز الخطيرة إلى ما يقابلها من كيانات HTML
+            let sanitized = text.replace(/&/g, '&amp;')
+                                .replace(/</g, '&lt;')
+                                .replace(/>/g, '&gt;')
+                                .replace(/"/g, '&quot;')
+                                .replace(/'/g, '&#39;');
+            return sanitized.trim();
+        };
+
+        // دالة محسّنة للتحقق من صحة البريد الإلكتروني (التحقق من جانب العميل)
+        const validateEmail = (email) => {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             const currentYear = new Date().getFullYear();
             document.getElementById('current-year').textContent = currentYear;
@@ -141,7 +159,7 @@
                 mainNav.classList.toggle('active');
             });
             
-            // 2. تحديث النصائح الأمنية (مؤقت حتى نراجعه ونحصنه)
+            // 2. تحديث النصائح الأمنية (مراجعة الخطوة الثالثة)
             const securityTips = [
                 "استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.",
                 "قم بتحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.",
@@ -153,31 +171,55 @@
             const tipElement = document.getElementById('security-tip');
             if(tipElement) {
                 const randomIndex = Math.floor(Math.random() * securityTips.length);
+                // الأمان هنا باستخدام textContent بدلاً من innerHTML
                 tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
             }
 
-            // 3. التحقق من صحة نموذج الاتصال (مؤقت حتى نراجعه ونحصنه)
+            // 3. التحصين الفعلي لنموذج الاتصال
             const contactForm = document.getElementById('contact-form');
+            const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
             const emailError = document.getElementById('email-error');
+            const submitButton = contactForm.querySelector('.submit-button');
 
-            const validateEmail = (email) => {
-                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(String(email).toLowerCase());
-            }
+            let isSubmitting = false;
 
             contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+
+                if (isSubmitting) {
+                    return; 
+                }
+
                 if (!validateEmail(emailInput.value)) {
-                    e.preventDefault();
                     emailError.style.display = 'block';
+                    return;
                 } else {
                     emailError.style.display = 'none';
-                    // هنا يمكن إضافة منطق إرسال النموذج فعلياً (مثل استخدام fetch API)
-                    // حالياً، سنمنع الإرسال ونظهر رسالة مؤقتة
-                    e.preventDefault(); 
-                    alert('تم إرسال رسالتك بنجاح! شكراً لتواصلك.');
-                    contactForm.reset();
                 }
+
+                isSubmitting = true;
+                submitButton.disabled = true;
+                submitButton.textContent = 'جاري الإرسال...';
+                
+                // التنظيف والتحصين الأمني للمدخلات
+                const formPayload = {
+                    name: sanitizeInput(nameInput.value),
+                    email: emailInput.value, // يمكننا ترك البريد الإلكتروني دون تنظيف
+                    message: sanitizeInput(messageInput.value)
+                };
+
+                // محاكاة عملية الإرسال الناجحة:
+                setTimeout(() => {
+                    alert(`تم إرسال رسالتك بنجاح يا ${formPayload.name}! شكراً لتواصلك.`);
+                    contactForm.reset();
+                    
+                    // إعادة تهيئة الحالة بعد الانتهاء
+                    isSubmitting = false;
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'إرسال الرسالة';
+                }, 1500); 
             });
 
         });

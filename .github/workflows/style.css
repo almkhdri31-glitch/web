@@ -23,7 +23,6 @@ body {
 
 /* تنسيق قسم الترويسة (Header) */
 #home {
-    /* الخلفية الكلية ستكون داكنة */
     background-color: #212529; /* لون داكن موحد */
     color: white;
     position: relative; 
@@ -37,28 +36,28 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; /* تثبيت الخلفية لإحساس احترافي */
     min-height: 250px; /* ارتفاع البانر */
-    position: relative; /* مهم لتموضع الشعار المطلق */
+    position: relative; 
     overflow: hidden; 
 }
 
 /* تنسيق مربع شعار تقنية المعلومات الصغير */
 .it-logo-badge {
-    position: absolute; /* وضعه بشكل مطلق داخل الـ banner-image-container */
-    bottom: 20px; /* يبعد 20 بكسل من الأسفل */
-    right: 20px;  /* يبعد 20 بكسل من اليمين */
-    background-color: rgba(0, 0, 0, 0.7); /* خلفية داكنة شبه شفافة */
-    color: #ffc107; /* نص بلون أصفر فاتح */
+    position: absolute; 
+    bottom: 20px; 
+    right: 20px;  
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: #ffc107; 
     padding: 10px 15px;
-    border-radius: 8px; /* حواف دائرية قليلاً */
+    border-radius: 8px; 
     text-align: center;
     line-height: 1.2;
-    border: 1px solid #ffc107; /* حد أصفر رفيع */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+    border: 1px solid #ffc107; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
     font-size: 0.9rem;
 }
 
 .it-logo-badge p {
-    margin: 0; /* إزالة الهوامش الافتراضية للفقرات */
+    margin: 0; 
 }
 
 
@@ -80,11 +79,11 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     border: none;
     border-radius: 10px;
-    border-bottom: 5px solid; /* إضافة حد سفلي للتمييز */
+    border-bottom: 5px solid; 
 }
 
 .project-card:hover {
-    transform: translateY(-5px); /* رفع البطاقة قليلاً عند المرور عليها */
+    transform: translateY(-5px); 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -125,7 +124,7 @@ body {
 
 .progress-bar {
     display: flex;
-    justify-content: flex-end; /* وضع النسبة على اليمين */
+    justify-content: flex-end; 
     padding-inline-end: 10px;
     font-weight: bold;
     font-size: 0.9rem;
@@ -140,10 +139,49 @@ body {
 /* تنسيق قسم التواصل الاجتماعي (Contact) */
 .hover-grow {
     transition: transform 0.3s;
-    color: #ffc107 !important; /* لون الأيقونات يكون أصفر (Warning) */
+    color: #ffc107 !important; 
 }
 
 .hover-grow:hover {
-    transform: scale(1.2); /* تكبير الأيقونة عند المرور عليها */
-    color: #ffecb3 !important; /* لون أفتح عند التكبير */
+    transform: scale(1.2); 
+    color: #ffecb3 !important; 
+}
+
+/* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
+@media (max-width: 768px) {
+    
+    /* تقليل حجم الخط الرئيسي في الهيدر */
+    #home .display-3 {
+        font-size: 2.2rem !important; 
+    }
+
+    /* تصغير الخط الرئيسي في شريط التنقل */
+    .navbar-brand {
+        font-size: 1rem !important;
+    }
+
+    /* تنسيق الأزرار في الهيدر */
+    #home .btn-lg {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+    
+    /* تنسيق مربع الشعار لتقنية المعلومات (IT Badge) */
+    .it-logo-badge {
+        padding: 8px 12px; 
+        bottom: 15px; 
+        right: 15px; 
+        font-size: 0.8rem; 
+    }
+
+    /* ضمان أن الأيقونات في قسم التواصل لا تكون كبيرة جداً */
+    #contact .fs-1 {
+        font-size: 1.5rem !important;
+        gap: 20px !important;
+    }
+    
+    /* ضمان أن شرائط التقدم تظهر بشكل جيد */
+    .progress {
+        height: 20px;
+    }
 }

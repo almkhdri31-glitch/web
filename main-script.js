@@ -1,7 +1,7 @@
 /**
  * =======================================================
  * ملف JavaScript الرئيسي والمحصَّن (main-script.js)
- * المحتوى: وظائف الأمن، التفاعل، وتحديث التاريخ
+ * المحتوى: وظائف الأمن، التفاعل، وتحديث التاريخ، وإرسال نموذج Web3Forms
  * =======================================================
  */
 
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // ج. تحديث النصائح الأمنية (لصفحة index.html)
+    // ج. تحديث النصائح الأمنية 
     const securityTips = [
         "استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.",
         "قم بتحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.",
@@ -58,24 +58,26 @@ document.addEventListener('DOMContentLoaded', () => {
         tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
     }
 
-    // د. التحصين الفعلي لنموذج الاتصال (Contact Form Logic)
+    // د. التحصين والإرسال الفعلي لنموذج الاتصال (Web3Forms Logic)
     const contactForm = document.getElementById('contact-form');
+    // مفتاح الوصول العام لـ Web3Forms الذي تم استخلاصه من ملفاتك (الصورة المرفقة)
+    const WEB3FORMS_ACCESS_KEY = "b2ed5633-7b5f-46c3-b087-5bb11a7da5a0"; 
+    
     if (contactForm) {
-        const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
-        const messageInput = document.getElementById('message');
         const emailError = document.getElementById('email-error');
         const submitButton = contactForm.querySelector('.submit-button');
 
         let isSubmitting = false;
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault(); 
 
             if (isSubmitting) {
                 return; 
             }
-
+            
+            // التحقق من صحة البريد الإلكتروني
             if (!validateEmail(emailInput.value)) {
                 if (emailError) emailError.style.display = 'block';
                 return;
@@ -87,34 +89,52 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.disabled = true;
             submitButton.textContent = 'جاري الإرسال...';
             
-            // التنظيف والتحصين الأمني للمدخلات
+            // جمع البيانات وتحصينها
+            const formData = new FormData(contactForm);
             const formPayload = {
-                name: sanitizeInput(nameInput.value),
-                email: emailInput.value, 
-                message: sanitizeInput(messageInput.value)
+                'access_key': WEB3FORMS_ACCESS_KEY,
+                'name': sanitizeInput(formData.get('name')),
+                'email': formData.get('email'), // البريد لا يحتاج تحصين ضد XSS هنا، بل تحقق
+                'message': sanitizeInput(formData.get('message'))
             };
 
-            // محاكاة عملية الإرسال:
-            // في مشروع حقيقي، سيتم إرسال formPayload إلى خادم باستخدام Fetch API أو XMLHttpRequest
-            setTimeout(() => {
-                // بدلاً من التنبيه، سيتم توجيه المستخدم لصفحة الشكر
-                // alert(`تم إرسال رسالتك بنجاح يا ${formPayload.name}! شكراً لتواصلك.`);
-                
-                // توجيه لصفحة الشكر (شكراً.html)
-                window.location.href = 'شكراً.html';
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formPayload)
+                });
 
-                // لا حاجة لـ contactForm.reset() لأننا سننتقل لصفحة أخرى
-            }, 1500); 
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    // التوجيه إلى صفحة الشكر بعد الإرسال الناجح
+                    window.location.href = 'شكراً.html'; 
+                } else {
+                    // في حالة وجود خطأ في الإرسال
+                    console.error("Web3Forms Error:", result);
+                    alert("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.");
+                    
+                    // التوجيه لصفحة الخطأ التي لديك (error.html)
+                    window.location.href = 'error.html'; 
+                }
+            } catch (error) {
+                console.error("Network or API Error:", error);
+                alert("عذراً، حدث خطأ في الاتصال بالشبكة. يرجى المحاولة لاحقاً.");
+                window.location.href = 'error.html';
+            } finally {
+                // إعادة تهيئة الحالة إذا لم يحدث توجيه (للحماية من الأخطاء)
+                isSubmitting = false;
+                submitButton.disabled = false;
+                submitButton.textContent = 'إرسال الرسالة';
+            }
         });
     }
 
-    // هنا يمكنك إضافة محتوى ملفات ask.js و js_cv-script.js
-    // مثال:
-    // if (document.body.classList.contains('ask-page')) {
-    //     // كود ask.js
-    // }
-    // if (document.body.classList.contains('cv-page')) {
-    //     // كود js_cv-script.js
-    // }
-
+    // **********************************************
+    // ملاحظة: هنا يمكنك إضافة كود ask.js و js_cv-script.js
+    // **********************************************
 });

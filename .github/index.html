@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة تقنية | دعم وخدمات</title>
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" crossorigin="anonymous" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" crossorigin="anonymous" /> 
     
     <style>
         /* تنسيقات أساسية للخط والاتجاه */
@@ -47,7 +51,7 @@
         
         /* تنسيق الأيقونة المضافة في شريط التنقل */
         .nav-item .email-icon {
-            color: #ffc107; /* اللون الأصفر */
+            color: #ffc107; 
             margin-inline-start: 10px;
             font-size: 1.25rem;
             transition: color 0.3s;
@@ -62,25 +66,45 @@
         #home {
             background-color: #212529; 
             color: white;
-            position: relative; 
+            position: relative;
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
         }
 
-        /* تنسيق حاوية صورة البانر (الخلفية) */
+        /* تنسيق حاوية صورة البانر (الخلفية) - تحسين الشفافية */
         .banner-image-container {
-            /* ملاحظة: الصورة (security_ai_bg.jpg) يجب أن تكون موجودة في نفس مجلد الملف عند النشر */
             background-image: url('security_ai_bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed; 
-            min-height: 250px; 
-            position: relative; 
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; 
             overflow: hidden; 
-            /* إضافة تدرج أسود لإظهار النص بشكل أوضح فوق الصورة */
-            box-shadow: inset 0 -50px 50px -15px rgba(33, 37, 41, 0.9),
-                        inset 0 50px 50px -15px rgba(33, 37, 41, 0.9);
+            z-index: 1; 
         }
 
+        /* إضافة طبقة شفافة (Overlay) لتحسين رؤية النص */
+        .banner-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(33, 37, 41, 0.7); 
+        }
+        
+        /* تأكد أن محتوى الهيدر فوق الخلفية */
+        #home .container {
+            z-index: 2; 
+            position: relative;
+        }
 
         /* تنسيق الأزرار الأساسية (Warning) */
         .btn-warning {
@@ -94,6 +118,27 @@
             background-color: #e0a800;
             border-color: #e0a800;
         }
+        
+        /* تنسيق بطاقات الخدمات داخل الهيدر */
+        .service-card-in-header {
+            background-color: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px); 
+            color: white; 
+            height: 100%; 
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .service-card-in-header:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        /* تلوين الأيقونات باللون الأصفر */
+        .service-card-in-header .fa-3x {
+            color: #ffc107 !important;
+        }
+
 
         /* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
         @media (max-width: 768px) {
@@ -116,11 +161,22 @@
                 min-width: 45%; 
                 margin-bottom: 5px; 
             }
-
-            /* تقليل الهامش العمودي لقسم الهيدر */
+            
+            /* إلغاء الـ padding الافتراضي لترك مساحة لـ 100vh */
             #home .container.py-5 {
                 padding-top: 2rem !important;
                 padding-bottom: 2rem !important;
+            }
+            
+            /* على الجوال: جعل بطاقات الخدمات تأخذ العرض الكامل */
+            .service-card-col {
+                flex: 0 0 100%; 
+                max-width: 100%;
+            }
+            
+            /* مسافات إضافية بين البطاقات على الجوال */
+            .service-card-in-header {
+                margin-bottom: 15px; 
             }
         }
     </style>
@@ -128,7 +184,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
+        <div class="container"> 
              <a class="navbar-brand p-0" href="#">
                  <div class="it-logo-badge-navbar"> 
                      <p class="mb-0 fw-bold">تقنية المعلومات</p>
@@ -136,17 +192,28 @@
                  </div>
              </a> 
              
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="nav-link d-lg-none" href="mailto:almkhdri31@gmail.com" title="تواصل عبر البريد الإلكتروني" style="padding-inline-start: 10px;">
+                <i class="fas fa-envelope email-icon" style="color: #ffc107;"></i>
+                <span class="visually-hidden">البريد الإلكتروني</span>
+            </a>
+
+            <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#home">الرئيسية</a>
                     </li>
-                    <li class="nav-item d-flex align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services-in-header">الخدمات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">من نحن</a>
+                    </li>
+                    <li class="nav-item d-none d-lg-flex align-items-center">
                          <a class="nav-link" href="mailto:almkhdri31@gmail.com" title="تواصل عبر البريد الإلكتروني">
-                            <i class="fas fa-envelope email-icon"></i>
+                            <i class="fas fa-envelope email-icon"></i><span class="visually-hidden">البريد الإلكتروني</span>
                         </a>
                     </li>
                 </ul>
@@ -154,17 +221,44 @@
         </div>
     </nav>
     
-    <header id="home" class="text-center bg-dark text-white">
-        <div class="banner-image-container py-5">
-            <div class="container d-flex align-items-center justify-content-center" style="min-height: 250px;">
-            </div>
-        </div>
+    <header id="home" class="text-center text-white">
+        <div class="banner-image-container"></div> 
 
         <div class="container py-5">
-            <h2 class="fw-bold text-warning mb-4">أهلاً بك في منصة دعم تقنية المعلومات</h2>
+            <h2 class="fw-bold text-warning mb-4">مرحباً بك في منصة IT للحلول الذكية</h2>
+            
             <p class="lead mt-4 mb-5">
-                نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها. كما نقدم خدمة إنشاء سيرة ذاتية مجانية للزوار.
+                نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها.
             </p>
+            
+            <section id="services-in-header" class="mb-5">
+                <div class="row text-center justify-content-center">
+                    
+                    <div class="col-md-4 mb-4 service-card-col">
+                        <div class="p-4 rounded h-100 service-card-in-header">
+                            <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                            <h4 class="fw-bold">الأمن السيبراني</h4>
+                            <p>فحص الثغرات والتحليل الأمني لضمان حماية موقعك.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4 service-card-col">
+                        <div class="p-4 rounded h-100 service-card-in-header">
+                            <i class="fas fa-code fa-3x mb-3"></i>
+                            <h4 class="fw-bold">التطوير والبرمجة</h4>
+                            <p>بناء مواقع ويب وتطبيقات بمقاييس عالية الجودة.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4 service-card-col">
+                        <div class="p-4 rounded h-100 service-card-in-header">
+                            <i class="fas fa-laptop-code fa-3x mb-3"></i>
+                            <h4 class="fw-bold">دعم تقني متقدم</h4>
+                            <p>حلول تقنية واستشارات متخصصة في المجال التقني.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
             <div class="d-flex flex-wrap justify-content-center gap-3">
                  <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-warning btn-lg">ابدأ بإنشاء سيرتك الذاتية الآن</a>
@@ -173,6 +267,41 @@
             </div>
         </div>
     </header>
+
+    <section id="about" class="container my-5 py-5">
+        <h2 class="text-center mb-5 fw-bold text-dark border-bottom border-warning pb-2 d-inline-block">قصتنا ومن نحن</h2>
+        
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="it_professional_image.jpg" class="img-fluid rounded shadow-sm" alt="صورة توضيحية لخبراء تقنية معلومات" loading="lazy">
+                <small class="d-block mt-2 text-muted text-center">**ملاحظة:** يرجى استبدال "it_professional_image.jpg" بصورة مناسبة لك.</small>
+            </div>
+            <div class="col-lg-6">
+                <p class="lead fw-bold text-dark">
+                    منصة **IT للحلول الذكية** هي نتاج خبرة متراكمة في عالم التقنية والأمن الرقمي.
+                </p>
+                <p>
+                    مؤسس هذه المنصة هو **محمد، خبير الأمن السيبراني والمطور والهاكر الأخلاقي**. نحن نؤمن بأن التقنية يجب أن تكون آمنة وفعالة ومتاحة للجميع. ولهذا، نوفر الدعم الفني وخدمات **اختبار الاختراق**، بالإضافة إلى حلول تطوير الويب المتكاملة.
+                </p>
+                
+                <p class="mb-0">
+                    **هدفنا** هو تمكين عملائنا من التطور في عالم رقمي سريع التغير، مع ضمان **أعلى مستويات الحماية والأمن السيبراني** لجميع مشاريعهم.
+                </p>
+                
+                <a href="#services-in-header" class="btn btn-dark mt-4">اكتشف خدماتنا</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="bg-dark text-white py-5">
+        <div class="container text-center">
+            <h3 class="fw-bold text-warning mb-4">هل لديك استفسار؟</h3>
+            <p class="lead mb-4">تواصل معنا لبدء مشروعك أو للحصول على استشارة أمنية وتقنية متخصصة.</p>
+             <a href="mailto:almkhdri31@gmail.com" class="btn btn-outline-warning btn-lg">
+                <i class="fas fa-envelope me-2"></i> تواصل عبر البريد الإلكتروني الآن
+            </a>
+        </div>
+    </section>
 
     <footer class="bg-dark text-white text-center py-3 border-top border-warning">
         <div class="container">

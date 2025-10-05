@@ -35,7 +35,7 @@ a {
 }
 
 a:hover {
-    color: #38c172; /* تفتيح بسيط عند التحويم */
+    color: #38c172; 
 }
 
 .container {
@@ -54,7 +54,7 @@ a:hover {
     background-color: var(--background-light-dark);
     padding: 15px 0;
     border-bottom: 1px solid #333;
-    position: sticky; /* لجعل القائمة ثابتة */
+    position: sticky; 
     top: 0;
     z-index: 1000;
 }
@@ -120,7 +120,7 @@ a:hover {
     display: block;
     color: var(--text-light);
     font-size: 1em;
-    transition: all 0.3s; /* لتنسيق حالة النشاط بشكل أفضل */
+    transition: all 0.3s; 
 }
 
 .main-nav ul li a:hover,
@@ -143,12 +143,11 @@ a:hover {
 */
 .hero-section {
     padding: 100px 0;
-    /* تمت إزالة text-align: center; ليصبح المحتوى محاذياً لليمين افتراضياً */
     background-color: var(--background-dark);
 }
 
 .hero-title {
-    font-size: 3em; /* تكبير الخط ليكون أكثر جاذبية */
+    font-size: 3em; 
     font-weight: 900;
     margin-bottom: 0.3em;
 }
@@ -158,10 +157,9 @@ a:hover {
 }
 
 .hero-subtitle {
-    font-size: 1.25em; /* تكبير الخط قليلاً */
+    font-size: 1.25em; 
     margin-bottom: 40px;
     color: var(--text-muted);
-    /* لضمان المحاذاة لليمين في تصميم RTL */
     max-width: 700px;
 }
 
@@ -170,7 +168,7 @@ a:hover {
     padding: 15px 30px;
     background-color: var(--primary-color);
     color: var(--background-dark);
-    border-radius: 50px; /* جعل الزر أكثر استدارة */
+    border-radius: 50px; 
     font-weight: bold;
     font-size: 1.1em;
     transition: background-color 0.3s, transform 0.3s;
@@ -182,14 +180,13 @@ a:hover {
 
 .main-cta-button:hover {
     background-color: #27ae60;
-    transform: translateY(-2px); /* تأثير رفع بسيط */
+    transform: translateY(-2px); 
 }
 
 
 /*
 ====================================
   تنسيق قسم النصيحة السريعة (Quick Tip)
-  (إضافة جديدة لتركيز أمني)
 ====================================
 */
 .quick-tip-section {
@@ -218,7 +215,6 @@ a:hover {
     font-size: 3em;
     color: var(--primary-color);
     margin-bottom: 15px;
-    /* تأثير النبض البسيط لتنبيه المستخدم لنصيحة أمنية */
     animation: pulse 1.5s infinite; 
 }
 
@@ -270,7 +266,7 @@ a:hover {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary-color); /* إبراز عند التحويم */
+    border-color: var(--primary-color); 
 }
 
 .card-icon i {
@@ -403,6 +399,7 @@ a:hover {
 /*
 ====================================
   تنسيقات استجابة الجوال (Media Queries)
+  **تعديلات دقيقة لأحجام الخطوط على الجوال**
 ====================================
 */
 @media (max-width: 768px) {
@@ -411,13 +408,22 @@ a:hover {
         flex-wrap: wrap; 
     }
 
-    /* العنوان الترحيبي على الجوال */
-    .hero-title {
-        font-size: 2.2em; 
+    /* 1. تصغير حجم اللوجو لتوفير مساحة في الـ Header */
+    .logo-ar {
+        font-size: 0.9em; 
+    }
+    .logo-en {
+        font-size: 0.7em; 
     }
 
+    /* 2. تصغير حجم العنوان الترحيبي */
+    .hero-title {
+        font-size: 1.8em; /* تم تقليله من 2.2em */
+    }
+
+    /* 3. تصغير حجم النص الفرعي */
     .hero-subtitle {
-        font-size: 1.05em; 
+        font-size: 0.95em; /* تم تقليله من 1.05em */
     }
     
     /* إظهار زر القائمة في أقصى اليسار */

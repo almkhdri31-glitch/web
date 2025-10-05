@@ -8,6 +8,41 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        .quick-tip-section {
+            padding: 40px 0;
+        }
+
+        .tip-card {
+            background-color: #242424; /* لون أغمق قليلاً من الخلفية */
+            border: 2px solid #2ecc71; /* إطار أخضر جذاب */
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            max-width: 800px; /* لتقييد عرض البطاقة في المنتصف */
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .tip-icon i {
+            font-size: 2.5em;
+            color: #2ecc71;
+            margin-bottom: 10px;
+        }
+
+        .tip-title {
+            font-size: 1.6em;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .tip-content {
+            font-size: 1.1em;
+            color: #bdbdbd;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
 
@@ -46,6 +81,16 @@
 
     <main class="main-content container" id="services">
         
+        <section class="quick-tip-section container">
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="tip-title">نصيحة اليوم الأمنية</h3>
+                <p id="security-tip-text" class="tip-content">
+                    تأكد دائماً من أن برامج مكافحة الفيروسات (Antivirus) على جهازك محدّثة لآخر إصدار، فهي خط دفاعك الأول ضد البرمجيات الخبيثة.
+                </p>
+            </div>
+        </section>
+        
         <section class="services-grid">
             
             <div id="cv-builder" class="service-card">
@@ -59,15 +104,15 @@
 
             <div id="cyber-security" class="service-card">
                 <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                <h2>الأمن السيبراني</h2>
+                <h2>التحصين والأمان الرقمي</h2>
                 <p>
-                    فحص الثغرات، الاختبار الاختراقي (Pentesting)، والتحليل الأمني لضمان حصانة موقعك وأنظمتك ضد أي تهديد.
+                    إرشادات متقدمة لتحصين المواقع والأنظمة، دليل شامل للوقاية من التهديدات السيبرانية الأكثر شيوعاً.
                 </p>
-                <a href="#" class="card-link">استكشف المزيد</a>
+                <a href="#" class="card-link">دليل الأمان</a>
             </div>
 
             <div id="development" class="service-card">
-                <div classنيicon"><i class="fas fa-code"></i></div>
+                <div class="card-icon"><i class="fas fa-code"></i></div>
                 <h2>التطوير والبرمجة</h2>
                 <p>
                     بناء وتطوير مواقع الويب وتطبيقات الهاتف بمعايير عالمية، باستخدام أحدث التقنيات البرمجية.
@@ -115,7 +160,7 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2024 CyberDev. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2025 CyberDev. جميع الحقوق محفوظة.</p>
             <div class="social-links">
                 <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -142,6 +187,29 @@
                 emailInput.focus();
             }
         });
+
+        // ============================================
+        // JavaScript لتغيير النصيحة الأمنية (القسم الجديد)
+        // ============================================
+        const securityTips = [
+            "نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة، خاصة البريد الإلكتروني والبنوك، فهي تمنع 99% من محاولات الاختراق.",
+            "نصيحة برمجية: في JavaScript، استخدم `let` و `const` بدلاً من `var` للتحكم بنطاق المتغيرات (Scope) وتجنب الأخطاء غير المتوقعة.",
+            "نصيحة أمنية سريعة: احذر من رسائل البريد الإلكتروني التي تطلب معلوماتك الشخصية أو البنكية بشكل عاجل (Phishing).",
+            "نصيحة للمطور: عند رفع الكود على GitHub، تأكد من أنك لم تترك مفاتيح API أو كلمات مرور في الكود المصدر (Source Code)."
+        ];
+
+        function displayRandomTip() {
+            const tipElement = document.getElementById('security-tip-text');
+            if (tipElement) {
+                // اختيار نصيحة عشوائية
+                const randomIndex = Math.floor(Math.random() * securityTips.length);
+                tipElement.textContent = securityTips[randomIndex];
+            }
+        }
+
+        // عرض نصيحة عشوائية عند تحميل الصفحة
+        window.addEventListener('load', displayRandomTip);
+        // ============================================
     </script>
 </body>
 </html>

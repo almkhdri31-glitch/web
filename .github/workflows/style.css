@@ -45,7 +45,7 @@ body {
 
 /* تنسيق حاوية صورة البانر (الخلفية من هنا) */
 .banner-image-container {
-    background-image: url('security_ai_bg.jpg'); /* تأكد من وجود صورة security_ai_bg.jpg */
+    background-image: url('security_ai_bg.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -165,6 +165,9 @@ body {
     #home .btn-lg {
         font-size: 0.85rem;
         padding: 8px 15px; /* تقليل حجم التبطين */
+        flex-grow: 1; /* للسماح لهم بتوزيع المساحة بشكل متساوٍ عند الحاجة */
+        min-width: 45%; /* ضمان أن اثنين على الأقل يتسعان في صف واحد */
+        margin-bottom: 5px; /* إضافة هامش سفلي إذا كانت في أكثر من صف */
     }
 
     /* تقليل الهامش العمودي لقسم الهيدر */

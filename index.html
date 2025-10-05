@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد | خبير أمن سبراني وتقنية معلومات</title>
+    <title>منصة تقنية | تواصل ودعم فني</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" /> 
     
@@ -13,21 +13,20 @@
             font-family: 'Tahoma', 'Arial', sans-serif;
             direction: rtl;
             text-align: right;
-            background-color: #f8f9fa; /* لون خلفية فاتح */
+            background-color: #f8f9fa; 
         }
 
         /* تنسيق شريط التنقل (Navbar) */
         .navbar {
-            border-bottom: 3px solid #ffc107; /* خط أصفر (Warning) ليتناسب مع ألوان الأمن */
+            border-bottom: 3px solid #ffc107; 
         }
 
         /* تنسيق شعار تقنية المعلومات داخل الناف بار */
         .it-logo-badge-navbar {
-            background-color: #ffc107; /* خلفية صفراء بارزة */
-            color: #212529; /* نص أسود */
+            background-color: #ffc107; 
+            color: #212529; 
             padding: 5px 10px;
             border-radius: 6px; 
-            text-align: center;
             line-height: 1.1;
             font-size: 0.9rem; 
         }
@@ -43,25 +42,25 @@
         }
 
         .nav-link:hover {
-            color: #ffc107 !important; /* تغيير لون الرابط عند المرور فوقه */
+            color: #ffc107 !important; 
         }
 
         /* تنسيق قسم الترويسة (Header) */
         #home {
-            background-color: #212529; /* لون داكن موحد */
+            background-color: #212529; 
             color: white;
             position: relative; 
         }
 
-        /* تنسيق حاوية صورة البانر (الخلفية من هنا) */
+        /* تنسيق حاوية صورة البانر (الخلفية) */
         .banner-image-container {
             /* ملاحظة: الصورة (security_ai_bg.jpg) يجب أن تكون موجودة في نفس مجلد الملف عند النشر */
             background-image: url('security_ai_bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* تثبيت الخلفية لإحساس احترافي */
-            min-height: 250px; /* ارتفاع البانر */
+            background-attachment: fixed; 
+            min-height: 250px; 
             position: relative; 
             overflow: hidden; 
             /* إضافة تدرج أسود لإظهار النص بشكل أوضح فوق الصورة */
@@ -83,85 +82,12 @@
             border-color: #e0a800;
         }
 
-        /* تنسيق بطاقات المشاريع */
-        .project-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            border-radius: 10px;
-            border-bottom: 5px solid; 
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* تنسيق رؤوس البطاقات (Headers) في قسم المشاريع */
-        .card-header {
-            border-radius: 0.25rem 0.25rem 0 0 !important;
-            border-bottom: none !important;
-            font-size: 0.9rem;
-        }
-
-        /* تنسيق أيقونات التقنية داخل البطاقة */
-        .tech-icons i {
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .tech-icons i:hover {
-            opacity: 1;
-        }
-
-        /* تنسيق لون الحدود السفلية للبطاقات بناءً على التصنيف */
-        .project-card.border-danger { border-color: #dc3545 !important; }
-        .project-card.border-warning { border-color: #ffc107 !important; }
-        .project-card.border-info { border-color: #17a2b8 !important; }
-
-
-        /* تنسيق قسم الخبرات (About/Skills) */
-        #about {
-            background-color: #ffffff;
-        }
-
-        /* تنسيق شرائط التقدم */
-        .progress {
-            height: 25px;
-            border-radius: 0.5rem;
-            background-color: #e9ecef;
-        }
-
-        .progress-bar {
-            display: flex;
-            justify-content: flex-end; 
-            padding-inline-end: 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: width 1.5s ease-in-out; 
-        }
-
-        /* تنسيق شريط تحذير البرمجة (الأصفر) ليكون النص داكناً */
-        .progress-bar.bg-warning {
-            color: #212529; 
-        }
-
-        /* تنسيق قسم التواصل الاجتماعي (Contact) */
-        .hover-grow {
-            transition: transform 0.3s;
-            color: #ffc107 !important; 
-        }
-
-        .hover-grow:hover {
-            transform: scale(1.2); 
-            color: #ffecb3 !important; 
-        }
-
         /* ====== استعلام الوسائط: التنسيقات الخاصة بالشاشات الصغيرة (الجوالات) ====== */
         @media (max-width: 768px) {
             
             /* تقليل حجم الخط الرئيسي في الهيدر ليتناسب مع الشاشة */
             #home .display-3 {
-                font-size: 1.8rem !important; /* تم تخفيض الحجم أكثر ليصبح أجمل على الجوال */
+                font-size: 1.8rem !important; 
             }
 
             /* تقليل حجم الخط الثانوي في الهيدر */
@@ -172,45 +98,22 @@
             /* تنسيق مربع الشعار لتقنية المعلومات على الجوال */
             .it-logo-badge-navbar {
                 padding: 4px 8px; 
-                font-size: 0.75rem; /* تصغير حجم الخط ليتناسب مع الناف بار */
+                font-size: 0.75rem; 
             }
             
             /* تنسيق الأزرار في الهيدر لتبدو أقل ضخامة */
             #home .btn-lg {
                 font-size: 0.85rem;
-                padding: 8px 15px; /* تقليل حجم التبطين */
-                flex-grow: 1; /* للسماح لهم بتوزيع المساحة بشكل متساوٍ عند الحاجة */
-                min-width: 45%; /* ضمان أن اثنين على الأقل يتسعان في صف واحد */
-                margin-bottom: 5px; /* إضافة هامش سفلي إذا كانت في أكثر من صف */
+                padding: 8px 15px; 
+                flex-grow: 1; 
+                min-width: 45%; 
+                margin-bottom: 5px; 
             }
 
             /* تقليل الهامش العمودي لقسم الهيدر */
             #home .container.py-5 {
                 padding-top: 2rem !important;
                 padding-bottom: 2rem !important;
-            }
-
-            /* تصغير حجم خطوط العناوين H2 و H4 */
-            h2 {
-                font-size: 1.75rem !important;
-            }
-            h4 {
-                font-size: 1.2rem !important;
-            }
-            
-            /* ضمان أن الأيقونات في قسم التواصل لا تكون كبيرة جداً */
-            #contact .fs-1 {
-                font-size: 1.5rem !important;
-                gap: 20px !important;
-            }
-            
-            /* ضمان أن شرائط التقدم تظهر بشكل جيد */
-            .progress {
-                height: 18px; /* تقليل ارتفاع الشريط */
-            }
-
-            .progress-bar {
-                font-size: 0.75rem; /* تصغير خط النسبة داخل الشريط */
             }
         }
     </style>
@@ -235,13 +138,7 @@
                         <a class="nav-link" href="#home">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">مشاريعي الأمنية والبرمجية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">الخبرات والمهارات</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">اتصل بي</a>
+                        <a class="nav-link" href="#contact">تواصل معنا</a>
                     </li>
                 </ul>
             </div>
@@ -251,182 +148,41 @@
     <header id="home" class="text-center bg-dark text-white">
         <div class="banner-image-container py-5">
             <div class="container d-flex align-items-center justify-content-center" style="min-height: 250px;">
-                </div>
+            </div>
         </div>
 
         <div class="container py-5">
-            <h1 class="display-3 fw-bold text-warning">أصنع لك حضوراً رقمياً لا يُنسى.</h1>
+            <h1 class="display-3 fw-bold text-warning">أهلاً بك في منصة دعم تقنية المعلومات.</h1>
             <p class="lead mt-4 mb-5">
-                خبرة عميقة في **الأمن السبراني**، **التطوير**، و**البرمجة**. أنظمة رقمية مؤمنة وفعالة.
+                نحن نقدم الدعم والحلول التقنية لأي مشكلة تواجهها. تواصل معنا مباشرة للبدء.
             </p>
             
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                 <a href="#projects" class="btn btn-warning btn-lg">استعراض المشاريع والمهارات</a>
+                 <a href="#contact" class="btn btn-warning btn-lg">ابدأ التواصل الآن</a>
                 
-                 <a href="Https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-outline-light btn-lg">ابدأ بإنشاء سيرتك الذاتية الآن</a>
-
-                 <a href="https://github.com/your-username" target="_blank" class="btn btn-outline-info btn-lg">ملفي على GitHub</a>
+                 <a href="mailto:Almkhdri31@gmail.com" class="btn btn-outline-light btn-lg">أرسل لنا رسالة مباشرة</a>
             </div>
         </div>
     </header>
 
-    <section id="projects" class="py-5 bg-light">
+    <section id="contact" class="py-5 text-center bg-white">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">مشاريعي الأمنية والبرمجية</h2>
-            
-            <div class="row justify-content-center"> <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card project-card h-100 shadow-lg border-danger">
-                        <div class="card-header bg-danger text-white text-center fw-bold py-2">
-                            مشروع أمن سبراني (Cyber Security)
-                        </div>
-                        <div class="card-body text-end">
-                            <h5 class="card-title fw-bold text-danger">أداة فحص الثغرات الآلية (Vuln Scanner)</h5>
-                            <p class="card-text small mb-4">
-                                تطوير سكريبت **Python** متقدم للكشف الآلي عن **أكثر من 50 ثغرة** في تطبيقات الويب، مما يقلل من وقت الفحص الأولي بنسبة 70%.
-                            </p>
-                            
-                            <div class="tech-icons mb-3 text-center">
-                                <i class="fab fa-python fa-2x mx-2 text-info" title="Python"></i>
-                                <i class="fas fa-terminal fa-2x mx-2 text-secondary" title="Bash/CLI"></i>
-                                <i class="fas fa-network-wired fa-2x mx-2 text-danger" title="Network Analysis"></i>
-                            </div>
-
-                            <a href="vuln_scanner_details.html" class="btn btn-outline-dark w-100 mt-2">عرض التفاصيل / شرح الأداة</a>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card project-card h-100 shadow-lg border-warning">
-                        <div class="card-header bg-warning text-dark text-center fw-bold py-2">
-                             مشروع تطوير (Full-Stack Development)
-                        </div>
-                        <div class="card-body text-end">
-                            <h5 class="card-title fw-bold">نظام إدارة المهام المشفر (Secure Task Manager)</h5>
-                            <p class="card-text small mb-4">
-                                تطبيق ويب كامل باستخدام إطار عمل **Django**، تم تصميمه بمعايير أمنية عالية، بما في ذلك تشفير البيانات الثابتة والمتحركة.
-                            </p>
-                            
-                            <div class="tech-icons mb-3 text-center">
-                                <i class="fab fa-python fa-2x mx-2 text-success" title="Django/Python"></i>
-                                <i class="fas fa-database fa-2x mx-2 text-primary" title="PostgreSQL"></i>
-                                <i class="fab fa-js-square fa-2x mx-2 text-warning" title="JavaScript"></i>
-                            </div>
-
-                            <a href="task_manager_details.html" class="btn btn-outline-dark w-100 mt-2">عرض المشروع / الشرح</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card project-card h-100 shadow-lg border-info">
-                        <div class="card-header bg-info text-white text-center fw-bold py-2">
-                            تحليل بيانات وأمن (Data & Security)
-                        </div>
-                        <div class="card-body text-end">
-                            <h5 class="card-title fw-bold text-info">منصة تحليل سجلات الشبكة (Real-Time Log Analyzer)</h5>
-                            <p class="card-text small mb-4">
-                                واجهة مستخدم تفاعلية (React) تستقبل سجلات الشبكة وتحللها لحظياً باستخدام خوارزميات الذكاء الاصطناعي للكشف الفوري عن الأنشطة المشبوهة.
-                            </p>
-                            
-                            <div class="tech-icons mb-3 text-center">
-                                <i class="fab fa-react fa-2x mx-2 text-info" title="React/Frontend"></i>
-                                <i class="fas fa-chart-line fa-2x mx-2 text-success" title="Data Visualization"></i>
-                                <i class="fas fa-cogs fa-2x mx-2 text-secondary" title="AI/ML"></i>
-                            </div>
-
-                            <a href="log_analyzer_details.html" class="btn btn-outline-dark w-100 mt-2">عرض الشرح والميزات</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="text-center mt-4">
-                 <a href="https://github.com/your-username?tab=repositories" class="btn btn-dark btn-lg" target="_blank">شاهد جميع المشاريع على GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">خبراتي التقنية ومستوى الإتقان</h2>
-            
-            <div class="row">
-                
-                <div class="col-lg-6 mb-4">
-                    <h4 class="text-danger fw-bold mb-3 text-end">مهارات الأمن السيبراني <i class="fas fa-shield-alt me-2"></i></h4>
-                    
-                    <label class="d-block mb-1 text-end">اختبار الاختراق (Pen Testing)</label>
-                    <div class="progress mb-3" style="height: 25px;">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                    </div>
-
-                    <label class="d-block mb-1 text-end">هندسة أمن الويب (Secure Web Design)</label>
-                    <div class="progress mb-3" style="height: 25px;">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                    </div>
-                    
-                    <label class="d-block mb-1 text-end">تحليل الثغرات (Vulnerability Analysis)</label>
-                    <div class="progress mb-3" style="height: 25px;">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 mb-4">
-                    <h4 class="text-warning fw-bold mb-3 text-end">لغات وأطر العمل (Programming & Frameworks) <i class="fas fa-code me-2"></i></h4>
-                    
-                    <label class="d-block mb-1 text-end">Python (Django, Flask)</label>
-                    <div class="progress mb-3" style="height: 25px;">
-                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                    </div>
-
-                    <label class="d-block mb-1 text-end">JavaScript (React/Node.js)</label>
-                    <div class="progress mb-3" style="height: 25px;">
-                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                    </div>
-                    
-                    <label class="d-block mb-1 text-end">إدارة قواعد البيانات (SQL/NoSQL)</label>
-                    <div class="progress mb-3" style="height: 25px;">
-                        <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-5 text-center bg-dark text-white">
-        <div class="container">
-            <h2 class="mb-4 fw-bold text-warning">تواصل معي</h2>
-            <p class="lead mb-5">
-                للاستفسارات الأمنية، فرص العمل أو الشراكات، يمكنك التواصل مباشرة عبر القنوات التالية:
+            <h2 class="mb-4 fw-bold text-dark">تواصل معنا</h2>
+            <p class="lead mb-5 text-secondary">
+                نحن هنا للمساعدة. يمكنك مراسلتنا مباشرة عبر البريد الإلكتروني:
             </p>
             
-            <div class="d-flex justify-content-center gap-5 fs-1">
-                
-                <a href="https://linkedin.com/in/your-profile" target="_blank" class="text-white-50 hover-grow">
-                     <i class="fab fa-linkedin"></i>
+            <div class="d-flex justify-content-center">
+                <a href="mailto:Almkhdri31@gmail.com" class="btn btn-outline-dark btn-lg fw-bold fs-4">
+                     <i class="fas fa-envelope me-3 text-warning"></i> Almkhdri31@gmail.com 
                 </a>
-
-                <a href="https://github.com/your-username" target="_blank" class="text-white-50 hover-grow">
-                     <i class="fab fa-github"></i>
-                </a>
-                
-                <a href="mailto:your.email@example.com" class="text-white-50 hover-grow">
-                     <i class="fas fa-envelope"></i>
-                </a>
-                
-                <a href="https://twitter.com/your-handle" target="_blank" class="text-white-50 hover-grow">
-                     <i class="fab fa-twitter"></i>
-                </a>
-                
             </div>
         </div>
     </section>
 
     <footer class="bg-dark text-white text-center py-3 border-top border-warning">
         <div class="container">
-            <p class="mb-0">حقوق النشر &copy; 2025 محمد. جميع الحقوق محفوظة.</p>
+            <p class="mb-0">حقوق النشر &copy; 2025 منصة تقنية. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 

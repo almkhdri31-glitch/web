@@ -1,0 +1,128 @@
+/*
+=====================================================
+  التخصيصات العامة والخطوط
+=====================================================
+*/
+body {
+    /* تطبيق خط القاهرة للقراءة العربية الأنيقة */
+    font-family: 'Cairo', sans-serif; 
+    /* تفعيل التحولات السلسة */
+    transition: all 0.3s ease-in-out;
+}
+
+/*
+=====================================================
+  قسم التنقل (الـ Navbar)
+=====================================================
+*/
+.navbar {
+    /* جعل الشريط شفافًا جزئيًا لإظهار الخلفية */
+    background-color: rgba(33, 37, 41, 0.95) !important; 
+    /* إضافة ظل خفيف لشريط التنقل لتمييزه */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-link {
+    /* تباعد خفيف بين عناصر القائمة */
+    margin-right: 15px; 
+    /* تحول بسيط عند المرور فوق العنصر */
+    transition: color 0.3s, border-bottom 0.3s;
+    /* لون فاتح للنص */
+    color: #f8f9fa !important; 
+}
+
+/* التأثير البصري الراقي للقائمة المنسدلة (الـ Dropdown Effect) */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #0d6efd !important; /* لون أزرق جذاب عند التفاعل */
+    /* خط سفلي متحرك وأنيق */
+    border-bottom: 3px solid #0d6efd; 
+    padding-bottom: 5px; /* مسافة لحركة الخط */
+}
+
+/*
+=====================================================
+  قسم البطل (الـ Hero Section)
+=====================================================
+*/
+.hero-section {
+    /* خلفية متدرجة (Gradient) بسيطة وعصرية */
+    background: linear-gradient(135deg, #0d6efd 0%, #053b8f 100%);
+    /* ارتفاع كامل للشاشة ليكون العنصر الأبرز */
+    min-height: 100vh; 
+    /* توسيط المحتوى داخل القسم */
+    padding-top: 56px; /* تعويض ارتفاع شريط التنقل */
+}
+
+.hero-section h1 {
+    /* تظليل خفيف للنص لجعله يبرز على الخلفية الداكنة */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* تباعد بين الحروف لعنوان فخم */
+    letter-spacing: 1.5px; 
+}
+
+/*
+=====================================================
+  بطاقات الميزات (Features Cards)
+=====================================================
+*/
+#features .card {
+    border: none;
+    /* تحول سلس للبطاقة */
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px; /* حواف مستديرة للمظهر العصري */
+}
+
+#features .card:hover {
+    /* تأثير طفيف لرفع البطاقة عند المرور فوقها */
+    transform: translateY(-5px); 
+    /* ظل أكبر وأوضح */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+#features i {
+    /* لون الأيقونات */
+    color: #0d6efd !important; 
+}
+
+/*
+=====================================================
+  قسم تواصل معنا (Contact Form)
+=====================================================
+*/
+#contact .form-control {
+    border-radius: 8px;
+    border-color: #ced4da;
+    /* تظليل خفيف عند التركيز */
+    box-shadow: none; 
+}
+
+#contact .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+    /* تخصيص زر الإرسال */
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0a58ca;
+    border-color: #0a58ca;
+}
+
+/*
+=====================================================
+  قسم الخدمات (Services Section)
+=====================================================
+*/
+#services {
+    /* جعل قسم الخدمات مريحًا بصريًا */
+    background-color: #f9f9f9; 
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}

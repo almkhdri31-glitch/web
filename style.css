@@ -175,6 +175,50 @@ body {
 
 /*
 =====================================================
+  قسم المشاريع (Portfolio Section)
+=====================================================
+*/
+.portfolio-item {
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.portfolio-item .card-body i {
+    color: #FFD700 !important; /* أيقونات باللون الذهبي */
+}
+
+
+/*
+=====================================================
+  قسم آراء العملاء (Testimonials Section)
+=====================================================
+*/
+#testimonials {
+    background-color: #1a1a1a !important; /* خلفية داكنة */
+}
+
+#testimonials .testimonial-card {
+    background-color: #2c2c2c; /* لون أغمق قليلاً للبطاقة */
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+#testimonials .testimonial-card:hover {
+    transform: scale(1.02); /* تأثير تمدد خفيف عند المرور */
+}
+
+#testimonials .text-success {
+    color: #39FF14 !important; /* لون الأخضر النيون للأيقونات */
+}
+
+
+/*
+=====================================================
   الأزرار ونموذج التواصل (Contact Form)
 =====================================================
 */

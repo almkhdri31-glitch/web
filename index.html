@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#home">الرؤية والهدف</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">ميزاتنا الأساسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li> <li class="nav-item"><a class="nav-link" href="#features">ميزاتنا الأساسية</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">الخدمات والأدوات</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
                 </ul>
@@ -38,6 +38,46 @@
                 <a href="#features" class="btn btn-outline-light btn-lg mt-3" data-aos="zoom-in" data-aos-delay="400">اكتشف المزيد</a>
             </div>
         </section>
+
+        <section id="about" class="py-5 bg-dark text-white">
+            <div class="container">
+                <h2 class="display-4 text-center mb-5 text-warning" data-aos="fade-up">المنصة: رؤيتنا وخبرتنا</h2>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                        <p class="lead text-light-50">
+                            نحن منصة متكاملة متخصصة في **الأمن السيبراني** و**تطوير الأنظمة البرمجية المتقدمة**. نجمع بين خبرة الهاكر الأخلاقي ومنهجية المطور المحترف لتقديم حلول آمنة وفعالة.
+                        </p>
+                        <p class="text-light-50">
+                            مهمتنا هي بناء حصن رقمي لعملائنا. سواء كنت بحاجة إلى فحص شامل للثغرات، أو تطوير تطبيق ويب بأعلى معايير الأمان، فإن فريقنا مستعد لتوفير الحماية والجودة.
+                        </p>
+                        <a href="#contact" class="btn btn-outline-warning mt-3">استشر خبرائنا الآن</a>
+                    </div>
+                    
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                        <ul class="list-unstyled skills-list">
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle fa-lg text-success me-2"></i>
+                                <span class="text-warning fw-bold">الهاكر الأخلاقي واختبار الاختراق</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle fa-lg text-success me-2"></i>
+                                <span class="text-warning fw-bold">تطوير الويب الآمن والبرمجة الاحترافية</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle fa-lg text-success me-2"></i>
+                                <span class="text-warning fw-bold">تحليل الثغرات وإدارة المخاطر السيبرانية</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle fa-lg text-success me-2"></i>
+                                <span class="text-warning fw-bold">تصميم النظم والبنى التحتية عالية الأداء</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section id="features" class="py-5 bg-light">
             <div class="container text-center">
@@ -123,7 +163,16 @@
                                 <button type="submit" class="btn btn-primary btn-lg">إرسال الرسالة</button>
                             </div>
                         </form>
-                    </div>
+                        
+                        <div class="text-center mt-4 p-3 border border-secondary rounded" data-aos="fade-up" data-aos-delay="200">
+                            <h5 class="text-dark">تفضل بالتواصل المباشر معنا</h5>
+                            <i class="fas fa-envelope text-warning me-2"></i>
+                            <span class="fw-bold">
+                                <a href="mailto:your_security_email@example.com" class="text-decoration-none text-dark">your_security_email@example.com</a>
+                            </span>
+                        </div>
+                    
+                    </div> 
                 </div>
             </div>
         </section>
@@ -139,8 +188,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 1200, /* مدة الحركة بالمللي ثانية */
-            once: true /* تفعيل الحركة لمرة واحدة فقط عند التمرير */
+            duration: 1200, 
+            once: true 
         });
     </script>
 </body>

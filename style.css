@@ -8,8 +8,6 @@ body {
     line-height: 1.6;
     background-color: #0d0d0d; /* خلفية داكنة موحدة */
     color: #f8f9fa; /* لون نص أبيض خفيف */
-    /* التعديل 1: تصغير حجم الخط الأساسي قليلاً */
-    font-size: 15px; 
 }
 
 /* التنسيقات العامة للروابط والأزرار */
@@ -78,8 +76,6 @@ h1, h2, h3, h4, h5, h6 {
 .hero-section h1 {
     color: #FFD700; /* لون العنوان الرئيسي الذهبي */
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* تأثير نيون ذهبي قوي */
-    /* التعديل 2: تصغير حجم الخط الرئيسي لجعله أكثر انضباطاً */
-    font-size: 2.8rem !important; 
 }
 
 .hero-section p {
@@ -217,55 +213,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #39FF14 !important; /* لون الأخضر النيون للأيقونات */
 }
 
-/*
-=====================================================
-  تنسيق قسم الدعم الفني الجديد (#technical-support)
-=====================================================
-*/
-
-.support-grid {
-    padding: 30px 0;
-    margin-top: 50px;
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
-    background-color: #1a1a1a;
-}
-
-.support-box {
-    display: block;
-    padding: 20px;
-    background-color: #2c2c2c;
-    border-radius: 8px;
-    text-align: center;
-    color: #f8f9fa;
-    text-decoration: none;
-    transition: transform 0.3s, box-shadow 0.3s;
-    height: 100%;
-    border: 1px solid transparent;
-}
-
-.support-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
-    border-color: #FFD700;
-    color: #FFD700; /* تغيير اللون عند التمرير */
-}
-
-.support-box i {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #39FF14; /* أيقونات الدعم بلون نيون */
-}
-
-.support-box h5 {
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.support-box p {
-    font-size: 0.9rem;
-    color: #adb5bd;
-    margin-bottom: 0;
-}
 
 /*
 =====================================================

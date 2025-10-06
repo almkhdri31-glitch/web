@@ -3,75 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج اتصال Web3Forms الجاهز</title>
+    <title>نموذج اتصال Web3Forms (متقدم)</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            direction: rtl; 
-        }
-        .form-container {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
-        }
-        h2 {
-            text-align: center;
-            color: #1877f2;
-            margin-bottom: 30px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-            resize: vertical;
-            font-size: 16px;
-        }
-        button {
-            background-color: #1877f2;
-            color: white;
-            padding: 14px 25px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #145cb7;
-        }
+        /* ... (احتفظ بنفس التنسيق السابق أو أضف تنسيقك) ... */
+        body { font-family: 'Arial', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; direction: rtl; }
+        .form-container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); width: 100%; max-width: 450px; }
+        h2 { text-align: center; color: #1877f2; margin-bottom: 30px; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; resize: vertical; font-size: 16px; }
+        button { background-color: #1877f2; color: white; padding: 14px 25px; border: none; border-radius: 6px; cursor: pointer; width: 100%; font-size: 18px; transition: background-color 0.3s; }
+        button:hover { background-color: #145cb7; }
+        #result-message { text-align: center; margin-top: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>نموذج اتصال Web3Forms</h2>
+        <h2>نموذج اتصال Web3Forms الجاهز</h2>
 
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <form id="contact-form" onsubmit="handleSubmit(event)">
             
             <input type="hidden" name="access_key" value="B2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
-            
-            <input type="hidden" name="redirect" value="https://web3forms.com/success">
-
             <input type="hidden" name="subject" value="رسالة جديدة - اختبار">
 
             <label for="name">الاسم:</label>
@@ -84,7 +34,48 @@
             <textarea id="message" name="message" rows="5" required></textarea>
 
             <button type="submit">إرسال الرسالة الآن</button>
+            
+            <p id="result-message"></p>
         </form>
-        </div>
+    </div>
+
+    <script>
+        // دالة JavaScript لمعالجة إرسال النموذج
+        async function handleSubmit(event) {
+            // منع الإرسال التقليدي للصفحة
+            event.preventDefault(); 
+            
+            const form = document.getElementById('contact-form');
+            const resultMessage = document.getElementById('result-message');
+            const data = new FormData(form);
+            const action = "https://api.web3forms.com/submit";
+
+            resultMessage.style.color = 'gray';
+            resultMessage.textContent = '... يتم الإرسال';
+            
+            try {
+                const response = await fetch(action, {
+                    method: 'POST',
+                    body: data,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    resultMessage.style.color = 'green';
+                    resultMessage.textContent = '✅ تم الإرسال بنجاح! تحقق من بريدك الإلكتروني.';
+                    form.reset(); // تفريغ حقول النموذج
+                } else {
+                    // سيعرض رسالة الخطأ الدقيقة من Web3Forms API
+                    resultMessage.style.color = 'red';
+                    resultMessage.textContent = `❌ فشل: ${result.message || 'خطأ غير معروف.'}`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultMessage.style.color = 'red';
+                resultMessage.textContent = '❌ حدث خطأ في الاتصال. الرجاء المحاولة لاحقاً.';
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,415 +1,121 @@
-/* ========================================================================= */
-/* الإعدادات الأساسية (لا تغيير)                 */
-/* ========================================================================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/*
+=====================================================
+  التخصيصات العامة والخطوط (لون الخلفية الداكن)
+=====================================================
+*/
 body {
-    font-family: 'Cairo', sans-serif;
-    line-height: 1.6;
-    color: #f1f1f1; /* لون نص فاتح للخلفية الداكنة */
-    background-color: #111111; /* الخلفية الداكنة الأصلية */
+    font-family: 'Cairo', sans-serif; 
+    transition: all 0.3s ease-in-out;
+    background-color: #f0f0f0; /* خلفية فاتحة للقسم العادي */
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+/*
+=====================================================
+  قسم التنقل (الـ Navbar) - أسود راقٍ
+=====================================================
+*/
+.navbar {
+    /* أسود غامق جدًا للخلفية */
+    background-color: #1a1a1a !important; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-ul {
-    list-style: none;
+.navbar-nav .nav-link {
+    margin-right: 15px; 
+    transition: color 0.3s, border-bottom 0.3s;
+    color: #e0e0e0 !important; /* لون رمادي فاتح للنص */
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
+/* التأثير البصري الراقي للقائمة المنسدلة (الـ Dropdown Effect) - ذهبي */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #FFD700 !important; /* لون ذهبي جذاب عند التفاعل */
+    /* خط سفلي ذهبي متحرك وأنيق */
+    border-bottom: 3px solid #FFD700; 
+    padding-bottom: 5px; 
 }
 
-.text-center {
-    text-align: center;
-}
-
-.section-title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #e2e2e2;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: #2ecc71; /* الأخضر الفاقع */
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-.section-subtitle {
-    font-size: 18px;
-    color: #95a5a6;
-    margin-bottom: 40px;
-}
-
-/* ========================================================================= */
-/* الهيدر وقائمة التنقل (داكنة)                   */
-/* ========================================================================= */
-
-.main-header {
-    background: #1c1c1c; /* خلفية هيدر داكنة */
-    color: #f1f1f1;
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: 900;
-    color: #2ecc71; /* شعار باللون الأخضر */
-}
-
-.main-nav ul li a:hover,
-.main-nav ul li a.active {
-    color: #111;
-    background-color: #2ecc71; /* تمييز القائمة باللون الأخضر */
-}
-
-.menu-toggle {
-    color: #f1f1f1;
-}
-
-/* ========================================================================= */
-/* قسم البطل (Hero Section) - تصميمك الداكن مع إصلاح الخلفية */
-/* ========================================================================= */
-
+/*
+=====================================================
+  قسم البطل (الـ Hero Section) - الخلفية السوداء/الغامقة
+=====================================================
+*/
 .hero-section {
-    padding: 100px 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #ffffff;
-    
-    /* ================================== */
-    /* إصلاح الخلفية لتمتد بالكامل */
-    /* ================================== */
-    background-image: url('مسار-صورة-الخلفية-هنا.jpg'); /* **تأكد من المسار الصحيح** */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-attachment: fixed; 
-    
-    position: relative;
-    z-index: 1;
+    /* خلفية متدرجة سوداء زرقاء عميقة وفخمة */
+    background: linear-gradient(135deg, #0f0f0f 0%, #303030 100%);
+    min-height: 100vh; 
+    padding-top: 56px; 
 }
 
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* طبقة شفافة لزيادة وضوح النص */
-    z-index: -1;
+.hero-section h1 {
+    /* لون ذهبي للعناوين الرئيسية */
+    color: #FFD700 !important; 
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px; 
 }
 
-.hero-title {
-    font-size: 48px;
-    font-weight: 900;
-    margin-bottom: 20px;
-    line-height: 1.2;
+.hero-section p.lead {
+    color: #a0a0a0 !important; /* لون رمادي مناسب للوصف */
 }
 
-.highlight-text {
-    color: #2ecc71; /* لون مميز أخضر */
+.hero-section .btn-outline-light {
+    /* زر شفاف ذهبي */
+    color: #FFD700; 
+    border-color: #FFD700;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.main-cta-button {
-    display: inline-block;
-    background-color: #2ecc71; /* زر باللون الأخضر */
-    color: #111;
-    padding: 12px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.hero-section .btn-outline-light:hover {
+    /* عند التفاعل، خلفية سوداء ونص ذهبي */
+    background-color: #FFD700;
+    color: #1a1a1a;
+    border-color: #FFD700;
 }
 
-.main-cta-button:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px);
+/*
+=====================================================
+  بطاقات الميزات (Features Cards) - أيقونات خضراء
+=====================================================
+*/
+#features .card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px; 
 }
 
-/* ========================================================================= */
-/* قسم النصيحة السريعة (تعديل الألوان لتناسب الداكن) */
-/* ========================================================================= */
-
-.quick-tip-section {
-    padding: 40px 0;
-    background-color: #1c1c1c; /* خلفية داكنة */
+#features .card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-.tip-card {
-    background: #2c3e50; /* بطاقة بلون داكن مختلف */
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: #ecf0f1;
+#features i {
+    /* لون أخضر للأيقونات يرمز للأمان والتكنولوجيا */
+    color: #39FF14 !important; 
 }
 
-.tip-icon {
-    font-size: 40px;
-    color: #2ecc71;
-}
-
-.tip-title {
-    color: #ecf0f1;
-}
-
-.tip-content {
-    color: #bdc3c7;
-}
-
-/* ========================================================================= */
-/* قسم التقنيات والأدوات (Tech Stack) - تصميم داكن */
-/* ========================================================================= */
-
-.tech-stack-section {
-    padding: 80px 0;
-    background-color: #111111; /* خلفية داكنة */
-    text-align: center;
-}
-
-.tech-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap; 
-    margin-top: 40px;
-}
-
-.tech-item {
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    padding: 35px;
-    width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 5px solid #2ecc71; /* شريط أخضر */
-    text-align: right;
-}
-
-.tech-item:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-}
-
-.tech-icon {
-    font-size: 40px;
-    color: #2ecc71;
-    margin-bottom: 20px;
-}
-
-.tech-item h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #ecf0f1;
-    font-weight: 700;
-}
-
-.tech-tag {
-    display: inline-block;
-    background-color: #384e5a; /* خلفية داكنة فاتحة */
-    color: #2ecc71; /* نص أخضر */
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin: 4px;
-    font-size: 15px;
-    font-weight: 600;
+/*
+=====================================================
+  الزر الأساسي (Primary Button) - ذهبي
+=====================================================
+*/
+.btn-primary {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #1a1a1a !important; /* نص أسود على الزر الذهبي */
     transition: background-color 0.3s;
 }
 
-.tech-tag:hover {
-    background-color: #4b626e;
+.btn-primary:hover {
+    background-color: #e6c300; /* ذهبي أغمق عند التفاعل */
+    border-color: #e6c300;
 }
 
-/* ========================================================================= */
-/* قسم الخدمات (Services) - تصميم داكن            */
-/* ========================================================================= */
-
-.main-content {
-    padding: 80px 0;
-    background-color: #1c1c1c;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.service-card {
-    background: #2c3e50; /* بطاقة بلون داكن مختلف */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    text-align: right;
-    transition: all 0.3s ease;
-    color: #ecf0f1;
-}
-
-.service-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    transform: translateY(-5px);
-}
-
-.card-icon {
-    font-size: 32px;
-    color: #2ecc71;
-}
-
-.service-card h2 {
-    color: #ecf0f1;
-}
-
-.card-link {
-    color: #2ecc71;
-    border-bottom: 2px solid #2ecc71;
-}
-
-.card-link:hover {
-    color: #27ae60;
-}
-
-/* ========================================================================= */
-/* قسم التواصل (Contact) - تصميم داكن              */
-/* ========================================================================= */
-
-.contact-section {
-    padding: 80px 0;
-    background-color: #111111;
-    text-align: center;
-}
-
-.contact-section h2 {
-    color: #ecf0f1;
-}
-
-.contact-section p {
-    color: #bdc3c7;
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: right;
-}
-
-.form-group label {
-    color: #ecf0f1;
-}
-
-.form-group input,
-.form-group textarea {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    border: 1px solid #34495e;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #2ecc71;
-}
-
-.submit-button {
-    background-color: #2ecc71;
-    color: #111; /* نص داكن على زر أخضر */
-}
-
-.submit-button:hover {
-    background-color: #27ae60;
-}
-
-
-/* ========================================================================= */
-/* الفوتر (Footer) - تصميم داكن                 */
-/* ========================================================================= */
-
-.main-footer {
-    background-color: #1c1c1c;
-    color: #ecf0f1;
-}
-
-.social-links a {
-    color: #ecf0f1;
-}
-
-.social-links a:hover {
-    color: #2ecc71;
-}
-
-/* ========================================================================= */
-/* تنسيقات الاستجابة (Media Queries) - لا تغيير في البنية */
-/* ========================================================================= */
-
-@media (max-width: 992px) {
-    .main-nav {
-        /* إخفاء القائمة في شاشات الهاتف */
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: #1c1c1c; /* خلفية داكنة للقائمة المفتوحة */
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
-        padding-bottom: 10px;
-    }
-    
-    .main-nav.active {
-        display: flex;
-    }
-
-    .main-nav ul li a {
-        border-bottom: 1px solid #333;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        min-height: 80vh;
-    }
-
-    .tech-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .tech-item {
-        width: 90%;
-        max-width: 400px;
-    }
+/*
+=====================================================
+  تذييل الصفحة (Footer)
+=====================================================
+*/
+footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }

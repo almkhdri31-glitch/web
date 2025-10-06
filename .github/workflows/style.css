@@ -83,6 +83,47 @@ body {
 
 /*
 =====================================================
+  قسم من نحن (About Me Section)
+=====================================================
+*/
+#about {
+    background-color: #1a1a1a !important; /* خلفية داكنة موحدة */
+    color: #e0e0e0;
+}
+
+#about .display-4 {
+    color: #FFD700 !important; /* العنوان بالذهبي */
+}
+
+/* تنسيق قائمة المهارات */
+.skills-list li {
+    padding: 10px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skills-list li:last-child {
+    border-bottom: none;
+}
+
+/* أيقونات النجاح بلون الأمان (الأخضر النيون) */
+.skills-list i {
+    color: #39FF14 !important; 
+}
+
+/* تخصيص زر التواصل في هذا القسم */
+#about .btn-outline-warning {
+    color: #FFD700 !important; 
+    border-color: #FFD700 !important;
+}
+
+#about .btn-outline-warning:hover {
+    background-color: #FFD700 !important;
+    color: #1a1a1a !important;
+}
+
+/*
+=====================================================
   بطاقات الميزات (Features Cards) - أيقونات خضراء
 =====================================================
 */

@@ -58,6 +58,302 @@
         </div>
     </section>
 
+    <section class="tech-stack-section" id="tech-stack">
+        <div class="container">
+            <h2 class="section-title text-center">الأدوات والتقنيات الأساسية</h2>
+            <p class="section-subtitle text-center">الخبرة في أحدث بيئات التطوير والأمن السيبراني.</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fas fa-shield-alt tech-icon"></i>
+                    <h3>الأمن السيبراني</h3>
+                    <ul>
+                        <li><span class="tech-tag">Penetration Testing</span></li>
+                        <li><span class="tech-tag">Ethical Hacking</span></li>
+                        <li><span class="tech-tag">Kali Linux</span></li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server tech-icon"></i>
+                    <h3>تطوير الأنظمة</h3>
+                    <ul>
+                        <li><span class="tech-tag">Python</span></li>
+                        <li><span class="tech-tag">Node.js</span></li>
+                        <li><span class="tech-tag">Databases</span></li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-network-wired tech-icon"></i>
+                    <h3>الشبكات والـ Cloud</h3>
+                    <ul>
+                        <li><span class="tech-tag">AWS / Azure</span></li>
+                        <li><span class="tech-tag">Bash Scripting</span></li>
+                        <li><span class="tech-tag">Docker / K8s</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content" id="services">
+        <div class="container">
+            <h2 class="section-title text-center">خدماتنا الرئيسية</h2>
+            
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-lock"></i></div>
+                    <h2>الأمن السيبراني</h2>
+                    <p>تحصين الأنظمة والشبكات ضد الاختراقات وتوفير اختبارات الاختراق (Penetration Testing).</p>
+                    <a href="#" class="card-link">اعرف المزيد</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h2>تطوير البرمجيات</h2>
+                    <p>بناء تطبيقات ويب وهواتف ذكية مخصصة باستخدام أحدث التقنيات واللغات البرمجية.</p>
+                    <a href="#" class="card-link">اعرف المزيد</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-server"></i></div>
+                    <h2>إدارة البنية التحتية</h2>
+                    <p>تصميم وإدارة وصيانة الخوادم، قواعد البيانات، والشبكات لضمان الاستمرارية والكفاءة.</p>
+                    <a href="#" class="card-link">اعرف المزيد</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>تواصل معنا</h2>
+            <p>هل أنت مستعد لبدء مشروعك؟ اترك لنا رسالة وسنتواصل معك فوراً.</p>
+            
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">الاسم الكريم:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني:</label>
+                    <input type="email" id="email" name="email" required>
+                    <small id="email-error" style="color: #e74c3c; display: none;">يرجى إدخال بريد إلكتروني صحيح.</small>
+                </div>
+                <div class="form-group">
+                    <label for="message">الرسالة:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">إرسال الرسالة</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year">2024</span> تقنية المعلومات | جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="جيت هاب"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * منطق التحكم بالصفحة (القائمة، الأمان، والإرسال الفعلي)
+         */
+
+        // دالة التحصين (الأمان)
+        const sanitizeInput = (text) => {
+            if (!text) return '';
+            let sanitized = text.replace(/&/g, '&amp;')
+                                .replace(/</g, '&lt;')
+                                .replace(/>/g, '&gt;')
+                                .replace(/"/g, '&quot;')
+                                .replace(/'/g, '&#39;');
+            return sanitized.trim();
+        };
+
+        // دالة التحقق من البريد الإلكتروني
+        const validateEmail = (email) => {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. تفعيل قائمة التنقل
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active'); 
+                });
+
+                // إغلاق القائمة عند النقر على رابط داخلي
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('active');
+                    });
+                });
+            }
+
+            // 2. تحديث السنة
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = currentYear;
+            }
+            
+            // 3. وظيفة النصيحة الأمنية
+            const securityTips = [
+                "استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.",
+                "قم بتحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.",
+                "استخدم مدير كلمات مرور لإنشاء وتخزين كلمات مرور قوية وفريدة.",
+                "احذر من رسائل البريد الإلكتروني العشوائية (Phishing) ولا تضغط على روابط مشبوهة.",
+                "قم بإجراء نسخ احتياطي لبياناتك بانتظام لتجنب فقدانها بسبب هجمات الفدية."
+            ];
+            const tipElement = document.getElementById('security-tip');
+            if(tipElement) {
+                const randomIndex = Math.floor(Math.random() * securityTips.length);
+                tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
+            }
+            
+            // 4. منطق الإرسال الفعلي
+            const contactForm = document.getElementById('contact-form');
+            // مفتاح Web3Forms
+            const WEB3FORMS_ACCESS_KEY = "b2ed5633-7b5f-46c3-b087-5bb11a7da5a0"; 
+            
+            if (contactForm) {
+                const emailInput = document.getElementById('email');
+                const emailError = document.getElementById('email-error');
+                const submitButton = contactForm.querySelector('.submit-button');
+
+                let isSubmitting = false;
+
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault(); 
+                    if (isSubmitting) return; 
+
+                    // التحقق من صحة البريد الإلكتروني
+                    if (!validateEmail(emailInput.value)) {
+                        if (emailError) emailError.style.display = 'block';
+                        return;
+                    } else {
+                        if (emailError) emailError.style.display = 'none';
+                    }
+
+                    isSubmitting = true;
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'جاري الإرسال...';
+                    
+                    // جمع البيانات وتحصينها
+                    const formData = new FormData(contactForm);
+                    const formPayload = {
+                        'access_key': WEB3FORMS_ACCESS_KEY,
+                        'name': sanitizeInput(formData.get('name')),
+                        'email': formData.get('email'), 
+                        'message': sanitizeInput(formData.get('message'))
+                    };
+
+                    try {
+                        const response = await fetch("https://api.web3forms.com/submit", {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(formPayload)
+                        });
+
+                        const result = await response.json();
+
+                        if (response.ok && result.success) {
+                            // رسالة شكر عامة وغير مخصصة (كما طلبت)
+                            alert("شكراً لك! تم إرسال رسالتك بنجاح.");
+                            contactForm.reset(); // تفريغ النموذج
+                        } else {
+                            console.error("Web3Forms Error:", result);
+                            alert("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.");
+                        }
+                    } catch (error) {
+                        console.error("Network or API Error:", error);
+                        alert("عذراً، حدث خطأ في الاتصال بالشبكة. يرجى المحاولة لاحقاً.");
+                    } finally {
+                        isSubmitting = false;
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'إرسال الرسالة';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقنية المعلومات | للحلول الذكية والأمن السيبراني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">تقنية المعلومات</div> 
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero" class="active">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    
+                    <li><a href="https://my-first-site-gold-seven.vercel.app/" target="_blank">السيرة الذاتية (CV)</a></li> 
+                    
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" aria-label="فتح قائمة التنقل">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                مرحباً بك في منصة <span class="highlight-text">IT</span> للحلول الذكية.
+            </h1>
+            <p class="hero-subtitle">
+                نحن نقدم الدعم والحلول التقنية المتقدمة لأي مشكلة تواجهها في عالم التكنولوجيا والأمن.
+            </p>
+            <a href="#contact" class="main-cta-button">تواصل معنا لبدء مشروعك</a> 
+        </div>
+    </section>
+
+    <section class="quick-tip-section">
+        <div class="container">
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2 class="tip-title">نصيحة اليوم الأمنية</h2>
+                <p class="tip-content" id="security-tip">
+                    نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <main class="main-content" id="services">
         <div class="container">
             <h2 class="section-title text-center">خدماتنا الرئيسية</h2>

@@ -1,289 +1,32 @@
-/*
-=====================================================
-  متغيرات CSS (للتكويد المرن وسهولة التعديل)
-=====================================================
-*/
-:root {
-    /* الألوان الأساسية */
-    --color-gold: #FFD700;
-    --color-neon-green: #39FF14;
-    --color-dark-main: #0d0d0d;
-    --color-dark-card: #2c2c2c;
-    --color-light-text: #f8f9fa;
-    --color-gray-text: #adb5bd;
-    
-    /* أحجام الخطوط (لشاشات الكمبيوتر/اللوحي الكبيرة) */
-    --font-base-size: 1.0rem; 
-    --font-size-lead: 1.15rem; 
+/* تنسيق صندوق الاتصال */
+.contact-box {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-dark-card); /* الخلفية الرمادية الداكنة */
+    color: var(--color-light-text); /* لون النص الفاتح */
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    height: 100%; /* لضمان تساوي ارتفاع الصناديق */
 }
 
-/*
-=====================================================
-  التنسيقات الأساسية والخطوط
-=====================================================
-*/
-body {
-    font-family: 'Cairo', sans-serif;
-    line-height: 1.6;
-    background-color: var(--color-dark-main); 
-    color: var(--color-light-text);
-    font-size: var(--font-base-size); /* الحجم الافتراضي للكمبيوتر */
+.contact-box:hover {
+    background-color: #383838;
+    color: var(--color-gold); /* تغيير لون النص إلى الذهبي عند التمرير */
+    border-color: var(--color-gold); /* إضافة إطار ذهبي */
 }
 
-/* التنسيقات العامة للروابط والأزرار */
-a {
-    transition: color 0.3s, background-color 0.3s;
+/* تنسيق خاص لبلاغات الأمن (لأهميتها) */
+.contact-box.security-alert {
+    border: 2px solid #dc3545; /* إطار أحمر تنبيهي */
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+.contact-box.security-alert:hover {
+    border-color: #FFD700;
 }
 
-/* تنسيق للخطوط التي تعتمد على اللون الذهبي لـ IT */
-.text-warning {
-    color: var(--color-gold) !important; 
-}
-
-/* اللون الأخضر النيون (لأيقونات الميزات والـ Checkmarks) */
-.text-success {
-    color: var(--color-neon-green) !important;
-}
-
-/* تنسيق للنصوص التوجيهية والفقرات الرئيسية */
-.lead, .hero-section p {
-    font-size: var(--font-size-lead) !important;
-}
-
-/* تنسيق قسم التغليف لمنع تجاوز الحدود */
-.overflow-fix {
-    overflow-x: hidden;
-}
-
-/*
-=====================================================
-  شريط التنقل (Navbar)
-=====================================================
-*/
-.navbar {
-    border-bottom: 2px solid rgba(255, 215, 0, 0.2); 
-    background-color: #1a1a1a !important; 
-    position: sticky; 
-    top: 0;
-    z-index: 1030; 
-}
-
-.navbar-brand {
-    font-weight: 700;
-    color: var(--color-gold) !important;
-}
-
-.nav-link {
-    font-weight: 500;
-    color: var(--color-gray-text) !important;
-}
-
-.nav-link:hover, .nav-item .active {
-    color: var(--color-light-text) !important;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); 
-}
-
-/*
-=====================================================
-  قسم البطل (Hero Section) - #home
-=====================================================
-*/
-.hero-section {
-    min-height: 100vh;
-    /* تأكد أن صورة hero-bg.jpg موجودة في مجلد المشروع */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') center center no-repeat;
-    background-size: cover;
-    background-attachment: fixed; 
-    position: sticky; 
-    top: 0;
-    z-index: 1000; 
-    color: #fff;
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
-
-.hero-section h1 {
-    color: var(--color-gold); 
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
-}
-
-.hero-section p {
-    max-width: 800px;
-    color: #e9ecef;
-}
-
-/* تنسيق زر الأمان الأول (الذهبي) */
-.btn-outline-warning {
-    border-color: var(--color-gold);
-    color: var(--color-gold);
-    font-weight: 600;
-}
-
-.btn-outline-warning:hover {
-    background-color: var(--color-gold) !important;
-    color: #1a1a1a !important;
-    border-color: var(--color-gold);
-}
-
-
-/*
-=====================================================
-  تنسيق الأقسام السفلية
-=====================================================
-*/
-/* قسم من نحن (About Us) */
-#about {
-    background-color: #1a1a1a !important;
-}
-
-/* قسم الميزات (Features) */
-#features {
-    background-color: #f8f9fa; 
-    color: #212529; 
-}
-
-#features .card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-#features .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-#features i {
-    color: var(--color-gold);
-    margin-bottom: 15px;
-}
-
-/* قسم الخدمات (Services) */
-#services {
-    background-color: #1a1a1a !important;
-}
-
-.service-card {
-    border-radius: 12px;
-    background-color: var(--color-dark-card);
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.service-card:hover {
-    transform: scale(1.03);
-    border-color: var(--color-neon-green) !important; /* إطار نيون أخضر عند التمرير */
-    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5); /* ظل نيون خفيف */
-}
-
-.service-card i {
-    color: var(--color-neon-green); /* أيقونات الخدمة بلون النيون الأخضر */
-    text-shadow: 0 0 8px rgba(57, 255, 20, 0.6); /* إضافة تأثير توهج نيون */
-}
-
-/* قسم المشاريع (Portfolio) */
-#portfolio {
-    background-color: #f8ffc7;
-}
-
-#portfolio .portfolio-item {
-    transition: box-shadow 0.3s;
-    border-radius: 12px;
-}
-
-#portfolio .portfolio-item:hover {
-    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3); /* ظل ذهبي عند التمرير */
-}
-
-
-/*
-=====================================================
-  قسم آراء العملاء (Testimonials Section)
-=====================================================
-*/
-#testimonials {
-    background-color: #1a1a1a !important; 
-}
-
-#testimonials .testimonial-card {
-    background-color: var(--color-dark-card); 
-    border-radius: 12px;
-    transition: transform 0.3s;
-    border-color: rgba(255, 215, 0, 0.5) !important;
-}
-
-#testimonials .testimonial-card p { 
-    color: var(--color-light-text) !important; 
-    font-size: 1.1rem; 
-    line-height: 1.6;
-}
-
-#testimonials .testimonial-card:hover {
-    transform: scale(1.02); 
-}
-
-#testimonials .text-success {
-    color: var(--color-neon-green) !important; 
-}
-
-
-/*
-=====================================================
-  التذييل (Footer)
-=====================================================
-*/
-footer {
-    background-color: var(--color-dark-main) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-icons a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-.social-icons a:hover {
-    color: var(--color-gold);
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
-}
-
-
-/*
-=====================================================
-  استعلامات الوسائط (Media Queries) - تصغير الخط للهاتف (التعديل النهائي)
-=====================================================
-*/
-@media (max-width: 768px) {
-
-    /* تصغير حجم الخط الأساسي في وضع الهاتف */
-    body {
-        font-size: 0.8rem !important; 
-    }
-
-    /* تصغير حجم العناوين الرئيسية (H1) */
-    .hero-section h1 {
-        font-size: 1.5rem !important; 
-    }
-
-    /* ****** التعديل النهائي والجذري على الأزرار ****** */
-    .btn-lg {
-        font-size: 0.7rem !important; /* القيمة الأدنى لضمان عدم التفاف النص */
-        padding: 0.6rem 0.8rem !important; 
-        line-height: 1.2 !important; /* تقليل المسافة بين السطور */
-    }
-    
-    /* تصغير حجم الفقرات التوجيهية (Lead) */
-    .lead, .hero-section p {
-        font-size: 0.9rem !important; 
-    }
-
-    /* تصغير حجم العناوين الفرعية (H2) */
-    h2.display-4 {
-        font-size: 1.6rem !important;
-    }
+.contact-box i {
+    margin-bottom: 10px;
 }

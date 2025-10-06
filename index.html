@@ -3,294 +3,725 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تقنية المعلومات | للحلول الذكية والأمن السيبراني</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css"> 
+    <title>السيرة الذاتية - CV</title>
+    <style>
+        /* ********************************************************* */
+        /* تنسيقات النموذج (صفحة الإدخال) - بدون تغيير */
+        /* ********************************************************* */
+        body {
+            font-family: 'Arial', 'Helvetica Neue', sans-serif; 
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 0; 
+            margin: 0;
+            direction: rtl; 
+        }
+        
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="url"], textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+            display: block;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        header {
+            background-color: #17202A;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+        }
+        footer {
+            background-color: #17202A;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px; 
+            font-size: 0.9em;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto; 
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cv-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #17202A;
+            margin-bottom: 5px;
+            letter-spacing: 5px;
+        }
+
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        #profile-image {
+            width: 100px !important;
+            height: 100px !important;
+            max-width: 100px !important; 
+            max-height: 100px !important; 
+            background-color: #e9ecef; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #007bff;
+            display: block; 
+            margin: 0 auto 10px auto; 
+            opacity: 0.7; 
+        }
+        
+        #profile-image[src]:not([src=""]) {
+            opacity: 1; 
+            border: 2px solid #28a745; 
+        }
+
+        .image-upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            display: block;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff; /* الخط الأزرق الذي سيتم تعديله في الطباعة */
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 20px; 
+            font-weight: 600; 
+        }
+
+        .section-content {
+            margin-bottom: 20px;
+            padding-right: 15px;
+        }
+        
+        .print-button-on-form {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .print-area {
+             display: flex !important; 
+        }
+        form {
+             display: block !important; 
+        }
+        
+        #printable-cv {
+            display: none; 
+        }
+        
+        .skills-options div {
+             display: inline-block;
+             margin-left: 10px;
+             margin-bottom: 5px;
+        }
+
+        .language-entry, .reference-entry {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .language-entry input[type="text"], 
+        .language-entry input[type="number"] {
+            width: calc(50% - 15px);
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .reference-entry input {
+            margin-bottom: 10px;
+        }
+        
+        /* ********************************************************* */
+        /* تنسيقات صفحة الطباعة (الحل الهندسي لمشاكل التقطيع والوضوح) */
+        /* ********************************************************* */
+        @media print {
+            
+            @page {
+                margin: 0.5cm !important; 
+                padding: 0 !important;
+            }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-family: 'Arial', 'Helvetica Neue', sans-serif !important; 
+                font-size: 12px !important; 
+            }
+            
+            /* إخفاء عناصر النموذج الأساسية */
+            .print-area, form, .print-actions, .print-button-on-form, header, footer { 
+                display: none !important;
+            }
+            
+            #printable-cv {
+                display: block !important; 
+                width: 100% !important; 
+                position: relative; 
+                background: white;
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            
+            /* تفعيل طباعة الألوان */
+            .sidebar-column, .main-content-column h2, .lang-bar-fill, #cv-print-header {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* ********************************************************* */
+            /* 1. نظام الأعمدة ومنع التقطيع */
+            /* ********************************************************* */
+            
+            #print-content-columns {
+                display: grid !important; 
+                grid-template-columns: 35% 65% !important; 
+                gap: 0; 
+                position: relative;
+            }
+            
+            /* العمود الجانبي الملون (Sidebar - على اليمين) */
+            .sidebar-column {
+                background-color: #5B4F46 !important; 
+                color: #FFFFFF !important; /* النص العادي: أبيض ناصع لتباين ممتاز */
+                padding: 20px 10px 10px 10px !important; 
+                order: 1; 
+            }
+            
+            /* عمود المحتوى الرئيسي (على اليسار) */
+            .main-content-column {
+                padding: 20px 20px 20px 15px !important; 
+                order: 2; 
+                background: white;
+            }
+
+            /* منع قطع المحتوى داخل الأقسام (الحل الرئيسي لمشكلة التقطيع) */
+            .main-content-column h2, 
+            .sidebar-column h2,
+            .section-content,
+            .language-entry-print,
+            .reference-entry-print {
+                page-break-inside: avoid !important; /* للطباعة */
+                -webkit-column-break-inside: avoid !important; /* لمتصفحات كروم */
+                break-inside: avoid !important; /* للجميع */
+            }
+            
+            /* ********************************************************* */
+            /* 2. تحسين وضوح العناوين في العمود الرئيسي (اللون الأبيض) */
+            /* ********************************************************* */
+            
+            /* العناوين في العمود الرئيسي (أسود داكن مع خط رمادي) */
+            .main-content-column h2 {
+                color: #17202A !important; /* لون النص: أسود داكن */
+                border-bottom: 2px solid #6c757d !important; /* لون الخط السفلي: رمادي غامق احترافي */
+                padding-bottom: 3px !important; 
+                margin-top: 15px !important; 
+                font-size: 16px !important; 
+                font-weight: 700 !important;
+                display: block !important;
+                border-left: none !important; 
+                padding-left: 0 !important;
+            }
+            
+            .main-content-column h2::after {
+                display: none !important; 
+            }
+            
+            /* تنسيق عنوان "CV" في العمود الرئيسي (على اليسار) */
+            #cv-print-header {
+                 text-align: left !important; /* كلمة CV على اليسار */
+                 font-size: 30px !important; 
+                 margin-bottom: 10px !important;
+                 letter-spacing: 5px !important; 
+                 border-bottom: 2px solid #6c757d !important; /* رمادي غامق */
+                 padding-bottom: 5px;
+                 color: #17202A !important; /* أسود داكن */
+            }
+            
+            /* ********************************************************* */
+            /* 3. تنسيق العناوين داخل العمود الجانبي (البني الداكن) */
+            /* ********************************************************* */
+            
+            .header-sidebar-container-print {
+                text-align: center !important; 
+                margin-bottom: 20px !important;
+                color: white !important; 
+            }
+             
+            .sidebar-column h2 {
+                color: #f8f9fa !important; /* العناوين الفرعية داخل البني: رمادي فاتح (أنيق وجذاب) */
+                border-bottom: 1px solid #f8f9fa !important; /* خط فاصل رمادي فاتح */
+            }
+
+            .image-upload-container-print {
+                display: block !important;
+                width: 80px !important; 
+                height: 80px !important;
+                margin: 0 auto 8px auto !important; 
+            }
+
+            .image-upload-container-print img {
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: 50% !important;
+                object-fit: cover !important;
+                border: 2px solid #fff !important; 
+            }
+            
+            .header-sidebar-container-print h1 {
+                font-size: 18px !important; 
+                margin: 5px 0 0 0 !important;
+            }
+            
+            .header-sidebar-container-print h3 {
+                font-size: 12px !important; 
+                margin: 2px 0 0 0 !important;
+            }
+            
+            .lang-bar-fill {
+                 background-color: #f8f9fa !important; /* لون ملء شريط اللغة: رمادي فاتح */
+            }
+             
+             .main-content-column .section-content {
+                margin-bottom: 10px !important;
+            }
+            .main-content-column p, .main-content-column li {
+                font-size: 12px !important;
+                line-height: 1.4 !important;
+                color: #333 !important; /* ضمان أن النص في العمود الأبيض أسود داكن */
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">تقنية المعلومات</div> 
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#hero" class="active">الرئيسية</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    
-                    <li><a href="https://my-first-site-gold-seven.vercel.app/" target="_blank">السيرة الذاتية (CV)</a></li> 
-                    
-                    <li><a href="#contact">تواصل معنا</a></li>
-                </ul>
-            </nav>
-
-            <button class="menu-toggle" aria-label="فتح قائمة التنقل">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+    
+    <header>
+        <div class="header-logo"> </div>
+        <nav class="header-nav">
+            <a href="#">الرئيسية</a>
+            <a href="#">عنّا</a>
+            <a href="#footer">التواصل بنا (المطور)</a> 
+        </nav>
     </header>
+    <div class="container">
+    <div class="header-area print-area">
+        <h1 class="cv-title">CV</h1>
 
-    <section class="hero-section" id="hero">
-        <div class="container">
-            <h1 class="hero-title">
-                مرحباً بك في منصة <span class="highlight-text">IT</span> للحلول الذكية.
-            </h1>
-            <p class="hero-subtitle">
-                نحن نقدم الدعم والحلول التقنية المتقدمة لأي مشكلة تواجهها في عالم التكنولوجيا والأمن.
-            </p>
-            <a href="#contact" class="main-cta-button">تواصل معنا لبدء مشروعك</a> 
+        <div class="image-upload-container">
+            <img id="profile-image" src="" alt="صورة شخصية (اختياري)">
+            <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload()">
+            <label for="image-upload" class="upload-label">
+                اختياري: لتحميل صورة شخصية اضغط هنا
+            </label>
         </div>
-    </section>
+    </div>
 
-    <section class="quick-tip-section">
-        <div class="container">
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h2 class="tip-title">نصيحة اليوم الأمنية</h2>
-                <p class="tip-content" id="security-tip">
-                    نصيحة اليوم: استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.
-                </p>
+    <form id="cv-form">
+        
+        <h2>المعلومات الشخصية</h2>
+        <div class="section-content">
+            <div class="form-group-contact">
+                <label for="name">الاسم الكامل:</label>
+                <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
             </div>
-        </div>
-    </section>
-
-    <section class="tech-stack-section" id="tech-stack">
-        <div class="container">
-            <h2 class="section-title text-center">الأدوات والتقنيات الأساسية</h2>
-            <p class="section-subtitle text-center">الخبرة في أحدث بيئات التطوير والأمن السيبراني.</p>
-
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <i class="fas fa-shield-alt tech-icon"></i>
-                    <h3>الأمن السيبراني</h3>
-                    <ul>
-                        <li><span class="tech-tag">Penetration Testing</span></li>
-                        <li><span class="tech-tag">Ethical Hacking</span></li>
-                        <li><span class="tech-tag">Kali Linux</span></li>
-                    </ul>
-                </div>
-                <div class="tech-item">
-                    <i class="fas fa-server tech-icon"></i>
-                    <h3>تطوير الأنظمة</h3>
-                    <ul>
-                        <li><span class="tech-tag">Python</span></li>
-                        <li><span class="tech-tag">Node.js</span></li>
-                        <li><span class="tech-tag">Databases</span></li>
-                    </ul>
-                </div>
-                <div class="tech-item">
-                    <i class="fas fa-network-wired tech-icon"></i>
-                    <h3>الشبكات والـ Cloud</h3>
-                    <ul>
-                        <li><span class="tech-tag">AWS / Azure</span></li>
-                        <li><span class="tech-tag">Bash Scripting</span></li>
-                        <li><span class="tech-tag">Docker / K8s</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <main class="main-content" id="services">
-        <div class="container">
-            <h2 class="section-title text-center">خدماتنا الرئيسية</h2>
             
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-lock"></i></div>
-                    <h2>الأمن السيبراني</h2>
-                    <p>تحصين الأنظمة والشبكات ضد الاختراقات وتوفير اختبارات الاختراق (Penetration Testing).</p>
-                    <a href="#" class="card-link">اعرف المزيد</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-code"></i></div>
-                    <h2>تطوير البرمجيات</h2>
-                    <p>بناء تطبيقات ويب وهواتف ذكية مخصصة باستخدام أحدث التقنيات واللغات البرمجية.</p>
-                    <a href="#" class="card-link">اعرف المزيد</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="card-icon"><i class="fas fa-server"></i></div>
-                    <h2>إدارة البنية التحتية</h2>
-                    <p>تصميم وإدارة وصيانة الخوادم، قواعد البيانات، والشبكات لضمان الاستمرارية والكفاءة.</p>
-                    <a href="#" class="card-link">اعرف المزيد</a>
-                </div>
-
+            <div class="form-group-contact">
+                <label for="city-country">المدينة والدولة:</label>
+                <input type="text" id="city-country" name="city-country" placeholder="مثال: الرياض، السعودية">
             </div>
-        </div>
-    </main>
 
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2>تواصل معنا</h2>
-            <p>هل أنت مستعد لبدء مشروعك؟ اترك لنا رسالة وسنتواصل معك فوراً.</p>
+            <div class="form-group-contact">
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+            </div>
+
+            <div class="form-group-contact">
+                <label for="phone">رقم الهاتف:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+966 5x xxx xx xx">
+            </div>
             
-            <form class="contact-form" id="contact-form">
-                <div class="form-group">
-                    <label for="name">الاسم الكريم:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">البريد الإلكتروني:</label>
-                    <input type="email" id="email" name="email" required>
-                    <small id="email-error" style="color: #e74c3c; display: none;">يرجى إدخال بريد إلكتروني صحيح.</small>
-                </div>
-                <div class="form-group">
-                    <label for="message">الرسالة:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">إرسال الرسالة</button>
-            </form>
-        </div>
-    </section>
+            <div class="form-group-contact">
+                <label for="job-title">المسمى الوظيفي (سيظهر تحت اسمك):</label>
+                <input type="text" id="job-title" name="job-title" placeholder="مثال: مصمم جرافيك محترف">
+            </div>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; <span id="current-year">2024</span> تقنية المعلومات | جميع الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="جيت هاب"><i class="fab fa-github"></i></a>
+            <label for="summary">الملخص المهني / الهدف:</label>
+            <textarea id="summary" name="summary" rows="4" placeholder="اكتب ملخصاً قصيراً عنك وعن أهدافك المهنية"></textarea>
+        </div>
+
+        <h2>الخبرة العملية</h2>
+        <div id="experience-section-content" class="section-content">
+            <label for="experience-free-text">أدخل خبراتك العملية بتفصيل (المسمى، الشركة، المدة، المهام):</label>
+            <textarea id="experience-free-text" name="experience-free-text" rows="8"></textarea>
+        </div>
+        
+        <h2>التعليم والمؤهلات</h2>
+        <div class="section-content">
+            <label for="degree">المؤهل العلمي (مثال: بكالوريوس هندسة):</label>
+            <input type="text" id="degree" name="degree" placeholder="أدخل مؤهلك العلمي">
+
+            <label for="university">الجامعة / الجهة المانحة:</label>
+            <input type="text" id="university" name="university" placeholder="اسم الجامعة">
+        </div>
+
+        <h2>المهارات الشخصية (اختر ما ينطبق عليك)</h2>
+        <div class="section-content skills-options">
+            <div>
+                <input type="checkbox" id="skill1" name="soft_skill" value="العمل الجماعي الفعّال">
+                <label for="skill1">العمل الجماعي الفعّال</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skill2" name="soft_skill" value="الالتزام بالمواعيد النهائية">
+                <label for="skill2">الالتزام بالمواعيد النهائية</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skill3" name="soft_skill" value="الابتكار والتفكير الإبداعي">
+                <label for="skill3">الابتكار والتفكير الإبداعي</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skill4" name="soft_skill" value="حب التطوير المستمر">
+                <label for="skill4">حب التطوير المستمر</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skill5" name="soft_skill" value="قابلية عالية للتعلم">
+                <label for="skill5">قابلية عالية للتعلم</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skill6" name="soft_skill" value="مهارات تواصل قوية">
+                <label for="skill6">مهارات تواصل قوية</label>
+            </div>
+             <div>
+                <input type="checkbox" id="skill7" name="soft_skill" value="القيادة وتحمل المسؤولية">
+                <label for="skill7">القيادة وتحمل المسؤولية</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skill8" name="soft_skill" value="حل المشكلات واتخاذ القرارات">
+                <label for="skill8">حل المشكلات واتخاذ القرارات</label>
             </div>
         </div>
+
+        <h2>المهارات اللغوية</h2>
+        <div class="section-content" id="languages-container">
+            <label>أدخل اللغة ومستوى إتقانها (%)</label>
+            <div class="language-entry">
+                <input type="text" class="lang-name" placeholder="اسم اللغة (مثال: الإنجليزية)">
+                <input type="number" class="lang-level" min="0" max="100" placeholder="المستوى % (مثال: 85)">
+            </div>
+            <button type="button" onclick="addLanguageEntry()">إضافة لغة أخرى</button>
+        </div>
+        
+        <h2>الهوايات</h2>
+        <div class="section-content">
+            <label for="hobbies">أدخل هواياتك مفصولة بفاصلة (،)</label>
+            <textarea id="hobbies" name="hobbies" rows="2" placeholder="مثال: ركوب الدراجات، السباحة، القراءة"></textarea>
+        </div>
+        
+        <h2>المراجع (اختياري)</h2>
+        <div class="section-content" id="references-container">
+             <label>أدخل بيانات مرجع واحد على الأقل، أو اتركها فارغة.</label>
+            <div class="reference-entry">
+                <input type="text" class="ref-name" placeholder="الاسم الكامل للمرجع">
+                <input type="text" class="ref-title" placeholder="المسمى الوظيفي (مثال: مدير الشركة)">
+                <input type="email" class="ref-email" placeholder="البريد الإلكتروني">
+                <input type="tel" class="ref-phone" placeholder="رقم الهاتف">
+            </div>
+            <button type="button" onclick="addReferenceEntry()">إضافة مرجع آخر</button>
+        </div>
+
+        <button type="button" class="print-button-on-form" onclick="prepareAndPrint()">
+         الضغط للمعاينة والطباعة
+        </button>
+    </form>
+
+    <div id="printable-cv" style="display: none;">
+        <div class="print-page-frame">
+            
+            <div id="print-content-columns">
+                 <div class="sidebar-column" id="sidebar-content">
+                     </div>
+                
+                 <div class="main-content-column" id="main-content">
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer id="footer">
+        &copy; 2025 جميع الحقوق محفوظة | تصميم المهندس محمدالمخدري.
     </footer>
 
-    <script>
-        /**
-         * منطق التحكم بالصفحة (القائمة، الأمان، والإرسال الفعلي)
-         */
+<script>
+    
+    function addLanguageEntry() {
+        const container = document.getElementById('languages-container');
+        const newEntry = document.createElement('div');
+        newEntry.className = 'language-entry';
+        newEntry.innerHTML = `
+            <input type="text" class="lang-name" placeholder="اسم اللغة (مثال: الفرنسية)">
+            <input type="number" class="lang-level" min="0" max="100" placeholder="المستوى % (مثال: 70)">
+        `;
+        container.insertBefore(newEntry, container.lastElementChild);
+    }
+    
+    function addReferenceEntry() {
+        const container = document.getElementById('references-container');
+        const newEntry = document.createElement('div');
+        newEntry.className = 'reference-entry';
+        newEntry.innerHTML = `
+            <input type="text" class="ref-name" placeholder="الاسم الكامل للمرجع">
+            <input type="text" class="ref-title" placeholder="المسمى الوظيفي">
+            <input type="email" class="ref-email" placeholder="البريد الإلكتروني">
+            <input type="tel" class="ref-phone" placeholder="رقم الهاتف">
+        `;
+        container.insertBefore(newEntry, container.lastElementChild);
+    }
 
-        // دالة التحصين (الأمان)
-        const sanitizeInput = (text) => {
-            if (!text) return '';
-            let sanitized = text.replace(/&/g, '&amp;')
-                                .replace(/</g, '&lt;')
-                                .replace(/>/g, '&gt;')
-                                .replace(/"/g, '&quot;')
-                                .replace(/'/g, '&#39;');
-            return sanitized.trim();
-        };
+    function handleImageUpload() {
+        const fileInput = document.getElementById('image-upload');
+        const profileImage = document.getElementById('profile-image');
 
-        // دالة التحقق من البريد الإلكتروني
-        const validateEmail = (email) => {
-            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            return re.test(String(email).toLowerCase());
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
             
-            // 1. تفعيل قائمة التنقل
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
-            if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', () => {
-                    mainNav.classList.toggle('active'); 
-                });
-
-                // إغلاق القائمة عند النقر على رابط داخلي
-                const navLinks = mainNav.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mainNav.classList.remove('active');
-                    });
-                });
-            }
-
-            // 2. تحديث السنة
-            const currentYear = new Date().getFullYear();
-            const yearElement = document.getElementById('current-year');
-            if (yearElement) {
-                yearElement.textContent = currentYear;
-            }
+            reader.onload = function(e) {
+                profileImage.src = e.target.result; 
+            };
             
-            // 3. وظيفة النصيحة الأمنية
-            const securityTips = [
-                "استخدم المصادقة الثنائية (2FA) لكل حساباتك الهامة لزيادة الأمان.",
-                "قم بتحديث نظام التشغيل والتطبيقات باستمرار لسد الثغرات الأمنية.",
-                "استخدم مدير كلمات مرور لإنشاء وتخزين كلمات مرور قوية وفريدة.",
-                "احذر من رسائل البريد الإلكتروني العشوائية (Phishing) ولا تضغط على روابط مشبوهة.",
-                "قم بإجراء نسخ احتياطي لبياناتك بانتظام لتجنب فقدانها بسبب هجمات الفدية."
-            ];
-            const tipElement = document.getElementById('security-tip');
-            if(tipElement) {
-                const randomIndex = Math.floor(Math.random() * securityTips.length);
-                tipElement.textContent = "نصيحة اليوم: " + securityTips[randomIndex];
-            }
-            
-            // 4. منطق الإرسال الفعلي
-            const contactForm = document.getElementById('contact-form');
-            // مفتاح Web3Forms
-            const WEB3FORMS_ACCESS_KEY = "b2ed5633-7b5f-46c3-b087-5bb11a7da5a0"; 
-            
-            if (contactForm) {
-                const emailInput = document.getElementById('email');
-                const emailError = document.getElementById('email-error');
-                const submitButton = contactForm.querySelector('.submit-button');
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+    
+    // الدالة الرئيسية لتجهيز محتوى الطباعة
+    function prepareAndPrint() {
+        const mainContent = document.getElementById('main-content');
+        const sidebarContent = document.getElementById('sidebar-content');
+        
+        mainContent.innerHTML = '';
+        sidebarContent.innerHTML = '';
 
-                let isSubmitting = false;
 
-                contactForm.addEventListener('submit', async (e) => {
-                    e.preventDefault(); 
-                    if (isSubmitting) return; 
+        // 1. جلب البيانات
+        const name = document.getElementById('name').value.trim();
+        const jobTitle = document.getElementById('job-title').value.trim(); 
+        const cityCountry = document.getElementById('city-country').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        
+        // تم تعيين قيمة profileUrl فارغة هنا، حيث تم إزالة الحقل من الـ HTML
+        const profileUrl = ''; 
+        
+        const summary = document.getElementById('summary').value.trim();
+        const experienceFreeText = document.getElementById('experience-free-text').value.trim();
+        const degree = document.getElementById('degree').value.trim();
+        const university = document.getElementById('university').value.trim();
+        const hobbies = document.getElementById('hobbies').value.trim(); 
+        
+        // جلب مصدر الصورة لمرة واحدة
+        const profileImage = document.getElementById('profile-image');
+        const imageSrc = profileImage.src && !profileImage.src.includes('صورة شخصية (اختياري)') ? profileImage.src : '';
+        
+        // جلب اللغات
+        const languageEntries = Array.from(document.querySelectorAll('#languages-container .language-entry'));
+        const languages = languageEntries.map(entry => ({
+            name: entry.querySelector('.lang-name').value.trim(),
+            level: parseInt(entry.querySelector('.lang-level').value) || 0
+        })).filter(lang => lang.name && lang.level > 0);
+        
+        // جلب المراجع
+        const referenceEntries = Array.from(document.querySelectorAll('#references-container .reference-entry'));
+        const references = referenceEntries.map(entry => ({
+            name: entry.querySelector('.ref-name').value.trim(),
+            title: entry.querySelector('.ref-title').value.trim(),
+            email: entry.querySelector('.ref-email').value.trim(),
+            phone: entry.querySelector('.ref-phone').value.trim()
+        })).filter(ref => ref.name);
 
-                    // التحقق من صحة البريد الإلكتروني
-                    if (!validateEmail(emailInput.value)) {
-                        if (emailError) emailError.style.display = 'block';
-                        return;
-                    } else {
-                        if (emailError) emailError.style.display = 'none';
-                    }
 
-                    isSubmitting = true;
-                    submitButton.disabled = true;
-                    submitButton.textContent = 'جاري الإرسال...';
-                    
-                    // جمع البيانات وتحصينها
-                    const formData = new FormData(contactForm);
-                    const formPayload = {
-                        'access_key': WEB3FORMS_ACCESS_KEY,
-                        'name': sanitizeInput(formData.get('name')),
-                        'email': formData.get('email'), 
-                        'message': sanitizeInput(formData.get('message'))
-                    };
+        // *********************************************************
+        // 2. بناء محتوى العمود الجانبي (Sidebar)
+        // *********************************************************
+        let sidebarHTML = '';
 
-                    try {
-                        const response = await fetch("https://api.web3forms.com/submit", {
-                            method: "POST",
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify(formPayload)
-                        });
+        // أ. الاسم والصورة والمسمى الوظيفي 
+        sidebarHTML += `
+             <div class="header-sidebar-container-print">
+                <div class="image-upload-container-print" style="display: ${imageSrc ? 'block' : 'none'};">
+                    <img id="print-image-display" src="${imageSrc}" alt="صورة شخصية">
+                </div>
+                <h1 style="margin: ${imageSrc ? '15px' : '0'} 0 0 0;">${name || 'الاسم الكامل'}</h1>
+                <h3>${jobTitle || 'المسمى الوظيفي'}</h3>
+            </div>
+        `;
 
-                        const result = await response.json();
 
-                        if (response.ok && result.success) {
-                            // رسالة شكر عامة وغير مخصصة
-                            alert("شكراً لك! تم إرسال رسالتك بنجاح.");
-                            contactForm.reset(); // تفريغ النموذج
-                        } else {
-                            console.error("Web3Forms Error:", result);
-                            alert("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.");
-                        }
-                    } catch (error) {
-                        console.error("Network or API Error:", error);
-                        alert("عذراً، حدث خطأ في الاتصال بالشبكة. يرجى المحاولة لاحقاً.");
-                    } finally {
-                        isSubmitting = false;
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'إرسال الرسالة';
-                    }
-                });
-            }
-        });
-    </script>
+        // ب. التواصل (Personal Info) 
+        let contactHTML = '<h2>معلومات الاتصال</h2><div class="section-content contact-details">';
+        
+        if (phone) contactHTML += `<p>📞 الهاتف: <strong>${phone}</strong></p>`; 
+        if (email) contactHTML += `<p>✉️ البريد: <strong>${email}</strong></p>`; 
+        // لن يتم إظهار رابط الملف التعريفي في الطباعة حيث أن profileUrl فارغة الآن
+        if (profileUrl) contactHTML += `<p>🔗 رابط: <strong>${profileUrl}</strong></p>`; 
+        if (cityCountry) contactHTML += `<p>📍 الموقع: <strong>${cityCountry}</strong></p>`; 
+        
+        contactHTML += '</div>';
+        sidebarHTML += contactHTML;
+
+        // ج. اللغات (Language Bars)
+         if (languages.length > 0) {
+            let langHTML = '<h2>اللغات</h2><div class="section-content">';
+            languages.forEach(lang => {
+                const level = Math.min(100, Math.max(0, lang.level)); 
+                langHTML += `
+                    <div class="language-entry-print">
+                        <span class="lang-name-print">${lang.name} - ${level}%</span>
+                        <div class="lang-bar-container">
+                            <div class="lang-bar-fill" style="width: ${level}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            langHTML += '</div>';
+            sidebarHTML += langHTML;
+        }
+
+        // د. المهارات الشخصية (Soft Skills)
+        const selectedSkills = Array.from(document.querySelectorAll('input[name="soft_skill"]:checked'))
+                                    .map(checkbox => checkbox.value);
+        if (selectedSkills.length > 0) {
+            const skillsListHTML = selectedSkills.map(skill => `<p>- ${skill}</p>`).join('');
+            sidebarHTML += `
+                <h2>مهارات شخصية</h2>
+                <div class="section-content">
+                    ${skillsListHTML}
+                </div>
+            `;
+        }
+        
+        // هـ. الهوايات
+        if (hobbies) {
+             const hobbiesList = hobbies.split(',').map(h => h.trim()).filter(h => h.length > 0);
+             if (hobbiesList.length > 0) {
+                  let hobbiesHTML = '<h2>الهوايات</h2><div class="section-content"><ul class="hobbies-list">';
+                  hobbiesList.forEach(hobby => {
+                      hobbiesHTML += `<li>${hobby}</li>`;
+                  });
+                  hobbiesHTML += '</ul></div>';
+                  sidebarHTML += hobbiesHTML;
+             }
+        }
+        
+        sidebarContent.innerHTML = sidebarHTML;
+
+
+        // *********************************************************
+        // 3. بناء محتوى العمود الرئيسي (Main Content)
+        // *********************************************************
+        let mainHTML = '';
+        
+        // أ. إضافة عنوان "CV" (على اليسار)
+         mainHTML += `
+            <h1 id="cv-print-header" style="text-align: left !important;">CV</h1>
+        `;
+
+        // ب. الملخص المهني
+        if (summary) {
+            mainHTML += `
+                <h2>الملخص المهني</h2>
+                <div class="section-content">
+                    <p style="text-align: justify;">${summary.replace(/\n/g, '<br>')}</p>
+                </div>
+            `;
+        }
+        
+        // ج. الخبرة العملية
+        if (experienceFreeText) {
+            mainHTML += `
+                <h2>الخبرة العملية</h2>
+                <div class="section-content">
+                    <p style="text-align: justify; white-space: pre-wrap;">${experienceFreeText}</p>
+                </div>
+            `;
+        }
+        
+        // د. التعليم والمؤهلات 
+        if (degree || university) {
+            mainHTML += `
+                <h2>التعليم والمؤهلات</h2>
+                <div class="section-content">
+                    <div class="print-detail-entry">
+                        <p style="font-weight: bold; margin-bottom: 0; font-size: 14px; color:#17202A;">${degree || 'مؤهل غير محدد'}</p>
+                        <p style="color: #333; margin: 3px 0; font-size: 13px;">${university}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // هـ. المراجع
+        if (references.length > 0) {
+             let refHTML = '<h2>المراجع</h2><div class="section-content">';
+            references.forEach(ref => {
+                refHTML += `
+                    <div class="reference-entry-print">
+                        <strong>${ref.name}</strong>
+                        <p>${ref.title}</p>
+                        <p>البريد: ${ref.email}</p>
+                        <p>الهاتف: ${ref.phone}</p>
+                    </div>
+                `;
+            });
+            refHTML += '</div>';
+            mainHTML += refHTML;
+        }
+
+        mainContent.innerHTML = mainHTML;
+        
+        // 4. إطلاق أمر الطباعة
+        window.print();
+    }
+</script>
 </body>
 </html>

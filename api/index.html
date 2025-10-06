@@ -3,725 +3,638 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>السيرة الذاتية - CV</title>
-    <style>
-        /* ********************************************************* */
-        /* تنسيقات النموذج (صفحة الإدخال) - بدون تغيير */
-        /* ********************************************************* */
-        body {
-            font-family: 'Arial', 'Helvetica Neue', sans-serif; 
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-            padding: 0; 
-            margin: 0;
-            direction: rtl; 
-        }
-        
-        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="url"], textarea {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; 
-            display: block;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        header {
-            background-color: #17202A;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header-nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 25px;
-        }
-        footer {
-            background-color: #17202A;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 30px; 
-            font-size: 0.9em;
-            width: 100%;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 20px auto; 
-            background: #fff;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .cv-title {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            color: #17202A;
-            margin-bottom: 5px;
-            letter-spacing: 5px;
-        }
-
-        .header-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        #profile-image {
-            width: 100px !important;
-            height: 100px !important;
-            max-width: 100px !important; 
-            max-height: 100px !important; 
-            background-color: #e9ecef; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 2px solid #007bff;
-            display: block; 
-            margin: 0 auto 10px auto; 
-            opacity: 0.7; 
-        }
-        
-        #profile-image[src]:not([src=""]) {
-            opacity: 1; 
-            border: 2px solid #28a745; 
-        }
-
-        .image-upload-container input[type="file"] {
-            display: none;
-        }
-
-        .upload-label {
-            display: block;
-            cursor: pointer;
-            color: #007bff;
-            font-size: 14px;
-            text-decoration: underline;
-        }
-        
-        h2 {
-            color: #007bff;
-            border-bottom: 2px solid #007bff; /* الخط الأزرق الذي سيتم تعديله في الطباعة */
-            padding-bottom: 5px;
-            margin-top: 25px;
-            font-size: 20px; 
-            font-weight: 600; 
-        }
-
-        .section-content {
-            margin-bottom: 20px;
-            padding-right: 15px;
-        }
-        
-        .print-button-on-form {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 25px;
-            transition: background-color 0.3s;
-        }
-
-        .print-area {
-             display: flex !important; 
-        }
-        form {
-             display: block !important; 
-        }
-        
-        #printable-cv {
-            display: none; 
-        }
-        
-        .skills-options div {
-             display: inline-block;
-             margin-left: 10px;
-             margin-bottom: 5px;
-        }
-
-        .language-entry, .reference-entry {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-        .language-entry input[type="text"], 
-        .language-entry input[type="number"] {
-            width: calc(50% - 15px);
-            display: inline-block;
-            margin-left: 10px;
-        }
-        .reference-entry input {
-            margin-bottom: 10px;
-        }
-        
-        /* ********************************************************* */
-        /* تنسيقات صفحة الطباعة (الحل الهندسي لمشاكل التقطيع والوضوح) */
-        /* ********************************************************* */
-        @media print {
-            
-            @page {
-                margin: 0.5cm !important; 
-                padding: 0 !important;
-            }
-
-            body {
-                background: white !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                font-family: 'Arial', 'Helvetica Neue', sans-serif !important; 
-                font-size: 12px !important; 
-            }
-            
-            /* إخفاء عناصر النموذج الأساسية */
-            .print-area, form, .print-actions, .print-button-on-form, header, footer { 
-                display: none !important;
-            }
-            
-            #printable-cv {
-                display: block !important; 
-                width: 100% !important; 
-                position: relative; 
-                background: white;
-                box-sizing: border-box;
-                padding: 0;
-                margin: 0;
-            }
-            
-            /* تفعيل طباعة الألوان */
-            .sidebar-column, .main-content-column h2, .lang-bar-fill, #cv-print-header {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            /* ********************************************************* */
-            /* 1. نظام الأعمدة ومنع التقطيع */
-            /* ********************************************************* */
-            
-            #print-content-columns {
-                display: grid !important; 
-                grid-template-columns: 35% 65% !important; 
-                gap: 0; 
-                position: relative;
-            }
-            
-            /* العمود الجانبي الملون (Sidebar - على اليمين) */
-            .sidebar-column {
-                background-color: #5B4F46 !important; 
-                color: #FFFFFF !important; /* النص العادي: أبيض ناصع لتباين ممتاز */
-                padding: 20px 10px 10px 10px !important; 
-                order: 1; 
-            }
-            
-            /* عمود المحتوى الرئيسي (على اليسار) */
-            .main-content-column {
-                padding: 20px 20px 20px 15px !important; 
-                order: 2; 
-                background: white;
-            }
-
-            /* منع قطع المحتوى داخل الأقسام (الحل الرئيسي لمشكلة التقطيع) */
-            .main-content-column h2, 
-            .sidebar-column h2,
-            .section-content,
-            .language-entry-print,
-            .reference-entry-print {
-                page-break-inside: avoid !important; /* للطباعة */
-                -webkit-column-break-inside: avoid !important; /* لمتصفحات كروم */
-                break-inside: avoid !important; /* للجميع */
-            }
-            
-            /* ********************************************************* */
-            /* 2. تحسين وضوح العناوين في العمود الرئيسي (اللون الأبيض) */
-            /* ********************************************************* */
-            
-            /* العناوين في العمود الرئيسي (أسود داكن مع خط رمادي) */
-            .main-content-column h2 {
-                color: #17202A !important; /* لون النص: أسود داكن */
-                border-bottom: 2px solid #6c757d !important; /* لون الخط السفلي: رمادي غامق احترافي */
-                padding-bottom: 3px !important; 
-                margin-top: 15px !important; 
-                font-size: 16px !important; 
-                font-weight: 700 !important;
-                display: block !important;
-                border-left: none !important; 
-                padding-left: 0 !important;
-            }
-            
-            .main-content-column h2::after {
-                display: none !important; 
-            }
-            
-            /* تنسيق عنوان "CV" في العمود الرئيسي (على اليسار) */
-            #cv-print-header {
-                 text-align: left !important; /* كلمة CV على اليسار */
-                 font-size: 30px !important; 
-                 margin-bottom: 10px !important;
-                 letter-spacing: 5px !important; 
-                 border-bottom: 2px solid #6c757d !important; /* رمادي غامق */
-                 padding-bottom: 5px;
-                 color: #17202A !important; /* أسود داكن */
-            }
-            
-            /* ********************************************************* */
-            /* 3. تنسيق العناوين داخل العمود الجانبي (البني الداكن) */
-            /* ********************************************************* */
-            
-            .header-sidebar-container-print {
-                text-align: center !important; 
-                margin-bottom: 20px !important;
-                color: white !important; 
-            }
-             
-            .sidebar-column h2 {
-                color: #f8f9fa !important; /* العناوين الفرعية داخل البني: رمادي فاتح (أنيق وجذاب) */
-                border-bottom: 1px solid #f8f9fa !important; /* خط فاصل رمادي فاتح */
-            }
-
-            .image-upload-container-print {
-                display: block !important;
-                width: 80px !important; 
-                height: 80px !important;
-                margin: 0 auto 8px auto !important; 
-            }
-
-            .image-upload-container-print img {
-                width: 100% !important;
-                height: 100% !important;
-                border-radius: 50% !important;
-                object-fit: cover !important;
-                border: 2px solid #fff !important; 
-            }
-            
-            .header-sidebar-container-print h1 {
-                font-size: 18px !important; 
-                margin: 5px 0 0 0 !important;
-            }
-            
-            .header-sidebar-container-print h3 {
-                font-size: 12px !important; 
-                margin: 2px 0 0 0 !important;
-            }
-            
-            .lang-bar-fill {
-                 background-color: #f8f9fa !important; /* لون ملء شريط اللغة: رمادي فاتح */
-            }
-             
-             .main-content-column .section-content {
-                margin-bottom: 10px !important;
-            }
-            .main-content-column p, .main-content-column li {
-                font-size: 12px !important;
-                line-height: 1.4 !important;
-                color: #333 !important; /* ضمان أن النص في العمود الأبيض أسود داكن */
-            }
-        }
-    </style>
+    <title>المنصة الرقمية المتكاملة</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#mainNav">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">المنصة الرقمية</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" onclick="showMainContent(); return false;">الرؤية والهدف</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showMainContent(); return false;">من نحن</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showMainContent(); return false;">الخدمات والأدوات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showMainContent(); return false;">آراء العملاء</a></li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
     
-    <header>
-        <div class="header-logo"> </div>
-        <nav class="header-nav">
-            <a href="#">الرئيسية</a>
-            <a href="#">عنّا</a>
-            <a href="#footer">التواصل بنا (المطور)</a> 
-        </nav>
-    </header>
-    <div class="container">
-    <div class="header-area print-area">
-        <h1 class="cv-title">CV</h1>
+    <div class="overflow-fix">
 
-        <div class="image-upload-container">
-            <img id="profile-image" src="" alt="صورة شخصية (اختياري)">
-            <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload()">
-            <label for="image-upload" class="upload-label">
-                اختياري: لتحميل صورة شخصية اضغط هنا
-            </label>
-        </div>
-    </div>
-
-    <form id="cv-form">
-        
-        <h2>المعلومات الشخصية</h2>
-        <div class="section-content">
-            <div class="form-group-contact">
-                <label for="name">الاسم الكامل:</label>
-                <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
-            </div>
-            
-            <div class="form-group-contact">
-                <label for="city-country">المدينة والدولة:</label>
-                <input type="text" id="city-country" name="city-country" placeholder="مثال: الرياض، السعودية">
-            </div>
-
-            <div class="form-group-contact">
-                <label for="email">البريد الإلكتروني:</label>
-                <input type="email" id="email" name="email" placeholder="example@domain.com" required>
-            </div>
-
-            <div class="form-group-contact">
-                <label for="phone">رقم الهاتف:</label>
-                <input type="tel" id="phone" name="phone" placeholder="+966 5x xxx xx xx">
-            </div>
-            
-            <div class="form-group-contact">
-                <label for="job-title">المسمى الوظيفي (سيظهر تحت اسمك):</label>
-                <input type="text" id="job-title" name="job-title" placeholder="مثال: مصمم جرافيك محترف">
-            </div>
-
-            <label for="summary">الملخص المهني / الهدف:</label>
-            <textarea id="summary" name="summary" rows="4" placeholder="اكتب ملخصاً قصيراً عنك وعن أهدافك المهنية"></textarea>
-        </div>
-
-        <h2>الخبرة العملية</h2>
-        <div id="experience-section-content" class="section-content">
-            <label for="experience-free-text">أدخل خبراتك العملية بتفصيل (المسمى، الشركة، المدة، المهام):</label>
-            <textarea id="experience-free-text" name="experience-free-text" rows="8"></textarea>
-        </div>
-        
-        <h2>التعليم والمؤهلات</h2>
-        <div class="section-content">
-            <label for="degree">المؤهل العلمي (مثال: بكالوريوس هندسة):</label>
-            <input type="text" id="degree" name="degree" placeholder="أدخل مؤهلك العلمي">
-
-            <label for="university">الجامعة / الجهة المانحة:</label>
-            <input type="text" id="university" name="university" placeholder="اسم الجامعة">
-        </div>
-
-        <h2>المهارات الشخصية (اختر ما ينطبق عليك)</h2>
-        <div class="section-content skills-options">
-            <div>
-                <input type="checkbox" id="skill1" name="soft_skill" value="العمل الجماعي الفعّال">
-                <label for="skill1">العمل الجماعي الفعّال</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skill2" name="soft_skill" value="الالتزام بالمواعيد النهائية">
-                <label for="skill2">الالتزام بالمواعيد النهائية</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skill3" name="soft_skill" value="الابتكار والتفكير الإبداعي">
-                <label for="skill3">الابتكار والتفكير الإبداعي</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skill4" name="soft_skill" value="حب التطوير المستمر">
-                <label for="skill4">حب التطوير المستمر</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skill5" name="soft_skill" value="قابلية عالية للتعلم">
-                <label for="skill5">قابلية عالية للتعلم</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skill6" name="soft_skill" value="مهارات تواصل قوية">
-                <label for="skill6">مهارات تواصل قوية</label>
-            </div>
-             <div>
-                <input type="checkbox" id="skill7" name="soft_skill" value="القيادة وتحمل المسؤولية">
-                <label for="skill7">القيادة وتحمل المسؤولية</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skill8" name="soft_skill" value="حل المشكلات واتخاذ القرارات">
-                <label for="skill8">حل المشكلات واتخاذ القرارات</label>
-            </div>
-        </div>
-
-        <h2>المهارات اللغوية</h2>
-        <div class="section-content" id="languages-container">
-            <label>أدخل اللغة ومستوى إتقانها (%)</label>
-            <div class="language-entry">
-                <input type="text" class="lang-name" placeholder="اسم اللغة (مثال: الإنجليزية)">
-                <input type="number" class="lang-level" min="0" max="100" placeholder="المستوى % (مثال: 85)">
-            </div>
-            <button type="button" onclick="addLanguageEntry()">إضافة لغة أخرى</button>
-        </div>
-        
-        <h2>الهوايات</h2>
-        <div class="section-content">
-            <label for="hobbies">أدخل هواياتك مفصولة بفاصلة (،)</label>
-            <textarea id="hobbies" name="hobbies" rows="2" placeholder="مثال: ركوب الدراجات، السباحة، القراءة"></textarea>
-        </div>
-        
-        <h2>المراجع (اختياري)</h2>
-        <div class="section-content" id="references-container">
-             <label>أدخل بيانات مرجع واحد على الأقل، أو اتركها فارغة.</label>
-            <div class="reference-entry">
-                <input type="text" class="ref-name" placeholder="الاسم الكامل للمرجع">
-                <input type="text" class="ref-title" placeholder="المسمى الوظيفي (مثال: مدير الشركة)">
-                <input type="email" class="ref-email" placeholder="البريد الإلكتروني">
-                <input type="tel" class="ref-phone" placeholder="رقم الهاتف">
-            </div>
-            <button type="button" onclick="addReferenceEntry()">إضافة مرجع آخر</button>
-        </div>
-
-        <button type="button" class="print-button-on-form" onclick="prepareAndPrint()">
-         الضغط للمعاينة والطباعة
-        </button>
-    </form>
-
-    <div id="printable-cv" style="display: none;">
-        <div class="print-page-frame">
-            
-            <div id="print-content-columns">
-                 <div class="sidebar-column" id="sidebar-content">
-                     </div>
+        <section id="home" class="hero-section text-center d-flex align-items-center justify-content-center">
+            <div class="container">
+                <h1 class="fs-2 fw-bold mb-4" data-aos="fade-down">
+                    أهلاً بك في منصة **(IT)** للتقنية والحلول الذكية
+                </h1>
                 
-                 <div class="main-content-column" id="main-content">
-                    </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <footer id="footer">
-        &copy; 2025 جميع الحقوق محفوظة | تصميم المهندس محمدالمخدري.
-    </footer>
-
-<script>
-    
-    function addLanguageEntry() {
-        const container = document.getElementById('languages-container');
-        const newEntry = document.createElement('div');
-        newEntry.className = 'language-entry';
-        newEntry.innerHTML = `
-            <input type="text" class="lang-name" placeholder="اسم اللغة (مثال: الفرنسية)">
-            <input type="number" class="lang-level" min="0" max="100" placeholder="المستوى % (مثال: 70)">
-        `;
-        container.insertBefore(newEntry, container.lastElementChild);
-    }
-    
-    function addReferenceEntry() {
-        const container = document.getElementById('references-container');
-        const newEntry = document.createElement('div');
-        newEntry.className = 'reference-entry';
-        newEntry.innerHTML = `
-            <input type="text" class="ref-name" placeholder="الاسم الكامل للمرجع">
-            <input type="text" class="ref-title" placeholder="المسمى الوظيفي">
-            <input type="email" class="ref-email" placeholder="البريد الإلكتروني">
-            <input type="tel" class="ref-phone" placeholder="رقم الهاتف">
-        `;
-        container.insertBefore(newEntry, container.lastElementChild);
-    }
-
-    function handleImageUpload() {
-        const fileInput = document.getElementById('image-upload');
-        const profileImage = document.getElementById('profile-image');
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                profileImage.src = e.target.result; 
-            };
-            
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-    
-    // الدالة الرئيسية لتجهيز محتوى الطباعة
-    function prepareAndPrint() {
-        const mainContent = document.getElementById('main-content');
-        const sidebarContent = document.getElementById('sidebar-content');
-        
-        mainContent.innerHTML = '';
-        sidebarContent.innerHTML = '';
-
-
-        // 1. جلب البيانات
-        const name = document.getElementById('name').value.trim();
-        const jobTitle = document.getElementById('job-title').value.trim(); 
-        const cityCountry = document.getElementById('city-country').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        
-        // تم تعيين قيمة profileUrl فارغة هنا، حيث تم إزالة الحقل من الـ HTML
-        const profileUrl = ''; 
-        
-        const summary = document.getElementById('summary').value.trim();
-        const experienceFreeText = document.getElementById('experience-free-text').value.trim();
-        const degree = document.getElementById('degree').value.trim();
-        const university = document.getElementById('university').value.trim();
-        const hobbies = document.getElementById('hobbies').value.trim(); 
-        
-        // جلب مصدر الصورة لمرة واحدة
-        const profileImage = document.getElementById('profile-image');
-        const imageSrc = profileImage.src && !profileImage.src.includes('صورة شخصية (اختياري)') ? profileImage.src : '';
-        
-        // جلب اللغات
-        const languageEntries = Array.from(document.querySelectorAll('#languages-container .language-entry'));
-        const languages = languageEntries.map(entry => ({
-            name: entry.querySelector('.lang-name').value.trim(),
-            level: parseInt(entry.querySelector('.lang-level').value) || 0
-        })).filter(lang => lang.name && lang.level > 0);
-        
-        // جلب المراجع
-        const referenceEntries = Array.from(document.querySelectorAll('#references-container .reference-entry'));
-        const references = referenceEntries.map(entry => ({
-            name: entry.querySelector('.ref-name').value.trim(),
-            title: entry.querySelector('.ref-title').value.trim(),
-            email: entry.querySelector('.ref-email').value.trim(),
-            phone: entry.querySelector('.ref-phone').value.trim()
-        })).filter(ref => ref.name);
-
-
-        // *********************************************************
-        // 2. بناء محتوى العمود الجانبي (Sidebar)
-        // *********************************************************
-        let sidebarHTML = '';
-
-        // أ. الاسم والصورة والمسمى الوظيفي 
-        sidebarHTML += `
-             <div class="header-sidebar-container-print">
-                <div class="image-upload-container-print" style="display: ${imageSrc ? 'block' : 'none'};">
-                    <img id="print-image-display" src="${imageSrc}" alt="صورة شخصية">
-                </div>
-                <h1 style="margin: ${imageSrc ? '15px' : '0'} 0 0 0;">${name || 'الاسم الكامل'}</h1>
-                <h3>${jobTitle || 'المسمى الوظيفي'}</h3>
-            </div>
-        `;
-
-
-        // ب. التواصل (Personal Info) 
-        let contactHTML = '<h2>معلومات الاتصال</h2><div class="section-content contact-details">';
-        
-        if (phone) contactHTML += `<p>📞 الهاتف: <strong>${phone}</strong></p>`; 
-        if (email) contactHTML += `<p>✉️ البريد: <strong>${email}</strong></p>`; 
-        // لن يتم إظهار رابط الملف التعريفي في الطباعة حيث أن profileUrl فارغة الآن
-        if (profileUrl) contactHTML += `<p>🔗 رابط: <strong>${profileUrl}</strong></p>`; 
-        if (cityCountry) contactHTML += `<p>📍 الموقع: <strong>${cityCountry}</strong></p>`; 
-        
-        contactHTML += '</div>';
-        sidebarHTML += contactHTML;
-
-        // ج. اللغات (Language Bars)
-         if (languages.length > 0) {
-            let langHTML = '<h2>اللغات</h2><div class="section-content">';
-            languages.forEach(lang => {
-                const level = Math.min(100, Math.max(0, lang.level)); 
-                langHTML += `
-                    <div class="language-entry-print">
-                        <span class="lang-name-print">${lang.name} - ${level}%</span>
-                        <div class="lang-bar-container">
-                            <div class="lang-bar-fill" style="width: ${level}%;"></div>
+                <p class="fs-5 mx-auto mb-5" data-aos="fade-up" data-aos-delay="200">
+                    نُحوّل خبرة السنين في إدارة السيرفرات والشبكات إلى تأمين البنية التحتية السحابية (Cloud Security) وحلول برمجية آمنة ومستدامة.
+                </p>
+                
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-right" data-aos-delay="400">
+                        <div class="d-grid gap-3">
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('securityAssessment'); return false;">
+                                <i class="fas fa-lock me-2"></i> **التقييم والتحليل الأمني الشامل**
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('cloudSecurity'); return false;">
+                                <i class="fas fa-cloud me-2"></i> **تأمين البنية السحابية (Cloud Security)**
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('riskManagement'); return false;">
+                                <i class="fas fa-exclamation-triangle me-2"></i> **حلول إدارة المخاطر**
+                            </a>
                         </div>
                     </div>
-                `;
-            });
-            langHTML += '</div>';
-            sidebarHTML += langHTML;
-        }
-
-        // د. المهارات الشخصية (Soft Skills)
-        const selectedSkills = Array.from(document.querySelectorAll('input[name="soft_skill"]:checked'))
-                                    .map(checkbox => checkbox.value);
-        if (selectedSkills.length > 0) {
-            const skillsListHTML = selectedSkills.map(skill => `<p>- ${skill}</p>`).join('');
-            sidebarHTML += `
-                <h2>مهارات شخصية</h2>
-                <div class="section-content">
-                    ${skillsListHTML}
+                    
+                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-left" data-aos-delay="600">
+                        <div class="d-grid gap-3">
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('webDev'); return false;">
+                                <i class="fas fa-code me-2"></i> **تطوير تطبيقات الويب الآمنة**
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('networkConsult'); return false;">
+                                <i class="fas fa-network-wired me-2"></i> **استشارات الشبكات والسيرفرات**
+                            </a>
+                            <a href="https://my-first-site-gold-seven.vercel.app/" target="_blank" class="btn btn-outline-warning btn-lg text-white">
+                                <i class="fas fa-file-invoice me-2"></i> **مولد السيرة الذاتية (CV)**
+                            </a>
+                        </div>
+                    </div>
+                    
                 </div>
-            `;
-        }
-        
-        // هـ. الهوايات
-        if (hobbies) {
-             const hobbiesList = hobbies.split(',').map(h => h.trim()).filter(h => h.length > 0);
-             if (hobbiesList.length > 0) {
-                  let hobbiesHTML = '<h2>الهوايات</h2><div class="section-content"><ul class="hobbies-list">';
-                  hobbiesList.forEach(hobby => {
-                      hobbiesHTML += `<li>${hobby}</li>`;
-                  });
-                  hobbiesHTML += '</ul></div>';
-                  sidebarHTML += hobbiesHTML;
-             }
-        }
-        
-        sidebarContent.innerHTML = sidebarHTML;
+            </div>
+        </section>
 
-
-        // *********************************************************
-        // 3. بناء محتوى العمود الرئيسي (Main Content)
-        // *********************************************************
-        let mainHTML = '';
         
-        // أ. إضافة عنوان "CV" (على اليسار)
-         mainHTML += `
-            <h1 id="cv-print-header" style="text-align: left !important;">CV</h1>
-        `;
-
-        // ب. الملخص المهني
-        if (summary) {
-            mainHTML += `
-                <h2>الملخص المهني</h2>
-                <div class="section-content">
-                    <p style="text-align: justify;">${summary.replace(/\n/g, '<br>')}</p>
-                </div>
-            `;
-        }
-        
-        // ج. الخبرة العملية
-        if (experienceFreeText) {
-            mainHTML += `
-                <h2>الخبرة العملية</h2>
-                <div class="section-content">
-                    <p style="text-align: justify; white-space: pre-wrap;">${experienceFreeText}</p>
-                </div>
-            `;
-        }
-        
-        // د. التعليم والمؤهلات 
-        if (degree || university) {
-            mainHTML += `
-                <h2>التعليم والمؤهلات</h2>
-                <div class="section-content">
-                    <div class="print-detail-entry">
-                        <p style="font-weight: bold; margin-bottom: 0; font-size: 14px; color:#17202A;">${degree || 'مؤهل غير محدد'}</p>
-                        <p style="color: #333; margin: 3px 0; font-size: 13px;">${university}</p>
+        <div id="main-content-sections">
+            <section id="about" class="py-5 bg-dark text-white">
+                <div class="container">
+                    <h2 class="display-4 text-center mb-5 text-warning" data-aos="fade-up">المنصة: رؤيتنا وخبرتنا</h2>
+                    
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                            <p class="lead text-light-50">
+                                نحن منصة متكاملة متخصصة في **الأمن السيبراني** و**تطوير الأنظمة البرمجية المتقدمة**. نجمع بين خبرة الهاكر الأخلاقي ومنهجية المطور المحترف لتقديم حلول آمنة وفعالة.
+                            </p>
+                            <p class="text-light-50">
+                                مهمتنا هي بناء حصن رقمي لعملائنا. سواء كنت بحاجة إلى فحص شامل للثغرات، أو تطوير تطبيق ويب بأعلى معايير الأمان، فإن فريقنا مستعد لتوفير الحماية والجودة.
+                            </p>
+                            <a href="#" class="btn btn-outline-warning mt-3" onclick="showService('webDev'); return false;">اطلب استشارة مباشرة</a>
+                        </div>
+                        
+                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                            <ul class="list-unstyled skills-list">
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">التقييم الأمني والتحليل الاحترافي</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تطوير الويب الآمن والبرمجة الاحترافية</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تحليل الثغرات وإدارة المخاطر السيبرانية</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">خبرة عميقة في إدارة السيرفرات والبنية التحتية الشبكية (CCNA/CCNP)</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تأمين شبكات سيسكو والموجهات (Routers) في الاتصالات السلكية واللاسلكية</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            `;
-        }
-        
-        // هـ. المراجع
-        if (references.length > 0) {
-             let refHTML = '<h2>المراجع</h2><div class="section-content">';
-            references.forEach(ref => {
-                refHTML += `
-                    <div class="reference-entry-print">
-                        <strong>${ref.name}</strong>
-                        <p>${ref.title}</p>
-                        <p>البريد: ${ref.email}</p>
-                        <p>الهاتف: ${ref.phone}</p>
+            </section>
+            
+            <section id="features" class="py-5 bg-light">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5" data-aos="fade-up">لماذا نحن؟</h2>
+                    <div class="row">
+                        <div class="col-lg-4 mb-4" data-aos="fade-up">
+                            <div class="card h-100 p-4 shadow-sm">
+                                <i class="fas fa-rocket fa-3x mb-3"></i>
+                                <h5 class="card-title">الجودة والسرعة</h5>
+                                <p class="card-text">إتقان العمل: منهجية تطوير صارمة تضمن جودة لا تقبل المنافسة وسرعة في الإنجاز.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 p-4 shadow-sm">
+                                <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                                <h5 class="card-title">الأمان والموثوقية</h5>
+                                <p class="card-text">حصانة رقمية: الاعتماد على خبرة الهاكر الأخلاقي لبناء دفاعات صلبة ضد الهجمات.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="card h-100 p-4 shadow-sm">
+                                <i class="fas fa-cogs fa-3x mb-3"></i>
+                                <h5 class="card-title">التكامل والمرونة</h5>
+                                <p class="card-text">مرونة التوسع: تصميم البنى التحتية بشكل يمكنها من النمو والتكيف مع المتطلبات المستقبلية.</p>
+                            </div>
+                        </div>
                     </div>
-                `;
+                </div>
+            </section>
+
+            <section id="services" class="py-5 bg-dark text-white">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">خدماتنا الرئيسية</h2>
+                    <p class="lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">استعرض حلولنا المتخصصة في صميم الأمن الرقمي وتطوير الأنظمة عالية الأداء.</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in">
+                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
+                                <i class="fas fa-fingerprint fa-4x mb-3"></i>
+                                <h5 class="card-title text-warning">التحليل الأمني والتقييم الاحترافي</h5>
+                                <p class="card-text text-light-50">فحص شامل للثغرات وتقييم أمني عميق (Security Assessment) وتوفير تقارير مفصلة لتعزيز حماية الأنظمة.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
+                                <i class="fas fa-code fa-4x mb-3"></i>
+                                <h5 class="card-title text-warning">تطوير تطبيقات الويب الآمنة</h5>
+                                <p class="card-text text-light-50">بناء وتطوير منصات وتطبيقات ويب باستخدام أحدث الأطر البرمجية، مع التركيز على الكود النظيف والمحمي.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
+                                <i class="fas fa-network-wired fa-4x mb-3"></i>
+                                <h5 class="card-title text-warning">الاستشارات المتقدمة في الأمن السحابي والشبكات</h5>
+                                <p class="card-text text-light-50">استشارات متخصصة في تأمين **التخزين السحابي (IaaS)**، تصميم بنى تحتية آمنة، ومراجعة إعدادات شبكات سيسكو والسيرفرات.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="portfolio" class="py-5 bg-light">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5" data-aos="fade-up">أبرز أعمالنا و دراسات الحالة</h2>
+                    <p class="lead mb-5 text-secondary" data-aos="fade-up" data-aos-delay="100">استعرض بعضًا من نجاحاتنا في تأمين الأنظمة وتطوير الحلول البرمجية عالية الأداء.</p>
+
+                    <div class="row">
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="portfolio-item card shadow h-100 border-0">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-lock fa-3x mb-3 text-warning"></i>
+                                    <h5 class="card-title text-dark fw-bold">تأمين شبكة ومنصة مالية</h5>
+                                    <p class="card-text text-secondary">نجحنا في اكتشاف وتصحيح 6 ثغرات حرجة (Critical Vulnerabilities) في البنية التحتية لشركة دفع إلكتروني كبرى، مما عزز من موثوقية نظامها.</p>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('securityAssessment'); return false;">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        تفاصيل الدراسة
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="portfolio-item card shadow h-100 border-0">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-desktop fa-3x mb-3 text-warning"></i>
+                                    <h5 class="card-title text-dark fw-bold">منصة إدارية آمنة مخصصة</h5>
+                                <p class="card-text text-secondary">تطوير نظام إداري (ERP System) متكامل، مع تطبيق سياسات أمان صارمة (OWASP Top 10) لضمان حماية بيانات المستخدمين الحساسة.</p>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('webDev'); return false;">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        عرض المشروع
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="portfolio-item card shadow h-100 border-0">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-code-branch fa-3x mb-3 text-warning"></i>
+                                    <h5 class="card-title text-dark fw-bold">تقييم أمان تطبيق جوال</h5>
+                                    <p class="card-text text-secondary">إجراء تقييم أمني شامل لتطبيق جوال يعمل على نظامي iOS و Android، وتقديم تقرير شامل بالتوصيات الفنية لتعزيز الدفاعات.</p>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('securityAssessment'); return false;">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        قراءة التقرير
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimonials" class="py-5 bg-dark text-white">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">ماذا يقول عملاؤنا؟</h2>
+                    
+                    <div class="row justify-content-center">
+                        
+                        <div class="col-lg-5 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="testimonial-card card h-100 p-4 shadow-lg border border-warning">
+                                <div class="card-body">
+                                    <i class="fas fa-quote-right fa-2x mb-3 text-success"></i>
+                                    <p class="fst-italic text-light-50">
+                                        "الخدمة الأمنية التي تلقيناها كانت استثنائية. قاموا بتأمين نظامنا بالكامل، وحصّنوه ضد أي هجوم محتمل. مستوى الاحترافية والخبرة التقنية يفوق التوقعات."
+                                    </p>
+                                    <h5 class="mt-4 mb-0 text-warning">- فهد . أ (مدير تنفيذي لشركة تكنولوجيا)</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 mb-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="testimonial-card card h-100 p-4 shadow-lg border border-warning">
+                                <div class="card-body">
+                                    <i class="fas fa-quote-right fa-2x mb-3 text-success"></i>
+                                    <p class="fst-italic text-light-50">
+                                        "الجودة في بناء التطبيقات مذهلة. الفريق لا يكتفي بالبرمجة النظيفة، بل يضمن أعلى معايير الأمان منذ البداية. منصتنا تعمل بسلاسة وبلا أي مخاوف أمنية."
+                                    </p>
+                                    <h5 class="mt-4 mb-0 text-warning">- سارة . م (رائدة أعمال ومطورة)</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <footer class="bg-dark text-white py-4">
+                <div class="container text-center" data-aos="fade-in">
+                    
+                    <div class="social-icons mb-3">
+                        <a href="https://twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+
+                    <div class="text-center p-2 rounded" style="background: rgba(255, 255, 255, 0.05); margin-bottom: 15px;">
+                        <h5 class="text-white mb-0">تواصل مباشرة: 
+                            <i class="fas fa-envelope text-warning me-1"></i>
+                            <a href="mailto:f@hotmail.hu" class="text-decoration-none text-warning fw-bold">f@hotmail.hu</a>
+                        </h5>
+                    </div>
+
+                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="text-warning fw-bold">محمد المخدري</span></p>
+                    <p class="small text-light-50 mt-1">خبير الأمن السيبراني والبرمجة والتطوير</p>
+                </div>
+            </footer>
+        </div>
+
+
+        <div id="service-details-container" style="display: none;">
+            
+            <div class="container pt-5 pb-3 text-center" style="background-color: #f8f9fa;">
+                 <button class="btn btn-lg btn-warning fw-bold" onclick="showMainContent()">
+                    <i class="fas fa-arrow-right me-2"></i> العودة إلى النظرة العامة
+                </button>
+            </div>
+            
+            
+            <section id="securityAssessment-details" class="py-5 bg-light service-page" style="display: none;">
+                <div class="container">
+                    <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                    <h2 class="display-4 mb-5 text-dark text-center"><i class="fas fa-lock me-2 text-success"></i> التقييم والتحليل الأمني الشامل (Security Assessment)</h2>
+                    
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-warning">لماذا يجب عليك تقييم أمان نظامك الآن؟</h3>
+                            <p class="lead text-secondary">
+                                أنظمة تكنولوجيا المعلومات الخاصة بك قد تبدو آمنة، لكن الثغرات تتطور باستمرار. أي نقص صغير في الإعداد أو الكود يمكن أن يكون نقطة دخول كارثية. نحن نكتشف المخاطر قبل أن يفعلها المهاجمون.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="text-dark mb-2"><i class="fas fa-exclamation-circle text-danger me-2"></i> **الخطر 1: غرامات الامتثال (Compliance Fines):** فقدان البيانات الحساسة يؤدي إلى غرامات ضخمة لعدم الامتثال لمعايير مثل PCI DSS أو GDPR.</li>
+                                <li class="text-dark mb-2"><i class="fas fa-exclamation-circle text-danger me-2"></i> **الخطر 2: توقف الأعمال (Downtime):** اختراق الشبكة أو السيرفر قد يوقف عملياتك لساعات أو أيام، مما يكلفك آلاف الدولارات.</li>
+                                <li class="text-dark mb-2"><i class="fas fa-exclamation-circle text-danger me-2"></i> **الخطر 3: فقدان الثقة:** أي تسريب بيانات يقضي على ثقة العملاء بك ويضر بسمعة علامتك التجارية.</li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-warning">منهجيتنا في التحليل الأمني (على خطى الهاكر الأخلاقي)</h3>
+                            <p class="text-secondary">
+                                لا نعتمد على الأدوات الآلية فقط، بل نستخدم خبرة الهاكر الأخلاقي لتطبيق سيناريوهات هجوم واقعية (Threat Modeling) لضمان أن دفاعاتك صلبة.
+                            </p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">**جمع المعلومات والاستطلاع (Reconnaissance):** تحديد الأصول الحساسة والبنية التحتية الظاهرة.</li>
+                                <li class="list-group-item">**فحص الثغرات (Vulnerability Scanning):** استخدام أدوات يدوية ومتقدمة للبحث عن الثغرات المعروفة وغير المعروفة.</li>
+                                <li class="list-group-item">**التحليل العميق (Deep Analysis):** مراجعة شاملة للكود المصدري وإعدادات الشبكات والـ (Firewalls).</li>
+                                <li class="list-group-item">**كتابة التقرير والتوصيات:** تقديم تقرير تنفيذي لمتخذي القرار، وتقرير فني مفصل للمطورين بآلية الإصلاح (Remediation).</li>
+                            </ol>
+                        </div>
+                        
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #e9ecef;">
+                            <h3 class="fw-bold mb-3 text-dark">نصيحة أمنية سريعة لحماية نفسك اليوم:</h3>
+                            <p class="text-dark">
+                                قبل أي تقييم شامل، تأكد من أنك تطبق سياسة **(Least Privilege Principle)**. لا تمنح أي مستخدم أو نظام صلاحيات تتجاوز ما يحتاجه لأداء وظيفته. هذا يقلل من نطاق الضرر المحتمل في حال تم اختراق أي حساب.
+                            </p>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 text-center">
+                            <h3 class="fw-bold mb-3 text-dark">هل أنت مستعد لنقل أمان نظامك إلى المستوى التالي؟</h3>
+                            <p class="lead text-secondary">
+                                لا تؤجل حماية عملك ليوم الغد. دعنا نبدأ التقييم الشامل لمنصتك الآن لنمنحك **الشهادة الأمنية** التي تحتاجها للمضي قدمًا بثقة.
+                            </p>
+                            <a href="mailto:f@hotmail.hu" class="btn btn-success btn-lg mt-4 w-50">
+                                <i class="fas fa-envelope me-2"></i> اطلب تقييم الأمان
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            
+            <section id="cloudSecurity-details" class="py-5 bg-dark text-white service-page" style="display: none;">
+                <div class="container">
+                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                    <h2 class="display-4 mb-5 text-warning text-center"><i class="fas fa-cloud me-2"></i> تأمين البنية السحابية (Cloud Security)</h2>
+
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-success">لماذا لا يكفي مزود الخدمة لتأمين سحابتك؟ (نموذج المسؤولية المشتركة)</h3>
+                            <p class="lead text-light-50">
+                                تعتقد الكثير من الشركات أن أمازون أو مايكروسوفت تتولى كل شيء. الحقيقة هي أنهم يؤمنون البنية التحتية الأساسية، لكن مسؤولية **تأمين البيانات والتطبيقات والإعدادات** تقع عليك أنت.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="text-light mb-2"><i class="fas fa-check-circle text-warning me-2"></i> **مسؤوليتنا:** تأمين الهوية والوصول (IAM)، إعدادات جدران الحماية (Security Groups)، التشفير، ومراقبة التهديدات السحابية.</li>
+                                <li class="text-light mb-2"><i class="fas fa-check-circle text-warning me-2"></i> **المشكلة الشائعة:** سوء تكوين الـ S3 Buckets أو الـ Azure Blobs يؤدي إلى تسريب بيانات بملايين الدولارات سنويًا.</li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-success">مراحل تأمين البيئة السحابية (AWS, Azure, GCP)</h3>
+                            <p class="text-light-50">
+                                نطبق إطار عمل صارم لضمان حماية سحابتك من الثغرات إلى الامتثال للمعايير العالمية.
+                            </p>
+                            <ol class="list-group list-group-numbered list-group-dark">
+                                <li class="list-group-item bg-secondary text-white border-warning">**مراجعة الهوية والوصول (IAM Review):** التأكد من أن كل مستخدم وخدمة يملك فقط الصلاحيات اللازمة (Least Privilege).</li>
+                                <li class="list-group-item bg-secondary text-white border-warning">**تأمين البنية التحتية ككود (IaC Security):** فحص قوالب Terraform أو CloudFormation قبل النشر لضمان عدم وجود ثغرات في التصميم.</li>
+                                <li class="list-group-item bg-secondary text-white border-warning">**إدارة التشفير والمفاتيح:** تطبيق سياسات تشفير صارمة للبيانات الثابتة والمتحركة (At Rest & In Transit).</li>
+                            </ol>
+                        </div>
+                        
+                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+
+                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #333333;">
+                            <h3 class="fw-bold mb-3 text-warning">نصيحة أمنية سريعة لحماية سحابتك اليوم:</h3>
+                            <p class="text-light">
+                                **فعّل المصادقة متعددة العوامل (MFA) على جميع حسابات الـ Root و المسؤولين في منصتك السحابية.** هذه الخطوة البسيطة هي خط الدفاع الأقوى ضد هجمات سرقة بيانات الاعتماد.
+                            </p>
+                        </div>
+
+                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+
+                        <div class="col-lg-12 text-center">
+                            <h3 class="fw-bold mb-3 text-warning">هل سحابتك محمية بالكامل؟</h3>
+                            <p class="lead text-light-50">
+                                لا تترك أمان بياناتك الحساسة للصدفة. اطلب استشارة فورية لتقييم إعداداتك السحابية وبناء حصن دفاعي لا يُخترق.
+                            </p>
+                            <a href="mailto:f@hotmail.hu" class="btn btn-warning btn-lg mt-4 w-50">
+                                <i class="fas fa-envelope me-2"></i> استشارة الأمان السحابي
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="riskManagement-details" class="py-5 bg-light service-page" style="display: none;">
+                <div class="container">
+                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                    <h2 class="display-4 mb-5 text-dark text-center"><i class="fas fa-exclamation-triangle me-2 text-warning"></i> حلول إدارة المخاطر السيبرانية</h2>
+                    
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-warning">لماذا لا يكفي فقط اكتشاف الثغرات؟ (نظرة استراتيجية)</h3>
+                            <p class="lead text-secondary">
+                                إدارة المخاطر هي تحويل الأمن السيبراني من مجرد تقنية إلى **قرار عمل استراتيجي**. لا يتعلق الأمر بعدد الثغرات، بل بتحديد الثغرات التي يمكن أن **تُدمر قيمة شركتك** وتؤثر على استمرارية العمل.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="text-dark mb-2"><i class="fas fa-shield-alt text-success me-2"></i> **التركيز على الأصول:** تحديد الأصول التي تحقق أعلى ربح أو تحمل أخطر بيانات (تاج الشركة).</li>
+                                <li class="text-dark mb-2"><i class="fas fa-shield-alt text-success me-2"></i> **التحليل الكمّي والكيفي:** لا نقول "هناك 100 ثغرة"، بل نقول "إصلاح هذه الثغرة سيقلل الخسائر المتوقعة بنسبة 60%".</li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-warning">الخطوات الأربع لإدارة المخاطر الفعالة</h3>
+                            <p class="text-secondary">
+                                نساعدك على بناء إطار عمل قوي لإدارة المخاطر، يركز على اتخاذ قرارات ذكية وموجهة بالتكاليف.
+                            </p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">**تحديد الأصول وتقييمها:** ما هي أهم بياناتك ومن يملك الوصول إليها؟</li>
+                                <li class="list-group-item">**تحليل التهديدات ونقاط الضعف (Threat & Vulnerability Analysis):** ما هي الهجمات المحتملة التي تستهدف أصولك؟</li>
+                                <li class="list-group-item">**تقييم الاحتمالية والتأثير (Impact Assessment):** تحديد مدى احتمالية حدوث الهجوم وتأثيره المالي والتشغيلي.</li>
+                                <li class="list-group-item">**المعالجة وتخفيف المخاطر:** اتخاذ قرار بـ (القبول، النقل، التخفيف، التجنب) للمخاطر المتبقية.</li>
+                            </ol>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #e9ecef;">
+                            <h3 class="fw-bold mb-3 text-dark">نصيحة سريعة لمديري الأعمال:</h3>
+                            <p class="text-dark">
+                                لا تنفق ميزانية الأمن بالكامل على أحدث جدار حماية! **ركز 80% من جهودك الأمنية على حماية الـ 20% الأكثر أهمية من بياناتك (قاعدة باريتو الأمنية).** هذا هو جوهر الإدارة الذكية للمخاطر.
+                            </p>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 text-center">
+                            <h3 class="fw-bold mb-3 text-dark">اجعل الأمن استثمارًا وليس مجرد تكلفة!</h3>
+                            <p class="lead text-secondary">
+                                دعنا نساعدك في بناء خطة استراتيجية لإدارة المخاطر تضمن استمرارية أعمالك وتحمي استثماراتك.
+                            </p>
+                            <a href="mailto:f@hotmail.hu" class="btn btn-danger btn-lg mt-4 w-50">
+                                <i class="fas fa-envelope me-2"></i> اطلب خطة إدارة المخاطر
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="webDev-details" class="py-5 bg-dark text-white service-page" style="display: none;">
+                <div class="container">
+                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                    <h2 class="display-4 mb-5 text-warning text-center"><i class="fas fa-code me-2"></i> تطوير تطبيقات الويب الآمنة (Secure Web Development)</h2>
+                    
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-success">الفرق بين التطوير العادي والتطوير الآمن:</h3>
+                            <p class="lead text-light-50">
+                                أغلب المطورين يركزون على الوظيفة (Functionality) ويؤجلون الأمن إلى النهاية. نحن نطبق مبدأ **الأمن حسب التصميم (Security By Design)**، حيث يكون الكود محصنًا من أول سطر يُكتب.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="text-light mb-2"><i class="fas fa-fire-extinguisher text-danger me-2"></i> **التطوير العادي:** انتظار اكتشاف الثغرة ثم محاولة إصلاحها (كإطفاء حريق).</li>
+                                <li class="text-light mb-2"><i class="fas fa-fire-extinguisher text-danger me-2"></i> **تطويرنا الآمن:** بناء الكود بحيث يستحيل حقن الأوامر الضارة (SQL Injection) أو تجاوز المصادقة.</li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-success">كيف نضمن تطبيق أعلى معايير الأمان (OWASP Top 10)</h3>
+                            <p class="text-light-50">
+                                نتبع دليل OWASP (Open Web Application Security Project) كمنهجية ثابتة للتأكد من حماية تطبيقاتك ضد أخطر 10 مخاطر أمنية على الويب.
+                            </p>
+                            <ul class="list-group list-group-flush list-group-dark">
+                                <li class="list-group-item bg-secondary text-white border-warning">**حماية البيانات الحساسة:** التشفير المناسب لكلمات المرور (Hashing) وبيانات الدفع.</li>
+                                <li class="list-group-item bg-secondary text-white border-warning">**منع ثغرات الحقن (Injection):** استخدام الـ Prepared Statements والـ Stored Procedures بشكل إجباري.</li>
+                                <li class="list-group-item bg-secondary text-white border-warning">**إدارة المصادقة الآمنة:** التعامل الاحترافي مع الـ Sessions والـ Tokens لحماية هويات المستخدمين.</li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+
+                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #333333;">
+                            <h3 class="fw-bold mb-3 text-warning">نصيحة للمطورين:</h3>
+                            <p class="text-light">
+                                **لا تثق أبدًا بمدخلات المستخدم (Never Trust User Input).** هذه هي القاعدة الذهبية. يجب دائمًا تصفية (Sanitize) جميع البيانات التي تأتي من المستخدم قبل معالجتها أو تخزينها في قاعدة البيانات.
+                            </p>
+                        </div>
+
+                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+
+                        <div class="col-lg-12 text-center">
+                            <h3 class="fw-bold mb-3 text-warning">هل أنت مستعد لتطبيق ويب يعمل بأعلى أداء وبأمان تام؟</h3>
+                            <p class="lead text-light-50">
+                                دعنا نحول فكرتك إلى منصة برمجية آمنة ومستدامة، تضمن حماية بيانات عملائك وسمعتك.
+                            </p>
+                            <a href="mailto:f@hotmail.hu" class="btn btn-warning btn-lg mt-4 w-50">
+                                <i class="fas fa-envelope me-2"></i> اطلب عرض سعر للتطوير
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="networkConsult-details" class="py-5 bg-light service-page" style="display: none;">
+                <div class="container">
+                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                    <h2 class="display-4 mb-5 text-dark text-center"><i class="fas fa-network-wired me-2 text-success"></i> استشارات الشبكات والسيرفرات والبنية التحتية</h2>
+                    
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-warning">لماذا تحتاج إلى خبير في الشبكات يتمتع بخلفية أمنية؟</h3>
+                            <p class="lead text-secondary">
+                                البنية التحتية (الشبكات والسيرفرات) هي الأساس. إذا كان الأساس ضعيفاً، فإن أي برنامج أمني إضافي سيكون غير فعال. نحن نجمع بين خبرة CCNA/CCNP وبين خبرة الأمن السيبراني لضمان: **أداء عالٍ وحماية قصوى في آن واحد**.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="text-dark mb-2"><i class="fas fa-cogs text-success me-2"></i> **أمان السيرفر (Hardening):** تحصين سيرفرات Linux/Windows ضد الوصول غير المصرح به وتعديل الإعدادات الافتراضية.</li>
+                                <li class="text-dark mb-2"><i class="fas fa-cogs text-success me-2"></i> **تصميم الشبكة الآمنة (Secure Network Design):** بناء الشبكات بفصل منطقي (VLANs) لتقليل الضرر عند وقوع أي اختراق.</li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 mb-4">
+                            <h3 class="fw-bold mb-3 text-warning">خدماتنا الرئيسية في إدارة البنية التحتية</h3>
+                            <p class="text-secondary">
+                                نقدم حلولاً متكاملة لإدارة ومراقبة وتحصين شبكاتك وأجهزتك الحاسوبية.
+                            </p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">**مراجعة إعدادات أجهزة سيسكو (Cisco Audit):** التأكد من تأمين الموجهات والمحولات بأفضل الممارسات الأمنية.</li>
+                                <li class="list-group-item">**بناء بيئة العمل الافتراضية (Virtualization):** تصميم وإدارة خوادم VMware و Hyper-V لمرونة وكفاءة أعلى.</li>
+                                <li class="list-group-item">**مراقبة الأمن على مدار الساعة (24/7 Monitoring):** تركيب أنظمة مراقبة للتحقق من الأداء واكتشاف أي نشاط مشبوه في وقت قياسي.</li>
+                            </ol>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #e9ecef;">
+                            <h3 class="fw-bold mb-3 text-dark">نصيحة لحماية سيرفراتك اليوم:</h3>
+                            <p class="text-dark">
+                                **لا تستخدم أبدًا منفذ (Port) الـ SSH الافتراضي 22.** قم بتغييره إلى منفذ عشوائي (مثلاً 54321) على جميع سيرفراتك. هذه الخطوة البسيطة تقلل 90% من هجمات التخمين الآلية (Brute Force) على الخوادم.
+                            </p>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-lg-12 text-center">
+                            <h3 class="fw-bold mb-3 text-dark">هل شبكتك وسيرفراتك قادرة على تحمل الضغط والتهديدات؟</h3>
+                            <p class="lead text-secondary">
+                                ابدأ استشارتك اليوم لتحصل على بنية تحتية تتميز بالسرعة والموثوقية والأمان الفائق.
+                            </p>
+                            <a href="mailto:f@hotmail.hu" class="btn btn-success btn-lg mt-4 w-50">
+                                <i class="fas fa-envelope me-2"></i> اطلب استشارة شبكات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <footer class="bg-dark text-white py-4">
+                <div class="container text-center">
+                    
+                    <div class="social-icons mb-3">
+                        <a href="https://twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                    
+                    <div class="text-center p-2 rounded" style="background: rgba(255, 255, 255, 0.05); margin-bottom: 15px;">
+                        <h5 class="text-white mb-0">تواصل مباشرة: <i class="fas fa-envelope text-warning me-1"></i>
+                            <a href="mailto:f@hotmail.hu" class="text-decoration-none text-warning fw-bold">f@hotmail.hu</a>
+                        </h5>
+                    </div>
+                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="text-warning fw-bold">محمد المخدري</span></p>
+                </div>
+            </footer>
+
+        </div>
+
+    </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200, 
+            once: true 
+        });
+
+        // كود الجافاسكريبت الجديد للتحكم في عرض الأقسام
+        function showService(serviceId) {
+            // إخفاء المحتوى الرئيسي المتحرك
+            document.getElementById('main-content-sections').style.display = 'none';
+            // إظهار حاوية الصفحات الفرعية
+            document.getElementById('service-details-container').style.display = 'block';
+
+            // إخفاء كل الصفحات الفرعية
+            document.querySelectorAll('.service-page').forEach(page => {
+                page.style.display = 'none';
             });
-            refHTML += '</div>';
-            mainHTML += refHTML;
+
+            // إظهار الصفحة الفرعية المطلوبة
+            document.getElementById(serviceId + '-details').style.display = 'block';
+
+             // التمرير إلى أعلى حاوية تفاصيل الخدمة
+            document.getElementById('service-details-container').scrollIntoView({ behavior: 'smooth' });
         }
 
-        mainContent.innerHTML = mainHTML;
-        
-        // 4. إطلاق أمر الطباعة
-        window.print();
-    }
-</script>
+        function showMainContent() {
+            // إظهار المحتوى الرئيسي
+            document.getElementById('main-content-sections').style.display = 'block';
+            // إخفاء حاوية الصفحات الفرعية
+            document.getElementById('service-details-container').style.display = 'none';
+
+             // التمرير إلى أعلى قسم المحتوى
+            document.getElementById('main-content-sections').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>

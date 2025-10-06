@@ -1,128 +1,121 @@
 /*
 =====================================================
-  التخصيصات العامة والخطوط
+  التخصيصات العامة والخطوط (لون الخلفية الداكن)
 =====================================================
 */
 body {
-    /* تطبيق خط القاهرة للقراءة العربية الأنيقة */
     font-family: 'Cairo', sans-serif; 
-    /* تفعيل التحولات السلسة */
     transition: all 0.3s ease-in-out;
+    background-color: #f0f0f0; /* خلفية فاتحة للقسم العادي */
 }
 
 /*
 =====================================================
-  قسم التنقل (الـ Navbar)
+  قسم التنقل (الـ Navbar) - أسود راقٍ
 =====================================================
 */
 .navbar {
-    /* جعل الشريط شفافًا جزئيًا لإظهار الخلفية */
-    background-color: rgba(33, 37, 41, 0.95) !important; 
-    /* إضافة ظل خفيف لشريط التنقل لتمييزه */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* أسود غامق جدًا للخلفية */
+    background-color: #1a1a1a !important; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-nav .nav-link {
-    /* تباعد خفيف بين عناصر القائمة */
     margin-right: 15px; 
-    /* تحول بسيط عند المرور فوق العنصر */
     transition: color 0.3s, border-bottom 0.3s;
-    /* لون فاتح للنص */
-    color: #f8f9fa !important; 
+    color: #e0e0e0 !important; /* لون رمادي فاتح للنص */
 }
 
-/* التأثير البصري الراقي للقائمة المنسدلة (الـ Dropdown Effect) */
+/* التأثير البصري الراقي للقائمة المنسدلة (الـ Dropdown Effect) - ذهبي */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: #0d6efd !important; /* لون أزرق جذاب عند التفاعل */
-    /* خط سفلي متحرك وأنيق */
-    border-bottom: 3px solid #0d6efd; 
-    padding-bottom: 5px; /* مسافة لحركة الخط */
+    color: #FFD700 !important; /* لون ذهبي جذاب عند التفاعل */
+    /* خط سفلي ذهبي متحرك وأنيق */
+    border-bottom: 3px solid #FFD700; 
+    padding-bottom: 5px; 
 }
 
 /*
 =====================================================
-  قسم البطل (الـ Hero Section)
+  قسم البطل (الـ Hero Section) - الخلفية السوداء/الغامقة
 =====================================================
 */
 .hero-section {
-    /* خلفية متدرجة (Gradient) بسيطة وعصرية */
-    background: linear-gradient(135deg, #0d6efd 0%, #053b8f 100%);
-    /* ارتفاع كامل للشاشة ليكون العنصر الأبرز */
+    /* خلفية متدرجة سوداء زرقاء عميقة وفخمة */
+    background: linear-gradient(135deg, #0f0f0f 0%, #303030 100%);
     min-height: 100vh; 
-    /* توسيط المحتوى داخل القسم */
-    padding-top: 56px; /* تعويض ارتفاع شريط التنقل */
+    padding-top: 56px; 
 }
 
 .hero-section h1 {
-    /* تظليل خفيف للنص لجعله يبرز على الخلفية الداكنة */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* تباعد بين الحروف لعنوان فخم */
-    letter-spacing: 1.5px; 
+    /* لون ذهبي للعناوين الرئيسية */
+    color: #FFD700 !important; 
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px; 
+}
+
+.hero-section p.lead {
+    color: #a0a0a0 !important; /* لون رمادي مناسب للوصف */
+}
+
+.hero-section .btn-outline-light {
+    /* زر شفاف ذهبي */
+    color: #FFD700; 
+    border-color: #FFD700;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-section .btn-outline-light:hover {
+    /* عند التفاعل، خلفية سوداء ونص ذهبي */
+    background-color: #FFD700;
+    color: #1a1a1a;
+    border-color: #FFD700;
 }
 
 /*
 =====================================================
-  بطاقات الميزات (Features Cards)
+  بطاقات الميزات (Features Cards) - أيقونات خضراء
 =====================================================
 */
 #features .card {
     border: none;
-    /* تحول سلس للبطاقة */
     transition: transform 0.3s, box-shadow 0.3s;
-    border-radius: 12px; /* حواف مستديرة للمظهر العصري */
+    border-radius: 12px; 
 }
 
 #features .card:hover {
-    /* تأثير طفيف لرفع البطاقة عند المرور فوقها */
     transform: translateY(-5px); 
-    /* ظل أكبر وأوضح */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
 #features i {
-    /* لون الأيقونات */
-    color: #0d6efd !important; 
+    /* لون أخضر للأيقونات يرمز للأمان والتكنولوجيا */
+    color: #39FF14 !important; 
 }
 
 /*
 =====================================================
-  قسم تواصل معنا (Contact Form)
+  الزر الأساسي (Primary Button) - ذهبي
 =====================================================
 */
-#contact .form-control {
-    border-radius: 8px;
-    border-color: #ced4da;
-    /* تظليل خفيف عند التركيز */
-    box-shadow: none; 
-}
-
-#contact .form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
 .btn-primary {
-    /* تخصيص زر الإرسال */
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #1a1a1a !important; /* نص أسود على الزر الذهبي */
     transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
-    background-color: #0a58ca;
-    border-color: #0a58ca;
+    background-color: #e6c300; /* ذهبي أغمق عند التفاعل */
+    border-color: #e6c300;
 }
 
 /*
 =====================================================
-  قسم الخدمات (Services Section)
+  تذييل الصفحة (Footer)
 =====================================================
 */
-#services {
-    /* جعل قسم الخدمات مريحًا بصريًا */
-    background-color: #f9f9f9; 
-    min-height: 300px;
-    display: flex;
-    align-items: center;
+footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }

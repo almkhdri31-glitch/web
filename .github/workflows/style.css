@@ -64,7 +64,7 @@ body {
     letter-spacing: 2px; 
 }
 
-.hero-section p.lead {
+.hero-section p {
     color: #a0a0a0 !important; /* لون رمادي مناسب للوصف */
 }
 
@@ -247,10 +247,20 @@ body {
 
 /*
 =====================================================
-  تذييل الصفحة (Footer)
+  تذييل الصفحة (Footer) وتنسيق أيقونات التواصل الاجتماعي
 =====================================================
 */
 footer {
     background-color: #1a1a1a;
     color: #e0e0e0;
+}
+
+.social-icons a {
+    color: #FFD700 !important; /* أيقونات ذهبية */
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    color: #39FF14 !important; /* تتحول للأخضر النيون عند التفاعل */
+    transform: scale(1.1);
 }

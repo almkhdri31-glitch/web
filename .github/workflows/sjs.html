@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج اتصال جاهز (Web3Forms)</title>
+    <title>نموذج اتصال Web3Forms الجاهز</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            direction: rtl; /* لدعم اللغة العربية */
+            direction: rtl; 
         }
         .form-container {
             background: #ffffff;
@@ -64,15 +64,15 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>نموذج اتصال Web3Forms الجاهز</h2>
+        <h2>نموذج اتصال Web3Forms</h2>
 
         <form action="https://api.web3forms.com/submit" method="POST">
             
             <input type="hidden" name="access_key" value="B2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
             
-            <input type="hidden" name="redirect" value="https://your-website.com/thank-you-page.html">
+            <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
-            <input type="hidden" name="subject" value="رسالة جديدة من نموذج الاتصال التجريبي">
+            <input type="hidden" name="subject" value="رسالة جديدة - اختبار">
 
             <label for="name">الاسم:</label>
             <input type="text" id="name" name="name" required>

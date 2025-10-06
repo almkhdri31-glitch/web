@@ -1,22 +1,109 @@
 /*
 =====================================================
-  قسم الخدمات (Services Section)
+  التخصيصات العامة والخطوط
+=====================================================
+*/
+body {
+    font-family: 'Cairo', sans-serif; 
+    transition: all 0.3s ease-in-out;
+    background-color: #f0f0f0; 
+}
+
+/*
+=====================================================
+  قسم التنقل (الـ Navbar) - أسود راقٍ
+=====================================================
+*/
+.navbar {
+    background-color: #1a1a1a !important; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-nav .nav-link {
+    margin-right: 15px; 
+    transition: color 0.3s, border-bottom 0.3s;
+    color: #e0e0e0 !important; 
+}
+
+/* التأثير البصري الراقي للقائمة المنسدلة (الـ Dropdown Effect) - ذهبي */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #FFD700 !important; /* لون ذهبي جذاب عند التفاعل */
+    border-bottom: 3px solid #FFD700; 
+    padding-bottom: 5px; 
+}
+
+/*
+=====================================================
+  قسم البطل (الـ Hero Section) - الخلفية السوداء/الغامقة
+=====================================================
+*/
+.hero-section {
+    /* خلفية متدرجة سوداء زرقاء عميقة وفخمة */
+    background: linear-gradient(135deg, #0f0f0f 0%, #303030 100%);
+    min-height: 100vh; 
+    padding-top: 56px; 
+}
+
+.hero-section h1 {
+    color: #FFD700 !important; /* لون ذهبي للعناوين الرئيسية */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px; 
+}
+
+.hero-section p.lead {
+    color: #a0a0a0 !important; /* لون رمادي مناسب للوصف */
+}
+
+.hero-section .btn-outline-light {
+    /* زر شفاف ذهبي */
+    color: #FFD700; 
+    border-color: #FFD700;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-section .btn-outline-light:hover {
+    background-color: #FFD700;
+    color: #1a1a1a;
+    border-color: #FFD700;
+}
+
+/*
+=====================================================
+  بطاقات الميزات (Features Cards) - أيقونات خضراء
+=====================================================
+*/
+#features .card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px; 
+}
+
+#features .card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* الأيقونات في قسم الميزات */
+#features i {
+    color: #39FF14 !important; /* لون أخضر للأيقونات يرمز للأمان */
+}
+
+/*
+=====================================================
+  قسم الخدمات (Services Section) - البطاقات الفاخرة
 =====================================================
 */
 #services {
-    /* تم تغييرها إلى bg-dark في HTML لتناسب الأسود */
     background-color: #1a1a1a !important; 
     color: #e0e0e0;
 }
 
 .service-card {
-    /* خلفية داكنة خفيفة للبطاقة */
-    background-color: #2c2c2c; 
+    background-color: #2c2c2c; /* خلفية داكنة خفيفة للبطاقة */
     border-radius: 15px; 
-    /* ظل خفيف للبطاقة */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); 
     transition: transform 0.4s, box-shadow 0.4s;
-    /* تحديد الأيقونات بلون النجاح/الأمان (الأخضر) */
 }
 
 .service-card i {
@@ -28,12 +115,44 @@
 }
 
 .service-card:hover {
-    /* تأثير طفيف لرفع البطاقة عند المرور فوقها */
     transform: translateY(-8px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* تعديل لون العنوان الرئيسي للقسم ليتماشى مع الخلفية الداكنة */
-#services .display-4 {
-    color: #FFD700 !important; /* العنوان الرئيسي بالذهبي */
+/*
+=====================================================
+  الأزرار ونموذج التواصل (Contact Form)
+=====================================================
+*/
+#contact .form-control {
+    border-radius: 8px;
+    border-color: #ced4da;
+    box-shadow: none; 
+}
+
+#contact .form-control:focus {
+    border-color: #FFD700; /* لون ذهبي عند التركيز */
+    box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.25);
+}
+
+.btn-primary {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #1a1a1a !important; 
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e6c300; 
+    border-color: #e6c300;
+}
+
+/*
+=====================================================
+  تذييل الصفحة (Footer)
+=====================================================
+*/
+footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }

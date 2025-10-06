@@ -8,6 +8,7 @@ body {
     line-height: 1.6;
     background-color: #0d0d0d; /* خلفية داكنة موحدة */
     color: #f8f9fa; /* لون نص أبيض خفيف */
+    font-size: 15px; /* *** تم تصغير الخط العام هنا *** */
 }
 
 /* التنسيقات العامة للروابط والأزرار */
@@ -17,6 +18,21 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
+}
+
+/* تصغير العناوين الرئيسية الكبيرة (Display Headings) */
+h2.display-4 {
+    font-size: 2.2rem !important;
+}
+
+/* تصغير الفقرات التي تحمل فئة lead (لنصوص المقدمات والأوصاف الطويلة) */
+p.lead {
+    font-size: 1.05rem !important;
+}
+
+/* تصغير النص العادي والفقرات العادية */
+p {
+    font-size: 15px;
 }
 
 /* تنسيق للخطوط التي تعتمد على اللون الذهبي لـ IT */
@@ -199,9 +215,9 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(255, 215, 0, 0.5) !important;
 }
 
-#testimonials .testimonial-card p { /* الإصلاح: تغيير لون النص إلى الأبيض الناصع ليظهر بوضوح */
+#testimonials .testimonial-card p {
     color: #FFFFFF !important; 
-    font-size: 1.1rem; 
+    font-size: 1rem; /* تم تصغير هذا الخط قليلاً */
     line-height: 1.6;
 }
 

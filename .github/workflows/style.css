@@ -42,6 +42,9 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
     border-bottom: 2px solid rgba(255, 215, 0, 0.2); /* خط ذهبي خفيف */
     background-color: #1a1a1a !important; /* خلفية داكنة جدًا */
+    position: sticky; /* نستخدم Sticky لمرونة أعلى */
+    top: 0;
+    z-index: 1030; /* لضمان بقائه فوق كل شيء */
 }
 
 .navbar-brand {
@@ -61,13 +64,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /*
 =====================================================
-  قسم البطل (Hero Section) - #home
+  قسم البطل (Hero Section) - #home (ثابت بالكامل)
 =====================================================
 */
 .hero-section {
     min-height: 100vh;
+    /* تأكد أن صورة hero-bg.jpg موجودة في مجلد المشروع */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') center center no-repeat;
     background-size: cover;
+    
+    /* **** التعديل الأساسي: تثبيت الخلفية والمحتوى **** */
+    background-attachment: fixed; 
+    position: sticky; 
+    top: 0;
+    z-index: 1000; 
+    /* **************************************** */
+    
     color: #fff;
     padding-top: 100px;
     padding-bottom: 50px;
@@ -83,44 +95,34 @@ h1, h2, h3, h4, h5, h6 {
     color: #e9ecef;
 }
 
-/* تنسيق زر "اكتشف المزيد" */
-.btn-outline-light {
+/* تنسيق زر الأمان الأول (الأخضر) */
+.btn-outline-warning {
     border-color: #FFD700;
     color: #FFD700;
     font-weight: 600;
 }
 
-.btn-outline-light:hover {
-    background-color: #FFD700;
-    color: #1a1a1a;
+.btn-outline-warning:hover {
+    background-color: #FFD700 !important;
+    color: #1a1a1a !important;
     border-color: #FFD700;
 }
 
+
 /*
 =====================================================
-  قسم من نحن (About Us) - #about
+  تنسيق الأقسام السفلية
 =====================================================
 */
+/* قسم من نحن (About Us) */
 #about {
     background-color: #1a1a1a !important;
 }
 
-#about h2 {
-    color: #FFD700;
-}
-
-#about .skills-list {
-    margin-top: 20px;
-}
-
-/*
-=====================================================
-  قسم الميزات (Features) - #features
-=====================================================
-*/
+/* قسم الميزات (Features) */
 #features {
-    background-color: #f8f9fa; /* خلفية بيضاء خفيفة لإراحة العين */
-    color: #212529; /* لون نص داكن على الخلفية الفاتحة */
+    background-color: #f8f9fa; 
+    color: #212529; 
 }
 
 #features .card {
@@ -140,11 +142,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 15px;
 }
 
-/*
-=====================================================
-  قسم الخدمات (Services) - #services
-=====================================================
-*/
+/* قسم الخدمات (Services) */
 #services {
     background-color: #1a1a1a !important;
 }
@@ -164,13 +162,9 @@ h1, h2, h3, h4, h5, h6 {
     color: #39FF14; /* أيقونات الخدمة بلون النيون الأخضر */
 }
 
-/*
-=====================================================
-  قسم المشاريع (Portfolio) - #portfolio
-=====================================================
-*/
+/* قسم المشاريع (Portfolio) */
 #portfolio {
-    background-color: #f8f9fa;
+    background-color: #f8ffc7;
 }
 
 #portfolio .portfolio-item {
@@ -182,9 +176,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3); /* ظل ذهبي عند التمرير */
 }
 
+
 /*
 =====================================================
-  قسم آراء العملاء (Testimonials Section)
+  قسم آراء العملاء (Testimonials Section) - تم إصلاح النص
 =====================================================
 */
 #testimonials {
@@ -195,12 +190,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #2c2c2c; /* لون أغمق قليلاً للبطاقة */
     border-radius: 12px;
     transition: transform 0.3s;
-    /* التعديل هنا: للتأكد من أن الحدود مرئية */
     border-color: rgba(255, 215, 0, 0.5) !important;
 }
 
-#testimonials .testimonial-card p { /* الإصلاح: تغيير لون النص إلى الأبيض الناصع ليظهر بوضوح */
-    color: #FFFFFF !important; 
+#testimonials .testimonial-card p { 
+    color: #FFFFFF !important; /* الإصلاح: تغيير لون النص إلى الأبيض الناصع ليظهر بوضوح */
     font-size: 1.1rem; 
     line-height: 1.6;
 }

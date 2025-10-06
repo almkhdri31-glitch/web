@@ -46,7 +46,7 @@
                     
                     <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-right" data-aos-delay="400">
                         <div class="d-grid gap-3">
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" style="background-color: #39FF14; border-color: #39FF14;" onclick="showService('securityAssessment'); return false;">
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('securityAssessment'); return false;">
                                 <i class="fas fa-lock me-2"></i> **التقييم والتحليل الأمني الشامل**
                             </a>
                             <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('cloudSecurity'); return false;">
@@ -60,7 +60,7 @@
                     
                     <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-left" data-aos-delay="600">
                         <div class="d-grid gap-3">
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" style="background-color: #FFD700; border-color: #FFD700; color: #1a1a1a !important;" onclick="showService('webDev'); return false;">
+                             <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('webDev'); return false;">
                                 <i class="fas fa-code me-2"></i> **تطوير تطبيقات الويب الآمنة**
                             </a>
                             <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('networkConsult'); return false;">
@@ -289,6 +289,9 @@
             
             <section id="securityAssessment-details" class="py-5 bg-light service-page" style="display: none;">
                 <div class="container text-center">
+                    <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
                     <h2 class="display-4 mb-5 text-dark"><i class="fas fa-lock me-2 text-success"></i> تفاصيل: التقييم والتحليل الأمني الشامل</h2>
                     <p class="lead text-secondary">نقدم تقييماً شاملاً للثغرات وتحليلاً أمنياً معمقاً (Deep Security Assessment) للبنية التحتية والبرمجيات، يتبعه تقرير تنفيذي وتوصيات فورية لتعزيز الحماية.</p>
                     <a href="mailto:f@hotmail.hu" class="btn btn-success btn-lg mt-4"><i class="fas fa-envelope me-2"></i> اطلب تقييم الأمان</a>
@@ -297,6 +300,9 @@
 
             <section id="cloudSecurity-details" class="py-5 bg-dark text-white service-page" style="display: none;">
                 <div class="container text-center">
+                    <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
                     <h2 class="display-4 mb-5 text-warning"><i class="fas fa-cloud me-2"></i> تفاصيل: تأمين البنية السحابية (Cloud Security)</h2>
                     <p class="lead text-light-50">تأمين شامل لمنصات السحابة (AWS, Azure, GCP)، يشمل إدارة الهوية والوصول، وحماية البيانات المخزنة والتطبيقات السحابية.</p>
                     <a href="mailto:f@hotmail.hu" class="btn btn-warning btn-lg mt-4"><i class="fas fa-envelope me-2"></i> استشارة الأمان السحابي</a>
@@ -305,6 +311,9 @@
             
             <section id="riskManagement-details" class="py-5 bg-light service-page" style="display: none;">
                 <div class="container text-center">
+                    <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
                     <h2 class="display-4 mb-5 text-dark"><i class="fas fa-exclamation-triangle me-2 text-warning"></i> تفاصيل: حلول إدارة المخاطر</h2>
                     <p class="lead text-secondary">بناء إطار عمل متكامل لإدارة المخاطر السيبرانية، وتحديد الأصول الحساسة، وتقييم احتمالية وتأثير التهديدات، لضمان استمرارية الأعمال.</p>
                     <a href="mailto:f@hotmail.hu" class="btn btn-danger btn-lg mt-4"><i class="fas fa-envelope me-2"></i> اطلب خطة إدارة المخاطر</a>
@@ -313,6 +322,9 @@
             
             <section id="webDev-details" class="py-5 bg-dark text-white service-page" style="display: none;">
                 <div class="container text-center">
+                    <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
                     <h2 class="display-4 mb-5 text-warning"><i class="fas fa-code me-2"></i> تفاصيل: تطوير تطبيقات الويب الآمنة</h2>
                     <p class="lead text-light-50">تطوير تطبيقات ومواقع مخصصة بمعايير OWASP Top 10، مع التركيز على الأداء العالي والأمان المضاعف ضد هجمات الويب الشائعة.</p>
                     <a href="mailto:f@hotmail.hu" class="btn btn-warning btn-lg mt-4"><i class="fas fa-envelope me-2"></i> اطلب عرض سعر للتطوير</a>
@@ -321,6 +333,9 @@
             
             <section id="networkConsult-details" class="py-5 bg-light service-page" style="display: none;">
                 <div class="container text-center">
+                    <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
                     <h2 class="display-4 mb-5 text-dark"><i class="fas fa-network-wired me-2 text-success"></i> تفاصيل: استشارات الشبكات والسيرفرات</h2>
                     <p class="lead text-secondary">استشارات متقدمة في تصميم وتأمين شبكات سيسكو (CCNA/CCNP)، وإدارة وحماية السيرفرات (Linux/Windows) والبنية التحتية الصلبة.</p>
                     <a href="mailto:f@hotmail.hu" class="btn btn-success btn-lg mt-4"><i class="fas fa-envelope me-2"></i> اطلب استشارة شبكات</a>

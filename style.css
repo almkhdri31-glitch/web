@@ -256,3 +256,16 @@ footer {
     color: #FFD700;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
 }
+
+/*
+=====================================================
+  تعديلات الهواتف الذكية (لحل مشكلة الخلفية الثابتة على iOS)
+=====================================================
+*/
+@media screen and (max-width: 768px) {
+    .hero-section {
+        /* جعل الخلفية متحركة على الجوال لتجنب المشاكل التقنية */
+        background-attachment: scroll !important;
+        background-position: top center !important; 
+    }
+}

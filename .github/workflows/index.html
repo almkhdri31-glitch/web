@@ -22,7 +22,17 @@
             word-break: break-all;
             margin: 0 5px;
             font-size: 0.85rem;
+            /* ******************************************************* */
+            /* ** التعديل الذي يزيل اللون الأزرق ويجعله يتناسق مع الخلفية ** */
+            /* ******************************************************* */
+            color: inherit !important; /* ليرث اللون الرمادي الفاتح من العنصر الأب */
+            text-decoration: none !important; /* لإزالة الخط الذي تحت الرابط */
         }
+        
+        .footer-emails a:hover {
+            color: #ffc107 !important; /* لجعل اللون أصفر عند تمرير الماوس */
+        }
+        
         @media (max-width: 768px) {
             .footer-emails a {
                 display: block;

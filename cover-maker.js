@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. تحديد العناصر الرئيسية في الصفحة
     const designCanvas = document.getElementById('designCanvas');
     const designText = document.getElementById('designText');
+    const designIcon = document.getElementById('designIcon'); // الأيقونة الجديدة
     const canvasContainer = document.getElementById('canvasContainer');
     const downloadBtn = document.getElementById('downloadBtn');
 
@@ -11,22 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const backgroundColor = document.getElementById('backgroundColor');
     const textColor = document.getElementById('textColor');
     const textSize = document.getElementById('textSize');
+    const fontSelector = document.getElementById('fontSelector');
     
     // عناصر التحكم بالصورة
     const imageUpload = document.getElementById('imageUpload');
     const removeImageBtn = document.getElementById('removeImageBtn');
     
-    // عنصر التحكم بالخطوط (الإضافة الجديدة)
-    const fontSelector = document.getElementById('fontSelector');
+    // عناصر التحكم بالأيقونة الجديدة
+    const iconSelector = document.getElementById('iconSelector');
+    const iconColor = document.getElementById('iconColor');
+    const iconSize = document.getElementById('iconSize');
     
     // دالة لتحديث المعاينة بناءً على المدخلات
     function updateCanvas() {
-        // تحديث النص ولونه وحجمه
+        // تحديث النص والخط
         designText.textContent = coverText.value;
         designText.style.color = textColor.value;
         designText.style.fontSize = `${textSize.value}px`;
-        
-        // تحديث نوع الخط
         designText.style.fontFamily = fontSelector.value;
         
         // تحديث لون الخلفية (إذا لم تكن هناك صورة خلفية)
@@ -34,73 +36,81 @@ document.addEventListener('DOMContentLoaded', () => {
             designCanvas.style.backgroundColor = backgroundColor.value;
         }
         
-        // تحديث الأبعاد (المقاس)
+        // تحديث الأبعاد
         const selectedSize = sizeSelector.value.split('x');
         const width = selectedSize[0] + 'px';
         const height = selectedSize[1] + 'px';
 
         designCanvas.style.width = width;
         designCanvas.style.height = height;
-        
-        // تعديل عرض الحاوية الأبوية لتكون متجاوبة مع الحجم
-        canvasContainer.style.width = '100%';
         canvasContainer.style.maxWidth = width;
+        
+        // **********************************************
+        // منطق التحكم بالأيقونة الجديدة
+        // **********************************************
+        const selectedIconClass = iconSelector.value;
+        
+        if (selectedIconClass === 'none') {
+            designIcon.style.display = 'none';
+        } else {
+            // تحديث الكلاس لإظهار الأيقونة المطلوبة
+            designIcon.className = selectedIconClass;
+            designIcon.style.display = 'block';
+            
+            // تحديث اللون والحجم
+            designIcon.style.color = iconColor.value;
+            designIcon.style.fontSize = `${iconSize.value}px`;
+        }
     }
 
-    // ربط الأحداث (Events) بعناصر التحكم
+    // **********************************************
+    // ربط الأحداث (Events)
+    // **********************************************
     coverText.addEventListener('input', updateCanvas);
     backgroundColor.addEventListener('input', updateCanvas);
     textColor.addEventListener('input', updateCanvas);
     textSize.addEventListener('input', updateCanvas);
     sizeSelector.addEventListener('change', updateCanvas);
-    fontSelector.addEventListener('change', updateCanvas); // ربط حدث اختيار الخط
+    fontSelector.addEventListener('change', updateCanvas); 
 
-    // **********************************************
+    // ربط أحداث الأيقونة الجديدة
+    iconSelector.addEventListener('change', updateCanvas);
+    iconColor.addEventListener('input', updateCanvas);
+    iconSize.addEventListener('input', updateCanvas);
+
     // منطق التحكم بالصورة
-    // **********************************************
-
     imageUpload.addEventListener('change', function(e) {
         if (e.target.files && e.target.files[0]) {
             const reader = new FileReader();
-            
             reader.onload = function(event) {
-                // ضبط الصورة المرفوعة كخلفية
                 designCanvas.style.backgroundImage = `url(${event.target.result})`;
                 designCanvas.style.backgroundSize = 'cover';
                 designCanvas.style.backgroundPosition = 'center';
-                
-                // إظهار زر الإزالة
                 removeImageBtn.style.display = 'block';
             };
-            
             reader.readAsDataURL(e.target.files[0]);
         }
     });
 
     removeImageBtn.addEventListener('click', function() {
-        // إزالة صورة الخلفية والعودة إلى اللون
         designCanvas.style.backgroundImage = 'none';
-        designCanvas.style.backgroundColor = backgroundColor.value; // العودة للون المختار
-        imageUpload.value = ''; // مسح الملف من حقل الرفع
+        designCanvas.style.backgroundColor = backgroundColor.value; 
+        imageUpload.value = ''; 
         removeImageBtn.style.display = 'none';
-        updateCanvas(); // تحديث إضافي للتأكد
+        updateCanvas(); 
     });
     
-    // **********************************************
-    // دالة التنزيل (باستخدام مكتبة html2canvas)
-    // **********************************************
-
+    // دالة التنزيل (بدون تغيير)
     downloadBtn.addEventListener('click', () => {
         downloadBtn.disabled = true;
         downloadBtn.textContent = 'جاري المعالجة...';
 
         html2canvas(designCanvas, { 
-            scale: 2, // لضمان جودة عالية في الصورة الناتجة
+            scale: 2, 
             logging: false 
         }).then(canvas => {
             const imageURL = canvas.toDataURL("image/png");
             
-            // إنشاء رابط تحميل وهمي
             const link = document.createElement('a');
             link.href = imageURL;
             link.download = 'Cover_Design_' + Date.now() + '.png';

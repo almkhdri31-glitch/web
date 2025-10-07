@@ -11,65 +11,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Lalezar&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&family=Changa:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+        /* التعديل: تغيير خلفية الصفحة لتتناسب مع الموقع الرئيسي (لون داكن) */
         body {
-            background-color: #f0f2f5;
+            background-color: #343a40; /* لون الخلفية الداكن لموقعك */
             font-family: 'Cairo', sans-serif;
+            color: #f8f9fa; /* لون النص الأبيض على الخلفية الداكنة */
         }
         .header-bar {
-            background-color: #343a40; /* Dark background */
-            color: #ffc107; /* Warning yellow */
+            background-color: #212529; /* أغمق قليلاً من الخلفية */
+            color: #ffc107;
             padding: 15px 0;
             border-bottom: 3px solid #ffc107;
         }
         .header-bar a {
-            color: #f8f9fa; /* Light text for link */
+            color: #ffc107; /* لون الرابط ليبرز */
             text-decoration: none;
             font-size: 1.1rem;
             transition: color 0.3s;
         }
         .header-bar a:hover {
-            color: #ffc107;
+            color: #f8f9fa;
         }
         .canvas-section {
-            background-color: #ffffff;
+            /* تعديل الخلفية لتكون داكنة أيضاً */
+            background-color: #212529; 
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             padding: 20px;
             min-height: 250px;
         }
-        /* *التعديل على تصميم المعاينة لضمان التجاوب* */
+        
         .design-canvas {
             display: flex;
+            flex-direction: column; /* للسماح بترتيب الأيقونة فوق النص */
             align-items: center;
             justify-content: center;
             text-align: center;
             margin: 0 auto;
             border: 2px dashed #ccc;
-            background-color: #007bff; /* لون افتراضي أزرق */
+            background-color: #007bff;
             transition: all 0.3s ease;
             overflow: hidden;
-            
-            /* التنسيق الافتراضي للشاشات الكبيرة سيتم تعديله بالجافاسكريبت */
-            max-width: 100%; /* ضمان عدم تجاوز عرض الحاوية الأبوية */
+            max-width: 100%;
+            position: relative; /* مهم لوضع الأيقونات */
         }
         .design-text {
-            color: #ffffff; /* لون النص الافتراضي */
+            color: #ffffff;
             font-weight: 700;
             white-space: pre-wrap;
             word-break: break-word;
             padding: 10px;
             line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* ظل لضمان وضوح النص على أي خلفية */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             transition: all 0.3s ease;
         }
         .controls-card {
-            background-color: #ffffff;
+            /* تعديل الخلفية لتكون داكنة */
+            background-color: #495057; 
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             padding: 25px;
             margin-top: 20px;
+            color: #f8f9fa;
         }
-        
+        .controls-card .form-label, .controls-card .h5 {
+            color: #ffc107; /* لون التسميات باللون المميز */
+        }
+        .controls-card .form-control, .controls-card .form-select {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #ffffff;
+        }
+        .controls-card .form-control::placeholder {
+            color: #dee2e6;
+        }
         .color-input {
             width: 100%;
             height: 40px;
@@ -77,12 +92,28 @@
             border-radius: 5px;
         }
 
-        /* *استخدام Media Query لضمان التجاوب على الهواتف* */
+        /* تنسيق زر التنزيل (التعديل: تصغير الحجم) */
+        #downloadBtn {
+            font-size: 1.1rem; /* تصغير حجم الخط */
+            padding: 8px 15px; /* تصغير المساحة الداخلية */
+        }
+
+        /* تنسيق الايقونة */
+        #designIcon {
+            position: absolute;
+            top: 10px; /* لضبط الموقع المبدئي */
+            right: 10px;
+            font-size: 30px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            display: none; /* إخفاء مبدئيًا */
+            cursor: move; /* للإشارة إلى إمكانية السحب */
+        }
+
         @media (max-width: 992px) {
             .design-canvas {
-                /* إجبار الكانفاس على أخذ عرض الحاوية بالكامل على الشاشات الصغيرة */
                 width: 100% !important; 
-                height: auto !important; /* السماح بتغير الارتفاع لتجنب القص */
+                height: auto !important;
                 min-height: 150px;
             }
             .canvas-section {
@@ -163,8 +194,35 @@
                         </select>
                     </div>
 
+                    <hr class="text-warning">
+                    
+                    <h2 class="h5 fw-bold mb-4 border-bottom pb-2">إعدادات الأيقونة (اختياري)</h2>
+                    
+                    <div class="mb-3">
+                        <label for="iconSelector" class="form-label fw-bold">اختيار الأيقونة:</label>
+                        <select id="iconSelector" class="form-select">
+                            <option value="none">لا توجد أيقونة</option>
+                            <option value="fas fa-star">نجمة (Star)</option>
+                            <option value="fas fa-lock">قفل (Lock)</option>
+                            <option value="fab fa-whatsapp">واتساب (WhatsApp)</option>
+                            <option value="fas fa-code">كود (Code)</option>
+                            <option value="fas fa-rocket">صاروخ (Rocket)</option>
+                            <option value="fas fa-check-circle">صح (Check)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="iconColor" class="form-label fw-bold">لون الأيقونة:</label>
+                        <input type="color" id="iconColor" class="form-control color-input" value="#ffc107">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="iconSize" class="form-label fw-bold">حجم الأيقونة:</label>
+                        <input type="range" id="iconSize" class="form-range" min="15" max="80" value="40">
+                    </div>
+
                     <div class="d-grid mt-4">
-                        <button id="downloadBtn" class="btn btn-success btn-lg fw-bold">
+                        <button id="downloadBtn" class="btn btn-success fw-bold">
                             <i class="fas fa-download me-2"></i> تنزيل الغلاف (PNG)
                         </button>
                     </div>
@@ -179,6 +237,7 @@
                     <div id="canvasContainer" class="mx-auto" style="max-width: 800px;">
                         <div id="designCanvas" class="design-canvas" style="width: 800px; height: 300px;">
                             <p id="designText" class="design-text">تصميم احترافي وآمن</p>
+                            <i id="designIcon" class="fas fa-star" style="display: none;"></i>
                         </div>
                     </div>
 

@@ -1,414 +1,416 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT لتقنية المعلومات</title>
-    <link rel="icon" type="image/png" href="favicon.png"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        /*
-        **********************************************************
-        * تنسيقات إضافية مُحسَّنة (لحجم الخطوط وتنسيق الإيميلات)
-        **********************************************************
-        */
-        
-        /* 1. تحسين أحجام الخطوط باستخدام Viewport Units (vW) */
-        body {
-            font-family: 'Cairo', sans-serif;
-            font-size: 1.5vw; /* حجم أساسي سلس الاستجابة للكمبيوتر */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنصة الرقمية المتكاملة</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /*
+        **********************************************************
+        * تنسيقات إضافية مُحسَّنة (لحجم الخطوط وتنسيق الإيميلات)
+        **********************************************************
+        */
+        
+        /* 1. تحسين أحجام الخطوط باستخدام Viewport Units (vW) */
+        body {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.5vw; /* حجم أساسي سلس الاستجابة للكمبيوتر */
+        }
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 4.0vw; /* زيادة الحجم الأساسي للهاتف لضمان الوضوح */
-            }
-            .hero-section h1 {
-                font-size: 7.5vw !important;
-            }
-            .hero-section p {
-                font-size: 4.5vw !important;
-            }
-        }
-        
-        @media (min-width: 1600px) {
-            body {
-                font-size: 1.2vw; /* منع الخط من أن يصبح ضخماً جداً على الشاشات الكبيرة */
-            }
-        }
+        @media (max-width: 768px) {
+            body {
+                font-size: 4.0vw; /* زيادة الحجم الأساسي للهاتف لضمان الوضوح */
+            }
+            .hero-section h1 {
+                font-size: 7.5vw !important;
+            }
+            .hero-section p {
+                font-size: 4.5vw !important;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            body {
+                font-size: 1.2vw; /* منع الخط من أن يصبح ضخماً جداً على الشاشات الكبيرة */
+            }
+        }
 
-        /* 2. تنسيق الإيميلات في الفوتر (لمنع التكدس على الشاشات الصغيرة) */
-        .footer-emails a {
-            word-break: break-all;
-            font-size: 0.9rem; /* تحديد حجم ثابت نسبياً */
-        }
-        .footer-emails .row div {
-            padding: 0 10px; /* مسافة بين الإيميلات في وضع الكمبيوتر */
-        }
-        
-        @media (max-width: 768px) {
-            .footer-emails a {
-                display: inline-block; /* إظهارها في سطر واحد على الهاتف */
-                margin-bottom: 5px;
-            }
-        }
-        
-    </style>
+        /* 2. تنسيق الإيميلات في الفوتر (لمنع التكدس على الشاشات الصغيرة) */
+        .footer-emails a {
+            word-break: break-all;
+            font-size: 0.9rem; /* تحديد حجم ثابت نسبياً */
+        }
+        .footer-emails .row div {
+            padding: 0 10px; /* مسافة بين الإيميلات في وضع الكمبيوتر */
+        }
+        
+        @media (max-width: 768px) {
+            .footer-emails a {
+                display: inline-block; /* إظهارها في سطر واحد على الهاتف */
+                margin-bottom: 5px;
+            }
+        }
+        
+    </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand text-warning fw-bold" href="#home">IT لتقنية المعلومات</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">الرؤية والهدف</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="#services">الخدمات الأساسية</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">آراء العملاء</a></li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link text-success fw-bold" href="https://almkhdri31-glitch.github.io/web/talent-acquisition.html" target="_blank">فرص العمل</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank">الأدوات الأمنية</a>
-                    </li>
-                    
-                    <li class="nav-item"><a class="nav-link" href="#contact-footer">تواصل معنا</a></li> 
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="overflow-fix">
-        <section id="home" class="hero-section text-center d-flex align-items-center justify-content-center">
-            <div class="container">
-                
-                <h1 class="fs-5 fw-normal mb-4" data-aos="fade-down">
-                    <span class="text-warning fw-bold">
-                        أهلاً بك في منصة **(IT)** للتقنية والحلول الذكية
-                    </span>
-                </h1>
-                
-                <p class="fs-5 mx-auto mb-5" data-aos="fade-up" data-aos-delay="200">
-                    نُحوّل خبرة السنين في إدارة السيرفرات والشبكات إلى تأمين البنية التحتية السحابية (Cloud Security) وحلول برمجية آمنة ومستدامة.
-                </p>
-                
-                <div class="row justify-content-center">
-                    
-                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-right" data-aos-delay="400">
-                        <div class="d-grid gap-3">
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('securityAssessment'); return false;">
-                                <i class="fas fa-lock me-2"></i> **التقييم والتحليل الأمني الشامل**
-                            </a>
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('cloudSecurity'); return false;">
-                                <i class="fas fa-cloud me-2"></i> **تأمين البنية السحابية (Cloud Security)**
-                            </a>
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('riskManagement'); return false;">
-                                <i class="fas fa-exclamation-triangle me-2"></i> **حلول إدارة المخاطر**
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-left" data-aos-delay="600">
-                        <div class="d-grid gap-3">
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('webDev'); return false;">
-                                <i class="fas fa-code me-2"></i> **تطوير تطبيقات الويب الآمنة**
-                            </a>
-                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('networkConsult'); return false;">
-                                <i class="fas fa-network-wired me-2"></i> **استشارات الشبكات والسيرفرات**
-                            </a>
-                            <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_blank" class="btn btn-outline-warning btn-lg text-white">
-                                <i class="fas fa-file-invoice me-2"></i> **مولد السيرة الذاتية (CV)**
-                            </a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-warning fw-bold" href="#home">المنصة الرقمية</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">الرؤية والهدف</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="#services">الخدمات الأساسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">آراء العملاء</a></li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-success fw-bold" href="https://almkhdri31-glitch.github.io/web/talent-acquisition.html" target="_blank">فرص العمل</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank">الأدوات الأمنية</a>
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="#contact-footer">تواصل معنا</a></li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="overflow-fix">
+        <section id="home" class="hero-section text-center d-flex align-items-center justify-content-center">
+            <div class="container">
+                
+                <h1 class="fs-5 fw-normal mb-4" data-aos="fade-down">
+                    <span class="text-warning fw-bold">
+                        أهلاً بك في منصة **(IT)** للتقنية والحلول الذكية
+                    </span>
+                </h1>
+                
+                <p class="fs-5 mx-auto mb-5" data-aos="fade-up" data-aos-delay="200">
+                    نُحوّل خبرة السنين في إدارة السيرفرات والشبكات إلى تأمين البنية التحتية السحابية (Cloud Security) وحلول برمجية آمنة ومستدامة.
+                </p>
+                
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-right" data-aos-delay="400">
+                        <div class="d-grid gap-3">
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('securityAssessment'); return false;">
+                                <i class="fas fa-lock me-2"></i> **التقييم والتحليل الأمني الشامل**
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('cloudSecurity'); return false;">
+                                <i class="fas fa-cloud me-2"></i> **تأمين البنية السحابية (Cloud Security)**
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('riskManagement'); return false;">
+                                <i class="fas fa-exclamation-triangle me-2"></i> **حلول إدارة المخاطر**
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-left" data-aos-delay="600">
+                        <div class="d-grid gap-3">
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('webDev'); return false;">
+                                <i class="fas fa-code me-2"></i> **تطوير تطبيقات الويب الآمنة**
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-lg text-white" onclick="showService('networkConsult'); return false;">
+                                <i class="fas fa-network-wired me-2"></i> **استشارات الشبكات والسيرفرات**
+                            </a>
+                            <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_blank" class="btn btn-outline-warning btn-lg text-white">
+                                <i class="fas fa-file-invoice me-2"></i> **مولد السيرة الذاتية (CV)**
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
 
-        
-        <div id="main-content-sections">
-            
-            <section id="about" class="py-5 bg-dark text-white">
-                <div class="container">
-                    <h2 class="display-4 text-center mb-5 text-warning" data-aos="fade-up">المنصة: رؤيتنا وخبرتنا</h2>
-                    
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                            <p class="lead text-light-50">
-                                نحن منصة متكاملة متخصصة في **الأمن السيبراني** و**تطوير الأنظمة البرمجية المتقدمة**. نجمع بين خبرة الهاكر الأخلاقي ومنهجية المطور المحترف لتقديم حلول آمنة وفعالة.
-                            </p>
-                            <p class="text-light-50">
-                                مهمتنا هي بناء حصن رقمي لعملائنا. سواء كنت بحاجة إلى فحص شامل للثغرات، أو تطوير تطبيق ويب بأعلى معايير الأمان، فإن فريقنا مستعد لتوفير الحماية والجودة.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-outline-warning mt-3">اطلب استشارة مباشرة</a>
-                        </div>
-                        
-                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-                            <ul class="list-unstyled skills-list">
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">التقييم الأمني والتحليل الاحترافي</span></li>
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تطوير الويب الآمن والبرمجة الاحترافية</span></li>
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تحليل الثغرات وإدارة المخاطر السيبرانية</span></li>
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">خبرة عميقة في إدارة السيرفرات والبنية التحتية الشبكية (CCNA/CCNP)</span></li>
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تأمين شبكات سيسكو والموجهات (Routers) في الاتصالات السلكية واللاسلكية</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="features" class="py-5 bg-light">
-                <div class="container text-center">
-                    <h2 class="display-4 mb-5" data-aos="fade-up">لماذا نحن؟</h2>
-                    <div class="row">
-                        <div class="col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="card h-100 p-4 shadow-sm">
-                                <i class="fas fa-rocket fa-3x mb-3"></i>
-                                <h5 class="card-title">الجودة والسرعة</h5>
-                                <p class="card-text">إتقان العمل: منهجية تطوير صارمة تضمن جودة لا تقبل المنافسة وسرعة في الإنجاز.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card h-100 p-4 shadow-sm">
-                                <i class="fas fa-shield-alt fa-3x mb-3"></i>
-                                <h5 class="card-title">الأمان والموثوقية</h5>
-                                <p class="card-text">حصانة رقمية: الاعتماد على خبرة الهاكر الأخلاقي لبناء دفاعات صلبة ضد الهجمات.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                            <div class="card h-100 p-4 shadow-sm">
-                                <i class="fas fa-cogs fa-3x mb-3"></i>
-                                <h5 class="card-title">التكامل والمرونة</h5>
-                                <p class="card-text">مرونة التوسع: تصميم البنى التحتية بشكل يمكنها من النمو والتكيف مع المتطلبات المستقبلية.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        
+        <div id="main-content-sections">
+            
+            <section id="about" class="py-5 bg-dark text-white">
+                <div class="container">
+                    <h2 class="display-4 text-center mb-5 text-warning" data-aos="fade-up">المنصة: رؤيتنا وخبرتنا</h2>
+                    
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                            <p class="lead text-light-50">
+                                نحن منصة متكاملة متخصصة في **الأمن السيبراني** و**تطوير الأنظمة البرمجية المتقدمة**. نجمع بين خبرة الهاكر الأخلاقي ومنهجية المطور المحترف لتقديم حلول آمنة وفعالة.
+                            </p>
+                            <p class="text-light-50">
+                                مهمتنا هي بناء حصن رقمي لعملائنا. سواء كنت بحاجة إلى فحص شامل للثغرات، أو تطوير تطبيق ويب بأعلى معايير الأمان، فإن فريقنا مستعد لتوفير الحماية والجودة.
+                            </p>
+                            <a href="mailto:F@hotmail.hu" class="btn btn-outline-warning mt-3">اطلب استشارة مباشرة</a>
+                        </div>
+                        
+                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                            <ul class="list-unstyled skills-list">
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">التقييم الأمني والتحليل الاحترافي</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تطوير الويب الآمن والبرمجة الاحترافية</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تحليل الثغرات وإدارة المخاطر السيبرانية</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">خبرة عميقة في إدارة السيرفرات والبنية التحتية الشبكية (CCNA/CCNP)</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تأمين شبكات سيسكو والموجهات (Routers) في الاتصالات السلكية واللاسلكية</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="features" class="py-5 bg-light">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5" data-aos="fade-up">لماذا نحن؟</h2>
+                    <div class="row">
+                        <div class="col-lg-4 mb-4" data-aos="fade-up">
+                            <div class="card h-100 p-4 shadow-sm">
+                                <i class="fas fa-rocket fa-3x mb-3"></i>
+                                <h5 class="card-title">الجودة والسرعة</h5>
+                                <p class="card-text">إتقان العمل: منهجية تطوير صارمة تضمن جودة لا تقبل المنافسة وسرعة في الإنجاز.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card h-100 p-4 shadow-sm">
+                                <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                                <h5 class="card-title">الأمان والموثوقية</h5>
+                                <p class="card-text">حصانة رقمية: الاعتماد على خبرة الهاكر الأخلاقي لبناء دفاعات صلبة ضد الهجمات.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="card h-100 p-4 shadow-sm">
+                                <i class="fas fa-cogs fa-3x mb-3"></i>
+                                <h5 class="card-title">التكامل والمرونة</h5>
+                                <p class="card-text">مرونة التوسع: تصميم البنى التحتية بشكل يمكنها من النمو والتكيف مع المتطلبات المستقبلية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <section id="services" class="py-5 bg-dark text-white">
-                <div class="container text-center">
-                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">خدماتنا الرئيسية</h2>
-                    <p class="lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">استعرض حلولنا المتخصصة في صميم الأمن الرقمي وتطوير الأنظمة عالية الأداء.</p>
-                    
-                    <div class="row mt-5">
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in">
-                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
-                                <i class="fas fa-fingerprint fa-4x mb-3"></i>
-                                <h5 class="card-title text-warning">التحليل الأمني والتقييم الاحترافي</h5>
-                                <p class="card-text text-light-50">فحص شامل للثغرات وتقييم أمني عميق (Security Assessment) وتوفير تقارير مفصلة لتعزيز حماية الأنظمة.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
-                                <i class="fas fa-code fa-4x mb-3"></i>
-                                <h5 class="card-title text-warning">تطوير تطبيقات الويب الآمنة</h5>
-                                <p class="card-text text-light-50">بناء وتطوير منصات وتطبيقات ويب باستخدام أحدث الأطر البرمجية، مع التركيز على الكود النظيف والمحمي.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
-                                <i class="fas fa-network-wired fa-4x mb-3"></i>
-                                <h5 class="card-title text-warning">الاستشارات المتقدمة في الأمن السحابي والشبكات</h5>
-                                <p class="card-text text-light-50">استشارات متخصصة في تأمين **التخزين السحابي (IaaS)**، تصميم بنى تحتية آمنة، ومراجعة إعدادات شبكات سيسكو والسيرفرات.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section id="services" class="py-5 bg-dark text-white">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">خدماتنا الرئيسية</h2>
+                    <p class="lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">استعرض حلولنا المتخصصة في صميم الأمن الرقمي وتطوير الأنظمة عالية الأداء.</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in">
+                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
+                                <i class="fas fa-fingerprint fa-4x mb-3"></i>
+                                <h5 class="card-title text-warning">التحليل الأمني والتقييم الاحترافي</h5>
+                                <p class="card-text text-light-50">فحص شامل للثغرات وتقييم أمني عميق (Security Assessment) وتوفير تقارير مفصلة لتعزيز حماية الأنظمة.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
+                                <i class="fas fa-code fa-4x mb-3"></i>
+                                <h5 class="card-title text-warning">تطوير تطبيقات الويب الآمنة</h5>
+                                <p class="card-text text-light-50">بناء وتطوير منصات وتطبيقات ويب باستخدام أحدث الأطر البرمجية، مع التركيز على الكود النظيف والمحمي.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="service-card h-100 p-4 shadow-lg border border-warning">
+                                <i class="fas fa-network-wired fa-4x mb-3"></i>
+                                <h5 class="card-title text-warning">الاستشارات المتقدمة في الأمن السحابي والشبكات</h5>
+                                <p class="card-text text-light-50">استشارات متخصصة في تأمين **التخزين السحابي (IaaS)**، تصميم بنى تحتية آمنة، ومراجعة إعدادات شبكات سيسكو والسيرفرات.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <section id="portfolio" class="py-5 bg-light">
-                <div class="container text-center">
-                    <h2 class="display-4 mb-5" data-aos="fade-up">أبرز أعمالنا و دراسات الحالة</h2>
-                    <p class="lead mb-5 text-secondary" data-aos="fade-up" data-aos-delay="100">استعرض بعضًا من نجاحاتنا في تأمين الأنظمة وتطوير الحلول البرمجية عالية الأداء.</p>
+            <section id="portfolio" class="py-5 bg-light">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5" data-aos="fade-up">أبرز أعمالنا و دراسات الحالة</h2>
+                    <p class="lead mb-5 text-secondary" data-aos="fade-up" data-aos-delay="100">استعرض بعضًا من نجاحاتنا في تأمين الأنظمة وتطوير الحلول البرمجية عالية الأداء.</p>
 
-                    <div class="row">
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="portfolio-item card shadow h-100 border-0">
-                                <div class="card-body p-4">
-                                    <i class="fas fa-lock fa-3x mb-3 text-warning"></i>
-                                    <h5 class="card-title text-dark fw-bold">تأمين شبكة ومنصة مالية</h5>
-                                    <p class="card-text text-secondary">نجحنا في اكتشاف وتصحيح 6 ثغرات حرجة (Critical Vulnerabilities) في البنية التحتية لشركة دفع إلكتروني كبرى، مما عزز من موثوقية نظامها.</p>
-                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('securityAssessment'); return false;">
-                                        <i class="fas fa-arrow-left me-1"></i>
-                                        تفاصيل الدراسة
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row">
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="portfolio-item card shadow h-100 border-0">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-lock fa-3x mb-3 text-warning"></i>
+                                    <h5 class="card-title text-dark fw-bold">تأمين شبكة ومنصة مالية</h5>
+                                    <p class="card-text text-secondary">نجحنا في اكتشاف وتصحيح 6 ثغرات حرجة (Critical Vulnerabilities) في البنية التحتية لشركة دفع إلكتروني كبرى، مما عزز من موثوقية نظامها.</p>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('securityAssessment'); return false;">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        تفاصيل الدراسة
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="portfolio-item card shadow h-100 border-0">
-                                <div class="card-body p-4">
-                                    <i class="fas fa-desktop fa-3x mb-3 text-warning"></i>
-                                    <h5 class="card-title text-dark fw-bold">منصة إدارية آمنة مخصصة</h5>
-                                <p class="card-text text-secondary">تطوير نظام إداري (ERP System) متكامل، مع تطبيق سياسات أمان صارمة (OWASP Top 10) لضمان حماية بيانات المستخدمين الحساسة.</p>
-                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('webDev'); return false;">
-                                        <i class="fas fa-arrow-left me-1"></i>
-                                        عرض المشروع
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="portfolio-item card shadow h-100 border-0">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-desktop fa-3x mb-3 text-warning"></i>
+                                    <h5 class="card-title text-dark fw-bold">منصة إدارية آمنة مخصصة</h5>
+                                <p class="card-text text-secondary">تطوير نظام إداري (ERP System) متكامل، مع تطبيق سياسات أمان صارمة (OWASP Top 10) لضمان حماية بيانات المستخدمين الحساسة.</p>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('webDev'); return false;">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        عرض المشروع
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="600">
-                            <div class="portfolio-item card shadow h-100 border-0">
-                                <div class="card-body p-4">
-                                    <i class="fas fa-code-branch fa-3x mb-3 text-warning"></i>
-                                    <h5 class="card-title text-dark fw-bold">تقييم أمان تطبيق جوال</h5>
-                                    <p class="card-text text-secondary">إجراء تقييم أمني شامل لتطبيق جوال يعمل على نظامي iOS و Android، وتقديم تقرير شامل بالتوصيات الفنية لتعزيز الدفاعات.</p>
-                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('securityAssessment'); return false;">
-                                        <i class="fas fa-arrow-left me-1"></i>
-                                        قراءة التقرير
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="testimonials" class="py-5 bg-dark text-white">
-                <div class="container text-center">
-                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">ماذا يقول عملاؤنا؟</h2>
-                    
-                    <div class="row justify-content-center">
-                        
-                        <div class="col-lg-5 mb-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="testimonial-card h-100 p-4 shadow-lg border border-warning">
-                                <div class="card-body">
-                                    <i class="fas fa-quote-right fa-2x mb-3 text-success"></i>
-                                    <p class="fst-italic text-light-50">
-                                        "الخدمة الأمنية التي تلقيناها كانت استثنائية. قاموا بتأمين نظامنا بالكامل، وحصّنوه ضد أي هجوم محتمل. مستوى الاحترافية والخبرة التقنية يفوق التوقعات."
-                                    </p>
-                                    <h5 class="mt-4 mb-0 text-warning">- فهد . أ (مدير تنفيذي لشركة تكنولوجيا)</h5>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="portfolio-item card shadow h-100 border-0">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-code-branch fa-3x mb-3 text-warning"></i>
+                                    <h5 class="card-title text-dark fw-bold">تقييم أمان تطبيق جوال</h5>
+                                    <p class="card-text text-secondary">إجراء تقييم أمني شامل لتطبيق جوال يعمل على نظامي iOS و Android، وتقديم تقرير شامل بالتوصيات الفنية لتعزيز الدفاعات.</p>
+                                    <a href="#" class="text-warning fw-bold text-decoration-none small" onclick="showService('securityAssessment'); return false;">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        قراءة التقرير
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="testimonials" class="py-5 bg-dark text-white">
+                <div class="container text-center">
+                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">ماذا يقول عملاؤنا؟</h2>
+                    
+                    <div class="row justify-content-center">
+                        
+                        <div class="col-lg-5 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="testimonial-card h-100 p-4 shadow-lg border border-warning">
+                                <div class="card-body">
+                                    <i class="fas fa-quote-right fa-2x mb-3 text-success"></i>
+                                    <p class="fst-italic text-light-50">
+                                        "الخدمة الأمنية التي تلقيناها كانت استثنائية. قاموا بتأمين نظامنا بالكامل، وحصّنوه ضد أي هجوم محتمل. مستوى الاحترافية والخبرة التقنية يفوق التوقعات."
+                                    </p>
+                                    <h5 class="mt-4 mb-0 text-warning">- فهد . أ (مدير تنفيذي لشركة تكنولوجيا)</h5>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col-lg-5 mb-4" data-aos="fade-up" data-aos-delay="400">
-                            <div class="testimonial-card h-100 p-4 shadow-lg border border-warning">
-                                <div class="card-body">
-                                    <i class="fas fa-quote-right fa-2x mb-3 text-success"></i>
-                                    <p class="fst-italic text-light-50">
-                                        "الجودة في بناء التطبيقات مذهلة. الفريق لا يكتفي بالبرمجة النظيفة، بل يضمن أعلى معايير الأمان منذ البداية. منصتنا تعمل بسلاسة وبلا أي مخاوف أمنية."
-                                    </p>
-                                    <h5 class="mt-4 mb-0 text-warning">- سارة . م (رائدة أعمال ومطورة)</h5>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-lg-5 mb-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="testimonial-card h-100 p-4 shadow-lg border border-warning">
+                                <div class="card-body">
+                                    <i class="fas fa-quote-right fa-2x mb-3 text-success"></i>
+                                    <p class="fst-italic text-light-50">
+                                        "الجودة في بناء التطبيقات مذهلة. الفريق لا يكتفي بالبرمجة النظيفة، بل يضمن أعلى معايير الأمان منذ البداية. منصتنا تعمل بسلاسة وبلا أي مخاوف أمنية."
+                                    </p>
+                                    <h5 class="mt-4 mb-0 text-warning">- سارة . م (رائدة أعمال ومطورة)</h5>
+                                </div>
+                            </div>
+                        </div>
 
-                    </div>
-                    
-                </div>
-            </section>
-            
-            <footer class="bg-dark text-white py-4" id="contact-footer">
-                <div class="container text-center" data-aos="fade-in">
-                    
-                    <div class="social-icons mb-3">
-                        <a href="https://twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                        <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
-                    </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <footer class="bg-dark text-white py-4" id="contact-footer">
+                <div class="container text-center" data-aos="fade-in">
+                    
+                    <div class="social-icons mb-3">
+                        <a href="https://twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
 
-                    <div class="text-center p-4 rounded mb-3" style="background: rgba(255, 255, 255, 0.05);">
-                        
-                        <h5 class="text-white mb-3">للتواصل المباشر والاستفسارات (الدعم الفني):</h5>
-                        
-                        <p class="mb-3 lead">
-                            <i class="fas fa-envelope text-warning me-1"></i>
-                            <a href="mailto:f@hotmail.hu" class="text-decoration-none text-warning fw-bold">F@hotmail.hu</a> 
-                            <span class="small text-light-50">(الرئيسي لجميع الأعمال)</span>
-                        </p>
-                        
-                        <div class="row justify-content-center footer-emails small text-light-50">
-                            
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                                <i class="fas fa-envelope me-1"></i>
-                                <a href="mailto:almkhdri31@gmail.com" class="text-decoration-none text-light-50">almkhdri31@gmail.com</a>
-                            </div>
-                            
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                                <i class="fas fa-envelope me-1"></i>
-                                <a href="mailto:mohammed.m.s.almkhdri@fmail.com" class="text-decoration-none text-light-50">mohammed.m.s.almkhdri@fmail.com</a>
-                            </div>
-                            
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                                <i class="fas fa-envelope me-1"></i>
-                                <a href="mailto:malmkhdry283@gmail.com" class="text-decoration-none text-light-50">malmkhdry283@gmail.com</a>
-                            </div>
-                            
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                                <i class="fas fa-envelope me-1"></i>
-                                <a href="mailto:mohammedalmkhdri55@gmail.com" class="text-decoration-none text-light-50">mohammedalmkhdri55@gmail.com</a>
-                            </div>
-                            
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                                <i class="fas fa-envelope me-1"></i>
-                                <a href="mailto:Jozefyouhna@gmail.com" class="text-decoration-none text-light-50">Jozefyouhna@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير  | <span class="text-warning fw-bold">محمد المخدري</span></p>
-                    <p class="small text-light-50 mt-1">خبير الأمن السيبراني والبرمجة والتطوير</p>
-                </div>
-            </footer>
-        </div>
+                    <div class="text-center p-4 rounded mb-3" style="background: rgba(255, 255, 255, 0.05);">
+                        
+                        <h5 class="text-white mb-3">للتواصل المباشر والاستفسارات (الدعم الفني):</h5>
+                        
+                        <p class="mb-3 lead">
+                            <i class="fas fa-envelope text-warning me-1"></i>
+                            <a href="mailto:F@hotmail.hu" class="text-decoration-none text-warning fw-bold">F@hotmail.hu</a> 
+                            <span class="small text-light-50">(الرئيسي لجميع الأعمال)</span>
+                        </p>
+                        
+                        <div class="row justify-content-center footer-emails small text-light-50">
+                            
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:almkhdri31@gmail.com" class="text-decoration-none text-light-50">almkhdri31@gmail.com</a>
+                            </div>
+                            
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:mohammed.m.s.almkhdri@fmail.com" class="text-decoration-none text-light-50">mohammed.m.s.almkhdri@fmail.com</a>
+                            </div>
+                            
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:malmkhdry283@gmail.com" class="text-decoration-none text-light-50">malmkhdry283@gmail.com</a>
+                            </div>
+                            
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:mohammedalmkhdri55@gmail.com" class="text-decoration-none text-light-50">mohammedalmkhdri55@gmail.com</a>
+                            </div>
+                            
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:Jozefyouhna@gmail.com" class="text-decoration-none text-light-50">Jozefyouhna@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="text-warning fw-bold">محمد المخدري</span></p>
+                    <p class="small text-light-50 mt-1">خبير الأمن السيبراني والبرمجة والتطوير</p>
+                </div>
+            </footer>
+        </div>
 
 
-        </div> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        AOS.init({
-            duration: 1200, 
-            once: true 
-        });
+        </div> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        AOS.init({
+            duration: 1200, 
+            once: true 
+        });
 
-        function showService(serviceId) {
-            // إخفاء المحتوى الرئيسي
-            document.getElementById('main-content-sections').style.display = 'none';
-            // إظهار حاوية الصفحات الفرعية
-            document.getElementById('service-details-container').style.display = 'block';
+        function showService(serviceId) {
+            // إخفاء المحتوى الرئيسي
+            document.getElementById('main-content-sections').style.display = 'none';
+            // إظهار حاوية الصفحات الفرعية
+            document.getElementById('service-details-container').style.display = 'block';
 
-            // إخفاء كل الصفحات الفرعية
-            document.querySelectorAll('.service-page').forEach(page => {
-                page.style.display = 'none';
-            });
+            // إخفاء كل الصفحات الفرعية
+            document.querySelectorAll('.service-page').forEach(page => {
+                page.style.display = 'none';
+            });
 
-            // إظهار الصفحة الفرعية المطلوبة
-            document.getElementById(serviceId + '-details').style.display = 'block';
+            // إظهار الصفحة الفرعية المطلوبة
+            document.getElementById(serviceId + '-details').style.display = 'block';
 
-             // التمرير إلى أعلى حاوية تفاصيل الخدمة
-            document.getElementById('service-details-container').scrollIntoView({ behavior: 'smooth' });
-        }
+             // التمرير إلى أعلى حاوية تفاصيل الخدمة
+            document.getElementById('service-details-container').scrollIntoView({ behavior: 'smooth' });
+        }
 
-        function showMainContent() {
-            // إظهار المحتوى الرئيسي
-            document.getElementById('main-content-sections').style.display = 'block';
-            // إخفاء حاوية الصفحات الفرعية
-            document.getElementById('service-details-container').style.display = 'none';
+        function showMainContent() {
+            // إظهار المحتوى الرئيسي
+            document.getElementById('main-content-sections').style.display = 'block';
+            // إخفاء حاوية الصفحات الفرعية
+            document.getElementById('service-details-container').style.display = 'none';
 
-             // التمرير إلى أعلى قسم المحتوى
-            document.getElementById('main-content-sections').scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+             // التمرير إلى أعلى قسم المحتوى
+            document.getElementById('main-content-sections').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
+

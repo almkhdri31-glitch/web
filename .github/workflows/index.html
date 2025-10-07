@@ -14,18 +14,46 @@
     <style>
         /*
         **********************************************************
-        * تنسيقات إضافية (تم تثبيتها لضمان التوافق)
+        * تنسيقات إضافية مُحسَّنة (لحجم الخطوط وتنسيق الإيميلات)
         **********************************************************
         */
         
+        /* 1. تحسين أحجام الخطوط باستخدام Viewport Units (vW) */
+        body {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.5vw; /* حجم أساسي سلس الاستجابة للكمبيوتر */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 4.0vw; /* زيادة الحجم الأساسي للهاتف لضمان الوضوح */
+            }
+            .hero-section h1 {
+                font-size: 7.5vw !important;
+            }
+            .hero-section p {
+                font-size: 4.5vw !important;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            body {
+                font-size: 1.2vw; /* منع الخط من أن يصبح ضخماً جداً على الشاشات الكبيرة */
+            }
+        }
+
+        /* 2. تنسيق الإيميلات في الفوتر (لمنع التكدس على الشاشات الصغيرة) */
         .footer-emails a {
             word-break: break-all;
-            margin: 0 5px;
-            font-size: 0.85rem;
+            font-size: 0.9rem; /* تحديد حجم ثابت نسبياً */
         }
+        .footer-emails .row div {
+            padding: 0 10px; /* مسافة بين الإيميلات في وضع الكمبيوتر */
+        }
+        
         @media (max-width: 768px) {
             .footer-emails a {
-                display: block;
+                display: inline-block; /* إظهارها في سطر واحد على الهاتف */
                 margin-bottom: 5px;
             }
         }
@@ -48,11 +76,11 @@
                     <li class="nav-item"><a class="nav-link" href="#portfolio">آراء العملاء</a></li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-success fw-bold" href="https://almkhdri31-glitch.github.io/web/talent-acquisition.html">فرص العمل</a>
+                        <a class="nav-link text-success fw-bold" href="https://almkhdri31-glitch.github.io/web/talent-acquisition.html" target="_blank">فرص العمل</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="https://my-first-site-gold-seven.vercel.app/network-scanner.html">الأدوات الأمنية</a>
+                        <a class="nav-link text-warning fw-bold" href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank">الأدوات الأمنية</a>
                     </li>
                     
                     <li class="nav-item"><a class="nav-link" href="#contact-footer">تواصل معنا</a></li> 
@@ -298,43 +326,45 @@
                         <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
                     </div>
 
-                    <div class="text-center p-2 rounded mb-3" style="background: rgba(255, 255, 255, 0.05);">
-                        <h5 class="text-white mb-2">للتواصل المباشر والاستفسارات:</h5>
+                    <div class="text-center p-4 rounded mb-3" style="background: rgba(255, 255, 255, 0.05);">
                         
-                        <p class="mb-1">
+                        <h5 class="text-white mb-3">للتواصل المباشر والاستفسارات (الدعم الفني):</h5>
+                        
+                        <p class="mb-3 lead">
                             <i class="fas fa-envelope text-warning me-1"></i>
                             <a href="mailto:F@hotmail.hu" class="text-decoration-none text-warning fw-bold">F@hotmail.hu</a> 
-                            <span class="small">(الرئيسي - لجميع الأعمال)</span>
+                            <span class="small text-light-50">(الرئيسي لجميع الأعمال)</span>
                         </p>
                         
-                        <div class="small mb-0 text-light-50 d-flex flex-column flex-md-row justify-content-center flex-wrap footer-emails">
+                        <div class="row justify-content-center footer-emails small text-light-50">
                             
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
                                 <a href="mailto:almkhdri31@gmail.com" class="text-decoration-none text-light-50">almkhdri31@gmail.com</a>
-                            </span> 
+                            </div>
                             
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
                                 <a href="mailto:mohammed.m.s.almkhdri@fmail.com" class="text-decoration-none text-light-50">mohammed.m.s.almkhdri@fmail.com</a>
-                            </span>
+                            </div>
                             
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
                                 <a href="mailto:malmkhdry283@gmail.com" class="text-decoration-none text-light-50">malmkhdry283@gmail.com</a>
-                            </span>
+                            </div>
                             
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
                                 <a href="mailto:mohammedalmkhdri55@gmail.com" class="text-decoration-none text-light-50">mohammedalmkhdri55@gmail.com</a>
-                            </span>
+                            </div>
                             
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
+                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                <i class="fas fa-envelope me-1"></i>
                                 <a href="mailto:Jozefyouhna@gmail.com" class="text-decoration-none text-light-50">Jozefyouhna@gmail.com</a>
-                            </span>
+                            </div>
                         </div>
                     </div>
+                    
                     <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="text-warning fw-bold">محمد المخدري</span></p>
                     <p class="small text-light-50 mt-1">خبير الأمن السيبراني والبرمجة والتطوير</p>
                 </div>
@@ -342,369 +372,18 @@
         </div>
 
 
-        <div id="service-details-container" style="display: none;">
-            
-            <div class="container pt-5 pb-3 text-center" style="background-color: #f8f9fa;">
-                 <button class="btn btn-lg btn-warning fw-bold" onclick="showMainContent()">
-                    <i class="fas fa-arrow-right me-2"></i> العودة إلى النظرة العامة
-                </button>
-            </div>
-            
-            <section id="securityAssessment-details" class="py-5 bg-light service-page" style="display: none;">
-                <div class="container">
-                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                    <h2 class="display-4 mb-5 text-dark text-center"><i class="fas fa-lock me-2 text-success"></i> التقييم والتحليل الأمني الشامل (Security Assessment)</h2>
-                    
-                    <div class="row text-start">
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-warning">لماذا يجب عليك تقييم أمان نظامك الآن؟</h3>
-                            <p class="lead text-secondary">
-                                أنظمة تكنولوجيا المعلومات الخاصة بك قد تبدو آمنة، لكن الثغرات تتطور باستمرار. أي نقص صغير في الإعداد أو الكود يمكن أن يكون نقطة دخول كارثية. نحن نكتشف المخاطر قبل أن يفعلها المهاجمون.
-                            </p>
-                            <ul class="list-unstyled">
-                                <li class="text-dark mb-2"><i class="fas fa-exclamation-circle text-danger me-2"></i> **الخطر 1: غرامات الامتثال (Compliance Fines):** فقدان البيانات الحساسة يؤدي إلى غرامات ضخمة لعدم الامتثال لمعايير مثل PCI DSS أو GDPR.</li>
-                                <li class="text-dark mb-2"><i class="fas fa-exclamation-circle text-danger me-2"></i> **الخطر 2: توقف الأعمال (Downtime):** اختراق الشبكة أو السيرفر قد يوقف عملياتك لساعات أو أيام، مما يكلفك آلاف الدولارات.</li>
-                                <li class="text-dark mb-2"><i class="fas fa-exclamation-circle text-danger me-2"></i> **الخطر 3: فقدان الثقة:** أي تسريب بيانات يقضي على ثقة العملاء بك ويضر بسمعة علامتك التجارية.</li>
-                            </ul>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-warning">منهجيتنا في التحليل الأمني (على خطى الهاكر الأخلاقي)</h3>
-                            <p class="text-secondary">
-                                لا نعتمد على الأدوات الآلية فقط، بل نستخدم خبرة الهاكر الأخلاقي لتطبيق سيناريوهات هجوم واقعية (Threat Modeling) لضمان أن دفاعاتك صلبة.
-                            </p>
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item">**جمع المعلومات والاستطلاع (Reconnaissance):** تحديد الأصول الحساسة والبنية التحتية الظاهرة.</li>
-                                <li class="list-group-item">**فحص الثغرات (Vulnerability Scanning):** استخدام أدوات يدوية ومتقدمة للبحث عن الثغرات المعروفة وغير المعروفة.</li>
-                                <li class="list-group-item">**التحليل العميق (Deep Analysis):** مراجعة شاملة للكود المصدري وإعدادات الشبكات والـ (Firewalls).</li>
-                                <li class="list-group-item">**كتابة التقرير والتوصيات:** تقديم تقرير تنفيذي لمتخذي القرار، وتقرير فني مفصل للمطورين بآلية الإصلاح (Remediation).</li>
-                            </ol>
-                        </div>
-                        
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #e9ecef;">
-                            <h3 class="fw-bold mb-3 text-dark">نصيحة أمنية سريعة لحماية نفسك اليوم:</h3>
-                            <p class="text-dark">
-                                قبل أي تقييم شامل، تأكد من أنك تطبق سياسة **(Least Privilege Principle)**. لا تمنح أي مستخدم أو نظام صلاحيات تتجاوز ما يحتاجه لأداء وظيفته. هذا يقلل من نطاق الضرر المحتمل في حال تم اختراق أي حساب.
-                            </p>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 text-center">
-                            <h3 class="fw-bold mb-3 text-dark">هل أنت مستعد لنقل أمان نظامك إلى المستوى التالي؟</h3>
-                            <p class="lead text-secondary">
-                                لا تؤجل حماية عملك ليوم الغد. دعنا نبدأ التقييم الشامل لمنصتك الآن لنمنحك **الشهادة الأمنية** التي تحتاجها للمضي قدمًا بثقة.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-success btn-lg mt-4 w-50">
-                                <i class="fas fa-envelope me-2"></i> اطلب تقييم الأمان
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="cloudSecurity-details" class="py-5 bg-dark text-white service-page" style="display: none;">
-                <div class="container">
-                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                    <h2 class="display-4 mb-5 text-warning text-center"><i class="fas fa-cloud me-2"></i> تأمين البنية السحابية (Cloud Security)</h2>
-
-                    <div class="row text-start">
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-success">لماذا لا يكفي مزود الخدمة لتأمين سحابتك؟ (نموذج المسؤولية المشتركة)</h3>
-                            <p class="lead text-light-50">
-                                تعتقد الكثير من الشركات أن أمازون أو مايكروسوفت تتولى كل شيء. الحقيقة هي أنهم يؤمنون البنية التحتية الأساسية، لكن مسؤولية **تأمين البيانات والتطبيقات والإعدادات** تقع عليك أنت.
-                            </p>
-                            <ul class="list-unstyled">
-                                <li class="text-light mb-2"><i class="fas fa-check-circle text-warning me-2"></i> **مسؤوليتنا:** تأمين الهوية والوصول (IAM)، إعدادات جدران الحماية (Security Groups)، التشفير، ومراقبة التهديدات السحابية.</li>
-                                <li class="text-light mb-2"><i class="fas fa-check-circle text-warning me-2"></i> **المشكلة الشائعة:** سوء تكوين الـ S3 Buckets أو الـ Azure Blobs يؤدي إلى تسريب بيانات بملايين الدولارات سنويًا.</li>
-                            </ul>
-                        </div>
-
-                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
-
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-success">مراحل تأمين البيئة السحابية (AWS, Azure, GCP)</h3>
-                            <p class="text-light-50">
-                                نطبق إطار عمل صارم لضمان حماية سحابتك من الثغرات إلى الامتثال للمعايير العالمية.
-                            </p>
-                            <ol class="list-group list-group-numbered list-group-dark">
-                                <li class="list-group-item bg-secondary text-white border-warning">**مراجعة الهوية والوصول (IAM Review):** التأكد من أن كل مستخدم وخدمة يملك فقط الصلاحيات اللازمة (Least Privilege).</li>
-                                <li class="list-group-item bg-secondary text-white border-warning">**تأمين البنية التحتية ككود (IaC Security):** فحص قوالب Terraform أو CloudFormation قبل النشر لضمان عدم وجود ثغرات في التصميم.</li>
-                                <li class="list-group-item bg-secondary text-white border-warning">**إدارة التشفير والمفاتيح:** تطبيق سياسات تشفير صارمة للبيانات الثابتة والمتحركة (At Rest & In Transit).</li>
-                            </ol>
-                        </div>
-                        
-                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
-
-                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #333333;">
-                            <h3 class="fw-bold mb-3 text-warning">نصيحة أمنية سريعة لحماية سحابتك اليوم:</h3>
-                            <p class="text-light">
-                                **فعّل المصادقة متعددة العوامل (MFA) على جميع حسابات الـ Root و المسؤولين في منصتك السحابية.** هذه الخطوة البسيطة هي خط الدفاع الأقوى ضد هجمات سرقة بيانات الاعتماد.
-                            </p>
-                        </div>
-
-                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
-
-                        <div class="col-lg-12 text-center">
-                            <h3 class="fw-bold mb-3 text-warning">هل سحابتك محمية بالكامل؟</h3>
-                            <p class="lead text-light-50">
-                                لا تترك أمان بياناتك الحساسة للصدفة. اطلب استشارة فورية لتقييم إعداداتك السحابية وبناء حصن دفاعي لا يُخترق.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-warning btn-lg mt-4 w-50">
-                                <i class="fas fa-envelope me-2"></i> استشارة الأمان السحابي
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="riskManagement-details" class="py-5 bg-light service-page" style="display: none;">
-                <div class="container">
-                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                    <h2 class="display-4 mb-5 text-dark text-center"><i class="fas fa-exclamation-triangle me-2 text-warning"></i> حلول إدارة المخاطر السيبرانية</h2>
-                    
-                    <div class="row text-start">
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-warning">لماذا لا يكفي فقط اكتشاف الثغرات؟ (نظرة استراتيجية)</h3>
-                            <p class="lead text-secondary">
-                                إدارة المخاطر هي تحويل الأمن السيبراني من مجرد تقنية إلى **قرار عمل استراتيجي**. لا يتعلق الأمر بعدد الثغرات، بل بتحديد الثغرات التي يمكن أن **تُدمر قيمة شركتك** وتؤثر على استمرارية العمل.
-                            </p>
-                            <ul class="list-unstyled">
-                                <li class="text-dark mb-2"><i class="fas fa-shield-alt text-success me-2"></i> **التركيز على الأصول:** تحديد الأصول التي تحقق أعلى ربح أو تحمل أخطر بيانات (تاج الشركة).</li>
-                                <li class="text-dark mb-2"><i class="fas fa-shield-alt text-success me-2"></i> **التحليل الكمّي والكيفي:** لا نقول "هناك 100 ثغرة"، بل نقول "إصلاح هذه الثغرة سيقلل الخسائر المتوقعة بنسبة 60%".</li>
-                            </ul>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-warning">الخطوات الأربع لإدارة المخاطر الفعالة</h3>
-                            <p class="text-secondary">
-                                نساعدك على بناء إطار عمل قوي لإدارة المخاطر، يركز على اتخاذ قرارات ذكية وموجهة بالتكاليف.
-                            </p>
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item">**تحديد الأصول وتقييمها:** ما هي أهم بياناتك ومن يملك الوصول إليها؟</li>
-                                <li class="list-group-item">**تحليل التهديدات ونقاط الضعف (Threat & Vulnerability Analysis):** ما هي الهجمات المحتملة التي تستهدف أصولك؟</li>
-                                <li class="list-group-item">**تقييم الاحتمالية والتأثير (Impact Assessment):** تحديد مدى احتمالية حدوث الهجوم وتأثيره المالي والتشغيلي.</li>
-                                <li class="list-group-item">**المعالجة وتخفيف المخاطر:** اتخاذ قرار بـ (القبول، النقل، التخفيف، التجنب) للمخاطر المتبقية.</li>
-                            </ol>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #e9ecef;">
-                            <h3 class="fw-bold mb-3 text-dark">نصيحة لمديري الأعمال:</h3>
-                            <p class="text-dark">
-                                لا تنفق ميزانية الأمن بالكامل على أحدث جدار حماية! **ركز 80% من جهودك الأمنية على حماية الـ 20% الأكثر أهمية من بياناتك (قاعدة باريتو الأمنية).** هذا هو جوهر الإدارة الذكية للمخاطر.
-                            </p>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 text-center">
-                            <h3 class="fw-bold mb-3 text-dark">اجعل الأمن استثمارًا وليس مجرد تكلفة!</h3>
-                            <p class="lead text-secondary">
-                                دعنا نساعدك في بناء خطة استراتيجية لإدارة المخاطر تضمن استمرارية أعمالك وتحمي استثماراتك.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-danger btn-lg mt-4 w-50">
-                                <i class="fas fa-envelope me-2"></i> اطلب خطة إدارة المخاطر
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="webDev-details" class="py-5 bg-dark text-white service-page" style="display: none;">
-                <div class="container">
-                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                    <h2 class="display-4 mb-5 text-warning text-center"><i class="fas fa-code me-2"></i> تطوير تطبيقات الويب الآمنة (Secure Web Development)</h2>
-                    
-                    <div class="row text-start">
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-success">الفرق بين التطوير العادي والتطوير الآمن:</h3>
-                            <p class="lead text-light-50">
-                                أغلب المطورين يركزون على الوظيفة (Functionality) ويؤجلون الأمن إلى النهاية. نحن نطبق مبدأ **الأمن حسب التصميم (Security By Design)**، حيث يكون الكود محصنًا من أول سطر يُكتب.
-                            </p>
-                            <ul class="list-unstyled">
-                                <li class="text-light mb-2"><i class="fas fa-fire-extinguisher text-danger me-2"></i> **التطوير العادي:** انتظار اكتشاف الثغرة ثم محاولة إصلاحها (كإطفاء حريق).</li>
-                                <li class="text-light mb-2"><i class="fas fa-fire-extinguisher text-danger me-2"></i> **تطويرنا الآمن:** بناء الكود بحيث يستحيل حقن الأوامر الضارة (SQL Injection) أو تجاوز المصادقة.</li>
-                            </ul>
-                        </div>
-
-                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
-
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-success">كيف نضمن تطبيق أعلى معايير الأمان (OWASP Top 10)</h3>
-                            <p class="text-light-50">
-                                نتبع دليل OWASP (Open Web Application Security Project) كمنهجية ثابتة للتأكد من حماية تطبيقاتك ضد أخطر 10 مخاطر أمنية على الويب.
-                            </p>
-                            <ul class="list-group list-group-flush list-group-dark">
-                                <li class="list-group-item bg-secondary text-white border-warning">**حماية البيانات الحساسة:** التشفير المناسب لكلمات المرور (Hashing) وبيانات الدفع.</li>
-                                <li class="list-group-item bg-secondary text-white border-warning">**منع ثغرات الحقن (Injection):** استخدام الـ Prepared Statements والـ Stored Procedures بشكل إجباري.</li>
-                                <li class="list-group-item bg-secondary text-white border-warning">**إدارة المصادقة الآمنة:** التعامل الاحترافي مع الـ Sessions والـ Tokens لحماية هويات المستخدمين.</li>
-                            </ul>
-                        </div>
-
-                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
-
-                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #333333;">
-                            <h3 class="fw-bold mb-3 text-warning">نصيحة للمطورين:</h3>
-                            <p class="text-light">
-                                **لا تثق أبدًا بمدخلات المستخدم (Never Trust User Input).** هذه هي القاعدة الذهبية. يجب دائمًا تصفية (Sanitize) جميع البيانات التي تأتي من المستخدم قبل معالجتها أو تخزينها في قاعدة البيانات.
-                            </p>
-                        </div>
-
-                        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
-
-                        <div class="col-lg-12 text-center">
-                            <h3 class="fw-bold mb-3 text-warning">هل أنت مستعد لتطبيق ويب يعمل بأعلى أداء وبأمان تام؟</h3>
-                            <p class="lead text-light-50">
-                                دعنا نحول فكرتك إلى منصة برمجية آمنة ومستدامة، تضمن حماية بيانات عملائك وسمعتك.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-warning btn-lg mt-4 w-50">
-                                <i class="fas fa-envelope me-2"></i> اطلب عرض سعر للتطوير
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="networkConsult-details" class="py-5 bg-light service-page" style="display: none;">
-                <div class="container">
-                     <button class="btn btn-outline-danger float-end" onclick="showMainContent()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                    <h2 class="display-4 mb-5 text-dark text-center"><i class="fas fa-network-wired me-2 text-success"></i> استشارات الشبكات والسيرفرات والبنية التحتية</h2>
-                    
-                    <div class="row text-start">
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-warning">لماذا تحتاج إلى خبير في الشبكات يتمتع بخلفية أمنية؟</h3>
-                            <p class="lead text-secondary">
-                                البنية التحتية (الشبكات والسيرفرات) هي الأساس. إذا كان الأساس ضعيفاً، فإن أي برنامج أمني إضافي سيكون غير فعال. نحن نجمع بين خبرة CCNA/CCNP وبين خبرة الأمن السيبراني لضمان: **أداء عالٍ وحماية قصوى في آن واحد**.
-                            </p>
-                            <ul class="list-unstyled">
-                                <li class="text-dark mb-2"><i class="fas fa-cogs text-success me-2"></i> **أمان السيرفر (Hardening):** تحصين سيرفرات Linux/Windows ضد الوصول غير المصرح به وتعديل الإعدادات الافتراضية.</li>
-                                <li class="text-dark mb-2"><i class="fas fa-cogs text-success me-2"></i> **تصميم الشبكة الآمنة (Secure Network Design):** بناء الشبكات بفصل منطقي (VLANs) لتقليل الضرر عند وقوع أي اختراق.</li>
-                            </ul>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 mb-4">
-                            <h3 class="fw-bold mb-3 text-warning">خدماتنا الرئيسية في إدارة البنية التحتية</h3>
-                            <p class="text-secondary">
-                                نقدم حلولاً متكاملة لإدارة ومراقبة وتحصين شبكاتك وأجهزتك الحاسوبية.
-                            </p>
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item">**مراجعة إعدادات أجهزة سيسكو (Cisco Audit):** التأكد من تأمين الموجهات والمحولات بأفضل الممارسات الأمنية.</li>
-                                <li class="list-group-item">**بناء بيئة العمل الافتراضية (Virtualization):** تصميم وإدارة خوادم VMware و Hyper-V لمرونة وكفاءة أعلى.</li>
-                                <li class="list-group-item">**مراقبة الأمن على مدار الساعة (24/7 Monitoring):** تركيب أنظمة مراقبة للتحقق من الأداء واكتشاف أي نشاط مشبوه في وقت قياسي.</li>
-                            </ol>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 mb-4 p-4 rounded" style="background-color: #e9ecef;">
-                            <h3 class="fw-bold mb-3 text-dark">نصيحة لحماية سيرفراتك اليوم:</h3>
-                            <p class="text-dark">
-                                **لا تستخدم أبدًا منفذ (Port) الـ SSH الافتراضي 22.** قم بتغييره إلى منفذ عشوائي (مثلاً 54321) على جميع سيرفراتك. هذه الخطوة البسيطة تقلل 90% من هجمات التخمين الآلية (Brute Force) على الخوادم.
-                            </p>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <div class="col-lg-12 text-center">
-                            <h3 class="fw-bold mb-3 text-dark">هل شبكتك وسيرفراتك قادرة على تحمل الضغط والتهديدات؟</h3>
-                            <p class="lead text-secondary">
-                                ابدأ استشارتك اليوم لتحصل على بنية تحتية تتميز بالسرعة والموثوقية والأمان الفائق.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-success btn-lg mt-4 w-50">
-                                <i class="fas fa-envelope me-2"></i> اطلب استشارة شبكات
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <footer class="bg-dark text-white py-4">
-                <div class="container text-center">
-                    
-                    <div class="social-icons mb-3">
-                        <a href="https://twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                        <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
-                    </div>
-                    
-                    <div class="text-center p-2 rounded mb-3" style="background: rgba(255, 255, 255, 0.05);">
-                        <h5 class="text-white mb-2">للتواصل المباشر والاستفسارات:</h5>
-                        
-                        <p class="mb-1">
-                            <i class="fas fa-envelope text-warning me-1"></i>
-                            <a href="mailto:F@hotmail.hu" class="text-decoration-none text-warning fw-bold">F@hotmail.hu</a> 
-                            (الرئيسي)
-                        </p>
-                        
-                        <div class="small mb-0 text-light-50 d-flex flex-column flex-md-row justify-content-center flex-wrap footer-emails">
-                            
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
-                                <a href="mailto:almkhdri31@gmail.com" class="text-decoration-none text-light-50">almkhdri31@gmail.com</a>
-                            </span> 
-                            
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
-                                <a href="mailto:mohammed.m.s.almkhdri@fmail.com" class="text-decoration-none text-light-50">mohammed.m.s.almkhdri@fmail.com</a>
-                            </span>
-                            
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
-                                <a href="mailto:malmkhdry283@gmail.com" class="text-decoration-none text-light-50">malmkhdry283@gmail.com</a>
-                            </span>
-                            
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
-                                <a href="mailto:mohammedalmkhdri55@gmail.com" class="text-decoration-none text-light-50">mohammedalmkhdri55@gmail.com</a>
-                            </span>
-                            
-                            <span class="d-block d-md-inline mb-1 mb-md-0">
-                                <i class="fas fa-envelope text-light-50 me-1"></i>
-                                <a href="mailto:Jozefyouhna@gmail.com" class="text-decoration-none text-light-50">Jozefyouhna@gmail.com</a>
-                            </span>
-                        </div>
-                    </div>
-                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="text-warning fw-bold">محمد المخدري</span></p>
-                    <p class="small text-light-50 mt-1">خبير الأمن السيبراني والبرمجة والتطوير</p>
-                </div>
-            </footer>
-
-        </div>
-
-    </div> 
+        </div> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script> 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
         AOS.init({
             duration: 1200, 
             once: true 
         });
 
-        // كود الجافاسكريبت للتحكم في عرض الأقسام (يجب وضعه في script.js)
         function showService(serviceId) {
-            // إخفاء المحتوى الرئيسي المتحرك
+            // إخفاء المحتوى الرئيسي
             document.getElementById('main-content-sections').style.display = 'none';
             // إظهار حاوية الصفحات الفرعية
             document.getElementById('service-details-container').style.display = 'block';

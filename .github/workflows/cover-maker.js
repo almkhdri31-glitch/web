@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedIconClass === 'none') {
             designIcon.style.display = 'none';
         } else {
-            // تحديث الكلاس لإظهار الأيقونة المطلوبة
-            designIcon.className = selectedIconClass;
+            // *تعديل: التأكد من مسح جميع الكلاسات السابقة قبل إضافة الجديد*
+            designIcon.className = ''; // مسح جميع الكلاسات
+            designIcon.classList.add(...selectedIconClass.split(' ')); // إضافة الكلاسات الجديدة
             designIcon.style.display = 'block';
             
             // تحديث اللون والحجم
@@ -84,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const reader = new FileReader();
             reader.onload = function(event) {
                 designCanvas.style.backgroundImage = `url(${event.target.result})`;
-                designCanvas.style.backgroundSize = 'cover';
+                // *تعديل: استخدام 'contain' لضمان ظهور الصورة كاملة*
+                designCanvas.style.backgroundSize = 'contain'; 
+                designCanvas.style.backgroundRepeat = 'no-repeat'; // لمنع تكرار الصورة
                 designCanvas.style.backgroundPosition = 'center';
                 removeImageBtn.style.display = 'block';
             };
@@ -107,7 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         html2canvas(designCanvas, { 
             scale: 2, 
-            logging: false 
+            logging: false,
+            // *تعديل: تجاهل التمرير لضمان التقاط كامل المحتوى إذا كان هناك تمرير*
+            windowWidth: designCanvas.scrollWidth,
+            windowHeight: designCanvas.scrollHeight,
+            x: designCanvas.scrollLeft,
+            y: designCanvas.scrollTop 
         }).then(canvas => {
             const imageURL = canvas.toDataURL("image/png");
             

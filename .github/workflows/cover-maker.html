@@ -11,20 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Lalezar&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&family=Changa:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* التعديل: تغيير خلفية الصفحة لتتناسب مع الموقع الرئيسي (لون داكن) */
         body {
-            background-color: #343a40; /* لون الخلفية الداكن لموقعك */
+            background-color: #343a40;
             font-family: 'Cairo', sans-serif;
-            color: #f8f9fa; /* لون النص الأبيض على الخلفية الداكنة */
+            color: #f8f9fa;
         }
         .header-bar {
-            background-color: #212529; /* أغمق قليلاً من الخلفية */
+            background-color: #212529;
             color: #ffc107;
             padding: 15px 0;
             border-bottom: 3px solid #ffc107;
         }
         .header-bar a {
-            color: #ffc107; /* لون الرابط ليبرز */
+            color: #ffc107;
             text-decoration: none;
             font-size: 1.1rem;
             transition: color 0.3s;
@@ -33,7 +32,6 @@
             color: #f8f9fa;
         }
         .canvas-section {
-            /* تعديل الخلفية لتكون داكنة أيضاً */
             background-color: #212529; 
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -53,7 +51,7 @@
             transition: all 0.3s ease;
             overflow: hidden;
             max-width: 100%;
-            position: relative; /* مهم لوضع الأيقونات */
+            position: relative; /* مهم لوضع الأيقونات والنص بحرية */
         }
         .design-text {
             color: #ffffff;
@@ -64,9 +62,10 @@
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             transition: all 0.3s ease;
+            position: relative; /* لضمان بقائه فوق الخلفية */
+            z-index: 2; /* لضمان ظهور النص فوق الخلفية وربما الأيقونة */
         }
         .controls-card {
-            /* تعديل الخلفية لتكون داكنة */
             background-color: #495057; 
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -75,7 +74,7 @@
             color: #f8f9fa;
         }
         .controls-card .form-label, .controls-card .h5 {
-            color: #ffc107; /* لون التسميات باللون المميز */
+            color: #ffc107;
         }
         .controls-card .form-control, .controls-card .form-select {
             background-color: #6c757d;
@@ -92,22 +91,22 @@
             border-radius: 5px;
         }
 
-        /* تنسيق زر التنزيل (التعديل: تصغير الحجم) */
         #downloadBtn {
-            font-size: 1.1rem; /* تصغير حجم الخط */
-            padding: 8px 15px; /* تصغير المساحة الداخلية */
+            font-size: 1.1rem;
+            padding: 8px 15px;
         }
 
-        /* تنسيق الايقونة */
+        /* *تعديل تنسيق الأيقونة لجعلها تظهر في مكان مستقل ويمكن سحبها* */
         #designIcon {
-            position: absolute;
-            top: 10px; /* لضبط الموقع المبدئي */
-            right: 10px;
-            font-size: 30px;
-            color: #ffffff;
-            transition: all 0.3s ease;
+            position: absolute; /* لجعلها حرة الحركة داخل الكانفاس */
+            top: 20px; /* موقع مبدئي */
+            left: 20px; /* موقع مبدئي */
+            font-size: 40px; /* حجم مبدئي */
+            color: #ffc107; /* لون مبدئي */
             display: none; /* إخفاء مبدئيًا */
-            cursor: move; /* للإشارة إلى إمكانية السحب */
+            cursor: grab; /* للإشارة إلى إمكانية السحب */
+            z-index: 3; /* لضمان ظهورها فوق النص والخلفية */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* ظل لضمان وضوحها */
         }
 
         @media (max-width: 992px) {
@@ -118,6 +117,9 @@
             }
             .canvas-section {
                 padding: 10px;
+            }
+            #designIcon {
+                font-size: 30px; /* تصغير حجم الأيقونة على الشاشات الصغيرة */
             }
         }
     </style>
@@ -208,6 +210,9 @@
                             <option value="fas fa-code">كود (Code)</option>
                             <option value="fas fa-rocket">صاروخ (Rocket)</option>
                             <option value="fas fa-check-circle">صح (Check)</option>
+                            <option value="fas fa-heart">قلب (Heart)</option>
+                            <option value="fas fa-gem">جوهرة (Gem)</option>
+                            <option value="fas fa-lightbulb">مصباح (Lightbulb)</option>
                         </select>
                     </div>
 

@@ -1,271 +1,121 @@
 /*
-=====================================================
-  التنسيقات الأساسية والخطوط
-=====================================================
+====================================
+           General Styling
+====================================
 */
 body {
     font-family: 'Cairo', sans-serif;
     line-height: 1.6;
-    background-color: #0d0d0d; /* خلفية داكنة موحدة */
-    color: #f8f9fa; /* لون نص أبيض خفيف */
-    font-size: 15px; /* *** تم تصغير الخط العام هنا *** */
+    background-color: #f8f9fa; /* لون فاتح للخلفية العامة */
 }
 
-/* التنسيقات العامة للروابط والأزرار */
-a {
-    transition: color 0.3s, background-color 0.3s;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-}
-
-/* تصغير العناوين الرئيسية الكبيرة (Display Headings) */
-h2.display-4 {
-    font-size: 2.2rem !important;
-}
-
-/* تصغير الفقرات التي تحمل فئة lead (لنصوص المقدمات والأوصاف الطويلة) */
-p.lead {
-    font-size: 1.05rem !important;
-}
-
-/* تصغير النص العادي والفقرات العادية */
-p {
-    font-size: 15px;
-}
-
-/* تنسيق للخطوط التي تعتمد على اللون الذهبي لـ IT */
-.text-warning {
-    color: #FFD700 !important; /* لون الذهب الكلاسيكي */
-}
-
-/* اللون الأخضر النيون (لأيقونات الميزات والـ Checkmarks) */
-.text-success {
-    color: #39FF14 !important;
-}
-
-/* تنسيق قسم التغليف لمنع تجاوز الحدود */
-.overflow-fix {
-    overflow-x: hidden;
+/* لتحسين تجربة التصفح على الأجهزة الكبيرة */
+.container {
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
 }
 
 /*
-=====================================================
-  شريط التنقل (Navbar)
-=====================================================
+====================================
+          Navbar & Typography
+====================================
 */
 .navbar {
-    border-bottom: 2px solid rgba(255, 215, 0, 0.2); /* خط ذهبي خفيف */
-    background-color: #1a1a1a !important; /* خلفية داكنة جدًا */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: background-color 0.3s ease;
 }
 
-.navbar-brand {
-    font-weight: 700;
-    color: #FFD700 !important;
-}
-
-.nav-link {
+.navbar .nav-link {
     font-weight: 500;
-    color: #adb5bd !important;
+    transition: color 0.3s ease;
 }
 
-.nav-link:hover, .nav-item .active {
-    color: #FFFFFF !important;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* تأثير نيون خفيف */
+.navbar .nav-link:hover {
+    color: #ffc107 !important; /* لون تحذيري فاتح */
 }
+
+/* تفعيل اللون الأصفر للرابط النشط في القائمة */
+.navbar .nav-link.active {
+    color: #ffc107 !important;
+    font-weight: 700;
+}
+
 
 /*
-=====================================================
-  قسم البطل (Hero Section) - #home
-=====================================================
+====================================
+         Hero Section (Parallax)
+====================================
 */
 .hero-section {
-    min-height: 100vh;
-    /* تأكد من أن مسار الصورة صحيح في ملف HTML أو هنا إذا كنت تستخدمه في هذا الملف */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') center center no-repeat;
-    background-size: cover;
-    
-    /* ********** التعديل الحاسم لتثبيت الخلفية ********** */
-    background-attachment: fixed;
-    /* ************************************ */
-    
-    color: #fff;
+    min-height: 100vh; /* تأكد من تغطية كامل الشاشة */
     padding-top: 100px;
     padding-bottom: 50px;
-}
+    position: relative;
+    color: white; /* ضمان أن النص يظهر بوضوح */
 
-.hero-section h1 {
-    color: #FFD700; /* لون العنوان الرئيسي الذهبي */
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* تأثير نيون ذهبي قوي */
-}
-
-.hero-section p {
-    max-width: 800px;
-    color: #e9ecef;
-}
-
-/* تنسيق زر "اكتشف المزيد" */
-.btn-outline-light {
-    border-color: #FFD700;
-    color: #FFD700;
-    font-weight: 600;
-}
-
-.btn-outline-light:hover {
-    background-color: #FFD700;
-    color: #1a1a1a;
-    border-color: #FFD700;
-}
-
-/*
-=====================================================
-  قسم من نحن (About Us) - #about
-=====================================================
-*/
-#about {
-    background-color: #1a1a1a !important;
-}
-
-#about h2 {
-    color: #FFD700;
-}
-
-#about .skills-list {
-    margin-top: 20px;
+    /* ======================================
+    ** كود تأثير البارالاكس المطلوب **
+    ======================================
+    */
+    /* يجب استبدال هذا المسار بمسار صورتك الفعلية (صورة الروبوت والبشر) */
+    background-image: url('images/your-cooperation-image.jpg'); 
+    
+    /* تثبيت الصورة في الخلفية */
+    background-attachment: fixed; 
+    
+    /* تغطية كامل القسم بالصورة */
+    background-size: cover; 
+    
+    /* توسيط الصورة */
+    background-position: center; 
+    
+    /* إضافة طبقة تظليل لضمان وضوح النص الأبيض */
+    background-color: rgba(0, 0, 0, 0.7); 
+    background-blend-mode: darken; /* دمج لون التظليل مع الصورة */
 }
 
 /*
-=====================================================
-  قسم الميزات (Features) - #features
-=====================================================
+====================================
+         About & Skills List (تنقية)
+====================================
 */
-#features {
-    background-color: #f8f9fa; /* خلفية بيضاء خفيفة لإراحة العين */
-    color: #212529; /* لون نص داكن على الخلفية الفاتحة */
+
+/* تعديل قائمة المهارات لتقليل استخدام اللون الأصفر القوي */
+#about .skills-list span {
+    color: #ffc107; /* اللون الأصفر يظل موجوداً */
+    font-weight: 400; /* تقليل سمك الخط ليكون أقل حدة من العناوين */
+    font-size: 1rem;
 }
 
-#features .card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
+#about .skills-list i.fa-check-circle {
+    color: #198754 !important; /* لون أخضر للحالة الإيجابية */
 }
 
-#features .card:hover {
+/*
+====================================
+         Services & Portfolio
+====================================
+*/
+.service-card, .portfolio-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover, .portfolio-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-#features i {
-    color: #FFD700;
-    margin-bottom: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 /*
-=====================================================
-  قسم الخدمات (Services) - #services
-=====================================================
+====================================
+         Service Details Pages
+====================================
 */
-#services {
-    background-color: #1a1a1a !important;
+/* لضمان اختفاء الأقسام عند الضغط على العودة للمحتوى الرئيسي */
+.service-page {
+    transition: all 0.5s ease-in-out;
 }
 
-.service-card {
-    border-radius: 12px;
-    background-color: #2c2c2c;
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.service-card:hover {
-    transform: scale(1.03);
-    border-color: #39FF14 !important; /* إطار نيون أخضر عند التمرير */
-}
-
-.service-card i {
-    color: #39FF14; /* أيقونات الخدمة بلون النيون الأخضر */
-}
-
-/*
-=====================================================
-  قسم المشاريع (Portfolio) - #portfolio
-=====================================================
-*/
-#portfolio {
-    background-color: #f8f9fa;
-}
-
-#portfolio .portfolio-item {
-    transition: box-shadow 0.3s;
-    border-radius: 12px;
-}
-
-#portfolio .portfolio-item:hover {
-    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3); /* ظل ذهبي عند التمرير */
-}
-
-/*
-=====================================================
-  قسم آراء العملاء (Testimonials Section)
-=====================================================
-*/
-#testimonials {
-    background-color: #1a1a1a !important; /* خلفية داكنة */
-}
-
-#testimonials .testimonial-card {
-    background-color: #2c2c2c; /* لون أغمق قليلاً للبطاقة */
-    border-radius: 12px;
-    transition: transform 0.3s;
-    /* التعديل هنا: للتأكد من أن الحدود مرئية */
-    border-color: rgba(255, 215, 0, 0.5) !important;
-}
-
-#testimonials .testimonial-card p {
-    color: #FFFFFF !important; 
-    font-size: 1rem; /* تم تصغير هذا الخط قليلاً */
-    line-height: 1.6;
-}
-
-#testimonials .testimonial-card:hover {
-    transform: scale(1.02); 
-}
-
-#testimonials .text-success {
-    color: #39FF14 !important; /* لون الأخضر النيون للأيقونات */
-}
-
-
-/*
-=====================================================
-  التذييل (Footer)
-=====================================================
-*/
-footer {
-    background-color: #0d0d0d !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-icons a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-.social-icons a:hover {
-    color: #FFD700;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
-}
-
-/*
-=====================================================
-  تعديلات الهواتف الذكية (لحل مشكلة الخلفية الثابتة على iOS)
-=====================================================
-*/
-@media screen and (max-width: 768px) {
-    .hero-section {
-        /* جعل الخلفية متحركة على الجوال لتجنب المشاكل التقنية */
-        background-attachment: scroll !important;
-        background-position: top center !important; 
-    }
+.list-group-dark .list-group-item {
+    border-color: rgba(255, 255, 255, 0.1) !important;
 }

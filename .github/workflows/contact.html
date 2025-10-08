@@ -36,7 +36,7 @@
         .main-header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 24px; font-weight: 900; color: var(--color-brand-primary); }
         .logo span { font-size: 18px; font-weight: 700; color: var(--color-text-light); }
-        .back-link { color: var(--color-text-subtle); transition: color 0.3s; padding: 5px 10px; border: 1px solid var(--color-text-subtle); border-radius: 5px; display: flex; align-items: center; gap: 5px; } /* تم إضافة flex لتنظيم الأيقونة والنص */
+        .back-link { color: var(--color-text-subtle); transition: color 0.3s; padding: 5px 10px; border: 1px solid var(--color-text-subtle); border-radius: 5px; display: flex; align-items: center; gap: 5px; } 
         .back-link:hover { color: var(--color-brand-primary); border-color: var(--color-brand-primary); }
         
         /* تنسيقات قسم التواصل */
@@ -163,7 +163,9 @@
                     سواء كان لديك استفسار أمني، طلب تدريب، أو رغبة في الإبلاغ عن ثغرة. فريقنا على أتم الاستعداد لخدمتك.
                 </p>
                 
-                <form action="https://formspree.io/f/OZ5XB5DWPUBFENHFOH2HEUQ7TKHYSUKB" method="POST">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <input type="hidden" name="access_key" value="b2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
                     
                     <div class="form-group">
                         <label for="name">الاسم الكريم:</label>
@@ -172,6 +174,7 @@
 
                     <div class="form-group">
                         <label for="email">البريد الإلكتروني:</label>
+                        <input type="hidden" name="subject" value="رسالة جديدة من نموذج تواصل منصة الأمن السيبراني">
                         <input type="email" id="email" name="البريد الإلكتروني" required>
                     </div>
 
@@ -180,8 +183,7 @@
                         <select id="service" name="الخدمة_المطلوبة" required>
                             <option value="">-- اختر نوع الطلب --</option>
                             <option value="استشارة أمنية عامة">استشارة أمنية عامة</option>
-                            <option value="طلب تقييم واختبار اختراق">طلب تقييم واختبار
-           </option>
+                            <option value="طلب تقييم واختبار اختراق">طلب تقييم واختبار اختراق</option>
                             <option value="طلب تدريب مخصص">طلب تدريب مخصص</option>
                             <option value="استفسار حول مقال أو دليل">استفسار حول مقال أو دليل</option>
                             <option value="أخرى">أخرى</option>

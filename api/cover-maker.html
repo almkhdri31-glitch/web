@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صانع الغلاف الاحترافي</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Lalezar&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&family=Changa:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #343a40;
+            font-family: 'Cairo', sans-serif;
+            color: #f8f9fa;
+        }
+        .header-bar {
+            background-color: #212529;
+            color: #ffc107;
+            padding: 15px 0;
+            border-bottom: 3px solid #ffc107;
+        }
+        .header-bar a {
+            color: #ffc107;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        .header-bar a:hover {
+            color: #f8f9fa;
+        }
+        .canvas-section {
+            background-color: #212529; 
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            min-height: 250px;
+        }
+        
+        .design-canvas {
+            display: flex;
+            flex-direction: column; /* للسماح بترتيب الأيقونة فوق النص */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto;
+            border: 2px dashed #ccc;
+            background-color: #007bff;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            max-width: 100%;
+            position: relative; /* مهم لوضع الأيقونات والنص بحرية */
+        }
+        .design-text {
+            color: #ffffff;
+            font-weight: 700;
+            white-space: pre-wrap;
+            word-break: break-word;
+            padding: 10px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            position: relative; /* لضمان بقائه فوق الخلفية */
+            z-index: 2; /* لضمان ظهور النص فوق الخلفية وربما الأيقونة */
+        }
+        .controls-card {
+            background-color: #495057; 
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            margin-top: 20px;
+            color: #f8f9fa;
+        }
+        .controls-card .form-label, .controls-card .h5 {
+            color: #ffc107;
+        }
+        .controls-card .form-control, .controls-card .form-select {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #ffffff;
+        }
+        .controls-card .form-control::placeholder {
+            color: #dee2e6;
+        }
+        .color-input {
+            width: 100%;
+            height: 40px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #downloadBtn {
+            font-size: 1.1rem;
+            padding: 8px 15px;
+        }
+
+        /* *تعديل تنسيق الأيقونة لجعلها تظهر في مكان مستقل ويمكن سحبها* */
+        #designIcon {
+            position: absolute; /* لجعلها حرة الحركة داخل الكانفاس */
+            top: 20px; /* موقع مبدئي */
+            left: 20px; /* موقع مبدئي */
+            font-size: 40px; /* حجم مبدئي */
+            color: #ffc107; /* لون مبدئي */
+            display: none; /* إخفاء مبدئيًا */
+            cursor: grab; /* للإشارة إلى إمكانية السحب */
+            z-index: 3; /* لضمان ظهورها فوق النص والخلفية */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* ظل لضمان وضوحها */
+        }
+
+        @media (max-width: 992px) {
+            .design-canvas {
+                width: 100% !important; 
+                height: auto !important;
+                min-height: 150px;
+            }
+            .canvas-section {
+                padding: 10px;
+            }
+            #designIcon {
+                font-size: 30px; /* تصغير حجم الأيقونة على الشاشات الصغيرة */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bar text-center">
+        <div class="container">
+            <a href="index.html" class="d-block mb-3">
+                <i class="fas fa-arrow-right me-2"></i> العودة للمنصة
+            </a>
+            <h1 class="h3 text-warning fw-bold">صانع الغلاف الاحترافي <span role="img" aria-label="Painting">🖼️</span></h1>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row">
+            
+            <div class="col-lg-5">
+                <div class="controls-card sticky-lg-top">
+                    
+                    <h2 class="h5 fw-bold mb-4 border-bottom pb-2">إعدادات التصميم</h2>
+
+                    <div class="mb-3">
+                        <label for="sizeSelector" class="form-label fw-bold">مقاس التصميم:</label>
+                        <select id="sizeSelector" class="form-select">
+                            <option value="800x300">غلاف ويب عام (800x300)</option>
+                            <option value="1200x630">غلاف فيسبوك (1200x630)</option>
+                            <option value="1500x500">غلاف تويتر (1500x500)</option>
+                            <option value="1080x1080">منشور انستجرام/مربع (1080x1080)</option>
+                            <option value="1280x720">مصغرة يوتيوب (1280x720)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="coverText" class="form-label fw-bold">النص الأساسي:</label>
+                        <input type="text" id="coverText" class="form-control" value="تصميم احترافي وآمن" placeholder="اكتب نص الغلاف هنا">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="backgroundColor" class="form-label fw-bold">لون الخلفية:</label>
+                        <input type="color" id="backgroundColor" class="form-control color-input" value="#007bff">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="imageUpload" class="form-label fw-bold">صورة الخلفية (اختياري):</label>
+                        <input type="file" id="imageUpload" class="form-control" accept="image/*">
+                    </div>
+
+                    <div class="mb-3">
+                        <button id="removeImageBtn" class="btn btn-outline-danger btn-sm w-100" style="display: none;">
+                            <i class="fas fa-trash-alt me-2"></i> إزالة الصورة والعودة للون
+                        </button>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="textColor" class="form-label fw-bold">لون النص:</label>
+                        <input type="color" id="textColor" class="form-control color-input" value="#ffffff">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="textSize" class="form-label fw-bold">حجم النص:</label>
+                        <input type="range" id="textSize" class="form-range" min="20" max="120" value="45">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fontSelector" class="form-label fw-bold">نوع الخط (Font Style):</label>
+                        <select id="fontSelector" class="form-select">
+                            <option value="'Cairo', sans-serif">الخط الافتراضي (Cairo)</option>
+                            <option value="'Lalezar', cursive">خط ليزر (Lalezar) - جريء</option>
+                            <option value="'Aref Ruqaa', serif">خط الرقعة (Aref Ruqaa) - تقليدي</option>
+                            <option value="'Scheherazade New', serif">خط شهرزاد (Scheherazade) - أنيق</option>
+                            <option value="'Changa', sans-serif">خط تشانغا (Changa) - حديث</option>
+                        </select>
+                    </div>
+
+                    <hr class="text-warning">
+                    
+                    <h2 class="h5 fw-bold mb-4 border-bottom pb-2">إعدادات الأيقونة (اختياري)</h2>
+                    
+                    <div class="mb-3">
+                        <label for="iconSelector" class="form-label fw-bold">اختيار الأيقونة:</label>
+                        <select id="iconSelector" class="form-select">
+                            <option value="none">لا توجد أيقونة</option>
+                            <option value="fas fa-star">نجمة (Star)</option>
+                            <option value="fas fa-lock">قفل (Lock)</option>
+                            <option value="fab fa-whatsapp">واتساب (WhatsApp)</option>
+                            <option value="fas fa-code">كود (Code)</option>
+                            <option value="fas fa-rocket">صاروخ (Rocket)</option>
+                            <option value="fas fa-check-circle">صح (Check)</option>
+                            <option value="fas fa-heart">قلب (Heart)</option>
+                            <option value="fas fa-gem">جوهرة (Gem)</option>
+                            <option value="fas fa-lightbulb">مصباح (Lightbulb)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="iconColor" class="form-label fw-bold">لون الأيقونة:</label>
+                        <input type="color" id="iconColor" class="form-control color-input" value="#ffc107">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="iconSize" class="form-label fw-bold">حجم الأيقونة:</label>
+                        <input type="range" id="iconSize" class="form-range" min="15" max="80" value="40">
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button id="downloadBtn" class="btn btn-success fw-bold">
+                            <i class="fas fa-download me-2"></i> تنزيل الغلاف (PNG)
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-7 mt-4 mt-lg-0">
+                <div class="canvas-section">
+                    <h2 class="h5 fw-bold mb-4 text-center">معاينة التصميم</h2>
+                    
+                    <div id="canvasContainer" class="mx-auto" style="max-width: 800px;">
+                        <div id="designCanvas" class="design-canvas" style="width: 800px; height: 300px;">
+                            <p id="designText" class="design-text">تصميم احترافي وآمن</p>
+                            <i id="designIcon" class="fas fa-star" style="display: none;"></i>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small mt-3 text-center">ملاحظة: يتم حفظ الصورة كملف PNG بجودة عالية.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="cover-maker.js"></script>
+</body>
+</html>

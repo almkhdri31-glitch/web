@@ -1,7 +1,25 @@
 /*
 ========================================================================= */
-/* الإعدادات الأساسية (لا تغيير)                 
-/* تم إضافة إصلاح الفراغ في اليسار (Overflow-x) */
+/* 🎨 المتغيرات (Variables) - لتغيير لون العلامة التجارية بسهولة */
+/* ========================================================================= */
+:root {
+    /* الخلفيات الأساسية (أسود داكن / رمادي غامق) */
+    --color-bg-main: #111111;    /* خلفية الجسم */
+    --color-bg-secondary: #1c1c1c; /* خلفية الهيدر والفوتر والأقسام الداكنة */
+    --color-bg-card: #2c3e50;    /* خلفية البطاقات/الخدمات (للتمايز) */
+
+    /* ألوان النصوص */
+    --color-text-light: #f1f1f1;  /* للنصوص الفاتحة جداً */
+    --color-text-subtle: #95a5a6; /* للنصوص الهادئة والوصفية */
+
+    /* لون العلامة التجارية (الأخضر الزمردي الموحد) */
+    --color-brand-primary: #2ecc71;  
+    --color-brand-hover: #27ae60;   
+}
+
+/*
+========================================================================= */
+/* الإعدادات الأساسية وتنسيق الخطوط العامة */
 /* ========================================================================= */
 
 * {
@@ -11,13 +29,13 @@
 }
 
 body {
-    font-family: 'Cairo', sans-serif;
+    /* تم توحيد الخط إلى Cairo (أو يمكنك تغييرها إلى Tajawal) */
+    font-family: 'Cairo', sans-serif; 
     line-height: 1.6;
-    color: #f1f1f1; /* لون نص فاتح للخلفية الداكنة */
-    background-color: #111111; /* الخلفية الداكنة الأصلية */
-    
-    /* ******** الإصلاح الجذري لمشكلة الفراغ/التمرير الأفقي ******** */
+    color: var(--color-text-light); 
+    background-color: var(--color-bg-main); 
     overflow-x: hidden; 
+    font-size: 16px; /* تحديد حجم الخط الأساسي */
 }
 
 a {
@@ -34,7 +52,7 @@ ul {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    overflow: hidden; /* تم الإبقاء عليه لمنع تجاوز المحتوى الداخلي */
+    overflow: hidden; 
 }
 
 .text-center {
@@ -42,10 +60,11 @@ ul {
 }
 
 .section-title {
-    font-size: 32px;
+    /* تم تقليل حجم الخط الأساسي */
+    font-size: 28px; 
     font-weight: 700;
     margin-bottom: 10px;
-    color: #e2e2e2;
+    color: var(--color-text-light);
     position: relative;
     padding-bottom: 10px;
 }
@@ -55,25 +74,25 @@ ul {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #2ecc71; /* الأخضر الفاقع */
+    background-color: var(--color-brand-primary); /* موحد */
     margin: 10px auto 0;
     border-radius: 2px;
 }
 
 .section-subtitle {
     font-size: 18px;
-    color: #95a5a6;
+    color: var(--color-text-subtle);
     margin-bottom: 40px;
 }
 
 /*
 ========================================================================= */
-/* الهيدر وقائمة التنقل (داكنة)                   
+/* الهيدر وقائمة التنقل (إلغاء التشويه الثابت)                  
 /* ========================================================================= */
 
 .main-header {
-    background: #1c1c1c; /* خلفية هيدر داكنة */
-    color: #f1f1f1;
+    background: var(--color-bg-secondary); /* موحد */
+    color: var(--color-text-light);
     padding: 15px 0;
     border-bottom: 1px solid #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -85,24 +104,31 @@ ul {
 .logo {
     font-size: 28px;
     font-weight: 900;
-    color: #2ecc71; /* شعار باللون الأخضر */
+    color: var(--color-brand-primary); /* موحد */
+}
+
+/* *** التعديل الرئيسي لإلغاء التشويه الثابت *** */
+.main-nav ul li a {
+    padding: 5px 10px; /* لتنسيق أفضل مع الحدود السفلية */
+    border-radius: 3px;
+    transition: all 0.3s;
 }
 
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
-    color: #111;
-    background-color: #2ecc71; /* تمييز القائمة باللون الأخضر */
-    border-radius: 3px; /* إضافة لتنسيق أفضل */
-    padding: 5px 10px; /* إضافة لتنسيق أفضل */
+    color: var(--color-brand-primary); /* لون النص يصبح أخضر */
+    background-color: transparent; /* إلغاء الخلفية الملونة الثابتة */
+    border-bottom: 3px solid var(--color-brand-primary); /* خط سفلي أنيق كتمييز */
+    padding-bottom: 5px; 
 }
 
 .menu-toggle {
-    color: #f1f1f1;
+    color: var(--color-text-light);
 }
 
 /*
 ========================================================================= */
-/* قسم البطل (Hero Section) - تصميمك الداكن */
+/* قسم البطل (Hero Section) - موحد */
 /* ========================================================================= */
 
 .hero-section {
@@ -112,44 +138,34 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #ffffff;
-    
-    background-image: url('مسار-صورة-الخلفية-هنا.jpg'); /* **تأكد من المسار الصحيح** */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-attachment: fixed; 
-    
+    color: var(--color-text-light);
+    /* ... (تأكد من مسار الصورة هنا) ... */
     position: relative;
     z-index: 1;
 }
 
 .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* طبقة شفافة لزيادة وضوح النص */
-    z-index: -1;
+    /* ... */
+    background: rgba(0, 0, 0, 0.5); 
+    /* ... */
 }
 
 .hero-title {
-    font-size: 48px;
+    /* تم تقليل حجم الخط الأساسي */
+    font-size: 40px;
     font-weight: 900;
     margin-bottom: 20px;
     line-height: 1.2;
 }
 
 .highlight-text {
-    color: #2ecc71; /* لون مميز أخضر */
+    color: var(--color-brand-primary); /* موحد */
 }
 
 .main-cta-button {
     display: inline-block;
-    background-color: #2ecc71; /* زر باللون الأخضر */
-    color: #111;
+    background-color: var(--color-brand-primary); /* موحد */
+    color: var(--color-bg-main);
     padding: 12px 30px;
     border-radius: 5px;
     font-size: 18px;
@@ -158,209 +174,117 @@ ul {
 }
 
 .main-cta-button:hover {
-    background-color: #27ae60;
+    background-color: var(--color-brand-hover); /* موحد */
     transform: translateY(-2px);
 }
 
 /*
 ========================================================================= */
-/* قسم النصيحة السريعة (تعديل الألوان لتناسب الداكن) 
-/* تم تحويله ليناسب قسم الميزات/الـ Features (#features) في نقاشاتنا السابقة */
+/* قسم النصيحة السريعة (Quick Tip) - موحد */
 /* ========================================================================= */
 
 .quick-tip-section {
     padding: 40px 0;
-    background-color: #1c1c1c; /* خلفية داكنة */
+    background-color: var(--color-bg-secondary); /* موحد */
 }
 
 .tip-card {
-    background: #2c3e50; /* بطاقة بلون داكن مختلف */
+    background: var(--color-bg-card); /* موحد */
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     gap: 20px;
-    color: #ecf0f1;
+    color: var(--color-text-light);
 }
 
 .tip-icon {
     font-size: 40px;
-    color: #2ecc71;
+    color: var(--color-brand-primary); /* موحد */
 }
 
 .tip-title {
-    color: #ecf0f1;
+    color: var(--color-text-light);
 }
 
 .tip-content {
-    color: #bdc3c7;
+    color: var(--color-text-subtle);
 }
 
 /*
 ========================================================================= */
-/* قسم التقنيات والأدوات (Tech Stack) - تصميم داكن 
-/* يمكن استخدام هذا الكلاس لـ #about أو #features في التعديل الجديد */
+/* أقسام المحتوى الأخرى (Tech, Guides, Footer) - موحد */
 /* ========================================================================= */
 
-.tech-stack-section {
+.tech-stack-section, .contact-section {
     padding: 80px 0;
-    background-color: #111111; /* خلفية داكنة */
+    background-color: var(--color-bg-main); /* موحد */
     text-align: center;
 }
-
-.tech-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap; 
-    margin-top: 40px;
-}
-
-.tech-item {
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    padding: 35px;
-    width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 5px solid #2ecc71; /* شريط أخضر */
-    text-align: right;
-}
-
-.tech-item:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-}
-
-.tech-icon {
-    font-size: 40px;
-    color: #2ecc71;
-    margin-bottom: 20px;
-}
-
-.tech-item h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #ecf0f1;
-    font-weight: 700;
-}
-
-.tech-tag {
-    display: inline-block;
-    background-color: #384e5a; /* خلفية داكنة فاتحة */
-    color: #2ecc71; /* نص أخضر */
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin: 4px;
-    font-size: 15px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.tech-tag:hover {
-    background-color: #4b626e;
-}
-
-/*
-========================================================================= */
-/* قسم أدلة الإرشاد (Guides) - تصميم داكن            
-/* تم تغيير الاسم من Services إلى Guides في نقاشاتنا، ولكن تم الإبقاء على كلاس main-content ليتناسب مع كودك */
-/* ========================================================================= */
 
 .main-content {
     padding: 80px 0;
-    background-color: #1c1c1c;
+    background-color: var(--color-bg-secondary); /* موحد */
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+.tech-item {
+    background-color: var(--color-bg-secondary); /* موحد */
+    /* ... */
+    border-top: 5px solid var(--color-brand-primary); /* موحد */
+    /* ... */
+}
+
+.tech-icon {
+    color: var(--color-brand-primary); /* موحد */
+}
+
+.tech-item h3 {
+    color: var(--color-text-light);
+}
+
+.tech-tag {
+    background-color: var(--color-bg-card); 
+    color: var(--color-brand-primary); /* موحد */
+    /* ... */
 }
 
 .service-card {
-    background: #2c3e50; /* بطاقة بلون داكن مختلف */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    text-align: right;
-    transition: all 0.3s ease;
-    color: #ecf0f1;
-}
-
-.service-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    transform: translateY(-5px);
+    background: var(--color-bg-card); /* موحد */
+    /* ... */
 }
 
 .card-icon {
-    font-size: 32px;
-    color: #2ecc71;
-}
-
-.service-card h2 {
-    color: #ecf0f1;
+    color: var(--color-brand-primary); /* موحد */
 }
 
 .card-link {
-    color: #2ecc71;
-    border-bottom: 2px solid #2ecc71;
+    color: var(--color-brand-primary); /* موحد */
+    border-bottom: 2px solid var(--color-brand-primary); /* موحد */
 }
 
 .card-link:hover {
-    color: #27ae60;
+    color: var(--color-brand-hover); /* موحد */
 }
-
-/*
-========================================================================= */
-/* قسم التواصل (Contact) - تصميم داكن              
-/* تم حذف تنسيق نموذج التواصل (Contact Form) لعدم استخدامه الآن، لكن أُبقي على تنسيق القسم نفسه */
-/* ========================================================================= */
-
-.contact-section {
-    padding: 80px 0;
-    background-color: #111111;
-    text-align: center;
-}
-
-.contact-section h2 {
-    color: #ecf0f1;
-}
-
-.contact-section p {
-    color: #bdc3c7;
-}
-
-/*
-========================================================================= */
-/* الفوتر (Footer) - تصميم داكن                 
-/* ========================================================================= */
 
 .main-footer {
-    background-color: #1c1c1c;
-    color: #ecf0f1;
-    padding: 20px 0; /* إضافة لضمان مسافة */
-}
-
-.social-links a {
-    color: #ecf0f1;
-    margin: 0 10px; /* إضافة مسافة بين الأيقونات */
+    background-color: var(--color-bg-secondary); /* موحد */
+    color: var(--color-text-light);
+    /* ... */
 }
 
 .social-links a:hover {
-    color: #2ecc71;
+    color: var(--color-brand-primary); /* موحد */
 }
+
 
 /*
 ========================================================================= */
-/* تنسيقات الاستجابة (Media Queries) - لا تغيير في البنية */
+/* تنسيقات الاستجابة (Media Queries) - تعديل أحجام الخطوط للجوال */
 /* ========================================================================= */
 
 @media (max-width: 992px) {
     .main-nav {
-        /* إخفاء القائمة في شاشات الهاتف */
         display: none;
         flex-direction: column;
         width: 100%;
@@ -368,7 +292,7 @@ ul {
         position: absolute;
         top: 60px;
         left: 0;
-        background: #1c1c1c; /* خلفية داكنة للقائمة المفتوحة */
+        background: var(--color-bg-secondary); /* موحد */
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
         padding-bottom: 10px;
     }
@@ -380,17 +304,32 @@ ul {
     .main-nav ul li a {
         border-bottom: 1px solid #333;
     }
-
-    .menu-toggle {
-        display: block;
-    }
 }
 
 @media (max-width: 768px) {
+    /* *** التعديلات لتقليل حجم الخط على الجوال *** */
+    body {
+        font-size: 15px; 
+    }
+    
     .hero-section {
         min-height: 80vh;
     }
 
+    .hero-title {
+        font-size: 32px; /* تقليل حجم عنوان البطل */
+    }
+
+    .section-title {
+        font-size: 24px; /* تقليل حجم العناوين الرئيسية */
+    }
+
+    .main-cta-button {
+        font-size: 16px; /* تقليل حجم خط الزر */
+        padding: 10px 25px; 
+    }
+    /* ------------------------------------------- */
+    
     .tech-grid {
         flex-direction: column;
         align-items: center;

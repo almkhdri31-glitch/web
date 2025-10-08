@@ -15,7 +15,7 @@
     <style>
         /*
         ========================================================================= */
-        /* 🎨 المتغيرات (Variables) - لتغيير لون العلامة التجارية بسهولة */
+        /* 🎨 المتغيرات (Variables) - تم تغيير اللون الأساسي إلى الذهبي/الأصفر */
         /* ========================================================================= */
         :root {
             /* الخلفيات الأساسية (موحدة) */
@@ -27,9 +27,9 @@
             --color-text-light: #f1f1f1;  
             --color-text-subtle: #bdc3c7; 
 
-            /* لون العلامة التجارية (الأخضر الزمردي الموحد) */
-            --color-brand-primary: #2ecc71;  
-            --color-brand-hover: #27ae60;   
+            /* *** لون العلامة التجارية (الذهبي الساطع) *** */
+            --color-brand-primary: #FFC300;  
+            --color-brand-hover: #DAA520;   
             
             /* لون التمييز الثانوي (البرتقالي للـ CV) */
             --color-accent-secondary: #f39c12;
@@ -125,8 +125,9 @@
             gap: 20px;
         }
 
+        /* تعديل حجم الخط الافتراضي للوغو */
         .logo {
-            font-size: 28px;
+            font-size: 24px; 
             font-weight: 900;
             color: var(--color-brand-primary);
         }
@@ -232,7 +233,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-top: 40px; /* زيادة الهامش العلوي بعد إضافة روابط التواصل */
+            margin-top: 40px; 
         }
 
         .card-button-hero {
@@ -295,8 +296,8 @@
         }
         
         .tip-icon {
-            font-size: 40px;
             color: var(--color-brand-primary); 
+            font-size: 40px;
         }
 
         .services-grid {
@@ -364,7 +365,7 @@
         .card-link:hover, .card-link:focus {
             color: var(--color-brand-primary); 
             border-color: var(--color-brand-primary);
-            background-color: rgba(46, 204, 113, 0.1); 
+            background-color: rgba(255, 195, 0, 0.1); /* استخدام لون ذهبي مخفف */
         }
 
 
@@ -375,7 +376,7 @@
             background-color: var(--color-bg-secondary); 
             color: var(--color-text-light);
             padding: 20px 0; 
-            border-top: 1px solid #333; /* لإضافة فاصل واضح */
+            border-top: 1px solid #333; 
         }
 
         .social-links a {
@@ -440,37 +441,37 @@
                 background-color: var(--color-brand-primary); 
                 color: var(--color-bg-main); 
             }
+            
+            .logo {
+                font-size: 20px; /* تصغير اللوجو على الجوال */
+            }
+            .logo span {
+                 font-size: 15px !important;
+            }
         }
 
         @media (max-width: 768px) {
-            /* تقليل حجم الخط الرئيسي بشكل أكبر */
             body {
                 font-size: 14px; 
             }
-            
             .hero-section {
                 min-height: auto; 
                 padding-top: 80px;
                 padding-bottom: 50px;
             }
-            
             .hero-title {
                 font-size: 28px; 
                 line-height: 1.3;
             }
-
             .hero-subtitle {
                 font-size: 17px; 
             }
-            
             .hero-text {
                 font-size: 14px; 
             }
-            
             .section-title {
                 font-size: 22px; 
             }
-
             .hero-buttons-grid {
                 grid-template-columns: 1fr;
             }
@@ -481,7 +482,8 @@
 
     <header class="main-header">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a class="logo" href="#home">المنصة الرقمية المتكاملة</a>
+            
+            <a class="logo" href="#home" style="font-size: 24px;">المنصة <span style="font-size: 18px; font-weight: 700; color: var(--color-text-light);">| Cyb. Hub</span></a>
             
             <nav class="main-nav">
                 <ul>

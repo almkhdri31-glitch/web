@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المنصة الرقمية المتكاملة | مركز الأمن والإرشاد التقني المُحدَّث</title>
+    <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
+    <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
+    
     <link rel="icon" type="image/png" href="favicon.png"> 
     
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -22,7 +25,7 @@
 
             /* ألوان النصوص */
             --color-text-light: #f1f1f1;  
-            --color-text-subtle: #bdc3c7; /* تم تعديل اللون ليكون مقروءاً أكثر */
+            --color-text-subtle: #bdc3c7; 
 
             /* لون العلامة التجارية (الأخضر الزمردي الموحد) */
             --color-brand-primary: #2ecc71;  
@@ -34,7 +37,7 @@
 
 
         /* ========================================================================= */
-        /* الإعدادات الأساسية وتنسيق الخطوط العامة (تم تصغير العناوين) */
+        /* الإعدادات الأساسية وتنسيق الخطوط العامة */
         /* ========================================================================= */
         * {
             box-sizing: border-box;
@@ -48,7 +51,7 @@
             color: var(--color-text-light); 
             background-color: var(--color-bg-main);
             overflow-x: hidden; 
-            font-size: 16px; /* توحيد حجم الخط الأساسي */
+            font-size: 16px; 
         }
 
         a {
@@ -98,7 +101,7 @@
         }
 
         /* ========================================================================= */
-        /* الهيدر وقائمة التنقل (الإصلاح: ضمان المحاذاة) */
+        /* الهيدر وقائمة التنقل */
         /* ========================================================================= */
         .main-header {
             background: var(--color-bg-secondary); 
@@ -111,7 +114,6 @@
             z-index: 1000;
         }
 
-        /* *** تم دمج هذا داخل الـ HTML الخاص بك، لكن نضمن وجوده هنا *** */
         .main-header .container { 
             display: flex; 
             justify-content: space-between; 
@@ -133,7 +135,7 @@
         .main-nav ul li a {
             padding: 5px 0; 
             transition: all 0.3s;
-            color: var(--color-text-light); /* لضمان اللون الفاتح افتراضياً */
+            color: var(--color-text-light); 
         }
 
         .main-nav ul li a:hover,
@@ -166,7 +168,7 @@
             
             background-color: var(--color-bg-main);
             
-            /* ربط صورة الخلفية الافتراضية */
+            /* ربط صورة الخلفية الافتراضية - تأكد من وجود صورة باسم 'background-hero.jpg' */
             background-image: url('background-hero.jpg'); 
             background-position: center center;
             background-repeat: no-repeat;
@@ -213,12 +215,24 @@
             color: var(--color-brand-primary); 
         }
         
-        /* ******** تنسيق البطاقات في قسم Hero ******** */
+        /* روابط التواصل الاجتماعي في قسم الهيرو */
+        .hero-social-links a {
+            color: var(--color-text-light);
+            margin: 0 10px;
+            font-size: 28px;
+            transition: color 0.3s;
+        }
+
+        .hero-social-links a:hover {
+            color: var(--color-brand-primary); 
+        }
+
+        /* تنسيق البطاقات في قسم Hero */
         .hero-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 40px; /* زيادة الهامش العلوي بعد إضافة روابط التواصل */
         }
 
         .card-button-hero {
@@ -261,14 +275,13 @@
         }
 
         /* ========================================================================= */
-        /* تنسيق بطاقات الإرشاد (Guides) - الإصلاح الأخير */
+        /* تنسيق بطاقات الإرشاد (Guides) */
         /* ========================================================================= */
         .main-content, .quick-tip-section {
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
         }
 
-        /* *** الإصلاح 1: Tip Card - لضمان عدم تداخل الأيقونة مع النص *** */
         .tip-card {
             background: var(--color-bg-card); 
             padding: 25px;
@@ -293,7 +306,6 @@
             margin-top: 40px;
         }
 
-        /* *** الإصلاح 2: Service Card - لضمان أن العناصر الداخلية لا تتداخل *** */
         .service-card {
             background: var(--color-bg-card); 
             padding: 30px;
@@ -303,7 +315,6 @@
             transition: all 0.3s ease;
             color: var(--color-text-light);
             border: 3px solid transparent;
-            /* Flexbox لضمان احتواء المحتوى وعدم التداخل */
             display: flex; 
             flex-direction: column; 
             justify-content: space-between;
@@ -333,18 +344,17 @@
             margin-bottom: 15px; 
         }
 
-        /* *** الإصلاح 3: Card Link - لضمان عدم خروج اللون الأخضر خلف النص *** */
         .card-link {
-            color: var(--color-text-light); /* تغيير لون النص ليكون فاتحاً افتراضياً */
+            color: var(--color-text-light); 
             transition: all 0.3s;
             font-size: 15px;
-            display: inline-flex; /* لضمان عدم تداخل الألوان */
+            display: inline-flex; 
             align-items: center;
             gap: 5px;
             padding: 3px 6px; 
             border-radius: 4px;
-            border: 2px solid transparent; /* إطار افتراضي شفاف */
-            margin-top: auto; /* لضمان أن الرابط في الأسفل دائماً */
+            border: 2px solid transparent; 
+            margin-top: auto; 
         }
 
         .card-link i { 
@@ -352,9 +362,9 @@
         }
         
         .card-link:hover, .card-link:focus {
-            color: var(--color-brand-primary); /* اللون الأخضر عند التمرير */
+            color: var(--color-brand-primary); 
             border-color: var(--color-brand-primary);
-            background-color: rgba(46, 204, 113, 0.1); /* خلفية خفيفة عند التمرير */
+            background-color: rgba(46, 204, 113, 0.1); 
         }
 
 
@@ -365,6 +375,7 @@
             background-color: var(--color-bg-secondary); 
             color: var(--color-text-light);
             padding: 20px 0; 
+            border-top: 1px solid #333; /* لإضافة فاصل واضح */
         }
 
         .social-links a {
@@ -381,7 +392,7 @@
         }
 
         /* ========================================================================= */
-        /* تنسيقات الاستجابة (Media Queries) - حل مشاكل الجوال النهائية */
+        /* تنسيقات الاستجابة (Media Queries) */
         /* ========================================================================= */
 
         @media (max-width: 992px) {
@@ -418,7 +429,7 @@
             
             .main-nav ul li a {
                 border-bottom: 1px solid #333;
-                padding: 15px 0; /* تم زيادة المسافة لسهولة الضغط */
+                padding: 15px 0; 
                 display: block; 
             }
             
@@ -499,11 +510,17 @@
                 دليلك اليومي والمُحدَّث لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك أحدث الثغرات، ونصائح الحماية، والأدوات المجانية لتبقى خطوة للأمام.
             </p>
             
+            <div class="hero-social-links mb-4">
+                <a href="https://twitter.com" target="_blank" class="mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="mx-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me" target="_blank" class="mx-2"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
             <div class="hero-buttons-grid">
                 <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_self" class="card-button-hero cv-card">
                     <i class="fas fa-file-invoice"></i>
                     <h3>صمم سيرتك الذاتية الآن</h3>
-                    <p style="font-size: 14px; color: #ccc;">(أداة مجانية -    )</p>
+                    <p style="font-size: 14px; color: #ccc;">(أداة مجانية - )</p>
                 </a>
 
                 <a href="#guides" class="card-button-hero">
@@ -535,7 +552,7 @@
                         <i class="fas fa-shield-alt tip-icon"></i>
                         <div>
                             <h3 class="tip-title">خبرة تنفيذية في الأمن</h3>
-                            <p class="tip-content">إرشادات مستخلصة من خبرة الـ -CCNP-CCIE-CCNA  لضمان دقة المعلومة.</p>
+                            <p class="tip-content">إرشادات مستخلصة من خبرة الـ -CCNP-CCIE-CCNA لضمان دقة المعلومة.</p>
                         </div>
                     </div>
                 </div>
@@ -597,7 +614,10 @@
                 <a href="mailto:F@hotmail.hu" class="highlight-text" style="font-weight: bold;">F@hotmail.hu</a>
             </p>
             
-            <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير  | <span class="highlight-text">الخبير التقني محمد المخدري</span></p>
+            <p class="mb-0">
+                <a href="#home" class="highlight-text" style="font-weight: bold; margin-left: 10px;">العودة للصفحة الرئيسية</a>
+                | جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير  | <span class="highlight-text">الخبير التقني محمد المخدري</span>
+            </p>
         </div>
     </footer>
 
@@ -612,6 +632,7 @@
         const navLinks = document.querySelectorAll('.main-nav ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
+                // إغلاق القائمة بعد النقر على الرابط في وضع الجوال
                 mainNav.classList.remove('active');
             });
         });

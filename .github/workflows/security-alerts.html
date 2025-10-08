@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستجدات الأمن والتحذيرات الحرجة | المنصة الرقمية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.7;
+            color: #ecf0f1; 
+            background-color: #111111;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 0;
+        }
+        header {
+            background: #1c1c1c; 
+            padding: 20px 0;
+            border-bottom: 3px solid #2ecc71;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        header a {
+            color: #2ecc71;
+            font-size: 24px;
+            font-weight: 900;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .article-content {
+            padding: 40px 0;
+        }
+        .article-content h1 {
+            font-size: 36px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .article-content h2 {
+            font-size: 24px;
+            color: #f39c12;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+            color: #bdc3c7;
+        }
+        .article-content ul {
+            list-style: none;
+            padding-right: 20px;
+            margin-bottom: 20px;
+        }
+        .article-content ul li {
+            position: relative;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        .article-content ul li::before {
+            content: "\f00c"; /* أيقونة علامة صح */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #2ecc71;
+            position: absolute;
+            right: -20px;
+            top: 0;
+        }
+        .alert-box {
+            background: #f39c1220;
+            border-right: 5px solid #f39c12;
+            padding: 15px;
+            margin: 25px 0;
+            color: #f39c12;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #34495e;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html">المنصة الرقمية المتكاملة</a>
+        </div>
+    </header>
+
+    <div class="container article-content">
+        <h1>نشرة الأمن السيبراني: آخر التحذيرات الحرجة (CVEs)</h1>
+        <p>البقاء على اطلاع بأحدث الثغرات الأمنية (CVEs - Common Vulnerabilities and Exposures) هو خط دفاعك الأول. نقدم هنا ملخصاً لأبرز التحذيرات التي تستهدف الأنظمة الشائعة وكيفية تطبيق التصحيحات.</p>
+
+        <h2>1. تحذير عاجل: ثغرة تخطي المصادقة في أنظمة Linux</h2>
+        <p>تم اكتشاف ثغرة حرجة (CVE-2025-XXXX) تسمح للمهاجمين بتخطي آليات المصادقة في بعض إصدارات نظام التشغيل لينكس الشائعة. يجب تحديث النظام فوراً.</p>
+        
+        <div class="alert-box">
+            <i class="fas fa-exclamation-triangle"></i> **الخطر:** تخطي المصادقة والوصول غير المصرح به (RCE).
+            <p style="margin-top: 5px; color: #f39c12;">**الأنظمة المتأثرة:** Ubuntu LTS 22.04، Debian 11.x.</p>
+        </div>
+        
+        <h2>2. تصحيح مطلوب: ثغرة تنفيذ التعليمات البرمجية عن بُعد (RCE) في متصفح Chrome</h2>
+        <p>ثغرة جديدة تستغل مشكلة في معالجة الذاكرة ضمن محرك V8 في متصفح جوجل كروم. يجب تحديث المتصفح إلى أحدث إصدار بشكل عاجل.</p>
+        
+        <ul>
+            <li>**الإجراء الفوري:** قم بتحديث متصفح Chrome يدوياً أو تأكد من تفعيل التحديث التلقائي.</li>
+            <li>**السبب:** قد تسمح الثغرة للمهاجم بتنفيذ كود ضار بمجرد زيارة صفحة ويب مصابة.</li>
+        </ul>
+
+        <h2>3. نصيحة الأسبوع: أمان كلمات المرور في البنية السحابية (Cloud)</h2>
+        <p>في حال استخدامك لخدمات الحوسبة السحابية (مثل AWS أو Azure)، تأكد من أن جميع مفاتيح الوصول (Access Keys) والرموز السرية (Secret Keys) يتم تدويرها (تغييرها) كل 90 يوماً على الأقل. استخدم مدير كلمات مرور قوي لضمان تعقيدها وعدم تكرارها.</p>
+
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-right"></i> العودة إلى الصفحة الرئيسية والأدلة</a>
+    </div>
+
+</body>
+</html>

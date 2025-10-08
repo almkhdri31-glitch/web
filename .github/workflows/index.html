@@ -10,8 +10,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
+        /*
+        ========================================================================= */
+        /* 🎨 المتغيرات (Variables) - لتغيير لون العلامة التجارية بسهولة */
         /* ========================================================================= */
-        /* الإعدادات الأساسية والثوابت */
+        :root {
+            /* الخلفيات الأساسية (موحدة) */
+            --color-bg-main: #111111;    
+            --color-bg-secondary: #1c1c1c; 
+            --color-bg-card: #2c3e50;    
+
+            /* ألوان النصوص */
+            --color-text-light: #f1f1f1;  
+            --color-text-subtle: #95a5a6; 
+
+            /* لون العلامة التجارية (الأخضر الزمردي الموحد) */
+            --color-brand-primary: #2ecc71;  
+            --color-brand-hover: #27ae60;   
+            
+            /* لون التمييز الثانوي (البرتقالي للـ CV) */
+            --color-accent-secondary: #f39c12;
+        }
+
+
+        /* ========================================================================= */
+        /* الإعدادات الأساسية وتنسيق الخطوط العامة (تم تصغير العناوين) */
         /* ========================================================================= */
         * {
             box-sizing: border-box;
@@ -22,9 +45,10 @@
         body {
             font-family: 'Cairo', sans-serif;
             line-height: 1.6;
-            color: #f1f1f1; 
-            background-color: #111111;
+            color: var(--color-text-light); 
+            background-color: var(--color-bg-main);
             overflow-x: hidden; 
+            font-size: 16px; /* توحيد حجم الخط الأساسي */
         }
 
         a {
@@ -49,10 +73,10 @@
         }
 
         .section-title {
-            font-size: 32px;
+            font-size: 28px; /* تم تقليل الحجم */
             font-weight: 700;
             margin-bottom: 10px;
-            color: #e2e2e2;
+            color: var(--color-text-light);
             position: relative;
             padding-bottom: 10px;
         }
@@ -62,23 +86,23 @@
             display: block;
             width: 60px;
             height: 3px;
-            background-color: #2ecc71; 
+            background-color: var(--color-brand-primary); 
             margin: 10px auto 0;
             border-radius: 2px;
         }
 
         .section-subtitle {
             font-size: 18px;
-            color: #95a5a6;
+            color: var(--color-text-subtle);
             margin-bottom: 40px;
         }
 
         /* ========================================================================= */
-        /* الهيدر وقائمة التنقل */
+        /* الهيدر وقائمة التنقل (إلغاء التشويه الثابت) */
         /* ========================================================================= */
         .main-header {
-            background: #1c1c1c; 
-            color: #f1f1f1;
+            background: var(--color-bg-secondary); 
+            color: var(--color-text-light);
             padding: 15px 0;
             border-bottom: 1px solid #333;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -96,25 +120,33 @@
         .logo {
             font-size: 28px;
             font-weight: 900;
-            color: #2ecc71;
+            color: var(--color-brand-primary);
+        }
+
+        /* *** التعديل الرئيسي لإلغاء التشويه الثابت في القائمة *** */
+        .main-nav ul li a {
+            padding: 5px 0; /* مسافة بسيطة */
+            transition: all 0.3s;
         }
 
         .main-nav ul li a:hover,
         .main-nav ul li a.active {
-            color: #111;
-            background-color: #2ecc71; 
-            border-radius: 3px;
+            color: var(--color-brand-primary); /* لون النص يصبح أخضر */
+            background-color: transparent; /* إلغاء الخلفية الملونة الثابتة */
+            border-radius: 0;
+            border-bottom: 3px solid var(--color-brand-primary); /* خط سفلي أنيق كتمييز */
+            padding-bottom: 5px; 
         }
 
         .menu-toggle {
-            color: #f1f1f1;
+            color: var(--color-text-light);
             font-size: 24px;
             cursor: pointer;
             display: none; 
         }
         
         /* ========================================================================= */
-        /* قسم البطل (Hero Section) وتصميم البطاقات الجديدة */
+        /* قسم البطل (Hero Section) وتصميم البطاقات الجديدة (ربط الصورة) */
         /* ========================================================================= */
         .hero-section {
             padding: 100px 0;
@@ -123,38 +155,58 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #ffffff;
-            background-color: #111111; 
+            color: var(--color-text-light);
+            
+            background-color: var(--color-bg-main);
+            
+            /* *** ربط صورة الخلفية الافتراضية *** */
+            background-image: url('background-hero.jpg'); 
+            background-position: center center;
+            background-repeat: no-repeat;
             background-size: cover; 
             background-attachment: fixed; 
+            
             position: relative;
             z-index: 1;
         }
+        
+        /* طبقة شفافة لزيادة وضوح النص فوق الصورة */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: -1;
+        }
+
 
         .hero-title {
-            font-size: 48px;
+            font-size: 40px; /* تم تقليل الحجم */
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .hero-subtitle {
-             font-size: 24px;
-             color: #e2e2e2;
-             margin-bottom: 40px;
+             font-size: 22px; /* تم تقليل الحجم */
+             color: var(--color-text-light);
+             margin-bottom: 30px;
         }
         
         .hero-text {
-            font-size: 18px;
-            color: #bdc3c7;
-            margin-bottom: 50px;
+            font-size: 17px; /* تم تقليل الحجم */
+            color: var(--color-text-subtle);
+            margin-bottom: 40px;
         }
 
         .highlight-text {
-            color: #2ecc71;
+            color: var(--color-brand-primary); /* موحد */
         }
         
-        /* ******** تنسيق البطاقات في قسم Hero (Card-Style Buttons) ******** */
+        /* ******** تنسيق البطاقات في قسم Hero ******** */
         .hero-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -163,13 +215,12 @@
         }
 
         .card-button-hero {
-            background: #2c3e50; /* خلفية داكنة للبطاقة */
+            background: var(--color-bg-card); /* موحد */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            text-align: center;
             transition: all 0.3s ease;
-            color: #ecf0f1;
+            color: var(--color-text-light);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -179,71 +230,89 @@
         .card-button-hero:hover {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             transform: translateY(-5px);
-            border-color: #2ecc71;
+            border-color: var(--color-brand-primary); /* موحد */
         }
 
         .card-button-hero i {
             font-size: 35px;
-            color: #2ecc71; /* لون الأيقونة أخضر */
+            color: var(--color-brand-primary); /* موحد */
             margin-bottom: 10px;
-        }
-
-        .card-button-hero h3 {
-            font-size: 20px;
-            font-weight: 700;
         }
 
         /* تخصيص بطاقة السيرة الذاتية (لجعلها برتقالية) */
         .card-button-hero.cv-card {
             background: #34495e; /* لون مختلف قليلاً للخلفية */
-            border-color: #f39c12; /* إطار برتقالي */
+            border-color: var(--color-accent-secondary); /* إطار برتقالي موحد */
         }
 
         .card-button-hero.cv-card i {
-            color: #f39c12; /* لون الأيقونة برتقالي */
+            color: var(--color-accent-secondary); /* لون الأيقونة برتقالي موحد */
         }
         
         .card-button-hero.cv-card:hover {
-            border-color: #f39c12;
+            border-color: var(--color-accent-secondary);
         }
 
         /* ========================================================================= */
-        /* تنسيق بطاقات الإرشاد (Guides) - لضمان الثبات */
+        /* تنسيق بطاقات الإرشاد (Guides) - موحد */
         /* ========================================================================= */
         .main-content, .quick-tip-section {
             padding: 80px 0;
-            background-color: #1c1c1c;
+            background-color: var(--color-bg-secondary); /* موحد */
         }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            /* ... */
         }
 
         .service-card {
-            background: #2c3e50; 
+            background: var(--color-bg-card); /* موحد */
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            text-align: right;
-            transition: all 0.3s ease;
-            color: #ecf0f1;
+            /* ... */
+            color: var(--color-text-light);
             border: 3px solid transparent;
         }
 
         .service-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            /* ... */
             transform: translateY(-5px);
-            border-color: #f39c12; /* تغيير لون الإطار عند المرور */
+            border-color: var(--color-brand-primary); /* موحد على الأخضر */
         }
 
         .card-icon {
             font-size: 32px;
-            color: #2ecc71;
+            color: var(--color-brand-primary); /* موحد */
         }
         
+        .card-link {
+            color: var(--color-brand-primary); /* موحد */
+            border-bottom: 2px solid var(--color-brand-primary); /* موحد */
+            transition: color 0.3s;
+        }
+
+        .card-link:hover {
+            color: var(--color-brand-hover); /* موحد */
+        }
+
+
+        /* ========================================================================= */
+        /* الفوتر (Footer) - موحد */
+        /* ========================================================================= */
+        .main-footer {
+            background-color: var(--color-bg-secondary); /* موحد */
+            color: var(--color-text-light);
+            padding: 20px 0; 
+        }
+
+        .social-links a {
+            color: var(--color-text-light);
+            margin: 0 10px;
+        }
+
+        .social-links a:hover {
+            color: var(--color-brand-primary); /* موحد */
+        }
+
         /* ========================================================================= */
         /* تنسيقات الاستجابة (Media Queries) - حل مشاكل الجوال النهائية */
         /* ========================================================================= */
@@ -265,7 +334,7 @@
                 position: absolute;
                 top: 60px;
                 left: 0;
-                background: #1c1c1c;
+                background: var(--color-bg-secondary);
                 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
                 padding-bottom: 10px;
             }
@@ -277,10 +346,26 @@
             .main-nav ul {
                 flex-direction: column;
             }
+            
+            .main-nav ul li a {
+                border-bottom: 1px solid #333;
+                padding: 10px 0;
+            }
+            /* إلغاء تمييز الخط السفلي في وضع الهاتف */
+            .main-nav ul li a:hover,
+            .main-nav ul li a.active {
+                border-bottom: none;
+                background-color: var(--color-brand-primary); /* تمييز كامل عند التمرير في وضع الهاتف */
+                color: var(--color-bg-main);
+            }
         }
 
         @media (max-width: 768px) {
-            /* ******** تقليل حجم الخط الرئيسي بشكل أكبر (الإصلاح النهائي) ******** */
+            /* *** تقليل حجم الخط الرئيسي بشكل أكبر (الإصلاح النهائي) *** */
+            body {
+                font-size: 15px;
+            }
+            
             .hero-section {
                 min-height: auto; 
                 padding-top: 80px;
@@ -288,7 +373,7 @@
             }
             
             .hero-title {
-                font-size: 32px; 
+                font-size: 30px; /* أصغر */
                 line-height: 1.3;
             }
 
@@ -297,10 +382,14 @@
             }
             
             .hero-text {
-                font-size: 16px;
+                font-size: 15px; /* أصغر */
             }
             
-            /* البطاقات تصبح عمودية على الجوال */
+            .section-title {
+                font-size: 24px; /* أصغر */
+            }
+            /* ------------------------------------------- */
+
             .hero-buttons-grid {
                 grid-template-columns: 1fr;
             }
@@ -318,7 +407,7 @@
                     <li><a href="#home" class="active">الرؤية والهدف</a></li>
                     <li><a href="#about">من نحن</a></li> 
                     <li><a href="#guides">أدلة الإرشاد</a></li>
-                    <li><a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" style="color: #ffc107; font-weight: bold;">الأدوات المجانية (مدقق الشبكة)</a></li>
+                    <li><a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" style="color: var(--color-accent-secondary); font-weight: bold;">الأدوات المجانية (مدقق الشبكة)</a></li>
                     <li><a href="#contact-footer">تواصل معنا</a></li> 
                 </ul>
             </nav>

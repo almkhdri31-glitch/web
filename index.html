@@ -130,6 +130,8 @@
             font-size: 24px; 
             font-weight: 900;
             color: var(--color-brand-primary);
+            /* إضافة محاذاة لليسار للوجو فقط */
+            text-align: left !important;
         }
 
         /* تمييز القائمة في الكمبيوتر (خط سفلي) */
@@ -216,7 +218,7 @@
             color: var(--color-brand-primary); 
         }
         
-        /* روابط التواصل الاجتماعي في قسم الهيرو */
+        /* روابط التواصل الاجتماعي في قسم الهيرو - أصبحت غير مستخدمة بعد الحذف */
         .hero-social-links a {
             color: var(--color-text-light);
             margin: 0 10px;
@@ -483,9 +485,14 @@
     <header class="main-header">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             
-            <a class="logo" href="#home" style="font-size: 24px;">امن المعلومات <span style="font-size: 18px; font-weight: 700; color: var(--color-text-light);"> 
-            INFORMATION SECURITY</span></a>
-            
+            <a class="logo" href="#home" style="font-size: 24px; text-align: left;">
+                <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
+                    أمن المعلومات
+                </span> 
+                <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
+                    INFORMATION SECURITY
+                </span>
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home" class="active">الرؤية والهدف</a></li>
@@ -512,12 +519,6 @@
             <p class="hero-text">
                 دليلك اليومي والمُحدَّث لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك أحدث الثغرات، ونصائح الحماية، والأدوات المجانية لتبقى خطوة للأمام.
             </p>
-            
-            <div class="hero-social-links mb-4">
-                <a href="https://twitter.com" target="_blank" class="mx-2"><i class="fab fa-twitter"></i></a>
-                <a href="https://linkedin.com" target="_blank" class="mx-2"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me" target="_blank" class="mx-2"><i class="fab fa-whatsapp"></i></a>
-            </div>
             
             <div class="hero-buttons-grid">
                 <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_self" class="card-button-hero cv-card">

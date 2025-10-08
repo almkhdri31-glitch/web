@@ -12,17 +12,17 @@
     <style>
         /*
         ========================================================================= */
-        /* 🎨 المتغيرات (Variables) - لتوحيد الألوان وتسهيل تغييرها */
+        /* 🎨 المتغيرات (Variables) - لتغيير لون العلامة التجارية بسهولة */
         /* ========================================================================= */
         :root {
-            /* الخلفيات الأساسية (داكنة وموحدة) */
+            /* الخلفيات الأساسية (موحدة) */
             --color-bg-main: #111111;    
             --color-bg-secondary: #1c1c1c; 
             --color-bg-card: #2c3e50;    
 
             /* ألوان النصوص */
             --color-text-light: #f1f1f1;  
-            --color-text-subtle: #bdc3c7; 
+            --color-text-subtle: #95a5a6; 
 
             /* لون العلامة التجارية (الأخضر الزمردي الموحد) */
             --color-brand-primary: #2ecc71;  
@@ -48,7 +48,7 @@
             color: var(--color-text-light); 
             background-color: var(--color-bg-main);
             overflow-x: hidden; 
-            font-size: 16px; 
+            font-size: 16px; /* توحيد حجم الخط الأساسي */
         }
 
         a {
@@ -73,7 +73,7 @@
         }
 
         .section-title {
-            font-size: 28px; 
+            font-size: 28px; /* تم تقليل الحجم */
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--color-text-light);
@@ -109,14 +109,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            display: flex; 
         }
-
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        
         .main-nav ul {
             display: flex;
             gap: 20px;
@@ -128,19 +123,18 @@
             color: var(--color-brand-primary);
         }
 
-        /* *** التعديل الرئيسي لإلغاء التشويه الثابت في القائمة (لشاشات الكمبيوتر) *** */
+        /* *** التعديل الرئيسي لإلغاء التشويه الثابت في القائمة *** */
         .main-nav ul li a {
-            padding: 5px 0;
+            padding: 5px 0; /* مسافة بسيطة */
             transition: all 0.3s;
-            color: var(--color-text-light); 
         }
 
         .main-nav ul li a:hover,
         .main-nav ul li a.active {
-            color: var(--color-brand-primary); 
-            background-color: transparent; 
+            color: var(--color-brand-primary); /* لون النص يصبح أخضر */
+            background-color: transparent; /* إلغاء الخلفية الملونة الثابتة */
             border-radius: 0;
-            border-bottom: 3px solid var(--color-brand-primary); 
+            border-bottom: 3px solid var(--color-brand-primary); /* خط سفلي أنيق كتمييز */
             padding-bottom: 5px; 
         }
 
@@ -165,7 +159,7 @@
             
             background-color: var(--color-bg-main);
             
-            /* *** ربط صورة الخلفية: تأكد من اسم 'background-hero.jpg' *** */
+            /* *** ربط صورة الخلفية الافتراضية *** */
             background-image: url('background-hero.jpg'); 
             background-position: center center;
             background-repeat: no-repeat;
@@ -176,6 +170,7 @@
             z-index: 1;
         }
         
+        /* طبقة شفافة لزيادة وضوح النص فوق الصورة */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -189,26 +184,26 @@
 
 
         .hero-title {
-            font-size: 40px; 
+            font-size: 40px; /* تم تقليل الحجم */
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .hero-subtitle {
-             font-size: 22px; 
+             font-size: 22px; /* تم تقليل الحجم */
              color: var(--color-text-light);
              margin-bottom: 30px;
         }
         
         .hero-text {
-            font-size: 17px; 
+            font-size: 17px; /* تم تقليل الحجم */
             color: var(--color-text-subtle);
             margin-bottom: 40px;
         }
 
         .highlight-text {
-            color: var(--color-brand-primary); 
+            color: var(--color-brand-primary); /* موحد */
         }
         
         /* ******** تنسيق البطاقات في قسم Hero ******** */
@@ -220,7 +215,7 @@
         }
 
         .card-button-hero {
-            background: var(--color-bg-card); 
+            background: var(--color-bg-card); /* موحد */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -235,22 +230,23 @@
         .card-button-hero:hover {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             transform: translateY(-5px);
-            border-color: var(--color-brand-primary); 
+            border-color: var(--color-brand-primary); /* موحد */
         }
 
         .card-button-hero i {
             font-size: 35px;
-            color: var(--color-brand-primary); 
+            color: var(--color-brand-primary); /* موحد */
             margin-bottom: 10px;
         }
 
+        /* تخصيص بطاقة السيرة الذاتية (لجعلها برتقالية) */
         .card-button-hero.cv-card {
-            background: #34495e; 
-            border-color: var(--color-accent-secondary); 
+            background: #34495e; /* لون مختلف قليلاً للخلفية */
+            border-color: var(--color-accent-secondary); /* إطار برتقالي موحد */
         }
 
         .card-button-hero.cv-card i {
-            color: var(--color-accent-secondary); 
+            color: var(--color-accent-secondary); /* لون الأيقونة برتقالي موحد */
         }
         
         .card-button-hero.cv-card:hover {
@@ -258,80 +254,52 @@
         }
 
         /* ========================================================================= */
-        /* أقسام المحتوى والبطاقات (Guides, About) */
+        /* تنسيق بطاقات الإرشاد (Guides) - موحد */
         /* ========================================================================= */
         .main-content, .quick-tip-section {
             padding: 80px 0;
-            background-color: var(--color-bg-secondary); 
+            background-color: var(--color-bg-secondary); /* موحد */
         }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            /* ... */
         }
 
         .service-card {
-            background: var(--color-bg-card); 
+            background: var(--color-bg-card); /* موحد */
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            text-align: right;
-            transition: all 0.3s ease;
+            /* ... */
             color: var(--color-text-light);
             border: 3px solid transparent;
         }
 
         .service-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            /* ... */
             transform: translateY(-5px);
-            border-color: var(--color-brand-primary); 
-        }
-
-        .service-card h2 {
-            color: var(--color-text-light);
-            font-size: 22px; 
-            margin-bottom: 10px;
-        }
-
-        .service-card p {
-            color: var(--color-text-subtle);
-            font-size: 15px; 
-            margin-bottom: 15px;
+            border-color: var(--color-brand-primary); /* موحد على الأخضر */
         }
 
         .card-icon {
             font-size: 32px;
-            color: var(--color-brand-primary); 
-            margin-bottom: 15px; 
+            color: var(--color-brand-primary); /* موحد */
         }
-
+        
         .card-link {
-            color: var(--color-text-light); 
-            border-bottom: 2px solid var(--color-brand-primary); 
-            padding-bottom: 2px;
-            transition: all 0.3s;
-            font-size: 15px;
-            display: inline-flex; 
-            align-items: center;
-            gap: 5px;
-        }
-
-        .card-link i { 
-            color: var(--color-brand-primary);
+            color: var(--color-brand-primary); /* موحد */
+            border-bottom: 2px solid var(--color-brand-primary); /* موحد */
+            transition: color 0.3s;
         }
 
         .card-link:hover {
-            color: var(--color-brand-primary); 
-            border-bottom-color: var(--color-brand-hover);
+            color: var(--color-brand-hover); /* موحد */
         }
 
+
         /* ========================================================================= */
-        /* الفوتر (Footer) */
+        /* الفوتر (Footer) - موحد */
         /* ========================================================================= */
         .main-footer {
-            background-color: var(--color-bg-secondary); 
+            background-color: var(--color-bg-secondary); /* موحد */
             color: var(--color-text-light);
             padding: 20px 0; 
         }
@@ -342,15 +310,11 @@
         }
 
         .social-links a:hover {
-            color: var(--color-brand-primary); 
-        }
-
-        .main-footer .highlight-text {
-            color: var(--color-brand-primary); 
+            color: var(--color-brand-primary); /* موحد */
         }
 
         /* ========================================================================= */
-        /* تنسيقات الاستجابة (Media Queries) - تصغير الخطوط وحل القائمة للجوال */
+        /* تنسيقات الاستجابة (Media Queries) - حل مشاكل الجوال النهائية */
         /* ========================================================================= */
 
         @media (max-width: 992px) {
@@ -373,7 +337,6 @@
                 background: var(--color-bg-secondary);
                 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
                 padding-bottom: 10px;
-                z-index: 999; 
             }
             
             .main-nav.active {
@@ -382,45 +345,25 @@
 
             .main-nav ul {
                 flex-direction: column;
-                gap: 0; 
             }
             
             .main-nav ul li a {
                 border-bottom: 1px solid #333;
-                padding: 15px 0; 
-                display: block; 
+                padding: 10px 0;
             }
-
-            /* *** تمييز القائمة المفتوحة في وضع الهاتف (إصلاح مشكلة التشويه) *** */
+            /* إلغاء تمييز الخط السفلي في وضع الهاتف */
             .main-nav ul li a:hover,
             .main-nav ul li a.active {
-                border-bottom: none; 
-                background-color: var(--color-brand-primary); 
-                color: var(--color-bg-main); 
+                border-bottom: none;
+                background-color: var(--color-brand-primary); /* تمييز كامل عند التمرير في وضع الهاتف */
+                color: var(--color-bg-main);
             }
         }
 
         @media (max-width: 768px) {
-            /* *** تصغير حجم الخط الرئيسي بشكل أكبر *** */
+            /* *** تقليل حجم الخط الرئيسي بشكل أكبر (الإصلاح النهائي) *** */
             body {
-                font-size: 14px; 
-            }
-            
-            .hero-title {
-                font-size: 28px; 
-                line-height: 1.3;
-            }
-
-            .hero-subtitle {
-                font-size: 17px; 
-            }
-            
-            .hero-text {
-                font-size: 14px; 
-            }
-            
-            .section-title {
-                font-size: 22px; 
+                font-size: 15px;
             }
             
             .hero-section {
@@ -428,6 +371,24 @@
                 padding-top: 80px;
                 padding-bottom: 50px;
             }
+            
+            .hero-title {
+                font-size: 30px; /* أصغر */
+                line-height: 1.3;
+            }
+
+            .hero-subtitle {
+                font-size: 18px; 
+            }
+            
+            .hero-text {
+                font-size: 15px; /* أصغر */
+            }
+            
+            .section-title {
+                font-size: 24px; /* أصغر */
+            }
+            /* ------------------------------------------- */
 
             .hero-buttons-grid {
                 grid-template-columns: 1fr;
@@ -438,7 +399,7 @@
 <body>
 
     <header class="main-header">
-        <div class="container">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a class="logo" href="#home">المنصة الرقمية المتكاملة</a>
             
             <nav class="main-nav">
@@ -562,8 +523,8 @@
             </div>
             
             <p class="mb-1">
-                للتواصل المباشر (لشراكة المحتوى والرعاية): 
-                <a href="mailto:F@hotmail.hu" class="highlight-text" style="font-weight: bold;">F@hotmail.hu</a>
+                تواصل المباشر|
+                <a href="mailto:F@hotmail.hu" class="highlight-text" style="font-weight: bold;"> f@hotmail.hu</a>
             </p>
             
             <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير  | <span class="highlight-text">الخبير التقني محمد المخدري</span></p>
@@ -581,7 +542,6 @@
         const navLinks = document.querySelectorAll('.main-nav ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // إغلاق القائمة بعد الضغط على رابط في وضع الهاتف
                 mainNav.classList.remove('active');
             });
         });

@@ -5,216 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المنصة الرقمية المتكاملة | مركز الأمن والإرشاد التقني المُحدَّث</title>
     <link rel="icon" type="image/png" href="favicon.png"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght+400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav">
+    </head>
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand text-warning fw-bold" href="#home">المنصة الرقمية المتكاملة</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">الرؤية والهدف</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="#guides">أدلة الإرشاد</a></li> <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank">الأدوات الأمنية</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#contact-footer">تواصل معنا</a></li> 
+    <header class="main-header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="logo" href="#home">المنصة الرقمية المتكاملة</a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">الرؤية والهدف</a></li>
+                    <li><a href="#about">من نحن</a></li> 
+                    <li><a href="#guides">أدلة الإرشاد</a></li>
+                    <li><a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" style="color: #ffc107; font-weight: bold;">الأدوات المجانية (مدقق الشبكة)</a></li>
+                    <li><a href="#contact-footer">تواصل معنا</a></li> 
                 </ul>
-            </div>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
-    </nav>
+    </header>
     
-    <div class="overflow-fix">
-        <section id="home" class="hero-section text-center d-flex align-items-center justify-content-center">
-            <div class="container">
-                
-                <h1 class="fs-5 fw-normal mb-2" data-aos="fade-down">
-                    <span class="text-warning fw-bold">
-                        أهلاً بك في المنصة الرقمية المتكاملة
-                    </span>
-                </h1>
-                <h2 class="fs-3 fw-bold mb-4 text-white" data-aos="fade-down" data-aos-delay="100">
-                    مركز الأمن السيبراني والإرشاد التقني المُحدَّث
-                </h2>
-                
-                <p class="fs-5 mx-auto mb-5" data-aos="fade-up" data-aos-delay="200">
-                    **دليلك اليومي والمُحدَّث** لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك **أحدث الثغرات، ونصائح الحماية، والأدوات المجانية** لتبقى خطوة للأمام.
-                </p>
-                
-                <div class="row justify-content-center">
-                    
-                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-right" data-aos-delay="400">
-                        <div class="d-grid gap-3">
-                            <a href="network-security-guide.html" class="btn btn-outline-warning btn-lg text-white">
-                                <i class="fas fa-book-open me-2"></i> **قراءة آخر الأدلة الإرشادية**
-                            </a>
-                            <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_blank" class="btn btn-outline-warning btn-lg text-white">
-                                <i class="fas fa-file-invoice me-2"></i> **صمم سيرتك الذاتية الآن (أداة مجانية)**
-                            </a>
+    <section id="home" class="hero-section">
+        <div class="container">
+            
+            <h1 class="hero-title" data-aos="fade-down">
+                أهلاً بك في منصة <span class="highlight-text">المنصة الرقمية المتكاملة</span>
+            </h1>
+            <h2 class="hero-subtitle" data-aos="fade-down" data-aos-delay="100">
+                مركز الأمن السيبراني والإرشاد التقني المُحدَّث
+            </h2>
+            
+            <p class="hero-text" data-aos="fade-up" data-aos-delay="200">
+                **دليلك اليومي والمُحدَّث** لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك **أحدث الثغرات، ونصائح الحماية، والأدوات المجانية** لتبقى خطوة للأمام.
+            </p>
+            
+            <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_self" class="main-cta-button" data-aos="fade-up" data-aos-delay="300" style="margin-bottom: 25px; background-color: #f39c12; color: #111;">
+                <i class="fas fa-file-invoice me-2"></i> **صمم سيرتك الذاتية الآن (أداة مجانية)**
+            </a>
+
+            <div class="row justify-content-center">
+                <a href="#guides" class="main-cta-button" data-aos="fade-right" data-aos-delay="400" style="margin: 10px;">
+                    <i class="fas fa-book-open me-2"></i> **قراءة آخر الأدلة الإرشادية**
+                </a>
+                <a href="#contact-footer" class="main-cta-button" data-aos="fade-left" data-aos-delay="600" style="margin: 10px;">
+                    <i class="fas fa-volume-up me-2"></i> **شاهد مستجدات التوعية الأمنية**
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="about" class="quick-tip-section">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">المنصة: رؤيتنا وخبرتنا التعليمية</h2>
+            <p class="section-subtitle">
+                نحن مركز معرفي متخصص في الأمن السيبراني وتطوير الأنظمة البرمجية. 
+            </p>
+            
+            <div class="row" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div class="col-lg-6 mb-4" style="padding: 10px;" data-aos="fade-right">
+                    <div class="tip-card">
+                        <i class="fas fa-shield-alt tip-icon"></i>
+                        <div>
+                            <h3 class="tip-title">خبرة تنفيذية في الأمن</h3>
+                            <p class="tip-content">إرشادات مستخلصة من خبرة الـ CCNA والهاكر الأخلاقي لضمان دقة المعلومة.</p>
                         </div>
                     </div>
-                    
-                    <div class="col-md-6 col-lg-5 mb-4" data-aos="fade-left" data-aos-delay="600">
-                        <div class="d-grid gap-3">
-                            <a href="#guides" class="btn btn-outline-warning btn-lg text-white">
-                                <i class="fas fa-bullhorn me-2"></i> **شاهد مستجدات التوعية الأمنية**
-                            </a>
-                            <a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" class="btn btn-outline-warning btn-lg text-white">
-                                <i class="fas fa-tools me-2"></i> **الماسح الضوئي (أداة مجانية)**
-                            </a>
+                </div>
+                <div class="col-lg-6 mb-4" style="padding: 10px;" data-aos="fade-left">
+                    <div class="tip-card">
+                        <i class="fas fa-tools tip-icon"></i>
+                        <div>
+                            <h3 class="tip-title">أدوات وتقنيات مُحدثة</h3>
+                            <p class="tip-content">محتوى إرشادي عملي يركز على أحدث الثغرات ومراجعة للأدوات المجانية.</p>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-        </section>
-
-        
-        <div id="main-content-sections">
-            
-            <section id="about" class="py-5 bg-dark text-white">
-                <div class="container">
-                    <h2 class="display-4 text-center mb-5 text-warning" data-aos="fade-up">المنصة: رؤيتنا وخبرتنا التعليمية</h2>
-                    
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                            <p class="lead text-light-50">
-                                نحن مركز معرفي متخصص في **الأمن السيبراني وتطوير الأنظمة البرمجية**. نجمع خبرة الهاكر الأخلاقي ومنهجية المطور المحترف **لنقلها إليك مباشرة**.
-                            </p>
-                            <p class="text-light-50">
-                                مهمتنا هي **تمكينك** من بناء حصنك الرقمي بنفسك. نقدم أدلة موثوقة ومُحدَّثة باستمرار لضمان حصولك على أحدث المعلومات وأكثرها دقة.
-                            </p>
-                            <a href="mailto:F@hotmail.hu" class="btn btn-outline-warning mt-3">لشراكة المحتوى والرعاية (Sponsorship)</a>
-                        </div>
-                        
-                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-                            <ul class="list-unstyled skills-list">
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">التقييم الأمني وتحليل الثغرات (كمحتوى تحليلي)</span></li>
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">تطوير الويب الآمن والبرمجة الاحترافية (كأدلة إرشادية)</span></li>
-                                <li class="d-flex align-items-center mb-3"><i class="fas fa-check-circle fa-lg text-success me-2"></i><span class="text-warning fw-bold">خبرة عميقة في إدارة السيرفرات والبنية التحتية الشبكية (CCNA/CCNP)</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="features" class="py-5 bg-light">
-                <div class="container text-center">
-                    <h2 class="display-4 mb-5" data-aos="fade-up">لماذا نحن؟ ميزات مركز المعرفة</h2>
-                    <div class="row">
-                        <div class="col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="card h-100 p-4 shadow-sm">
-                                <i class="fas fa-rocket fa-3x mb-3 text-primary"></i>
-                                <h5 class="card-title">التحديث المستمر والشمولية</h5>
-                                <p class="card-text">رصد يومي لمستجدات الأمن والتقنية لتوفير المحتوى فور حدوثه، لتبقى في المقدمة.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card h-100 p-4 shadow-sm">
-                                <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
-                                <h5 class="card-title">المنهجية الموثوقة (خبرة تنفيذية)</h5>
-                                <p class="card-text">الاعتماد على خبرة الخبير الفعلي لضمان دقة المعلومة وفعالية الحلول المقترحة.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                            <div class="card h-100 p-4 shadow-sm">
-                                <i class="fas fa-cogs fa-3x mb-3 text-primary"></i>
-                                <h5 class="card-title">أدلة تطبيقية خطوة بخطوة</h5>
-                                <p class="card-text">محتوى إرشادي عملي يمكنك تطبيقه فورًا لتحسين أمان شبكتك أو تطبيقاتك.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="guides" class="py-5 bg-dark text-white">
-                <div class="container text-center">
-                    <h2 class="display-4 mb-5 text-warning" data-aos="fade-up">أدلة الإرشاد والمحتوى الموثوق</h2>
-                    <p class="lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">
-                        تعلم كيف تحمي نفسك وعملك بنفسك. توجيهات متخصصة ومراجعات لأفضل الأدوات المجانية.
-                    </p>
-                    
-                    <div class="row mt-5">
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in">
-                            <a href="network-security-guide.html" class="text-decoration-none">
-                                <div class="service-card h-100 p-4 shadow-lg border border-warning bg-secondary text-white">
-                                    <i class="fas fa-network-wired fa-4x mb-3"></i>
-                                    <h5 class="card-title text-warning">تأمين شبكتك المنزلية بخبرة CCNA</h5>
-                                    <p class="card-text text-light-50">شرح لثغرات الراوتر وكيفية إعداد المنافذ وتفعيل المصادقة الثنائية (MFA).</p>
-                                    <span class="text-success fw-bold">قراءة الدليل <i class="fas fa-arrow-left"></i></span>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
-                            <a href="#" class="text-decoration-none">
-                                <div class="service-card h-100 p-4 shadow-lg border border-warning bg-secondary text-white">
-                                    <i class="fas fa-tools fa-4x mb-3"></i>
-                                    <h5 class="card-title text-warning">مراجعات لأدوات الفحص المجانية (Nmap, Wireshark)</h5>
-                                    <p class="card-text text-light-50">أفضل الأدوات مفتوحة المصدر وكيف تستخدمها للتقييم الأمني الذاتي (لأغراض تعليمية).</p>
-                                    <span class="text-success fw-bold">شاهد المراجعة <i class="fas fa-arrow-left"></i></span>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <div class="col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
-                            <a href="#" class="text-decoration-none">
-                                <div class="service-card h-100 p-4 shadow-lg border border-warning bg-secondary text-white">
-                                    <i class="fas fa-bullhorn fa-4x mb-3"></i>
-                                    <h5 class="card-title text-warning">مستجدات الأمن والتحذيرات الحرجة</h5>
-                                    <p class="card-text text-light-50">نشرة يومية بأحدث الثغرات (CVEs) وكيفية تطبيق التصحيحات اللازمة على نظامك.</p>
-                                    <span class="text-success fw-bold">قراءة النشرة <i class="fas fa-arrow-left"></i></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <footer class="bg-dark text-white py-4" id="contact-footer">
-                <div class="container text-center" data-aos="fade-in">
-                    
-                    <div class="social-icons mb-3">
-                        <a href="https://twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                        <a href="https://wa.me" target="_blank" class="text-white mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
-                    </div>
-
-                    <div class="text-center p-2 rounded mb-3" style="background: rgba(255, 255, 255, 0.05);">
-                        <h5 class="text-white mb-2">للتواصل المباشر والاستفسارات:</h5>
-                        
-                        <p class="mb-1">
-                            <i class="fas fa-envelope text-warning me-1"></i>
-                            <a href="mailto:F@hotmail.hu" class="text-decoration-none text-warning fw-bold">F@hotmail.hu</a> 
-                            <span class="small">(لشراكة المحتوى والرعاية)</span>
-                        </p>
-                        
-                        </div>
-                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="text-warning fw-bold">محمد المخدري</span></p>
-                    <p class="small text-light-50 mt-1">خبير الأمن السيبراني والبرمجة والتطوير</p>
-                </div>
-            </footer>
         </div>
+    </section>
 
+    <section id="guides" class="main-content">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">أدلة الإرشاد والمحتوى الموثوق</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                تعلم كيف تحمي نفسك وعملك بنفسك. توجيهات متخصصة ومراجعات لأفضل الأدوات المجانية.
+            </p>
+            
+            <div class="services-grid">
+                <a href="network-security-guide.html" class="service-card" data-aos="zoom-in">
+                    <i class="fas fa-network-wired card-icon"></i>
+                    <h2>تأمين شبكتك المنزلية بخبرة CCNA</h2>
+                    <p>شرح لثغرات الراوتر وكيفية إعداد المنافذ وتفعيل المصادقة الثنائية (MFA).</p>
+                    <span class="card-link">قراءة الدليل <i class="fas fa-arrow-left"></i></span>
+                </a>
+                
+                <a href="nmap-guide.html" class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-search-location card-icon"></i>
+                    <h2>دليل فحص المنافذ: Nmap وبدائل الأندرويد</h2>
+                    <p>تعلم كيفية استخدام ماسح الشبكة Nmap أو تطبيقات الأندرويد البديلة لترى شبكتك بعين المهاجم.</p>
+                    <span class="card-link">شاهد الدليل <i class="fas fa-arrow-left"></i></span>
+                </a>
+                
+                <a href="#" class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-bullhorn card-icon"></i>
+                    <h2>مستجدات الأمن والتحذيرات الحرجة</h2>
+                    <p>نشرة يومية بأحدث الثغرات الأمنية (CVEs) وكيفية تطبيق التصحيحات اللازمة على نظامك.</p>
+                    <span class="card-link">قراءة النشرة <i class="fas fa-arrow-left"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        </div> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1200, 
-            once: true 
-        });
-        // تم حذف كود الجافاسكريبت للتحكم في عرض الأقسام لأنه كان يتعلق بصفحات الخدمات المحذوفة
-    </script>
-</body>
+    <footer class="main-footer" id="contact-footer">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://twitter.com" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                <a href="https://wa.me" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
+            </div>
+            
+            <p class="mb-1">
+                للتواصل المباشر (لشراكة المحتوى والرعاية): 
+                <a href="mailto:F@hotmail.hu" class="highlight-text" style="font-weight: bold;">F@hotmail.hu</a>
+            </p>
+            
+            <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير متقدم | <span class="highlight-text">محمد المخدري</span></p>
+        </div>
+    </footer>
+
+    </body>
 </html>

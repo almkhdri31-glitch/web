@@ -95,7 +95,7 @@
         }
         
         /* ========================================================================= */
-        /* الهيدر وقائمة التنقل (تم الاحتفاظ بها من index.html) */
+        /* الهيدر وقائمة التنقل */
         /* ========================================================================= */
          .main-header {
             background: var(--color-bg-main); 
@@ -171,8 +171,9 @@
             gap: 30px;
             margin-top: 50px;
         }
-
-        .article-card {
+        
+        /* تغيير البطاقة من رابط إلى حاوية محتوى (div) لإزالة زر "للمزيد" */
+        .alert-card-container { 
             background: var(--color-bg-card); 
             padding: 25px;
             border-radius: 10px;
@@ -183,24 +184,35 @@
             border-right: 5px solid var(--color-alert-medium); /* لون التنبيه الافتراضي */
         }
         
-        .article-card.critical-alert {
+        .alert-card-container.critical-alert {
             border-right-color: var(--color-alert-critical);
         }
         
-        .article-card:hover {
-            transform: translateY(-5px);
-        }
+        /* لا يوجد تأثير تحوم/Hover لإظهار أن المحتوى كامل هنا */
+        /* .alert-card-container:hover {
+            transform: translateY(-5px); 
+        } */
 
-        .article-card h3 {
+        .alert-card-container h3 {
             font-size: 20px;
             color: var(--color-text-light);
             margin-bottom: 10px;
         }
 
-        .article-card p {
+        /* تنسيق المحتوى التفصيلي الجديد */
+        .alert-card-container .alert-details {
             font-size: 15px;
             color: var(--color-text-subtle);
             margin-bottom: 15px;
+        }
+        
+        .alert-card-container .patch-info {
+            font-size: 14px;
+            color: var(--color-brand-primary);
+            font-weight: bold;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #333;
         }
         
         .alert-tag {
@@ -221,21 +233,9 @@
             background-color: var(--color-alert-medium);
             color: var(--color-bg-main);
         }
-        
-        .read-more {
-             color: var(--color-brand-primary);
-             font-weight: bold;
-             margin-top: auto; 
-        }
-        
-        /* تلوين الروابط الخارجية */
-        .article-card:hover .read-more {
-            color: var(--color-brand-hover);
-        }
-
 
         /* ========================================================================= */
-        /* الفوتر (Footer) - تم الاحتفاظ به من index.html */
+        /* الفوتر (Footer) */
         /* ========================================================================= */
         .main-footer {
             background-color: var(--color-bg-secondary); 
@@ -356,29 +356,41 @@
             
             <div class="article-grid">
                 
-                <a href="https://cve-details-2025-XXXXX.com" target="_blank" class="article-card critical-alert">
+                <div class="alert-card-container critical-alert">
                     <span class="alert-tag tag-critical"><i class="fas fa-exclamation-triangle"></i> حرج جداً</span>
                     <h3>ثغرة تنفيذ كود عن بعد في خوادم Exchange (CVE-2025-XXXXX)</h3>
-                    <p>هذه الثغرة تسمح للمهاجمين بتنفيذ تعليمات برمجية دون مصادقة. يجب التحديث فوراً لتجنب اختراق البريد.</p>
-                    <p style="font-size: 13px; color: var(--color-text-subtle);">تاريخ النشر: 8 أكتوبر 2025</p>
-                    <span class="read-more">قراءة التفاصيل والحلول (مصدر خارجي) <i class="fas fa-arrow-left"></i></span>
-                </a>
+                    <p class="alert-details">
+                        هذه الثغرة تسمح للمهاجمين بتنفيذ تعليمات برمجية دون مصادقة أو الحاجة لامتيازات عالية، مما يشكل خطراً وشيكاً على أنظمة البريد المؤسسية.
+                    </p>
+                    <p class="patch-info">
+                        **الحل:** يجب تطبيق تحديث الأمان الأخير (KB504XXXX) فوراً. للحصول على تفاصيل التصحيح والمصدر، يرجى زيارة موقع Microsoft الرسمي.
+                    </p>
+                    <p style="font-size: 13px; color: var(--color-text-subtle); margin-top: 15px;">تاريخ النشر: 8 أكتوبر 2025</p>
+                </div>
                 
-                <a href="https://cve-details-2025-YYYYY.com" target="_blank" class="article-card">
+                <div class="alert-card-container">
                     <span class="alert-tag tag-medium"><i class="fas fa-info-circle"></i> متوسط</span>
                     <h3>تحديث ضروري لمتصفح Chrome وإصلاح 5 ثغرات (CVE-2025-YYYYY)</h3>
-                    <p>يتعلق التحديث بمشكلات في الذاكرة قد تؤدي إلى تعطيل المتصفح. ينصح بالتحديث لآخر إصدار.</p>
-                    <p style="font-size: 13px; color: var(--color-text-subtle);">تاريخ النشر: 7 أكتوبر 2025</p>
-                    <span class="read-more">قراءة التفاصيل والحلول (مصدر خارجي) <i class="fas fa-arrow-left"></i></span>
-                </a>
+                    <p class="alert-details">
+                        يتعلق التحديث بمشكلات في الذاكرة (Use-After-Free) قد تؤدي إلى تعطيل المتصفح أو إمكانية تنفيذ هجمات هندسة اجتماعية.
+                    </p>
+                    <p class="patch-info">
+                         **الحل:** تحديث المتصفح تلقائياً إلى الإصدار 118.0.5993.88. يُنصح بإعادة تشغيل المتصفح بعد التحديث.
+                    </p>
+                    <p style="font-size: 13px; color: var(--color-text-subtle); margin-top: 15px;">تاريخ النشر: 7 أكتوبر 2025</p>
+                </div>
                 
-                <a href="https://fortinet-security-alert-details.com" target="_blank" class="article-card">
+                <div class="alert-card-container">
                     <span class="alert-tag tag-medium"><i class="fas fa-info-circle"></i> متوسط</span>
                     <h3>ثغرة في جدار الحماية Fortinet قد تكشف عن بيانات المستخدمين</h3>
-                    <p>كشفت الشركة عن خلل يتطلب ترقيعاً عاجلاً على جميع جدران الحماية المُدارة. يرجى مراجعة إعداداتك.</p>
-                    <p style="font-size: 13px; color: var(--color-text-subtle);">تاريخ النشر: 5 أكتوبر 2025</p>
-                    <span class="read-more">قراءة التفاصيل والحلول (مصدر خارجي) <i class="fas fa-arrow-left"></i></span>
-                </a>
+                    <p class="alert-details">
+                        كشفت الشركة عن خلل في بعض إصدارات FortiGate Firewall يمكن أن يسمح بـ Enumeration لأسماء المستخدمين.
+                    </p>
+                    <p class="patch-info">
+                        **الحل:** يجب ترقيع الجهاز للإصدار الأخير. يرجى مراجعة إعدادات تسجيل الدخول وتغيير كلمات المرور.
+                    </p>
+                    <p style="font-size: 13px; color: var(--color-text-subtle); margin-top: 15px;">تاريخ النشر: 5 أكتوبر 2025</p>
+                </div>
                 
             </div>
             

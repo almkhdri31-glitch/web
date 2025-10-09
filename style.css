@@ -1,21 +1,25 @@
 /*
 ========================================================================= */
-/* 🎨 المتغيرات (Variables) - لتغيير لون العلامة التجارية بسهولة */
+/* 🎨 المتغيرات (Variables) - تم التعديل للألوان الذهبية والخلفيات الهادئة */
 /* ========================================================================= */
 :root {
-    /* الخلفيات الأساسية (أسود داكن / رمادي غامق) */
-    --color-bg-main: #111111;    /* خلفية الجسم */
-    --color-bg-secondary: #1c1c1c; /* خلفية الهيدر والفوتر والأقسام الداكنة */
-    --color-bg-card: #2c3e50;    /* خلفية البطاقات/الخدمات (للتمايز) */
+    /* الخلفيات الأساسية (تم تفتيحها قليلاً لراحة العين) */
+    --color-bg-main: #0A0A0A;    /* أسود نقي */
+    --color-bg-secondary: #1A1A1A; /* خلفية ثانوية أكثر هدوءاً */
+    --color-bg-card: #1D2B35;    /* لون أزرق-رمادي هادئ للبطاقات */
 
     /* ألوان النصوص */
-    --color-text-light: #f1f1f1;  /* للنصوص الفاتحة جداً */
-    --color-text-subtle: #95a5a6; /* للنصوص الهادئة والوصفية */
+    --color-text-light: #f1f1f1;  
+    --color-text-subtle: #bdc3c7; /* تم تعديل هذا اللون ليناسب الخلفية الداكنة */
 
-    /* لون العلامة التجارية (الأخضر الزمردي الموحد) */
-    --color-brand-primary: #2ecc71;  
-    --color-brand-hover: #27ae60;   
+    /* *** لون العلامة التجارية (الذهبي الساطع) *** */
+    --color-brand-primary: #FFC300;  
+    --color-brand-hover: #DAA520;   
+    
+    /* لون التمييز الثانوي (البرتقالي للـ CV) */
+    --color-accent-secondary: #f39c12; 
 }
+
 
 /*
 ========================================================================= */
@@ -29,13 +33,12 @@
 }
 
 body {
-    /* تم توحيد الخط إلى Cairo (أو يمكنك تغييرها إلى Tajawal) */
     font-family: 'Cairo', sans-serif; 
     line-height: 1.6;
     color: var(--color-text-light); 
     background-color: var(--color-bg-main); 
     overflow-x: hidden; 
-    font-size: 16px; /* تحديد حجم الخط الأساسي */
+    font-size: 16px; 
 }
 
 a {
@@ -60,7 +63,6 @@ ul {
 }
 
 .section-title {
-    /* تم تقليل حجم الخط الأساسي */
     font-size: 28px; 
     font-weight: 700;
     margin-bottom: 10px;
@@ -74,7 +76,7 @@ ul {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: var(--color-brand-primary); /* موحد */
+    background-color: var(--color-brand-primary); 
     margin: 10px auto 0;
     border-radius: 2px;
 }
@@ -87,11 +89,11 @@ ul {
 
 /*
 ========================================================================= */
-/* الهيدر وقائمة التنقل (إلغاء التشويه الثابت)                  
+/* الهيدر وقائمة التنقل */
 /* ========================================================================= */
 
 .main-header {
-    background: var(--color-bg-secondary); /* موحد */
+    background: var(--color-bg-main); /* استخدام اللون الرئيسي الداكن */
     color: var(--color-text-light);
     padding: 15px 0;
     border-bottom: 1px solid #333;
@@ -101,34 +103,50 @@ ul {
     z-index: 1000;
 }
 
+.main-header .container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 20px;
+}
+
 .logo {
     font-size: 28px;
     font-weight: 900;
-    color: var(--color-brand-primary); /* موحد */
+    color: var(--color-brand-primary); 
+    /* تم إضافة تنسيق اللوجو في كود الـ HTML للحجم الرأسي */
 }
 
-/* *** التعديل الرئيسي لإلغاء التشويه الثابت *** */
+
 .main-nav ul li a {
-    padding: 5px 10px; /* لتنسيق أفضل مع الحدود السفلية */
+    padding: 5px 10px;
     border-radius: 3px;
     transition: all 0.3s;
+    color: var(--color-text-light); 
 }
 
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
-    color: var(--color-brand-primary); /* لون النص يصبح أخضر */
-    background-color: transparent; /* إلغاء الخلفية الملونة الثابتة */
-    border-bottom: 3px solid var(--color-brand-primary); /* خط سفلي أنيق كتمييز */
+    color: var(--color-brand-primary);
+    background-color: transparent; 
+    border-bottom: 3px solid var(--color-brand-primary); 
     padding-bottom: 5px; 
 }
 
 .menu-toggle {
     color: var(--color-text-light);
+    font-size: 24px;
+    cursor: pointer;
+    display: none; 
 }
 
 /*
 ========================================================================= */
-/* قسم البطل (Hero Section) - موحد */
+/* قسم البطل (Hero Section) - تم إضافة تنسيقات البطاقات */
 /* ========================================================================= */
 
 .hero-section {
@@ -139,57 +157,113 @@ ul {
     justify-content: center;
     text-align: center;
     color: var(--color-text-light);
-    /* ... (تأكد من مسار الصورة هنا) ... */
+    
+    background-color: var(--color-bg-main);
+    /* ربط صورة الخلفية الافتراضية - يجب أن يكون المسار صحيحاً */
+    background-image: url('background-hero.jpg'); 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed; 
+    
     position: relative;
     z-index: 1;
 }
 
 .hero-section::before {
-    /* ... */
-    background: rgba(0, 0, 0, 0.5); 
-    /* ... */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); 
+    z-index: -1;
 }
 
 .hero-title {
-    /* تم تقليل حجم الخط الأساسي */
     font-size: 40px;
     font-weight: 900;
     margin-bottom: 20px;
     line-height: 1.2;
 }
 
+.hero-subtitle {
+     font-size: 22px; 
+     color: var(--color-text-light);
+     margin-bottom: 30px;
+}
+
+.hero-text {
+    /* تم التغيير إلى اللون الفاتح لزيادة وضوحه على الخلفية */
+    font-size: 17px; 
+    color: var(--color-text-light); 
+    margin-bottom: 40px;
+}
+
 .highlight-text {
-    color: var(--color-brand-primary); /* موحد */
+    color: var(--color-brand-primary); 
 }
 
-.main-cta-button {
-    display: inline-block;
-    background-color: var(--color-brand-primary); /* موحد */
-    color: var(--color-bg-main);
-    padding: 12px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+
+/* تنسيق البطاقات في قسم Hero */
+.hero-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 40px; 
 }
 
-.main-cta-button:hover {
-    background-color: var(--color-brand-hover); /* موحد */
-    transform: translateY(-2px);
+.card-button-hero {
+    background: var(--color-bg-card); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid transparent;
+}
+
+.card-button-hero:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-5px);
+    border-color: var(--color-brand-primary); 
+}
+
+.card-button-hero i {
+    font-size: 35px;
+    color: var(--color-brand-primary); 
+    margin-bottom: 10px;
+}
+
+/* تخصيص بطاقة السيرة الذاتية */
+.card-button-hero.cv-card {
+    background: #34495e; 
+    border-color: var(--color-accent-secondary); 
+}
+
+.card-button-hero.cv-card i {
+    color: var(--color-accent-secondary); 
+}
+
+.card-button-hero.cv-card:hover {
+    border-color: var(--color-accent-secondary);
 }
 
 /*
 ========================================================================= */
-/* قسم النصيحة السريعة (Quick Tip) - موحد */
+/* تنسيق أقسام المحتوى الداخلية */
 /* ========================================================================= */
-
-.quick-tip-section {
-    padding: 40px 0;
-    background-color: var(--color-bg-secondary); /* موحد */
+.main-content, .quick-tip-section {
+    padding: 80px 0;
+    background-color: var(--color-bg-secondary); 
 }
 
 .tip-card {
-    background: var(--color-bg-card); /* موحد */
+    background: var(--color-bg-card); 
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -197,11 +271,12 @@ ul {
     align-items: center;
     gap: 20px;
     color: var(--color-text-light);
+    width: 100%;
 }
 
 .tip-icon {
+    color: var(--color-brand-primary); 
     font-size: 40px;
-    color: var(--color-brand-primary); /* موحد */
 }
 
 .tip-title {
@@ -212,78 +287,120 @@ ul {
     color: var(--color-text-subtle);
 }
 
-/*
-========================================================================= */
-/* أقسام المحتوى الأخرى (Tech, Guides, Footer) - موحد */
-/* ========================================================================= */
-
-.tech-stack-section, .contact-section {
-    padding: 80px 0;
-    background-color: var(--color-bg-main); /* موحد */
-    text-align: center;
-}
-
-.main-content {
-    padding: 80px 0;
-    background-color: var(--color-bg-secondary); /* موحد */
-}
-
-.tech-item {
-    background-color: var(--color-bg-secondary); /* موحد */
-    /* ... */
-    border-top: 5px solid var(--color-brand-primary); /* موحد */
-    /* ... */
-}
-
-.tech-icon {
-    color: var(--color-brand-primary); /* موحد */
-}
-
-.tech-item h3 {
-    color: var(--color-text-light);
-}
-
-.tech-tag {
-    background-color: var(--color-bg-card); 
-    color: var(--color-brand-primary); /* موحد */
-    /* ... */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .service-card {
-    background: var(--color-bg-card); /* موحد */
-    /* ... */
+    background: var(--color-bg-card); 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: right;
+    transition: all 0.3s ease;
+    color: var(--color-text-light);
+    border: 3px solid transparent;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-5px);
+    border-color: var(--color-brand-primary); 
+}
+
+.service-card h2 {
+    color: var(--color-text-light);
+    font-size: 22px; 
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: var(--color-text-subtle);
+    font-size: 15px; 
+    margin-bottom: 15px;
 }
 
 .card-icon {
-    color: var(--color-brand-primary); /* موحد */
+    font-size: 32px;
+    color: var(--color-brand-primary); 
+    margin-bottom: 15px; 
 }
 
 .card-link {
-    color: var(--color-brand-primary); /* موحد */
-    border-bottom: 2px solid var(--color-brand-primary); /* موحد */
+    color: var(--color-brand-primary); /* لون ذهبي بارز */
+    transition: all 0.3s;
+    font-size: 15px;
+    display: inline-flex; 
+    align-items: center;
+    gap: 5px;
+    padding: 3px 6px; 
+    border-radius: 4px;
+    border: 2px solid transparent; 
+    margin-top: auto; 
 }
 
-.card-link:hover {
-    color: var(--color-brand-hover); /* موحد */
+.card-link i { 
+    color: var(--color-brand-primary);
 }
 
-.main-footer {
-    background-color: var(--color-bg-secondary); /* موحد */
-    color: var(--color-text-light);
-    /* ... */
+.card-link:hover, .card-link:focus {
+    color: var(--color-text-light); /* عكس اللون عند التحويم */
+    background-color: var(--color-brand-primary); 
+    border-color: var(--color-brand-primary);
 }
 
-.social-links a:hover {
-    color: var(--color-brand-primary); /* موحد */
+.card-link:hover i { 
+    color: var(--color-bg-main); /* لون الأيقونة عند التحويم */
 }
-
 
 /*
 ========================================================================= */
-/* تنسيقات الاستجابة (Media Queries) - تعديل أحجام الخطوط للجوال */
+/* الفوتر (Footer) - موحد */
+/* ========================================================================= */
+
+.main-footer {
+    background-color: var(--color-bg-secondary); 
+    color: var(--color-text-light);
+    padding: 20px 0; 
+    border-top: 1px solid #333; 
+    text-align: center;
+}
+
+/* تفعيل اللون الذهبي لروابط التواصل الاجتماعي */
+.social-links a {
+    color: var(--color-brand-primary); 
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-text-light); 
+}
+
+.main-footer .highlight-text {
+    color: var(--color-brand-primary); 
+}
+
+/*
+========================================================================= */
+/* تنسيقات الاستجابة (Media Queries) */
 /* ========================================================================= */
 
 @media (max-width: 992px) {
+    .main-header .container {
+        justify-content: space-between;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
     .main-nav {
         display: none;
         flex-direction: column;
@@ -292,50 +409,62 @@ ul {
         position: absolute;
         top: 60px;
         left: 0;
-        background: var(--color-bg-secondary); /* موحد */
+        background: var(--color-bg-secondary); 
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
         padding-bottom: 10px;
+        z-index: 999; 
     }
     
     .main-nav.active {
         display: flex;
     }
 
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    
     .main-nav ul li a {
         border-bottom: 1px solid #333;
+        padding: 15px 0; 
+        display: block; 
+    }
+    
+    .main-nav ul li a:hover,
+    .main-nav ul li a.active {
+        border-bottom: none;
+        background-color: var(--color-brand-primary); 
+        color: var(--color-bg-main); 
+    }
+    
+    .logo {
+        font-size: 20px; 
     }
 }
 
 @media (max-width: 768px) {
-    /* *** التعديلات لتقليل حجم الخط على الجوال *** */
     body {
-        font-size: 15px; 
+        font-size: 14px; 
     }
-    
     .hero-section {
-        min-height: 80vh;
+        min-height: auto; 
+        padding-top: 80px;
+        padding-bottom: 50px;
     }
-
     .hero-title {
-        font-size: 32px; /* تقليل حجم عنوان البطل */
+        font-size: 28px; 
+        line-height: 1.3;
     }
-
+    .hero-subtitle {
+        font-size: 17px; 
+    }
+    .hero-text {
+        font-size: 14px; 
+    }
     .section-title {
-        font-size: 24px; /* تقليل حجم العناوين الرئيسية */
+        font-size: 22px; 
     }
-
-    .main-cta-button {
-        font-size: 16px; /* تقليل حجم خط الزر */
-        padding: 10px 25px; 
-    }
-    /* ------------------------------------------- */
-    
-    .tech-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .tech-item {
-        width: 90%;
-        max-width: 400px;
+    .hero-buttons-grid {
+        grid-template-columns: 1fr;
     }
 }

@@ -24,7 +24,6 @@
             --color-brand-primary: #FFC300;  
             --color-brand-hover: #DAA520;   
             --color-accent-secondary: #f39c12;
-            --color-ai-tool: #3498db; 
             --color-tool-highlight: #2ecc71; 
             --color-alert-critical: #e74c3c; /* لون جديد للتنبيهات الحرجة */
             --color-alert-medium: #f39c12;  /* لون جديد للتنبيهات المتوسطة */
@@ -228,6 +227,12 @@
              font-weight: bold;
              margin-top: auto; 
         }
+        
+        /* تلوين الروابط الخارجية */
+        .article-card:hover .read-more {
+            color: var(--color-brand-hover);
+        }
+
 
         /* ========================================================================= */
         /* الفوتر (Footer) - تم الاحتفاظ به من index.html */
@@ -327,10 +332,10 @@
                     <li><a href="index.html#guides" class="active">أدلة الإرشاد</a></li>
                     
                     <li><a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">أداة فحص كلمة المرور</a></li>
-                    <li><a href="summarizer-tool.html" style="color: var(--color-ai-tool); font-weight: bold;">مُلَخِّص النصوص الذكي</a></li>
+                    
                     <li><a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" style="color: var(--color-accent-secondary); font-weight: bold;">الأدوات المجانية (مدقق الشبكة)</a></li>
                     
-                    <li><a href="contact.html">إرسال مقترحات (غير فنية)</a></li> 
+                    <li><a href="contact.html">الاتصال بنا</a></li> 
                 </ul>
             </nav>
             <div class="menu-toggle"><i class="fas fa-bars"></i></div>
@@ -351,28 +356,28 @@
             
             <div class="article-grid">
                 
-                <a href="#" class="article-card critical-alert">
+                <a href="https://cve-details-2025-XXXXX.com" target="_blank" class="article-card critical-alert">
                     <span class="alert-tag tag-critical"><i class="fas fa-exclamation-triangle"></i> حرج جداً</span>
                     <h3>ثغرة تنفيذ كود عن بعد في خوادم Exchange (CVE-2025-XXXXX)</h3>
                     <p>هذه الثغرة تسمح للمهاجمين بتنفيذ تعليمات برمجية دون مصادقة. يجب التحديث فوراً لتجنب اختراق البريد.</p>
                     <p style="font-size: 13px; color: var(--color-text-subtle);">تاريخ النشر: 8 أكتوبر 2025</p>
-                    <span class="read-more">قراءة التفاصيل والحلول <i class="fas fa-arrow-left"></i></span>
+                    <span class="read-more">قراءة التفاصيل والحلول (مصدر خارجي) <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
-                <a href="#" class="article-card">
+                <a href="https://cve-details-2025-YYYYY.com" target="_blank" class="article-card">
                     <span class="alert-tag tag-medium"><i class="fas fa-info-circle"></i> متوسط</span>
                     <h3>تحديث ضروري لمتصفح Chrome وإصلاح 5 ثغرات (CVE-2025-YYYYY)</h3>
                     <p>يتعلق التحديث بمشكلات في الذاكرة قد تؤدي إلى تعطيل المتصفح. ينصح بالتحديث لآخر إصدار.</p>
                     <p style="font-size: 13px; color: var(--color-text-subtle);">تاريخ النشر: 7 أكتوبر 2025</p>
-                    <span class="read-more">قراءة التفاصيل والحلول <i class="fas fa-arrow-left"></i></span>
+                    <span class="read-more">قراءة التفاصيل والحلول (مصدر خارجي) <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
-                <a href="#" class="article-card">
+                <a href="https://fortinet-security-alert-details.com" target="_blank" class="article-card">
                     <span class="alert-tag tag-medium"><i class="fas fa-info-circle"></i> متوسط</span>
                     <h3>ثغرة في جدار الحماية Fortinet قد تكشف عن بيانات المستخدمين</h3>
                     <p>كشفت الشركة عن خلل يتطلب ترقيعاً عاجلاً على جميع جدران الحماية المُدارة. يرجى مراجعة إعداداتك.</p>
                     <p style="font-size: 13px; color: var(--color-text-subtle);">تاريخ النشر: 5 أكتوبر 2025</p>
-                    <span class="read-more">قراءة التفاصيل والحلول <i class="fas fa-arrow-left"></i></span>
+                    <span class="read-more">قراءة التفاصيل والحلول (مصدر خارجي) <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
             </div>
@@ -389,9 +394,9 @@
     <footer class="main-footer" id="contact-footer">
         <div class="container text-center">
             <div class="social-links mb-3">
-                <a href="https://twitter.com" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="https://linkedin.com" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="https://wa.me" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
+                <a href="#" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                <a href="#" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
             </div>
             
             <p class="mb-1">
@@ -401,7 +406,7 @@
             
             <p class="mb-0">
                 <a href="index.html#home" class="highlight-text" style="font-weight: bold; margin-left: 10px;">العودة للصفحة الرئيسية</a>
-                | جميع الحقوق محفوظة &copy; 2025 | تصميم وتطوير  | <span class="highlight-text">الخبير التقني محمد المخدري</span>
+                | جميع الحقوق محفوظة &copy; 2024 | تصميم وتطوير  | <span class="highlight-text">الخبير التقني محمد المخدري</span>
             </p>
         </div>
     </footer>

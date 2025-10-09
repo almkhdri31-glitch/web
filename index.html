@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> IT تقنية المعلومات </title>
+    <title>IT تقنية المعلومات</title>
     <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
     <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
     
@@ -14,10 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /*
-        ========================================================================= */
-        /* 🎨 المتغيرات (Variables) */
-        /* ========================================================================= */
+        /* المتغيرات (Variables) */
         :root {
             --color-bg-main: #0A0A0A;    
             --color-bg-secondary: #1A1A1A; 
@@ -30,10 +26,7 @@
             --color-tool-highlight: #2ecc71; 
         }
 
-
-        /* ========================================================================= */
         /* الإعدادات الأساسية وتنسيق الخطوط العامة */
-        /* ========================================================================= */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -95,9 +88,7 @@
             margin-bottom: 40px;
         }
 
-        /* ========================================================================= */
         /* الهيدر وقائمة التنقل */
-        /* ========================================================================= */
         .main-header {
             background: var(--color-bg-main); 
             color: var(--color-text-light);
@@ -149,9 +140,7 @@
             display: none; 
         }
         
-        /* ========================================================================= */
         /* قسم البطل (Hero Section) */
-        /* ========================================================================= */
         .hero-section {
             padding: 100px 0;
             min-height: 100vh;
@@ -280,9 +269,7 @@
             border-color: var(--color-tool-highlight);
         }
         
-        /* ========================================================================= */
         /* تنسيق أقسام المحتوى الداخلية */
-        /* ========================================================================= */
         .main-content, .quick-tip-section {
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
@@ -363,13 +350,19 @@
             margin-top: auto; 
             color: var(--color-brand-primary); 
         }
+        
+        /* تخصيص لون رابط بطاقة أداة فحص كلمة المرور */
+        .service-card a[href="password-tool.html"] .card-link,
+        .service-card a[href="password-tool.html"] .card-icon {
+            color: var(--color-accent-secondary) !important;
+        }
 
         .card-link i { 
             color: var(--color-brand-primary);
         }
         
         .card-link:hover, .card-link:focus {
-            color: var(--color-text-light); 
+            color: var(--color-bg-main); 
             background-color: var(--color-brand-primary); 
             border-color: var(--color-brand-primary);
         }
@@ -379,9 +372,7 @@
         }
 
 
-        /* ========================================================================= */
         /* الفوتر (Footer) - موحد */
-        /* ========================================================================= */
         .main-footer {
             background-color: var(--color-bg-secondary); 
             color: var(--color-text-light);
@@ -389,24 +380,11 @@
             border-top: 1px solid #333; 
         }
         
-        .social-links a {
-            color: var(--color-brand-primary); 
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--color-text-light); 
-        }
-        
         .main-footer .highlight-text {
             color: var(--color-brand-primary); 
         }
 
-        /* ========================================================================= */
         /* تنسيقات الاستجابة (Media Queries) */
-        /* ========================================================================= */
-
         @media (max-width: 992px) {
             .main-header .container {
                 justify-content: space-between;
@@ -495,7 +473,7 @@
             
             <a class="logo" href="#home" style="font-size: 24px; text-align: left;">
                 <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
-                    تقنية المعلومات  IT 
+                    تقنية المعلومات IT 
                 </span> 
                 <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
                     INFORMATION TECHNOLOGY  
@@ -522,7 +500,7 @@
         <div class="container text-center">
             
             <h1 class="hero-title">
-                أهلاً بك في <span class="highlight-text">منصة تقنية المعلومات     </span>
+                أهلاً بك في <span class="highlight-text">منصة تقنية المعلومات</span>
             </h1>
             <h2 class="hero-subtitle">
                 
@@ -559,7 +537,7 @@
 
     <section id="about" class="quick-tip-section">
         <div class="container text-center">
-            <h2 class="section-title">   </h2>
+            <h2 class="section-title">من نحن</h2>
             <p class="section-subtitle">
      "نقدم حلولًا رقمية متكاملة"        
             <div class="row" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
@@ -627,12 +605,6 @@
 
     <footer class="main-footer" id="contact-footer">
         <div class="container text-center">
-            <div class="social-links mb-3">
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
-            </div>
-            
             <p class="mb-1">
             للتواصل
                 <a href="mailto:F@hotmail.hu" class="highlight-text" style="font-weight: bold;">F@hotmail.hu</a>
@@ -641,8 +613,6 @@
             <p class="mb-0">
                 <a href="#home" class="highlight-text" style="font-weight: bold; margin-left: 10px;"></a>
                 | جميع الحقوق محفوظة &copy; 2024
-| <span class="highlight-text">
-                     </span>
             </p>
         </div>
     </footer>

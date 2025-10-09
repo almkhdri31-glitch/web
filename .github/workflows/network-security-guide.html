@@ -3,154 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تأمين شبكتك المنزلية بخبرة CCNA | المنصة الرقمية</title>
+    <title>تأمين شبكتك المنزلية بخبرة CCNA (الأساسيات المتقدمة)</title>
+    <meta name="description" content="دليل شامل لتأمين الراوتر المنزلي، تغيير كلمات المرور، إعدادات جدار الحماية، وتطبيق مبادئ شهادة CCNA في بيئتك المنزلية.">
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* المتغيرات الأساسية */
+        :root {
+            --color-bg-main: #0A0A0A;
+            --color-bg-secondary: #1A1A1A;
+            --color-bg-card: #1D2B35;
+            --color-text-light: #f1f1f1;
+            --color-text-subtle: #bdc3c7;
+            --color-brand-primary: #FFC300;
+            --color-accent-secondary: #f39c12;
         }
+        
+        /* تنسيقات أساسية للخطوط والألوان */
         body {
             font-family: 'Cairo', sans-serif;
-            line-height: 1.7;
-            color: #ecf0f1; 
-            background-color: #111111;
+            color: var(--color-text-light);
+            background-color: var(--color-bg-main);
+            line-height: 1.8;
+            padding-bottom: 50px;
         }
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 0;
-        }
-        header {
-            background: #1c1c1c; 
+        a { text-decoration: none; color: inherit; }
+        .container { width: 90%; max-width: 900px; margin: auto; }
+        .text-center { text-align: center; }
+
+        /* تنسيق الرأس للعودة للصفحة الرئيسية/الأدلة */
+        .page-header {
+            background-color: var(--color-bg-secondary); 
             padding: 20px 0;
-            border-bottom: 3px solid #2ecc71;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid var(--color-brand-primary);
         }
-        header a {
-            color: #2ecc71;
-            font-size: 24px;
-            font-weight: 900;
-            text-decoration: none;
+
+        .back-link {
+            color: var(--color-brand-primary);
+            font-weight: 700;
+            font-size: 16px;
             display: block;
-            text-align: center;
+            margin-bottom: 20px;
+            transition: color 0.3s;
         }
-        .article-content {
-            padding: 40px 0;
+        
+        .back-link:hover {
+            color: var(--color-text-light);
         }
-        .article-content h1 {
+        
+        .guide-title {
             font-size: 36px;
-            color: #2ecc71;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        .article-content h2 {
-            font-size: 24px;
-            color: #f39c12;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .article-content p {
-            margin-bottom: 20px;
-            color: #bdc3c7;
-        }
-        .article-content ul {
-            list-style: none;
-            padding-right: 20px;
-            margin-bottom: 20px;
-        }
-        .article-content ul li {
-            position: relative;
-            margin-bottom: 10px;
-            color: #ecf0f1;
-        }
-        .article-content ul li::before {
-            content: "\f00c"; /* أيقونة علامة صح */
-            font-family: "Font Awesome 6 Free";
             font-weight: 900;
-            color: #2ecc71;
-            position: absolute;
-            right: -20px;
-            top: 0;
+            color: var(--color-text-light);
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
-        .warning-box {
-            background: #e74c3c20;
-            border-right: 5px solid #e74c3c;
+        
+        .guide-subtitle {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-brand-primary);
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        /* تنسيق المحتوى التفصيلي */
+        .guide-content p {
+            margin-bottom: 25px;
+            color: var(--color-text-subtle);
+            text-align: justify;
+        }
+        
+        .guide-content strong {
+            color: var(--color-brand-primary);
+            font-weight: 900;
+        }
+
+        /* تنسيق العناوين المرقمة */
+        .guide-content h2 {
+            font-size: 24px;
+            color: var(--color-text-light);
+            background-color: var(--color-bg-card);
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 5px solid var(--color-accent-secondary);
+            margin: 40px 0 20px;
+            font-weight: 700;
+        }
+
+        /* تنسيق الملاحظات/التنبيهات */
+        .tip-box {
+            background-color: #2c3e50; /* لون أغمق قليلاً من البطاقة */
+            border-right: 4px solid var(--color-accent-secondary);
             padding: 15px;
             margin: 25px 0;
-            color: #e74c3c;
+            border-radius: 6px;
+            color: var(--color-text-light);
         }
-        .code-block {
-            background: #2c3e50;
-            color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-family: monospace;
-            margin: 15px 0;
-            font-size: 14px;
+        
+        .tip-box i {
+            color: var(--color-accent-secondary);
+            margin-left: 10px;
         }
-        .back-button {
-            display: inline-block;
-            background-color: #34495e;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-decoration: none;
-            transition: background-color 0.3s;
+        
+        /* تنسيق القوائم النقطية */
+        .content-list {
+            padding-right: 20px;
+            margin-bottom: 25px;
+            list-style: none; /* إزالة التنقيط الافتراضي */
         }
-        .back-button:hover {
-            background-color: #2c3e50;
+        
+        .content-list li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 12px;
+            color: var(--color-text-subtle);
+        }
+
+        .content-list li::before {
+            content: "\f00c"; /* أيقونة علامة صح */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--color-brand-primary);
+        }
+
+        /* تنسيق الصور التوضيحية (إذا أردت إضافتها) */
+        .guide-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--color-bg-card);
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <header class="page-header text-center">
         <div class="container">
-            <a href="index.html">المنصة الرقمية المتكاملة</a>
+             <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية
+            </a>
         </div>
     </header>
 
-    <div class="container article-content">
-        <h1>تأمين شبكتك المنزلية بخبرة CCNA (الأساسيات المتقدمة)</h1>
-        <p>قد يظن الكثيرون أن جدار الحماية (Firewall) الذي يأتي مع الراوتر كافٍ، لكن الحقيقة أن معظم أجهزة الراوتر المنزلية تأتي بتكوينات ضعيفة أو إعدادات افتراضية يمكن اختراقها بسهولة. هذا الدليل يطبق مبادئ شهادة CCNA في تأمين الأجهزة الطرفية لحماية شبكتك بأقصى قدر ممكن.</p>
-
-        <h2>1. تغيير كلمة المرور الافتراضية للراوتر</h2>
-        <p>الخطوة الأكثر أهمية والأكثر إهمالاً. يجب تغيير اسم المستخدم (غالباً admin) وكلمة المرور الافتراضية فوراً. استخدم كلمة مرور قوية وطويلة.</p>
-        
-        <div class="code-block">
-            <p>مثال لكلمة مرور قوية: #C1sco_MyR0uter_S3cure!</p>
-        </div>
-
-        <h2>2. إيقاف الإدارة عن بعد (Remote Management)</h2>
-        <p>هذه الميزة تسمح لك بالوصول إلى إعدادات الراوتر من الإنترنت، وهي ثغرة أمنية خطيرة. تأكد من تعطيل هذه الميزة (أو إغلاق المنفذ 8080/443/80) في إعدادات الراوتر.</p>
-        
-        <h2>3. عزل الشبكة اللاسلكية (Guest Network)</h2>
-        <p>إذا كان الراوتر يدعم شبكة ضيف (Guest Network)، فقم بتفعيلها. استخدم هذه الشبكة لجميع الأجهزة الذكية التي قد تكون ضعيفة (مثل كاميرات المراقبة، التلفزيونات الذكية، أو أجهزة الضيوف).</p>
-        
-        <ul>
-            <li>**الفائدة:** تمنع هذه الشبكة أي جهاز مصاب بالفيروسات من الوصول إلى أجهزة الكمبيوتر والهواتف الأساسية في شبكتك الرئيسية.</li>
-        </ul>
-
-        <h2>4. تحديث البرامج الثابتة (Firmware)</h2>
-        <p>الشركات المصنعة تصدر تحديثات لسد الثغرات المكتشفة. ابحث عن خيار تحديث **البرنامج الثابت** في صفحة إعدادات الراوتر وتأكد من أنك تستخدم أحدث إصدار.</p>
-        
-        <div class="warning-box">
-            <i class="fas fa-exclamation-triangle"></i> **تحذير CCNA:** عدم تحديث البرامج الثابتة هو أحد أسباب التعرض لهجمات Zero-Day على أجهزة التوجيه.
+    <main class="guide-content">
+        <div class="container text-center" style="padding-top: 50px;">
+            
+            <h1 class="guide-title">
+                تأمين شبكتك المنزلية
+            </h1>
+            <h2 class="guide-subtitle">
+                بخبرة CCNA (الأساسيات المتقدمة)
+            </h2>
+            
         </div>
         
-        <h2>5. تطبيق المصادقة الثنائية (MFA)</h2>
-        <p>بالرغم من أن معظم أجهزة الراوتر لا تدعم المصادقة الثنائية مباشرة لإدارة إعداداتها، لكن يجب تطبيقها على جميع خدماتك المرتبطة بالشبكة، خاصة الخدمات السحابية والبريد الإلكتروني، للحد من مخاطر اختراق الهوية.</p>
+        <div class="container">
+            <p>
+                قد يظن الكثيرون أن جدار الحماية (Firewall) الذي يأتي مع الراوتر كافٍ، لكن الحقيقة أن معظم أجهزة الراوتر المنزلية تأتي بتكوينات ضعيفة أو إعدادات افتراضية يمكن اختراقها بسهولة. هذا الدليل يطبق مبادئ شهادة <strong style="color: var(--color-accent-secondary);">CCNA</strong> في تأمين الأجهزة الطرفية لحماية شبكتك بأقصى قدر ممكن.
+            </p>
 
-        <a href="index.html" class="back-button"><i class="fas fa-arrow-right"></i> العودة إلى الصفحة الرئيسية والأدلة</a>
-    </div>
+            <div class="tip-box">
+                <i class="fas fa-exclamation-triangle"></i> **تنبيه هام:** يجب تطبيق هذه الإعدادات بحذر. أي خطأ قد يؤدي لقطع الاتصال المؤقت بالإنترنت.
+            </div>
 
+            <h2>1. تغيير كلمة المرور الافتراضية و (SSID)</h2>
+            <p>
+                هذه هي الخطوة الأولى والأكثر أهمية. الشركات المصنعة تستخدم كلمات مرور موحدة (مثل admin/admin). يجب عليك تغيير اسم الشبكة (SSID) وكلمة المرور الإدارية للراوتر.
+            </p>
+            <ul class="content-list">
+                <li>استخدم كلمة مرور لا تقل عن 12 حرفاً، وتحتوي على مزيج من الأحرف الكبيرة والصغيرة والأرقام والرموز.</li>
+                <li>قم بتعطيل ميزة **WPS (Wi-Fi Protected Setup)**، فهي ثغرة أمنية معروفة.</li>
+                <li>تأكد من أن الراوتر يعمل على وضع التشفير **WPA3**، أو على الأقل **WPA2-AES**.</li>
+            </ul>
+
+            <h2>2. إعدادات جدار الحماية (Firewall)</h2>
+            <p>
+                معظم جدران الحماية المنزلية تعمل بوضعها الافتراضي (NAT)، لكن يمكنك تشديد الإعدادات لمنع الهجمات الخارجية غير المرغوبة:
+            </p>
+            <ul class="content-list">
+                <li>**تعطيل الوصول عن بعد (Remote Access):** يجب تعطيل إمكانية الوصول إلى إعدادات الراوتر من الإنترنت الخارجي (WAN).</li>
+                <li>**إغلاق المنافذ غير الضرورية:** مراجعة قائمة المنافذ المفتوحة والتأكد من إغلاق أي منافذ لا تستخدمها تطبيقاتك (مثل المنافذ الخاصة ببعض الألعاب القديمة أو خوادم FTP).</li>
+                <li>**تفعيل فحص (SPI):** تأكد من تفعيل خاصية Stateful Packet Inspection.</li>
+            </ul>
+            
+            <img src="network-diagram-example.jpg" alt="صورة توضيحية لإعدادات الراوتر" class="guide-image">
+
+            <h2>3. فصل شبكة الضيوف (Guest Network)</h2>
+            <p>
+                مبدأ **"التقسيم"** هو أساس الأمن في CCNA. افصل شبكة ضيوف عن شبكتك الأساسية. هذا يمنع أي جهاز مصاب يدخل شبكتك من الوصول إلى ملفاتك الشخصية أو أجهزتك الذكية.
+            </p>
+            <ul class="content-list">
+                <li>شبكة الضيوف لا يجب أن يكون لها أي وصول إلى الشبكة المحلية (LAN).</li>
+                <li>اجعل كلمة مرور شبكة الضيوف تتغير بشكل دوري (شهرياً مثلاً).</li>
+            </ul>
+
+            <h2>4. تحديث البرامج الثابتة (Firmware)</h2>
+            <p>
+                الـ **Firmware** هو نظام تشغيل الراوتر. مثل أي برنامج، يحتوي على ثغرات يتم تصحيحها من قبل الشركة المصنعة. يجب فحص موقع الشركة بشكل دوري للبحث عن أي تحديثات أمنية وتطبيقها فوراً.
+            </p>
+            
+            <p style="color: var(--color-brand-primary); font-weight: bold; margin-top: 50px;">
+                <i class="fas fa-cogs"></i> خلاصة: لا تترك جهاز الراوتر بضبط المصنع! استثمر بعض الوقت في إعداده لضمان أمنك الرقمي.
+            </p>
+
+        </div>
+    </main>
+    
 </body>
 </html>

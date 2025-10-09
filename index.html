@@ -6,25 +6,27 @@
     <title>الصفحة الرئيسية للموقع</title>
     
     <style>
+        /* التنسيقات العامة للصفحة */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f8f8;
+            background-color: #f8f8f8; 
             margin: 0;
-            padding: 20px;
-            text-align: right; /* اتجاه الكتابة من اليمين لليسار */
+            padding: 20px 10px;
+            text-align: right; 
             color: #333;
         }
         
-        /* الحاوية الرئيسية للمحتوى */
+        /* الحاوية الرئيسية لتوسيط المحتوى */
         .container {
             max-width: 1000px;
-            margin: 0 auto; /* لتوسيط المحتوى */
+            margin: 0 auto; /* التوسيط */
             padding: 20px;
-            background-color: #fff;
+            background-color: #fff; 
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* تنسيق العنوان الرئيسي */
         h1 {
             color: #0056b3;
             text-align: center;
@@ -33,51 +35,51 @@
             border-bottom: 2px solid #eee;
         }
 
-        /* --- أهم الأجزاء: تنسيق مربع الفيديو المتناسق (Responsive) --- */
+        /* تنسيق مربع الفيديو (الخارجي) */
         .video-box {
             margin: 30px 0;
+            padding: 15px;
             background-color: #f1f1f1;
-            padding: 10px;
             border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        /* حاوية الأبعاد (التي تتحكم في التناسق) */
+        /* حاوية التناسق (Responsive) - ضرورية لتعديل حجم الفيديو تلقائيًا */
         .video-responsive {
             position: relative;
-            /* نسبة الـ 16:9 هي النسبة القياسية لليوتيوب (9/16 = 0.5625) */
-            padding-bottom: 56.25%; 
+            padding-bottom: 56.25%; /* نسبة 16:9 */
             height: 0;
             overflow: hidden;
             border-radius: 4px;
         }
 
-        /* الفيديو نفسه (iframe) */
+        /* تطبيق الحجم 100% على الـ iframe ليملأ الحاوية */
         .video-responsive iframe {
             position: absolute;
             top: 0;
-            right: 0; /* لضمان التناسق مع اتجاه RTL */
+            right: 0; 
             width: 100%;
             height: 100%;
             border: none;
         }
-        /* ------------------------------------------------------------- */
         
+        /* تنسيق الفقرات */
         p {
             line-height: 1.8;
             margin-bottom: 15px;
         }
     </style>
-</head>
+    </head>
 <body>
 
     <div class="container">
         
         <h1>الصفحة الرئيسية - شاهد أحدث محتوى</h1>
         
-        <p>مرحبًا بك في الصفحة الرئيسية لموقعنا. يسعدنا أن نقدم لك هنا فيديو رئيسي مدمج يتناسب تلقائيًا مع حجم جهازك، سواء كان هاتفًا أو حاسوبًا مكتبيًا، لضمان أفضل تجربة مشاهدة.</p>
+        <p>مرحبًا بك في الصفحة الرئيسية لموقعنا. يسعدنا أن نقدم لك هنا فيديو رئيسي مدمج **يتناسب تلقائيًا مع حجم جهازك**، سواء كان هاتفًا أو حاسوبًا مكتبيًا، لضمان أفضل تجربة مشاهدة.</p>
 
         <div class="video-box">
-            <h2 style="color: #333; margin-top: 0;">الفيديو الرئيسي</h2>
+            <h2 style="color: #333; margin-top: 0; text-align: center;">الفيديو الرئيسي</h2>
             
             <div class="video-responsive">
                 <iframe 
@@ -87,11 +89,11 @@
                 </iframe>
             </div>
             
-            <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">اضغط على زر التشغيل للمشاهدة المباشرة.</p>
+            <p style="text-align: center; font-size: 0.9em; margin-top: 10px; color: #555;">اضغط على زر التشغيل للمشاهدة المباشرة.</p>
         </div>
-        <h2>محتوى إضافي</h2>
-        <p>هذا النص يمثل باقي محتوى صفحتك الرئيسية، حيث يمكنك وضع روابط، صور، أو معلومات أخرى مهمة للزوار.</p>
-        <p>يتمحور تصميم الصفحة حول البساطة والتركيز على الفيديو المضمن كعنصر رئيسي.</p>
+        <h2>محتوى إضافي هام</h2>
+        <p>هنا يمكنك وضع أي محتوى آخر ضروري لصفحتك الرئيسية، مثل قائمة بالخدمات، أو أحدث الأخبار، أو روابط لصفحات الموقع الأخرى.</p>
+        <p>هذه الصفحة الآن جاهزة للرفع مباشرة.</p>
 
     </div>
 

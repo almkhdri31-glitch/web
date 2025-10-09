@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -26,7 +25,8 @@
             --color-text-subtle: #bdc3c7; 
             --color-brand-primary: #FFC300;  
             --color-brand-hover: #DAA520;   
-            --color-accent-secondary: #f39c12;
+            --color-accent-secondary: #f39c12; /* البرتقالي للأدوات */
+            --color-visual-primary: #2ecc71; /* الأخضر للفيديوهات */
             --color-tool-highlight: #2ecc71; 
         }
 
@@ -94,6 +94,11 @@
             color: var(--color-text-subtle);
             margin-bottom: 40px;
         }
+        
+        /* تنسيق خاص للقسم المرئي */
+        #visual-security .section-title::after {
+            background-color: var(--color-visual-primary); 
+        }
 
         /* ========================================================================= */
         /* الهيدر وقائمة التنقل */
@@ -140,6 +145,13 @@
             border-radius: 0;
             border-bottom: 3px solid var(--color-brand-primary); 
             padding-bottom: 5px; 
+        }
+        
+        /* تمييز رابط الفيديوهات */
+        .main-nav ul li a.visual-link:hover,
+        .main-nav ul li a.visual-link {
+            color: var(--color-visual-primary) !important;
+            border-bottom: 3px solid var(--color-visual-primary) !important; 
         }
 
         .menu-toggle {
@@ -287,6 +299,23 @@
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
         }
+        
+        /* تنسيق خاص لبطاقات الفيديوهات */
+        .video-card {
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-visual-primary) !important;
+            box-shadow: 0 8px 15px rgba(46, 204, 113, 0.2);
+        }
+        
+        .video-card .video-info h3 {
+             color: var(--color-visual-primary) !important;
+        }
+        
+        /* نهاية تنسيق الفيديو */
 
         .tip-card {
             background: var(--color-bg-card); 
@@ -363,13 +392,19 @@
             margin-top: auto; 
             color: var(--color-brand-primary); 
         }
+        
+        /* تخصيص لون رابط بطاقة أداة فحص كلمة المرور */
+        .service-card a[href="password-tool.html"] .card-link,
+        .service-card a[href="password-tool.html"] .card-icon {
+            color: var(--color-accent-secondary) !important;
+        }
 
         .card-link i { 
             color: var(--color-brand-primary);
         }
         
         .card-link:hover, .card-link:focus {
-            color: var(--color-text-light); 
+            color: var(--color-bg-main); 
             background-color: var(--color-brand-primary); 
             border-color: var(--color-brand-primary);
         }
@@ -458,6 +493,11 @@
             .logo span {
                  font-size: 15px !important;
             }
+            
+            /* تعديل الألوان في قائمة الجوال */
+            .main-nav ul li a.visual-link:hover {
+                 background-color: var(--color-visual-primary) !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -485,6 +525,10 @@
             .hero-buttons-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .video-grid {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -505,6 +549,7 @@
                 <ul>
                     <li><a href="#home" class="active">الرؤية والهدف</a></li>
                     <li><a href="#about">من نحن</a></li> 
+                    <li><a href="#visual-security" class="visual-link" style="color: var(--color-visual-primary); font-weight: bold;">🎥 شروحات مرئية</a></li>
                     <li><a href="#guides">أدلة الإرشاد</a></li>
                     
                     <li><a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">أداة فحص كلمة المرور</a></li>
@@ -530,14 +575,16 @@
             
             <p class="hero-text">
                 دليلك اليومي والمُحدَّث لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك أحدث الثغرات، ونصائح الحماية، والأدوات المجانية لتبقى خطوة للأمام.
+                <br><br>
+                **تصفح أدلتنا النصية الاحترافية أو ابدأ التعلم الآن بمشاهدة <a href="#visual-security" style="color: var(--color-visual-primary); border-bottom: 2px solid var(--color-visual-primary);">الفيديوهات المرئية</a>!**
             </p>
             
             <div class="hero-buttons-grid">
                 
-                <a href="#guides" class="card-button-hero primary-card">
-                    <i class="fas fa-book-open"></i>
-                    <h3>قراءة آخر الأدلة الإرشادية</h3>
-                    <p style="font-size: 14px; color: #ccc;">أدلة احترافية في الأمن والشبكات</p>
+                <a href="#visual-security" class="card-button-hero primary-card" style="border-color: var(--color-visual-primary);">
+                    <i class="fas fa-video" style="color: var(--color-visual-primary);"></i>
+                    <h3>شاهد شروحات الأمن المرئية</h3>
+                    <p style="font-size: 14px; color: #ccc;">نصائح سريعة ومبسطة لحماية الأفراد والشركات</p>
                 </a>
                 
                 <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_self" class="card-button-hero cv-card">
@@ -559,7 +606,7 @@
 
     <section id="about" class="quick-tip-section">
         <div class="container text-center">
-            <h2 class="section-title">   </h2>
+            <h2 class="section-title">من نحن</h2>
             <p class="section-subtitle">
      "نقدم حلولًا رقمية متكاملة"        
             <div class="row" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
@@ -585,7 +632,67 @@
         </div>
     </section>
 
-    <section id="guides" class="main-content">
+    <section id="visual-security" class="main-content" style="background-color: var(--color-bg-main); padding-top: 80px; padding-bottom: 80px;">
+        <div class="container text-center">
+            <h2 class="section-title" style="color: var(--color-visual-primary);">🎥 الأمن في دقيقة: شروحات مرئية</h2>
+            <p class="section-subtitle">
+                شاهد أهم نصائح الحماية الشخصية والشركات في فيديوهات سريعة وجذابة. تعلم كيف تحمي نفسك وأجهزتك في أقل من 120 ثانية!
+            </p>
+            
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px;">
+                
+                <div class="video-card" >
+                    <div class="video-embed" style="position: relative; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */ height: 0; overflow: hidden; border-radius: 10px;">
+                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;" 
+                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1?controls=1" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info" style="padding: 15px 0; text-align: right;">
+                        <h3 style="color: var(--color-visual-primary); font-size: 18px; margin-bottom: 5px;">كيف تحمي كلمة مرورك من الاختراق؟</h3>
+                        <p style="color: var(--color-text-subtle); font-size: 14px;">شرح مبسط لأقوى 3 طرق لحفظ وتأمين كلمات المرور.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card" >
+                    <div class="video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;" 
+                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2?controls=1" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info" style="padding: 15px 0; text-align: right;">
+                        <h3 style="color: var(--color-visual-primary); font-size: 18px; margin-bottom: 5px;">3 علامات تدل على رسالة التصيد الاحتيالي</h3>
+                        <p style="color: var(--color-text-subtle); font-size: 14px;">لا تقع في الفخ! دليل سريع لكشف رسائل الـ Phishing.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card" >
+                    <div class="video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;" 
+                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3?controls=1" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info" style="padding: 15px 0; text-align: right;">
+                        <h3 style="color: var(--color-visual-primary); font-size: 18px; margin-bottom: 5px;">أفضل إعدادات أمان لراوتر المنزل</h3>
+                        <p style="color: var(--color-text-subtle); font-size: 14px;">خطوات بسيطة لتأمين نقطة الدخول الرئيسية لشبكتك.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+             <a href="visual-archive.html" style="display: inline-block; margin-top: 40px; padding: 10px 25px; background-color: var(--color-visual-primary); color: var(--color-bg-main); font-weight: bold; border-radius: 5px; transition: background-color 0.3s;">
+                شاهد أرشيف الفيديوهات الكامل <i class="fas fa-play-circle" style="margin-right: 5px;"></i>
+            </a>
+
+        </div>
+    </section>
+
+    <section id="guides" class="main-content" style="padding-top: 80px;">
         <div class="container text-center">
             <h2 class="section-title">أدلة الإرشاد والمحتوى الموثوق</h2>
             <p class="section-subtitle">

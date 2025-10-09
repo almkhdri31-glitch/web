@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة الرقمية: الأمن السيبراني، الشبكات، أدوات الحماية</title> 
-    <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن. أدوات مجانية ومدعومة بخبرة CCNA/CCIE.">
-    <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات, فيديوهات تعليمية, أدوات مجانية">
+    <title>المنصة الرقمية المتكاملة</title>
+    <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
+    <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
     
     <link rel="icon" type="image/png" href="favicon.png"> 
     
@@ -27,7 +28,6 @@
             --color-brand-hover: #DAA520;   
             --color-accent-secondary: #f39c12;
             --color-tool-highlight: #2ecc71; 
-            --color-video-accent: #6495ED; /* لون قسم الفيديوهات */
         }
 
 
@@ -94,11 +94,6 @@
             color: var(--color-text-subtle);
             margin-bottom: 40px;
         }
-        
-        /* تنسيق خاص بالعناوين الرئيسية لقسم الفيديو */
-        #videos .section-title::after {
-            background-color: var(--color-video-accent); 
-        }
 
         /* ========================================================================= */
         /* الهيدر وقائمة التنقل */
@@ -129,25 +124,8 @@
             font-size: 24px; 
             font-weight: 900;
             color: var(--color-brand-primary);
-            text-align: left; 
-            line-height: 1; 
+            text-align: left !important;
         }
-
-        .logo-main-text {
-            display: block; 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: var(--color-brand-primary);
-        }
-
-        .logo-sub-text {
-            display: block; 
-            font-size: 18px; 
-            font-weight: 700; 
-            color: var(--color-text-light); 
-            margin-top: -5px;
-        }
-
 
         .main-nav ul li a {
             padding: 5px 0; 
@@ -202,13 +180,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.65); 
+            background: rgba(0, 0, 0, 0.55); 
             z-index: -1;
-        }
-
-        /* إضافة ظل خفيف للنصوص لتحسين التباين على أي خلفية */
-        .hero-title, .hero-subtitle, .hero-text {
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
 
@@ -261,31 +234,52 @@
             transform: translateY(-5px);
         }
         
-        /* تخصيص البطاقات */
-        .card-button-hero.primary-card { border-color: var(--color-brand-primary); }
-        .card-button-hero.primary-card i { color: var(--color-brand-primary); }
-        .card-button-hero.primary-card:hover { border-color: var(--color-brand-hover); }
+        /* تخصيص البطاقة الأولى لتكون ذهبية (الأولوية) */
+        .card-button-hero.primary-card {
+             background: #34495e; 
+             border-color: var(--color-brand-primary); 
+        }
+        .card-button-hero.primary-card i {
+             color: var(--color-brand-primary);
+        }
+        .card-button-hero.primary-card:hover {
+             border-color: var(--color-brand-hover);
+        }
         
-        .card-button-hero.cv-card { border-color: var(--color-accent-secondary); }
-        .card-button-hero.cv-card i { color: var(--color-accent-secondary); }
-        .card-button-hero.cv-card:hover { border-color: var(--color-accent-secondary); }
-
-        .card-button-hero.tools-card { border-color: var(--color-tool-highlight); }
-        .card-button-hero.tools-card i { color: var(--color-tool-highlight); }
-        .card-button-hero.tools-card:hover { border-color: var(--color-tool-highlight); }
-
         .card-button-hero i {
             font-size: 35px;
             color: var(--color-brand-primary); 
             margin-bottom: 10px;
         }
-        
-        .card-button-hero p { 
-            font-size: 14px; 
-            color: var(--color-text-subtle);
+
+        /* تخصيص بطاقة السيرة الذاتية (لجعلها برتقالية) */
+        .card-button-hero.cv-card {
+            background: #34495e; 
+            border-color: var(--color-accent-secondary); 
         }
 
+        .card-button-hero.cv-card i {
+            color: var(--color-accent-secondary); 
+        }
+        
+        .card-button-hero.cv-card:hover {
+            border-color: var(--color-accent-secondary);
+        }
 
+        /* تخصيص بطاقة الأدوات الجديدة (أخضر) */
+        .card-button-hero.tools-card {
+            background: #34495e; 
+            border-color: var(--color-tool-highlight); 
+        }
+
+        .card-button-hero.tools-card i {
+            color: var(--color-tool-highlight); 
+        }
+        
+        .card-button-hero.tools-card:hover {
+            border-color: var(--color-tool-highlight);
+        }
+        
         /* ========================================================================= */
         /* تنسيق أقسام المحتوى الداخلية */
         /* ========================================================================= */
@@ -293,51 +287,6 @@
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
         }
-
-        /* تنسيق قسم عنّا (About Section) */
-        .row-wrap {
-            display: flex; 
-            justify-content: space-around; 
-            flex-wrap: wrap;
-        }
-        .col-pad { 
-            padding: 10px; 
-            flex: 1 1 50%; 
-            max-width: 50%; 
-        }
-        
-        /* تنسيق قسم الفيديوهات */
-        #videos { 
-            background-color: var(--color-bg-main);
-        }
-
-        #videos .service-card {
-            padding: 0;
-            border-color: var(--color-video-accent) !important;
-            display: block;
-        }
-        
-        #videos .service-card .video-info {
-            padding: 20px;
-            text-align: right;
-        }
-        
-        #videos .service-card h2 {
-            color: var(--color-video-accent);
-        }
-        
-        /* تنسيق كود التضمين ليأخذ عرض البطاقة */
-        .video-container {
-            aspect-ratio: 16 / 9; 
-            width: 100%;
-        }
-        
-        .video-container iframe {
-             border-radius: 10px 10px 0 0;
-             width: 100%; 
-             height: 100%; 
-        }
-
 
         .tip-card {
             background: var(--color-bg-card); 
@@ -349,7 +298,6 @@
             gap: 20px;
             color: var(--color-text-light);
             width: 100%;
-            height: 100%; 
         }
         
         .tip-icon {
@@ -504,16 +452,11 @@
                 color: var(--color-bg-main); 
             }
             
-            .logo-main-text {
+            .logo {
                 font-size: 20px; 
             }
-            .logo-sub-text {
-                font-size: 15px;
-            }
-            /* تعديل تنسيق الأعمدة في قسم من نحن */
-            .col-pad {
-                max-width: 100%;
-                flex: 1 1 100%;
+            .logo span {
+                 font-size: 15px !important;
             }
         }
 
@@ -542,23 +485,19 @@
             .hero-buttons-grid {
                 grid-template-columns: 1fr;
             }
-            .tip-card {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
 
     <header class="main-header">
-        <div class="container">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             
-            <a class="logo" href="#home">
-                <span class="logo-main-text">
+            <a class="logo" href="#home" style="font-size: 24px; text-align: left;">
+                <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
                     أمن المعلومات
                 </span> 
-                <span class="logo-sub-text"> 
+                <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
                     INFORMATION SECURITY
                 </span>
             </a>
@@ -567,11 +506,6 @@
                     <li><a href="#home" class="active">الرؤية والهدف</a></li>
                     <li><a href="#about">من نحن</a></li> 
                     <li><a href="#guides">أدلة الإرشاد</a></li>
-                    <li>
-                        <a href="#videos" style="color: var(--color-video-accent); font-weight: bold;">
-                            <i class="fas fa-video"></i> دليل الفيديو العملي
-                        </a>
-                    </li>
                     
                     <li><a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">أداة فحص كلمة المرور</a></li>
                     
@@ -590,6 +524,9 @@
             <h1 class="hero-title">
                 أهلاً بك في <span class="highlight-text">المنصة الرقمية المتكاملة</span>
             </h1>
+            <h2 class="hero-subtitle">
+                
+            </h2>
             
             <p class="hero-text">
                 دليلك اليومي والمُحدَّث لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك أحدث الثغرات، ونصائح الحماية، والأدوات المجانية لتبقى خطوة للأمام.
@@ -600,19 +537,19 @@
                 <a href="#guides" class="card-button-hero primary-card">
                     <i class="fas fa-book-open"></i>
                     <h3>قراءة آخر الأدلة الإرشادية</h3>
-                    <p>أدلة احترافية في الأمن والشبكات</p>
+                    <p style="font-size: 14px; color: #ccc;">أدلة احترافية في الأمن والشبكات</p>
                 </a>
                 
                 <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_self" class="card-button-hero cv-card">
                     <i class="fas fa-file-invoice"></i>
                     <h3>صمم سيرتك الذاتية الآن</h3>
-                    <p>(أداة مجانية - )</p>
+                    <p style="font-size: 14px; color: #ccc;">(أداة مجانية - )</p>
                 </a>
 
                 <a href="#guides" class="card-button-hero tools-card">
                     <i class="fas fa-tools"></i>
                     <h3>مركز الأدوات المجانية (الأكثر استخداماً)</h3>
-                    <p>قوة كلمة المرور، مدقق الشبكة، وغيرها...</p>
+                    <p style="font-size: 14px; color: #ccc;">قوة كلمة المرور، مدقق الشبكة، وغيرها...</p>
                 </a>
                 
             </div>
@@ -627,17 +564,17 @@
                 نحن مركز معرفي متخصص في الأمن السيبراني وتطوير الأنظمة البرمجية. 
             </p>
             
-            <div class="row-wrap">
-                <div class="col-pad">
+            <div class="row" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div class="col-lg-6 mb-4" style="padding: 10px;">
                     <div class="tip-card">
                         <i class="fas fa-shield-alt tip-icon"></i>
                         <div>
                             <h3 class="tip-title">خبرة تنفيذية في الأمن</h3>
-                            <p class="tip-content">إرشادات مستخلصة من خبرة الـ **CCNP-CCIE-CCNA** لضمان دقة المعلومة.</p>
+                            <p class="tip-content">إرشادات مستخلصة من خبرة الـ -CCNP-CCIE-CCNA لضمان دقة المعلومة.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-pad">
+                <div class="col-lg-6 mb-4" style="padding: 10px;">
                     <div class="tip-card">
                         <i class="fas fa-tools tip-icon"></i>
                         <div>
@@ -649,76 +586,8 @@
             </div>
         </div>
     </section>
-    
-    <section id="videos" class="main-content">
-        <div class="container text-center">
-            <h2 class="section-title" style="color: var(--color-video-accent);">دليل الفيديو العملي</h2>
-            <p class="section-subtitle" style="color: var(--color-text-subtle);">شروحات مرئية قصيرة وموثوقة من قنوات متخصصة في الأمن والشبكات.</p>
-            
-            <div class="services-grid" style="margin-top: 50px;">
-                
-                <div class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/5U9N1y1L8aI" 
-                            title="ما هي VLANs ولماذا نستخدمها؟" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h2 style="font-size: 20px;">شرح VLANs عمليًا في 5 دقائق (أساسيات CCNA)</h2>
-                        <p style="color: var(--color-text-subtle); font-size: 14px;">تعرف على مفهوم الشبكات الافتراضية وكيفية تطبيقها لتأمين وتقسيم شبكتك.</p>
-                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold;">شاهد الشرح <i class="fas fa-play"></i></span>
-                    </div>
-                </div>
-                
-                <div class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/g3yq0nL_cE0" 
-                            title="دليل Nmap العملي: فحص المنافذ والأجهزة في أقل من 15 دقيقة" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h2 style="font-size: 20px;">دليل Nmap العملي: فحص المنافذ والأجهزة في أقل من 15 دقيقة</h2>
-                        <p style="color: var(--color-text-subtle); font-size: 14px;">شرح عملي لأهم أداة في فحص الشبكات والأمن السيبراني وكيفية استخدامها.</p>
-                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold;">شاهد الشرح <i class="fas fa-play"></i></span>
-                    </div>
-                </div>
-                
-                <div class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/bN6_V0YdJ9k" 
-                            title="الهندسة الاجتماعية (Social Engineering): كيف يحصل المخترق على بياناتك؟" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h2 style="font-size: 20px;">الهندسة الاجتماعية (Social Engineering): كيف يحصل المخترق على بياناتك؟</h2>
-                        <p style="color: var(--color-text-subtle); font-size: 14px;">فهم آليات الهجوم البشري لحماية نفسك وعملك من أشهر طرق الاختراق.</p>
-                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold;">شاهد الشرح <i class="fas fa-play"></i></span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
 
-    <section id="guides" class="main-content" style="background-color: var(--color-bg-secondary);">
+    <section id="guides" class="main-content">
         <div class="container text-center">
             <h2 class="section-title">أدلة الإرشاد والمحتوى الموثوق</h2>
             <p class="section-subtitle">
@@ -761,9 +630,9 @@
     <footer class="main-footer" id="contact-footer">
         <div class="container text-center">
             <div class="social-links mb-3">
-                <a href="#" target="_blank" class="mx-2" aria-label="حساب تويتر"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2" aria-label="حساب لينكد إن"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2" aria-label="حساب واتساب"><i class="fab fa-whatsapp fa-lg"></i></a>
+                <a href="#" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                <a href="#" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
             </div>
             
             <p class="mb-1">
@@ -772,7 +641,8 @@
             </p>
             
             <p class="mb-0">
-                جميع الحقوق محفوظة &copy; 2024 | تصميم وتطوير <span class="highlight-text">الخبير التقني محمد المخدري</span>
+                <a href="#home" class="highlight-text" style="font-weight: bold; margin-left: 10px;"></a>
+                | جميع الحقوق محفوظة &copy; 2024 | تصميم وتطوير  | <span class="highlight-text">الخبير التقني محمد المخدري</span>
             </p>
         </div>
     </footer>
@@ -789,9 +659,7 @@
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 // إغلاق القائمة بعد النقر على الرابط في وضع الجوال
-                if (window.innerWidth <= 992) {
-                    mainNav.classList.remove('active');
-                }
+                mainNav.classList.remove('active');
             });
         });
     </script>

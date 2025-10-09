@@ -104,7 +104,6 @@
         /* الهيدر وقائمة التنقل */
         /* ========================================================================= */
         .main-header {
-            /* استخدام الخلفية الرئيسية هنا لجعلها أغمق قليلاً من الخلفية الثانوية */
             background: var(--color-bg-main); 
             color: var(--color-text-light);
             padding: 15px 0;
@@ -169,7 +168,6 @@
             
             background-color: var(--color-bg-main);
             
-            /* ربط صورة الخلفية الافتراضية - تأكد من وجود صورة باسم 'background-hero.jpg' */
             background-image: url('background-hero.jpg'); 
             background-position: center center;
             background-repeat: no-repeat;
@@ -239,9 +237,20 @@
         .card-button-hero:hover {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             transform: translateY(-5px);
-            border-color: var(--color-brand-primary); 
         }
-
+        
+        /* تخصيص البطاقة الأولى لتكون ذهبية (الأولوية) */
+        .card-button-hero.primary-card {
+             background: #34495e; /* لون مختلف لتمييزها أكثر */
+             border-color: var(--color-brand-primary); 
+        }
+        .card-button-hero.primary-card i {
+             color: var(--color-brand-primary);
+        }
+        .card-button-hero.primary-card:hover {
+             border-color: var(--color-brand-hover);
+        }
+        
         .card-button-hero i {
             font-size: 35px;
             color: var(--color-brand-primary); 
@@ -261,7 +270,7 @@
         .card-button-hero.cv-card:hover {
             border-color: var(--color-accent-secondary);
         }
-
+        
         /* ========================================================================= */
         /* تنسيق أقسام المحتوى الداخلية */
         /* ========================================================================= */
@@ -343,7 +352,6 @@
             border-radius: 4px;
             border: 2px solid transparent; 
             margin-top: auto; 
-            /* جعل لون النص ذهبي في الروابط كأزرار */
             color: var(--color-brand-primary); 
         }
 
@@ -352,13 +360,13 @@
         }
         
         .card-link:hover, .card-link:focus {
-            color: var(--color-text-light); /* عكس اللون عند التحويم */
+            color: var(--color-text-light); 
             background-color: var(--color-brand-primary); 
             border-color: var(--color-brand-primary);
         }
         
         .card-link:hover i { 
-            color: var(--color-bg-main); /* لون الأيقونة عند التحويم */
+            color: var(--color-bg-main); 
         }
 
 
@@ -372,7 +380,6 @@
             border-top: 1px solid #333; 
         }
         
-        /* تفعيل اللون الذهبي لروابط التواصل الاجتماعي */
         .social-links a {
             color: var(--color-brand-primary); 
             margin: 0 10px;
@@ -429,7 +436,6 @@
                 display: block; 
             }
             
-            /* تمييز القائمة المفتوحة في وضع الهاتف */
             .main-nav ul li a:hover,
             .main-nav ul li a.active {
                 border-bottom: none;
@@ -514,19 +520,21 @@
             </p>
             
             <div class="hero-buttons-grid">
+                
+                <a href="#guides" class="card-button-hero primary-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>قراءة آخر الأدلة الإرشادية</h3>
+                    <p style="font-size: 14px; color: #ccc;">أدلة احترافية في الأمن والشبكات</p>
+                </a>
+                
                 <a href="https://my-first-site-gold-seven.vercel.app/index.html" target="_self" class="card-button-hero cv-card">
                     <i class="fas fa-file-invoice"></i>
                     <h3>صمم سيرتك الذاتية الآن</h3>
                     <p style="font-size: 14px; color: #ccc;">(أداة مجانية - )</p>
                 </a>
 
-                <a href="#guides" class="card-button-hero">
-                    <i class="fas fa-book-open"></i>
-                    <h3>قراءة آخر الأدلة الإرشادية</h3>
-                    <p style="font-size: 14px; color: #ccc;">أدلة احترافية في الأمن والشبكات</p>
-                </a>
-                
-                <a href="security-alerts.html" class="card-button-hero"> <i class="fas fa-bullhorn"></i>
+                <a href="security-alerts.html" class="card-button-hero">
+                    <i class="fas fa-bullhorn"></i>
                     <h3>شاهد مستجدات التوعية الأمنية</h3>
                     <p style="font-size: 14px; color: #ccc;">مواكبة أحدث الثغرات والتحذيرات</p>
                 </a>
@@ -587,7 +595,8 @@
                     <span class="card-link">شاهد الدليل <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
-                <a href="security-alerts.html" class="service-card"> <i class="fas fa-bullhorn card-icon"></i>
+                <a href="security-alerts.html" class="service-card">
+                    <i class="fas fa-bullhorn card-icon"></i>
                     <h2>مستجدات الأمن والتحذيرات الحرجة</h2>
                     <p>نشرة يومية بأحدث الثغرات الأمنية (CVEs) وكيفية تطبيق التصحيحات اللازمة على نظامك.</p>
                     <span class="card-link">قراءة النشرة <i class="fas fa-arrow-left"></i></span>

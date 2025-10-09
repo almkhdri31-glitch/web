@@ -9,10 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <link rel="stylesheet" href="الاسم_الحقيقي_لملف_الستايل.css"> 
-
     <style>
-        /* يجب إضافة متغيرات الألوان هنا إذا لم تكن تستدعي ملف CSS خارجي */
+        /* المتغيرات الأساسية (ضرورية لضمان ظهور الألوان الصحيحة) */
         :root {
             --color-bg-main: #0A0A0A;
             --color-bg-secondary: #1A1A1A;
@@ -22,9 +20,70 @@
             --color-brand-primary: #FFC300;
         }
 
+        /* تنسيقات أساسية للخطوط والألوان */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: var(--color-text-light);
+            background-color: var(--color-bg-main);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+        .text-center { text-align: center; }
+
+        /* تنسيق العنوان العام */
+        .section-title {
+            font-size: 28px; 
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--color-text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-brand-primary); 
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--color-text-subtle);
+            margin-bottom: 40px;
+        }
+
+        /* تنسيق الرأس للعودة للصفحة الرئيسية */
+        .page-header {
+            background-color: var(--color-bg-secondary); 
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .back-link {
+            color: var(--color-brand-primary);
+            font-weight: 700;
+            font-size: 16px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--color-text-light);
+        }
+
         /* تنسيقات خاصة بقائمة النشرات */
         .alerts-list {
-            padding: 40px 0;
+            padding: 80px 0;
             background-color: var(--color-bg-secondary);
         }
 
@@ -36,7 +95,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-right: 5px solid var(--color-brand-primary);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: block; /* لجعله يعمل كرابط */
+            display: block; 
         }
         
         .alert-card:hover {
@@ -60,41 +119,55 @@
         .alert-date {
             font-size: 14px;
             color: var(--color-text-subtle);
+            text-align: left;
         }
 
         .alert-summary {
             font-size: 15px;
-            color: var(--color-text-light);
+            color: var(--color-text-subtle);
             line-height: 1.5;
+            margin-bottom: 15px;
         }
         
         .alert-link {
             display: block;
-            margin-top: 15px;
             font-size: 14px;
             color: var(--color-brand-primary);
-            text-align: left;
+            text-align: right;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .alert-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .alert-date {
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
-<body style="background-color: var(--color-bg-main);">
+<body>
 
-    <header style="background-color: var(--color-bg-secondary); padding: 15px 0; border-bottom: 1px solid #333;">
-        <div class="container" style="color: var(--color-text-light);">
-            <a href="index.html" style="font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">العودة للصفحة الرئيسية</a>
+    <header class="page-header">
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية
+            </a>
         </div>
     </header>
 
     <section class="alerts-list">
-        <div class="container">
-            <h2 class="section-title text-center" style="color: var(--color-text-light);">
+        <div class="container text-center">
+            <h2 class="section-title">
                 مستجدات الأمن والتحذيرات الحرجة
             </h2>
-            <p class="section-subtitle text-center" style="color: var(--color-text-subtle);">
+            <p class="section-subtitle">
                 نشرة يومية بأحدث الثغرات الأمنية (CVEs) والتصحيحات المطلوبة.
             </p>
 
-            <a href="#" class="alert-card">
+            <a href="chrome-alert.html" class="alert-card"> 
                 <div class="alert-header">
                     <h3 class="alert-title">ثغرة حرجة في متصفح كروم (CVE-2025-XXXX)</h3>
                     <span class="alert-date"><i class="fas fa-calendar-alt"></i> 1 أكتوبر 2025</span>
@@ -126,8 +199,7 @@
                 </p>
                 <span class="alert-link">قراءة التفاصيل الكاملة <i class="fas fa-arrow-left"></i></span>
             </a>
-
-            </div>
+        </div>
     </section>
 
     </body>

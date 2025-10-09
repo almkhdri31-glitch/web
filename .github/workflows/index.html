@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة الرقمية المتكاملة   </title>
+    <title>المنصة الرقمية المتكاملة</title>
     <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
     <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
     
@@ -15,13 +15,13 @@
     <style>
         /*
         ========================================================================= */
-        /* 🎨 المتغيرات (Variables) - تم تغيير اللون الأساسي إلى الذهبي/الأصفر */
+        /* 🎨 المتغيرات (Variables) - تم تفتيح الخلفيات وتعديل لون البطاقات */
         /* ========================================================================= */
         :root {
-            /* الخلفيات الأساسية (موحدة) */
-            --color-bg-main: #111111;    
-            --color-bg-secondary: #1c1c1c; 
-            --color-bg-card: #2c3e50;    
+            /* الخلفيات الأساسية (تم تفتيحها قليلاً لراحة العين) */
+            --color-bg-main: #0A0A0A;    /* أسود نقي */
+            --color-bg-secondary: #1A1A1A; /* خلفية ثانوية أكثر هدوءاً */
+            --color-bg-card: #1D2B35;    /* لون أزرق-رمادي هادئ للبطاقات */
 
             /* ألوان النصوص */
             --color-text-light: #f1f1f1;  
@@ -104,7 +104,8 @@
         /* الهيدر وقائمة التنقل */
         /* ========================================================================= */
         .main-header {
-            background: var(--color-bg-secondary); 
+            /* استخدام الخلفية الرئيسية هنا لجعلها أغمق قليلاً من الخلفية الثانوية */
+            background: var(--color-bg-main); 
             color: var(--color-text-light);
             padding: 15px 0;
             border-bottom: 1px solid #333;
@@ -125,16 +126,13 @@
             gap: 20px;
         }
 
-        /* تعديل حجم الخط الافتراضي للوغو */
         .logo {
             font-size: 24px; 
             font-weight: 900;
             color: var(--color-brand-primary);
-            /* إضافة محاذاة لليسار للوجو فقط */
             text-align: left !important;
         }
 
-        /* تمييز القائمة في الكمبيوتر (خط سفلي) */
         .main-nav ul li a {
             padding: 5px 0; 
             transition: all 0.3s;
@@ -158,7 +156,7 @@
         }
         
         /* ========================================================================= */
-        /* قسم البطل (Hero Section) وتصميم البطاقات الجديدة */
+        /* قسم البطل (Hero Section) */
         /* ========================================================================= */
         .hero-section {
             padding: 100px 0;
@@ -182,7 +180,6 @@
             z-index: 1;
         }
         
-        /* طبقة شفافة لزيادة وضوح النص فوق الصورة */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -190,7 +187,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
+            background: rgba(0, 0, 0, 0.55); /* زيادة طفيفة في التعتيم لزيادة وضوح النصوص */
             z-index: -1;
         }
 
@@ -209,8 +206,9 @@
         }
         
         .hero-text {
+            /* تم زيادة وضوح هذا النص بناءً على طلبك */
             font-size: 17px; 
-            color: var(--color-text-subtle);
+            color: var(--color-text-light); /* تغيير من subtle إلى light */
             margin-bottom: 40px;
         }
 
@@ -218,18 +216,6 @@
             color: var(--color-brand-primary); 
         }
         
-        /* روابط التواصل الاجتماعي في قسم الهيرو - أصبحت غير مستخدمة بعد الحذف */
-        .hero-social-links a {
-            color: var(--color-text-light);
-            margin: 0 10px;
-            font-size: 28px;
-            transition: color 0.3s;
-        }
-
-        .hero-social-links a:hover {
-            color: var(--color-brand-primary); 
-        }
-
         /* تنسيق البطاقات في قسم Hero */
         .hero-buttons-grid {
             display: grid;
@@ -278,7 +264,7 @@
         }
 
         /* ========================================================================= */
-        /* تنسيق بطاقات الإرشاد (Guides) */
+        /* تنسيق أقسام المحتوى الداخلية */
         /* ========================================================================= */
         .main-content, .quick-tip-section {
             padding: 80px 0;
@@ -358,6 +344,8 @@
             border-radius: 4px;
             border: 2px solid transparent; 
             margin-top: auto; 
+            /* جعل لون النص ذهبي في الروابط كأزرار */
+            color: var(--color-brand-primary); 
         }
 
         .card-link i { 
@@ -365,9 +353,13 @@
         }
         
         .card-link:hover, .card-link:focus {
-            color: var(--color-brand-primary); 
+            color: var(--color-text-light); /* عكس اللون عند التحويم */
+            background-color: var(--color-brand-primary); 
             border-color: var(--color-brand-primary);
-            background-color: rgba(255, 195, 0, 0.1); /* استخدام لون ذهبي مخفف */
+        }
+        
+        .card-link:hover i { 
+            color: var(--color-bg-main); /* لون الأيقونة عند التحويم */
         }
 
 
@@ -380,14 +372,16 @@
             padding: 20px 0; 
             border-top: 1px solid #333; 
         }
-
+        
+        /* تفعيل اللون الذهبي لروابط التواصل الاجتماعي */
         .social-links a {
-            color: var(--color-text-light);
+            color: var(--color-brand-primary); 
             margin: 0 10px;
+            transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--color-brand-primary); 
+            color: var(--color-text-light); 
         }
         
         .main-footer .highlight-text {
@@ -445,7 +439,7 @@
             }
             
             .logo {
-                font-size: 20px; /* تصغير اللوجو على الجوال */
+                font-size: 20px; 
             }
             .logo span {
                  font-size: 15px !important;
@@ -595,7 +589,7 @@
                     <span class="card-link">شاهد الدليل <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
-                <a href="#" class="service-card">
+                <a href="" class="service-card"> 
                     <i class="fas fa-bullhorn card-icon"></i>
                     <h2>مستجدات الأمن والتحذيرات الحرجة</h2>
                     <p>نشرة يومية بأحدث الثغرات الأمنية (CVEs) وكيفية تطبيق التصحيحات اللازمة على نظامك.</p>

@@ -274,7 +274,7 @@
         
         /* تنسيق قسم الفيديوهات */
         #videos .service-card {
-            padding: 0;
+            padding: 0; /* لإتاحة المساحة للصورة/المصغر */
             border-color: var(--color-video-accent) !important;
             display: block;
         }
@@ -288,14 +288,22 @@
             color: var(--color-video-accent);
         }
         
-        /* تنسيق كود التضمين ليأخذ عرض البطاقة */
+        /* تنسيق مكان الصورة المصغرة أو الـ iframe */
         .video-container {
             aspect-ratio: 16 / 9; 
             width: 100%;
+            border-radius: 10px 10px 0 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 180px;
+            background-color: #000; /* خلفية سوداء إذا لم تتوفر الصورة */
         }
         
-        .video-container iframe {
-             border-radius: 10px 10px 0 0;
+        /* تنسيق رابط المشاهدة (الاحتياطي) */
+        #videos .service-card a {
+            display: block;
+            text-align: center;
         }
 
 
@@ -610,71 +618,48 @@
     <section id="videos" class="main-content" style="background-color: var(--color-bg-main);">
         <div class="container text-center">
             <h2 class="section-title" style="color: var(--color-video-accent);">دليل الفيديو العملي</h2>
-            <p class="section-subtitle" style="color: var(--color-text-subtle);">شروحات مرئية قصيرة وموثوقة من قنوات متخصصة في الأمن والشبكات.</p>
+            <p class="section-subtitle" style="color: var(--color-text-subtle);">شروحات مرئية قصيرة وموثوقة من قنوات متخصصة في الأمن والشبكات. **اضغط للانتقال والمشاهدة على المصدر الموثوق (يوتيوب).**</p>
             
             <div class="services-grid" style="margin-top: 50px;">
                 
-                <div class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/fW_n6b6tPqg?rel=0" 
-                            title="ما هي VLANs ولماذا نستخدمها؟" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+                <a href="https://www.youtube.com/watch?v=g3_4Qo0dM-c" target="_blank" class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
+                    
+                    <div class="video-container" style="background-image: url('vlan-thumbnail.jpg'); background-size: cover; background-position: center;">
+                        <i class="fas fa-play-circle" style="font-size: 50px; color: var(--color-brand-primary); opacity: 0.9;"></i>
                     </div>
+                    
                     <div class="video-info">
-                        <h2 style="font-size: 20px;">شرح VLANs عمليًا في 5 دقائق (أساسيات CCNA)</h2>
+                        <h2 style="font-size: 20px; color: var(--color-video-accent);">شرح VLANs عمليًا في 5 دقائق (أساسيات CCNA)</h2>
                         <p style="color: var(--color-text-subtle); font-size: 14px;">تعرف على مفهوم الشبكات الافتراضية وكيفية تطبيقها لتأمين وتقسيم شبكتك.</p>
-                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold;">شاهد الشرح <i class="fas fa-play"></i></span>
+                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold; margin-top: 10px;">شاهد على يوتيوب <i class="fas fa-external-link-alt"></i></span>
                     </div>
-                </div>
+                </a>
                 
-                <div class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/a9a3-s8vipU?rel=0" 
-                            title="تعلم أساسيات Nmap في أقل من 15 دقيقة!" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+                <a href="https://www.youtube.com/watch?v=a9a3-s8vipU" target="_blank" class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
+                    <div class="video-container" style="background-image: url('nmap-thumbnail.jpg'); background-size: cover; background-position: center;">
+                         <i class="fas fa-play-circle" style="font-size: 50px; color: var(--color-brand-primary); opacity: 0.9;"></i>
                     </div>
                     <div class="video-info">
-                        <h2 style="font-size: 20px;">دليل Nmap العملي: فحص المنافذ والأجهزة في أقل من 15 دقيقة</h2>
+                        <h2 style="font-size: 20px; color: var(--color-video-accent);">دليل Nmap العملي: فحص المنافذ والأجهزة في أقل من 15 دقيقة</h2>
                         <p style="color: var(--color-text-subtle); font-size: 14px;">شرح عملي لأهم أداة في فحص الشبكات والأمن السيبراني وكيفية استخدامها.</p>
-                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold;">شاهد الشرح <i class="fas fa-play"></i></span>
+                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold; margin-top: 10px;">شاهد على يوتيوب <i class="fas fa-external-link-alt"></i></span>
                     </div>
-                </div>
+                </a>
                 
-                <div class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/5D2tL0Y540A?rel=0" 
-                            title="الهندسة الاجتماعية: كيف يحصل المخترق على كلمات المرور؟" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+                <a href="https://www.youtube.com/watch?v=yQzH2QdK_eA" target="_blank" class="service-card" style="border-color: var(--color-video-accent); padding: 0;">
+                    <div class="video-container" style="background-image: url('social-engineering-thumbnail.jpg'); background-size: cover; background-position: center;">
+                         <i class="fas fa-play-circle" style="font-size: 50px; color: var(--color-brand-primary); opacity: 0.9);"></i>
                     </div>
                     <div class="video-info">
-                        <h2 style="font-size: 20px;">الهندسة الاجتماعية (Social Engineering): كيف يحصل المخترق على بياناتك؟</h2>
+                        <h2 style="font-size: 20px; color: var(--color-video-accent);">الهندسة الاجتماعية: أهم طرق الاختراق التي يجب أن تعرفها</h2>
                         <p style="color: var(--color-text-subtle); font-size: 14px;">فهم آليات الهجوم البشري لحماية نفسك وعملك من أشهر طرق الاختراق.</p>
-                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold;">شاهد الشرح <i class="fas fa-play"></i></span>
+                        <span class="card-link" style="color: var(--color-video-accent); border: none; font-weight: bold; margin-top: 10px;">شاهد على يوتيوب <i class="fas fa-external-link-alt"></i></span>
                     </div>
-                </div>
+                </a>
                 
             </div>
         </div>
     </section>
-
     <section id="guides" class="main-content" style="background-color: var(--color-bg-secondary);">
         <div class="container text-center">
             <h2 class="section-title">أدلة الإرشاد والمحتوى الموثوق</h2>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مُلَخِّص النصوص الذكي بالذكاء الاصطناعي</title>
+    <meta name="description" content="أداة مجانية لتلخيص المقالات الطويلة والنصوص الكبيرة في نقاط رئيسية بواسطة الذكاء الاصطناعي لتوفير الوقت.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* المتغيرات الأساسية (نفس متغيرات الموقع) */
+        :root {
+            --color-bg-main: #0A0A0A;
+            --color-bg-secondary: #1A1A1A;
+            --color-bg-card: #1D2B35;
+            --color-text-light: #f1f1f1;
+            --color-brand-primary: #FFC300;
+            --color-accent-secondary: #f39c12;
+        }
+
+        /* التنسيقات الأساسية */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: var(--color-text-light);
+            background-color: var(--color-bg-main);
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: var(--color-brand-primary);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        /* حقول النصوص والأزرار */
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: #252525;
+            color: var(--color-text-light);
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            resize: vertical;
+        }
+        
+        button {
+            background: var(--color-accent-secondary);
+            color: var(--color-bg-main);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background: #e67e22; /* لون برتقالي أغمق */
+        }
+        
+        /* قسم النتيجة */
+        .result-box {
+            background: var(--color-bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            min-height: 150px;
+            border-left: 5px solid var(--color-brand-primary);
+        }
+        .result-box h2 {
+            color: var(--color-brand-primary);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        /* الروابط العلوية */
+        .header-links {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .header-links a {
+            color: var(--color-brand-primary);
+            margin-left: 15px;
+            font-size: 14px;
+            padding: 5px 10px;
+            border: 1px solid var(--color-brand-primary);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .header-links a:hover {
+            background: var(--color-brand-primary);
+            color: var(--color-bg-main);
+        }
+        
+        /* تنسيق التحميل المؤقت */
+        .loading-animation {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            color: var(--color-text-subtle);
+            display: none; /* مخفية حتى يتم النقر على التلخيص */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header-links">
+            <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="password-tool.html"><i class="fas fa-lock"></i> أداة كلمة المرور</a>
+        </div>
+        
+        <h1><i class="fas fa-robot"></i> مُلَخِّص النصوص الذكي (AI)</h1>
+        
+        <p style="text-align: center; color: var(--color-text-subtle); margin-bottom: 20px;">
+            ألصق النص الذي تريد تلخيصه. الأداة تُبقي على الجوهر وتزيل الحشو لتعطيك الخلاصة.
+        </p>
+
+        <textarea id="textInput" rows="10" placeholder="ألصق مقال أو تقرير طويل هنا..."></textarea>
+        
+        <button onclick="summarizeText()"><i class="fas fa-magic"></i> تلخيص النص الآن</button>
+
+        <div class="result-box">
+            <h2><i class="fas fa-lightbulb"></i> النتيجة الملخصة</h2>
+            <div id="summaryOutput">
+                <p style="color: #bdc3c7;">سيظهر الملخص هنا بعد الضغط على زر "تلخيص النص الآن".</p>
+            </div>
+            <div class="loading-animation" id="loading">
+                <i class="fas fa-spinner fa-spin"></i> جاري التلخيص، يرجى الانتظار...
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function summarizeText() {
+            const inputText = document.getElementById('textInput').value.trim();
+            const summaryOutput = document.getElementById('summaryOutput');
+            const loading = document.getElementById('loading');
+
+            if (inputText.length < 50) {
+                summaryOutput.innerHTML = '<p style="color: var(--color-weak);">يجب أن يكون النص أطول من 50 حرفاً ليكون قابلاً للتلخيص.</p>';
+                return;
+            }
+
+            // 1. إظهار حالة التحميل (Loading State)
+            summaryOutput.innerHTML = '';
+            loading.style.display = 'block';
+
+            // 2. محاكاة عملية التلخيص
+            // ************ ملاحظة هامة جداً ************
+            // هذا الجزء هو مجرد "محاكاة" لعملية التلخيص.
+            // في الواقع، يجب هنا إرسال النص إلى API (خدمة ذكاء اصطناعي) لتوليد الملخص.
+            // سيظهر نص تجريبي الآن:
+            setTimeout(() => {
+                loading.style.display = 'none';
+
+                const mockSummary = `
+                    <p><strong>النقاط الرئيسية من النص:</strong></p>
+                    <ul>
+                        <li>تؤكد أهمية التحول الرقمي في المؤسسات الحديثة.</li>
+                        <li>ضرورة تدريب الموظفين على مهارات الأمن السيبراني المتقدمة.</li>
+                        <li>ينبغي مراجعة بروتوكولات الشبكات القديمة واستبدالها بحلول سحابية أكثر أماناً.</li>
+                        <li>التوصية بتبني المصادقة متعددة العوامل (MFA) كخط دفاع أساسي.</li>
+                    </ul>
+                `;
+
+                summaryOutput.innerHTML = mockSummary;
+            }, 3000); // محاكاة وقت المعالجة 3 ثوانٍ
+        }
+    </script>
+
+</body>
+</html>

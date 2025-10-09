@@ -118,7 +118,6 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            /* تم نقل تنسيق الـ flex من الـ HTML إلى الـ CSS */
         }
         
         .main-nav ul {
@@ -130,9 +129,8 @@
             font-size: 24px; 
             font-weight: 900;
             color: var(--color-brand-primary);
-            text-align: left; /* تم إزالة !important */
-            /* تنسيق الشعار أصبح موحد الآن */
-            line-height: 1; /* تحسين تباعد الأسطر للشعار المزدوج */
+            text-align: left; 
+            line-height: 1; 
         }
 
         .logo-main-text {
@@ -237,7 +235,7 @@
             color: var(--color-brand-primary); 
         }
         
-        /* تنسيق البطاقات في قسم Hero - تم تنظيف أكواد style داخل الـ HTML */
+        /* تنسيق البطاقات في قسم Hero */
         .hero-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -282,7 +280,7 @@
             margin-bottom: 10px;
         }
         
-        .card-button-hero p { /* تم تطبيق تنسيق موحد لفقرات بطاقات الهيرو */
+        .card-button-hero p { 
             font-size: 14px; 
             color: var(--color-text-subtle);
         }
@@ -302,14 +300,14 @@
             justify-content: space-around; 
             flex-wrap: wrap;
         }
-        .col-pad { /* تم إزالة التنسيق الداخلي وإضافة class */
+        .col-pad { 
             padding: 10px; 
-            flex: 1 1 50%; /* ضمان التجاوب */
-            max-width: 50%; /* ضمان التجاوب */
+            flex: 1 1 50%; 
+            max-width: 50%; 
         }
         
         /* تنسيق قسم الفيديوهات */
-        #videos { /* تم تخصيص خلفية هذا القسم في CSS وليس HTML */
+        #videos { 
             background-color: var(--color-bg-main);
         }
 
@@ -336,8 +334,8 @@
         
         .video-container iframe {
              border-radius: 10px 10px 0 0;
-             width: 100%; /* تأكيد عرض الـ iframe بنسبة 100% */
-             height: 100%; /* تأكيد ارتفاع الـ iframe بنسبة 100% */
+             width: 100%; 
+             height: 100%; 
         }
 
 
@@ -351,7 +349,7 @@
             gap: 20px;
             color: var(--color-text-light);
             width: 100%;
-            height: 100%; /* ضمان تساوى الارتفاع */
+            height: 100%; 
         }
         
         .tip-icon {
@@ -592,6 +590,7 @@
             <h1 class="hero-title">
                 أهلاً بك في <span class="highlight-text">المنصة الرقمية المتكاملة</span>
             </h1>
+            
             <p class="hero-text">
                 دليلك اليومي والمُحدَّث لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية. نقدم لك أحدث الثغرات، ونصائح الحماية، والأدوات المجانية لتبقى خطوة للأمام.
             </p>

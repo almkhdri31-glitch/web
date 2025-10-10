@@ -7,35 +7,31 @@
     <style>
         /*
         ========================================================================= */
-        /* 🎨 المتغيرات (Variables) - تم تطبيق ألوان البرتقالي المحروق الهادئ لراحة العين */
+        /* 🎨 المتغيرات (Variables) - تم توحيد ألوان حقول الإدخال وضمان الأسود */
         /* ========================================================================= */
         :root {
-            /* ألوان الموقع الرئيسية لراحة العين */
-            --color-bg-body: #212121;    /* 1. الخلفية الخارجية (رمادي فاحم دافئ ومريح) */
-            --color-bg-secondary: #1A1A1A; /* 2. خلفية الهيدر والفوتر (أغمق قليلاً) */
-            --color-bg-card: #2A2A2A;    /* 3. لون البطاقات البارزة والحاوية الرئيسية (رمادي متوسط) */
-            --color-bg-input-field: #1A1A1A; /* 4. لون حقول الإدخال الفعلية (أغمق لزيادة التباين) */
+            /* ألوان الموقع الرئيسي */
+            --color-bg-main: #111111;    /* اللون الأسود الداكن جداً للخلفية الأساسية */
+            --color-bg-secondary: #1c1c1c; 
+            --color-bg-card: #2c3e50;    /* لون البطاقات البارزة وحقول الإدخال */
+            --color-text-light: #f1f1f1;  
+            --color-text-subtle: #FFc3c7; 
+            --color-brand-primary: #9FcF99; /* الذهبي */
+            --color-accent-secondary: #9FCF99; /* البرتقالي */
             
-            --color-text-light: #f1f1f1;  /* نص فاتح جداً */
-            --color-text-subtle: #bdc3c7; /* نص ثانوي */
-            
-            /* تم التعديل هنا: البرتقالي المحروق (Rust Orange) */
-            --color-brand-primary: #D67C3F; /* اللون الرئيسي الجديد للأزرار الأساسية والعناوين */
-            --color-accent-secondary: #C0392B; /* اللون الثانوي الجديد للأزرار الصغيرة */
-            --color-brand-hover: #C26E38; /* لون المرور الجديد */
-
-            /* ألوان خاصة بالنموذج الداكن */
+            /* ألوان خاصة بالنموذج الداكن (تم التوحيد هنا) */
             --color-form-bg: var(--color-bg-card); /* خلفية الحاوية الرئيسية */
+            --color-input-bg: var(--color-bg-card); /* خلفية حقول الإدخال */
             --color-input-text: var(--color-text-light); /* نص حقول الإدخال */
             --color-heading: var(--color-brand-primary); /* لون عناوين الأقسام */
         }
 
         /* ********************************************************* */
-        /* تنسيقات النموذج (صفحة الإدخال) */
+        /* تنسيقات النموذج (صفحة الإدخال) - تم تطبيق التنسيق الداكن */
         /* ********************************************************* */
         body {
             font-family: 'Cairo', sans-serif; 
-            background-color: var(--color-bg-body); 
+            background-color: var(--color-bg-main); /* ضمان الخلفية السوداء الداكنة هنا */
             color: var(--color-text-light); 
             line-height: 1.6;
             padding: 0; 
@@ -43,11 +39,12 @@
             direction: rtl; 
         }
         
+        /* إضافة تنسيق للعنصر html لضمان تغطية كاملة للخلفية */
         html {
-            background-color: var(--color-bg-body);
+            background-color: var(--color-bg-main);
         }
         
-        /* تطبيق التباين: حقول الإدخال الآن أغمق من الخلفية المحيطة بها */
+        /* تطبيق التوحيد على حقول الإدخال */
         input[type="text"], 
         input[type="email"], 
         input[type="tel"], 
@@ -57,25 +54,23 @@
             width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 15px;
-            border: 1px solid #495057; 
+            border: 1px solid #6c757d; 
             border-radius: 4px;
             box-sizing: border-box; 
             display: block;
-            /* التعديل هنا: استخدام اللون الأغمق المخصص للحقول */
-            background-color: var(--color-bg-input-field); /* #1A1A1A */
+            background-color: var(--color-input-bg); /* موحد مع لون البطاقات #2c3e50 */
             color: var(--color-input-text); 
         }
         
-        /* إضافة تأثير التركيز (Focus) باللون البرتقالي المحروق */
+        /* إضافة تأثير التركيز (Focus) باللون الذهبي */
         input[type="text"]:focus, 
         input[type="email"]:focus, 
         input[type="tel"]:focus, 
         input[type="number"]:focus, 
         input[type="url"]:focus, 
         textarea:focus {
-            border-color: var(--color-brand-primary); 
-            /* تعديل ظل التركيز ليتناسب مع اللون الجديد */
-            box-shadow: 0 0 0 2px rgba(214, 124, 63, 0.4); 
+            border-color: var(--color-brand-primary); /* إطار ذهبي بارز */
+            box-shadow: 0 0 0 2px rgba(255, 195, 0, 0.4); /* ظل خفيف باللون الذهبي */
             outline: none; 
         }
 
@@ -94,6 +89,7 @@
             justify-content: space-between;
             align-items: center;
         }
+        /* تعديل هنا: لتطبيق التعديل على جميع الروابط داخل الهيدر */
         header a {
              color: var(--color-text-light);
              text-decoration: none;
@@ -103,11 +99,12 @@
             margin-right: 25px;
         }
         header a:hover {
-            color: var(--color-brand-primary); 
+            color: var(--color-brand-primary); /* لون ذهبي عند المرور */
         }
+        /* نهاية تعديل الهيدر */
         
         footer {
-            background-color: var(--color-bg-secondary); 
+            background-color: var(--color-bg-secondary);
             color: var(--color-text-subtle);
             text-align: center;
             padding: 10px 0;
@@ -116,6 +113,7 @@
             width: 100%;
         }
         
+        /* الرابط في الفوتر (تم إضافته لربطه بصفحة التواصل) */
         footer a {
             color: var(--color-brand-primary);
             text-decoration: underline;
@@ -124,7 +122,7 @@
         .container {
             max-width: 900px;
             margin: 20px auto; 
-            background: var(--color-form-bg); /* #2A2A2A */
+            background: var(--color-form-bg); /* خلفية النموذج داكنة #2c3e50 */
             padding: 30px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             border-radius: 8px;
@@ -134,7 +132,7 @@
             text-align: center;
             font-size: 40px;
             font-weight: bold;
-            color: var(--color-brand-primary); 
+            color: var(--color-brand-primary); /* عنوان CV باللون الذهبي */
             margin-bottom: 5px;
             letter-spacing: 5px;
         }
@@ -144,7 +142,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 20px;
-            border-bottom: 2px solid var(--color-bg-secondary); 
+            border-bottom: 2px solid var(--color-bg-secondary); /* خط فاصل خفيف */
             padding-bottom: 15px;
         }
 
@@ -153,10 +151,10 @@
             height: 100px !important;
             max-width: 100px !important; 
             max-height: 100px !important; 
-            background-color: var(--color-bg-card); 
+            background-color: var(--color-bg-card); /* موحد مع لون البطاقات */
             border-radius: 50%; 
             object-fit: cover; 
-            border: 2px solid var(--color-accent-secondary); 
+            border: 2px solid var(--color-accent-secondary); /* برتقالي */
             display: block; 
             margin: 0 auto 10px auto; 
             opacity: 0.7; 
@@ -164,7 +162,7 @@
         
         #profile-image[src]:not([src=""]) {
             opacity: 1; 
-            border: 2px solid var(--color-brand-primary); 
+            border: 2px solid var(--color-brand-primary); /* ذهبي عند التحميل */
         }
 
         .image-upload-container input[type="file"] {
@@ -174,14 +172,14 @@
         .upload-label {
             display: block;
             cursor: pointer;
-            color: var(--color-brand-primary); 
+            color: var(--color-brand-primary); /* لون ذهبي للرابط */
             font-size: 14px;
             text-decoration: underline;
             text-align: center;
         }
         
         h2 {
-            color: var(--color-heading); 
+            color: var(--color-heading); /* العناوين باللون الذهبي */
             border-bottom: 2px solid var(--color-heading); 
             padding-bottom: 5px;
             margin-top: 25px;
@@ -199,8 +197,8 @@
             display: block;
             width: 100%;
             padding: 10px 15px;
-            background-color: var(--color-brand-primary); /* اللون البرتقالي المحروق الجديد */
-            color: var(--color-bg-secondary); /* لون النص يبقى داكنا لضمان التباين مع الزر الفاتح نسبيا */
+            background-color: var(--color-brand-primary); /* زر الطباعة بالذهبي */
+            color: var(--color-bg-main);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -213,20 +211,19 @@
         .section-content button {
              width: auto;
              display: inline-block;
-             background-color: var(--color-accent-secondary); /* اللون الثانوي الجديد (أحمر ترابي) */
-             color: var(--color-bg-secondary);
+             background-color: var(--color-accent-secondary); /* أزرار الإضافة بالبرتقالي */
+             color: var(--color-bg-main);
              padding: 8px 15px;
              margin-bottom: 15px;
              font-size: 14px;
         }
         
         .section-content button:hover {
-            /* Hover اللون الثانوي: أغمق قليلاً من اللون الثانوي الجديد */
-            background-color: #A93226; 
+            background-color: var(--color-brand-hover);
         }
 
         .print-button-on-form:hover {
-            background-color: var(--color-brand-hover); /* لون المرور الجديد */
+            background-color: var(--color-brand-hover);
         }
 
         .print-area {
@@ -247,33 +244,29 @@
         }
         
         .skills-options label {
-            color: var(--color-text-light); 
+            color: var(--color-text-light); /* نص أبيض لخيارات المهارات */
         }
 
-        /* تم تعديل البطاقات الفرعية: خلفيتها هي نفس خلفية الـ container */
+        /* توحيد خلفية البطاقات الفرعية لتطابق لون العناصر البارزة #2c3e50 */
         .language-entry, .reference-entry {
             border: 1px solid #495057; 
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 4px;
-            /* التعديل هنا: لتبقى بنفس لون الحاوية الرئيسية (بدلًا من أن تكون حقول الإدخال بنفس اللون) */
-            background-color: var(--color-bg-card); /* #2A2A2A */
+            background-color: var(--color-bg-card); 
         }
-        
-        /* تعديل لعرض حقول اللغات بشكل سليم في سطر واحد */
         .language-entry input[type="text"], 
         .language-entry input[type="number"] {
             width: calc(50% - 15px);
             display: inline-block;
             margin-left: 10px;
         }
-        
         .reference-entry input {
             margin-bottom: 10px;
         }
         
         /* ********************************************************* */
-        /* تنسيقات صفحة الطباعة (لم يتم المساس بها) */
+        /* تنسيقات صفحة الطباعة (لم يتم المساس بها لتبقى بيضاء ومهنية) */
         /* ********************************************************* */
         @media print {
             
@@ -324,8 +317,7 @@
             
             /* العمود الجانبي الملون (Sidebar - على اليمين) */
             .sidebar-column {
-                /* استخدام ألوان احترافية بيضاء / رمادية للطباعة */
-                background-color: #5B4F46 !important; 
+                background-color: #5B4F46 !important; /* لون جانبي بني/داكن احترافي */
                 color: #FFFFFF !important; 
                 padding: 20px 10px 10px 10px !important; 
                 order: 1; 
@@ -344,15 +336,16 @@
             .section-content,
             .language-entry-print,
             .reference-entry-print {
-                page-break-inside: avoid !important; 
-                -webkit-column-break-inside: avoid !important; 
-                break-inside: avoid !important; 
+                page-break-inside: avoid !important; /* للطباعة */
+                -webkit-column-break-inside: avoid !important; /* لمتصفحات كروم */
+                break-inside: avoid !important; /* للجميع */
             }
             
             /* ********************************************************* */
             /* 2. تحسين وضوح العناوين في العمود الرئيسي (اللون الأبيض) */
             /* ********************************************************* */
             
+            /* العناوين في العمود الرئيسي (أسود داكن مع خط رمادي) */
             .main-content-column h2 {
                 color: #17202A !important; 
                 border-bottom: 2px solid #6c757d !important; 
@@ -375,7 +368,7 @@
                  font-size: 30px !important; 
                  margin-bottom: 10px !important;
                  letter-spacing: 5px !important; 
-                 border-bottom: 2px solid #6c757d !important; 
+                 border-bottom: 2px solid #6cc987d !important; 
                  padding-bottom: 5px;
                  color: #17202A !important; 
             }
@@ -389,16 +382,19 @@
                 margin-bottom: 20px !important;
                 color: white !important; 
             }
+             
             .sidebar-column h2 {
                 color: #f8f9fa !important; 
-                border-bottom: 1px solid #f8f9fa !important; 
+                border-bottom: 1px solid #f8F9fa !important; 
             }
+
             .image-upload-container-print {
                 display: block !important;
                 width: 80px !important; 
                 height: 80px !important;
                 margin: 0 auto 8px auto !important; 
             }
+
             .image-upload-container-print img {
                 width: 100% !important;
                 height: 100% !important;
@@ -406,26 +402,21 @@
                 object-fit: cover !important;
                 border: 2px solid #fff !important; 
             }
+            
             .header-sidebar-container-print h1 {
                 font-size: 18px !important; 
                 margin: 5px 0 0 0 !important;
             }
+            
             .header-sidebar-container-print h3 {
                 font-size: 12px !important; 
                 margin: 2px 0 0 0 !important;
             }
-            .lang-bar-container {
-                 background-color: rgba(255, 255, 255, 0.3); 
-                 height: 5px;
-                 border-radius: 2px;
-                 margin-top: 3px;
-            }
+            
             .lang-bar-fill {
                  background-color: #f8f9fa !important; 
-                 height: 5px;
-                 border-radius: 2px;
-                 display: block;
             }
+             
              .main-content-column .section-content {
                 margin-bottom: 10px !important;
             }
@@ -438,10 +429,12 @@
     </style>
 </head>
 <body>
+    
     <header>
         <a href="https://almkhdri31-glitch.github.io/web/" class="header-logo" style="color: var(--color-brand-primary); font-weight: bold; font-size: 20px;">
             الصفحة الرئيسية
         </a>
+        
         <nav class="header-nav">
             <a href="https://almkhdri31-glitch.github.io/web/"</a>
             <a href="#"></a>
@@ -460,21 +453,26 @@
             </label>
         </div>
     </div>
+
     <form id="cv-form">
+        
         <h2>المعلومات الشخصية</h2>
         <div class="section-content">
             <div class="form-group-contact">
                 <label for="name">الاسم الكامل:</label>
                 <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
             </div>
+            
             <div class="form-group-contact">
                 <label for="city-country">المدينة والدولة:</label>
                 <input type="text" id="city-country" name="city-country" placeholder="مثال: الرياض، السعودية">
             </div>
+
             <div class="form-group-contact">
                 <label for="email">البريد الإلكتروني:</label>
                 <input type="email" id="email" name="email" placeholder="example@domain.com" required>
             </div>
+
             <div class="form-group-contact">
                 <label for="phone">رقم الهاتف:</label>
                 <input type="tel" id="phone" name="phone" placeholder="+966 5x xxx xx xx">
@@ -484,21 +482,26 @@
                 <label for="job-title">المسمى الوظيفي (سيظهر تحت اسمك):</label>
                 <input type="text" id="job-title" name="job-title" placeholder="مثال: مصمم جرافيك محترف">
             </div>
+
             <label for="summary">الملخص المهني / الهدف:</label>
             <textarea id="summary" name="summary" rows="4" placeholder="اكتب ملخصاً قصيراً عنك وعن أهدافك المهنية"></textarea>
         </div>
+
         <h2>الخبرة العملية</h2>
         <div id="experience-section-content" class="section-content">
             <label for="experience-free-text">أدخل خبراتك العملية بتفصيل (المسمى، الشركة، المدة، المهام):</label>
             <textarea id="experience-free-text" name="experience-free-text" rows="8"></textarea>
         </div>
+        
         <h2>التعليم والمؤهلات</h2>
         <div class="section-content">
             <label for="degree">المؤهل العلمي (مثال: بكالوريوس هندسة):</label>
             <input type="text" id="degree" name="degree" placeholder="أدخل مؤهلك العلمي">
+
             <label for="university">الجامعة / الجهة المانحة:</label>
             <input type="text" id="university" name="university" placeholder="اسم الجامعة">
         </div>
+
         <h2>المهارات الشخصية (اختر ما ينطبق عليك)</h2>
         <div class="section-content skills-options">
             <div>
@@ -534,6 +537,7 @@
                 <label for="skill8">حل المشكلات واتخاذ القرارات</label>
             </div>
         </div>
+
         <h2>المهارات اللغوية</h2>
         <div class="section-content" id="languages-container">
             <label>أدخل اللغة ومستوى إتقانها (%)</label>
@@ -543,11 +547,13 @@
             </div>
             <button type="button" onclick="addLanguageEntry()">إضافة لغة أخرى</button>
         </div>
+        
         <h2>الهوايات</h2>
         <div class="section-content">
             <label for="hobbies">أدخل هواياتك مفصولة بفاصلة (،)</label>
             <textarea id="hobbies" name="hobbies" rows="2" placeholder="مثال: ركوب الدراجات، السباحة، القراءة"></textarea>
         </div>
+        
         <h2>المراجع (اختياري)</h2>
         <div class="section-content" id="references-container">
              <label>أدخل بيانات مرجع واحد على الأقل، أو اتركها فارغة.</label>
@@ -559,26 +565,33 @@
             </div>
             <button type="button" onclick="addReferenceEntry()">إضافة مرجع آخر</button>
         </div>
+
         <button type="button" class="print-button-on-form" onclick="prepareAndPrint()">
          الضغط للمعاينة والطباعة
         </button>
     </form>
+
     <div id="printable-cv" style="display: none;">
         <div class="print-page-frame">
+            
             <div id="print-content-columns">
                  <div class="sidebar-column" id="sidebar-content">
                      </div>
+                
                  <div class="main-content-column" id="main-content">
                     </div>
             </div>
         </div>
     </div>
 </div>
+
     <footer id="footer">
         &copy; 2025 جميع الحقوق محفوظة | تصميم المهندس محمد المخدري
         <a href="contact.html"> </a>
     </footer>
+
 <script>
+    
     function addLanguageEntry() {
         const container = document.getElementById('languages-container');
         const newEntry = document.createElement('div');
@@ -622,14 +635,18 @@
     function prepareAndPrint() {
         const mainContent = document.getElementById('main-content');
         const sidebarContent = document.getElementById('sidebar-content');
+        
         mainContent.innerHTML = '';
         sidebarContent.innerHTML = '';
+
+
         // 1. جلب البيانات
         const name = document.getElementById('name').value.trim();
         const jobTitle = document.getElementById('job-title').value.trim(); 
         const cityCountry = document.getElementById('city-country').value.trim();
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
+        
         // تم تعيين قيمة profileUrl فارغة هنا، حيث تم إزالة الحقل من الـ HTML
         const profileUrl = ''; 
         
@@ -638,15 +655,18 @@
         const degree = document.getElementById('degree').value.trim();
         const university = document.getElementById('university').value.trim();
         const hobbies = document.getElementById('hobbies').value.trim(); 
+        
         // جلب مصدر الصورة لمرة واحدة
         const profileImage = document.getElementById('profile-image');
         const imageSrc = profileImage.src && !profileImage.src.includes('صورة شخصية (اختياري)') ? profileImage.src : '';
+        
         // جلب اللغات
         const languageEntries = Array.from(document.querySelectorAll('#languages-container .language-entry'));
         const languages = languageEntries.map(entry => ({
             name: entry.querySelector('.lang-name').value.trim(),
             level: parseInt(entry.querySelector('.lang-level').value) || 0
         })).filter(lang => lang.name && lang.level > 0);
+        
         // جلب المراجع
         const referenceEntries = Array.from(document.querySelectorAll('#references-container .reference-entry'));
         const references = referenceEntries.map(entry => ({
@@ -672,8 +692,11 @@
                 <h3>${jobTitle || 'المسمى الوظيفي'}</h3>
             </div>
         `;
+
+
         // ب. التواصل (Personal Info) 
         let contactHTML = '<h2>معلومات الاتصال</h2><div class="section-content contact-details">';
+        
         if (phone) contactHTML += `<p>📞 الهاتف: <strong>${phone}</strong></p>`; 
         if (email) contactHTML += `<p>✉️ البريد: <strong>${email}</strong></p>`; 
         // لن يتم إظهار رابط الملف التعريفي في الطباعة حيث أن profileUrl فارغة الآن
@@ -700,6 +723,7 @@
             langHTML += '</div>';
             sidebarHTML += langHTML;
         }
+
         // د. المهارات الشخصية (Soft Skills)
         const selectedSkills = Array.from(document.querySelectorAll('input[name="soft_skill"]:checked'))
                                     .map(checkbox => checkbox.value);
@@ -712,6 +736,7 @@
                 </div>
             `;
         }
+        
         // هـ. الهوايات
         if (hobbies) {
              const hobbiesList = hobbies.split(',').map(h => h.trim()).filter(h => h.length > 0);
@@ -724,7 +749,10 @@
                   sidebarHTML += hobbiesHTML;
              }
         }
+        
         sidebarContent.innerHTML = sidebarHTML;
+
+
         // *********************************************************
         // 3. بناء محتوى العمود الرئيسي (Main Content)
         // *********************************************************
@@ -734,6 +762,7 @@
          mainHTML += `
             <h1 id="cv-print-header" style="text-align: left !important;">CV</h1>
         `;
+
         // ب. الملخص المهني
         if (summary) {
             mainHTML += `
@@ -743,6 +772,7 @@
                 </div>
             `;
         }
+        
         // ج. الخبرة العملية
         if (experienceFreeText) {
             mainHTML += `
@@ -752,6 +782,7 @@
                 </div>
             `;
         }
+        
         // د. التعليم والمؤهلات 
         if (degree || university) {
             mainHTML += `

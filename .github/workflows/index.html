@@ -95,15 +95,47 @@
             justify-content: space-between; 
             align-items: center;
         }
+
+        /* ------------------------------------- */
+        /* التنسيقات الجديدة للوجو (الشعار) */
+        /* ------------------------------------- */
+        .logo-area {
+            /* استخدم Flexbox لمزامنة الشعار والنصوص جنبًا إلى جنب */
+            display: flex;
+            align-items: center; /* توسيط عموديًا */
+            text-decoration: none;
+            color: inherit;
+            font-size: 24px; /* لإلغاء التنسيق القديم لـ .logo */
+        }
+
+        .main-logo-img {
+            /* حجم الشعار (اللوجو) */
+            height: 40px; /* ارتفاع مناسب */
+            width: auto; 
+            /* ترك مسافة بعد الشعار ليظهر النص بشكل واضح */
+            margin-left: 10px; 
+        }
+        
+        .titles-container {
+            /* لإزالة أي مسافات زائدة بين السطرين */
+            line-height: 1.2; 
+            /* محاذاة لليمين للخط العربي */
+            text-align: right; 
+        }
+        
+        /* إزالة التنسيقات المتضاربة القديمة */
+        .logo { 
+            /* تم تعديل التنسيق السابق لـ .logo */
+            font-size: initial;
+            font-weight: initial;
+            color: initial;
+            text-align: initial !important;
+        }
+        /* ------------------------------------- */
+
         .main-nav ul {
             display: flex;
             gap: 20px;
-        }
-        .logo {
-            font-size: 24px; 
-            font-weight: 900;
-            color: var(--color-brand-primary);
-            text-align: left !important;
         }
         .main-nav ul li a {
             padding: 5px 0; 
@@ -392,7 +424,7 @@
                 justify-content: center;
                 align-items: center;
             }
-            /* تم التعديل: تفعيل التمييز عند التمرير في وضع الجوال */
+            /* تفعيل التمييز عند التمرير في وضع الجوال */
             .main-nav ul li a:hover,
             .main-nav ul li a.active {
                 border-bottom: none;
@@ -404,17 +436,20 @@
             .main-nav ul li a.active i {
                 color: var(--color-bg-main) !important; 
             }
-            .logo {
+            .logo-area {
                 font-size: 20px; 
-            }
-            .logo span {
-                 font-size: 15px !important;
             }
         }
         @media (max-width: 768px) {
             body {
                 font-size: 14px; 
             }
+            /* تصغير الشعار في وضع الجوال */
+            .main-logo-img {
+                height: 30px; 
+                margin-left: 8px;
+            }
+
             .hero-section {
                 min-height: auto; 
                 padding-top: 80px;
@@ -442,13 +477,16 @@
 <body>
     <header class="main-header">
         <div class="container">
-            <a class="logo" href="#home">
-                <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
-                    تقنية المعلومات IT 
-                </span> 
-                <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
-                    INFORMATION TECHNOLOGY  
-                </span>
+            <a href="#home" class="logo-area">
+                <img src="it-logo.png" alt="IT Logo" class="main-logo-img">
+                <div class="titles-container">
+                    <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
+                        تقنية المعلومات IT 
+                    </span> 
+                    <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
+                        INFORMATION TECHNOLOGY  
+                    </span>
+                </div>
             </a>
             <nav class="main-nav">
                 <ul>

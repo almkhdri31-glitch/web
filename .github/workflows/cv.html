@@ -7,23 +7,24 @@
     <style>
         /*
         ========================================================================= */
-        /* 🎨 المتغيرات (Variables) - تم توحيد ألوان حقول الإدخال وضمان الأسود */
+        /* 🎨 المتغيرات (Variables) - تم توحيد الألوان بناءً على الثيم الداكن والذهبي */
         /* ========================================================================= */
         :root {
-            /* ألوان الموقع الرئيسي */
-            --color-bg-main: #111111;    /* اللون الأسود الداكن جداً للخلفية الأساسية */
+            /* ألوان الموقع الرئيسي (تم مطابقتها مع الصفحة الرئيسية) */
+            --color-bg-main: #111111;    /* أسود داكن للخلفية الأساسية */
             --color-bg-secondary: #1c1c1c; 
             --color-bg-card: #2c3e50;    /* لون البطاقات البارزة وحقول الإدخال */
-            --color-text-light: #f1f1f1;  
-            --color-text-subtle: #FFc3c7; 
-            --color-brand-primary: #9FcF99; /* الذهبي */
-            --color-accent-secondary: #9FCF99; /* البرتقالي */
-            
-            /* ألوان خاصة بالنموذج الداكن (تم التوحيد هنا) */
-            --color-form-bg: var(--color-bg-card); /* خلفية الحاوية الرئيسية */
-            --color-input-bg: var(--color-bg-card); /* خلفية حقول الإدخال */
-            --color-input-text: var(--color-text-light); /* نص حقول الإدخال */
-            --color-heading: var(--color-brand-primary); /* لون عناوين الأقسام */
+            --color-text-light: #f1f1f1;  /* نص فاتح (أبيض) */
+            --color-text-subtle: #BBBBBB; /* نص فرعي / ليبل (رمادي فاتح) */
+            --color-brand-primary: #FFC107; /* اللون الذهبي/الأصفر البارز - مطابقة الواجهة */
+            --color-accent-secondary: #BB984F; /* لون ثانوي (ظل أغمق من الذهبي) */
+            --color-brand-hover: #D0A143; /* لون عند المرور */
+
+            /* ألوان خاصة بالنموذج الداكن (موحدة) */
+            --color-form-bg: var(--color-bg-card); 
+            --color-input-bg: var(--color-bg-card); 
+            --color-input-text: var(--color-text-light); 
+            --color-heading: var(--color-brand-primary); 
         }
 
         /* ********************************************************* */
@@ -128,22 +129,44 @@
             border-radius: 8px;
         }
 
-        .cv-title {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            color: var(--color-brand-primary); /* عنوان CV باللون الذهبي */
-            margin-bottom: 5px;
-            letter-spacing: 5px;
-        }
+        /* تم حذف تنسيق .cv-title لأنه لم يعد مستخدماً */
 
         .header-area {
+            /* تعديل مهم: التوسيط بعد حذف العنوان */
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            flex-direction: column; /* لترتيب العناصر عمودياً */
+            align-items: center; /* لتوسيط العناصر أفقياً */
+            justify-content: center;
             margin-bottom: 20px;
             border-bottom: 2px solid var(--color-bg-secondary); /* خط فاصل خفيف */
             padding-bottom: 15px;
+        }
+
+        /* تنسيق الصورة المصغرة للمعاينة في الأعلى */
+        .cv-preview-image {
+            max-width: 100px; /* حجم مناسب للمعاينة */
+            max-height: 120px;
+            width: auto;
+            height: auto;
+            border: 2px solid var(--color-brand-primary); /* إطار ذهبي */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            margin: 0 auto 15px auto; /* توسيط الصورة وتباعد عن العناصر التالية */
+            display: block; 
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .cv-preview-image:hover {
+             opacity: 1;
+        }
+        
+        /* تنسيق لعنوان الصورة التوضيحية */
+        .preview-label {
+             color: var(--color-brand-primary);
+             font-size: 14px;
+             margin-bottom: 5px;
+             font-weight: bold;
         }
 
         #profile-image {
@@ -211,7 +234,7 @@
         .section-content button {
              width: auto;
              display: inline-block;
-             background-color: var(--color-accent-secondary); /* أزرار الإضافة بالبرتقالي */
+             background-color: var(--color-accent-secondary); /* أزرار الإضافة باللون الثانوي الموحد */
              color: var(--color-bg-main);
              padding: 8px 15px;
              margin-bottom: 15px;
@@ -225,6 +248,7 @@
         .print-button-on-form:hover {
             background-color: var(--color-brand-hover);
         }
+
 
         .print-area {
              display: flex !important; 
@@ -443,8 +467,10 @@
     </header>
     <div class="container">
     <div class="header-area print-area">
-        <h1 class="cv-title">CV</h1>
-
+        
+        <span class="preview-label">شكل السيرة الذاتية بعد الطباعة</span>
+        <img src="images/cv_preview.png" alt="شكل السيرة الذاتية بعد الطباعة" class="cv-preview-image">
+        
         <div class="image-upload-container">
             <img id="profile-image" src="" alt="صورة شخصية (اختياري)">
             <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload()">
@@ -567,7 +593,7 @@
         </div>
 
         <button type="button" class="print-button-on-form" onclick="prepareAndPrint()">
-         الضغط للمعاينة والطباعة
+            الضغط للمعاينة والطباعة
         </button>
     </form>
 

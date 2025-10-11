@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* ----------------------------------------------------- */
-        /* أكواد الـ CSS الأصلية والمُعدَّلة للتحسينات العامة */
+        /* التنسيقات العامة والخطوط الموحدة (كما طلبت) */
         /* ----------------------------------------------------- */
         :root {
             --color-bg-main: #0A0A0A;    
@@ -55,7 +55,6 @@
             text-align: center;
         }
         .section-title {
-            /* حجم عنوان القسم أصبح أكبر قليلاً */
             font-size: 32px; 
             font-weight: 900;
             margin-bottom: 10px;
@@ -66,19 +65,18 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 80px; /* تم زيادة عرض الخط السفلي */
-            height: 4px; /* تم زيادة سمك الخط السفلي */
+            width: 80px; 
+            height: 4px; 
             background-color: var(--color-brand-primary); 
             margin: 10px auto 0;
             border-radius: 2px;
         }
         .section-subtitle {
-            /* نص العنوان الفرعي أصبح أصغر قليلاً */
             font-size: 17px;
             color: var(--color-text-subtle);
             margin-bottom: 40px;
         }
-        /* الهيدر وقائمة التنقل (نفس التنسيق الأصلي) */
+        /* الهيدر وقائمة التنقل */
         .main-header {
             background: var(--color-bg-main); 
             color: var(--color-text-light);
@@ -134,7 +132,6 @@
             cursor: pointer;
             display: none; 
         }
-        /* قسم المحتوى الرئيسي */
         .main-content {
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
@@ -144,7 +141,7 @@
         /* تنسيقات مكتبة الفيديوهات (Video Gallery) */
         /* ----------------------------------------------------- */
         .video-gallery-grid {
-            /* عرض 2 أو 3 بطاقات في الصف الواحد وتصغيرها على الجوال */
+            /* عرض 2 أو 3 بطاقات في الصف الواحد */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px; 
@@ -173,7 +170,6 @@
             object-fit: cover; 
             display: block;
         }
-        /* overlay لتظليل الصورة ووضع أيقونة التشغيل */
         .thumbnail-container {
             position: relative;
         }
@@ -187,7 +183,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 1; /* Always visible */
+            opacity: 1; 
             transition: opacity 0.3s;
         }
         .play-icon-overlay i {
@@ -207,15 +203,15 @@
         }
 
         .video-info h4 {
-            /* عنوان الفيديو */
+            /* عنوان البطاقة موحد وواضح */
             font-size: 20px; 
             font-weight: 700;
-            color: var(--color-text-light); /* اللون الأبيض/الفاتح */
+            color: var(--color-text-light); 
             margin-bottom: 8px;
         }
 
         .video-info p {
-            /* النص الوصفي للفيديو */
+            /* نص وصفي للفيديو */
             font-size: 15px;
             color: var(--color-text-subtle);
             margin-bottom: 15px;
@@ -238,17 +234,18 @@
         }
         
         .watch-link:hover {
-            color: var(--color-tool-highlight); /* تغيير اللون إلى الأخضر عند التمرير */
+            color: var(--color-tool-highlight); 
         }
 
-        /* الفوتر (Footer) - موحد */
+        /* الفوتر */
         .main-footer {
             background-color: var(--color-bg-secondary); 
             color: var(--color-text-light);
             padding: 20px 0; 
             border-top: 1px solid #333; 
         }
-        /* تنسيقات الاستجابة (نفس التنسيق الأصلي مع تحسينات طفيفة) */
+        
+        /* تنسيقات الاستجابة للهواتف */
         @media (max-width: 992px) {
             .menu-toggle { display: block; }
             .main-nav { 
@@ -292,18 +289,8 @@
                     <li><a href="index.html#home"><i class="fas fa-home"></i>الرؤية والهدف</a></li>
                     <li><a href="index.html#about"><i class="fas fa-info-circle"></i>من نحن</a></li> 
                     <li><a href="index.html#guides"><i class="fas fa-sitemap"></i>أدلة الإرشاد</a></li>
-                    <li>
-                        <a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">
-                            <i class="fas fa-lock" style="color: var(--color-brand-primary);"></i>
-                            أداة فحص كلمة المرور
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://almkhdri31-glitch.github.io/web/network-scanner.html" target="_blank" style="color: var(--color-tool-highlight); font-weight: bold;">
-                            <i class="fas fa-network-wired" style="color: var(--color-tool-highlight);"></i>
-                            الأدوات المجانية (مدقق الشبكة)
-                        </a>
-                    </li>
+                    <li><a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;"><i class="fas fa-lock" style="color: var(--color-brand-primary);"></i>أداة فحص كلمة المرور</a></li>
+                    <li><a href="https://almkhdri31-glitch.github.io/web/network-scanner.html" target="_blank" style="color: var(--color-tool-highlight); font-weight: bold;"><i class="fas fa-network-wired" style="color: var(--color-tool-highlight);"></i>الأدوات المجانية</a></li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
                 </ul>
             </nav>
@@ -313,56 +300,134 @@
     
     <section id="video-library" class="main-content">
         <div class="container text-center">
-            <h2 class="section-title">مكتبة الشروحات التعليمية</h2>
+            <h2 class="section-title">سلسلة دروس الأمن والحماية</h2>
             <p class="section-subtitle">
-                تصفح جميع الفيديوهات التعليمية المحدثة في الأمن والشبكات وتقنية المعلومات.
+                تصفح الدروس التعليمية المتسلسلة من 1 إلى 10 في مجال الأمن والشبكات.
             </p>
 
             <div class="video-gallery-grid">
                 
-                <a href="https://almkhdri31-glitch.github.io/web/1.mp4" target="_blank" class="video-card-item">
+                <a href="Https://almkhdri31-glitch.github.io/web/1.mp4" target="_blank" class="video-card-item">
                     <div class="thumbnail-container">
-                        <img src="video-thumbnail-1.jpg" alt="شرح أساسيات تقنية المعلومات"> 
-                        <div class="play-icon-overlay">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
+                        <img src="thumb-1.jpg" alt="الدرس الأول"> 
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="video-info">
-                        <h4>شرح أساسيات تقنية المعلومات (المسار الأول)</h4>
-                        <p>مقدمة شاملة لأهم المفاهيم والأدوات التي يحتاجها كل مبتدئ في عالم IT.</p>
-                        <span class="watch-link">شاهد الشرح <i class="fas fa-arrow-left"></i></span>
+                        <h4>الدرس 1: أساسيات تقنية المعلومات والمفاهيم الأولية</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
                     </div>
                 </a>
                 
-                <a href="https://yourlink.com/video-2.mp4" target="_blank" class="video-card-item">
+                <a href="Https://almkhdri31-glitch.github.io/web/2.mp4" target="_blank" class="video-card-item">
                      <div class="thumbnail-container">
-                        <img src="video-thumbnail-2.jpg" alt="دليل تأمين الراوتر">
-                        <div class="play-icon-overlay">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
+                        <img src="thumb-2.jpg" alt="الدرس الثاني">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="video-info">
-                        <h4>دليل تأمين الراوتر المنزلي (CCNA Tips)</h4>
-                        <p>خطوات إعداد الراوتر وحماية الـ WiFi وتطبيق أفضل ممارسات الأمن على الشبكات المحلية.</p>
-                        <span class="watch-link">شاهد الشرح <i class="fas fa-arrow-left"></i></span>
+                        <h4>الدرس 2: تأمين الراوتر المنزلي خطوة بخطوة</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
                     </div>
                 </a>
                 
-                <a href="https://yourlink.com/video-3.mp4" target="_blank" class="video-card-item">
+                <a href="Https://almkhdri31-glitch.github.io/web/3.mp4" target="_blank" class="video-card-item">
                      <div class="thumbnail-container">
-                        <img src="video-thumbnail-3.jpg" alt="شرح مفهوم VPN">
-                        <div class="play-icon-overlay">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
+                        <img src="thumb-3.jpg" alt="الدرس الثالث">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="video-info">
-                        <h4>فهم عمل VPN والحماية من تتبع البيانات</h4>
-                        <p>ما هي الشبكات الافتراضية الخاصة، وكيف تختار مزود خدمة موثوق، وكيف تعمل لحماية هويتك.</p>
-                        <span class="watch-link">شاهد الشرح <i class="fas fa-arrow-left"></i></span>
+                        <h4>الدرس 3: ما هو VPN وكيف يحمي خصوصيتك؟</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
                     </div>
                 </a>
                 
-                </div>
+                <a href="Https://almkhdri31-glitch.github.io/web/4.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-4.jpg" alt="الدرس الرابع">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 4: الأمن السيبراني في حياتك اليومية</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="Https://almkhdri31-glitch.github.io/web/5.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-5.jpg" alt="الدرس الخامس">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 5: إدارة كلمات المرور وتوليدها بشكل آمن</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+
+                <a href="Https://almkhdri31-glitch.github.io/web/6.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-6.jpg" alt="الدرس السادس">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 6: الحماية من رسائل الاحتيال (Phishing)</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="Https://almkhdri31-glitch.github.io/web/7.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-7.jpg" alt="الدرس السابع">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 7: تحديث البرامج وأنظمة التشغيل وأهميته</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+
+                <a href="Https://almkhdri31-glitch.github.io/web/8.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-8.jpg" alt="الدرس الثامن">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 8: استخدام المصادقة الثنائية (2FA)</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+
+                <a href="Https://almkhdri31-glitch.github.io/web/9.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-9.jpg" alt="الدرس التاسع">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 9: حماية الأجهزة المحمولة (هواتف وجوالات)</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="Https://almkhdri31-glitch.github.io/web/10.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="thumb-10.jpg" alt="الدرس العاشر">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>الدرس 10: إدارة النسخ الاحتياطية (Backup) واستعادتها</h4>
+                        <p>للمشاهدة، اضغط هنا.</p>
+                        <span class="watch-link">مشاهدة الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+            </div>
         </div>
     </section>
 

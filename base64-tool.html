@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        /* المتغيرات (Variables) - تم نسخها من index.html */
+        /* المتغيرات (Variables) */
         :root {
             --color-bg-main: #0A0A0A;    
             --color-bg-secondary: #1A1A1A; 
@@ -43,24 +43,32 @@
             overflow: hidden;
         }
         .text-center { text-align: center; }
-        /* تنسيقات الهيدر (تم نسخها من index.html) */
+        /* تنسيقات الهيدر */
         .main-header {
             background: var(--color-bg-main); 
             padding: 15px 0;
             border-bottom: 1px solid #333;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: sticky; /* تم تثبيت الهيدر */
+            top: 0;
+            z-index: 1000;
         }
         .main-header .container { 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
+            flex-wrap: nowrap; /* مهم لمنع المشاكل في الجوال */
         }
         .logo-area {
             display: flex; align-items: center; 
             font-size: 24px; 
+            flex-shrink: 1; /* السماح بتقليص الشعار عند الضغط */
+            min-width: 0;
         }
         .main-logo-img { height: 40px; margin-left: 10px; }
         .titles-container { line-height: 1.2; text-align: right; }
+        
+        .main-nav { display: none; } /* إخفاء قائمة التنقل في البداية للجوال */
         .main-nav ul { display: flex; gap: 20px; }
         .main-nav ul li a {
             padding: 5px 0; transition: all 0.3s;
@@ -78,13 +86,18 @@
         .main-nav ul li a i { color: var(--color-text-light); transition: color 0.3s; }
         .main-nav ul li a:hover i,
         .main-nav ul li a.active i { color: var(--color-brand-primary) !important; }
-        .menu-toggle { display: none; }
+        .menu-toggle { 
+            color: var(--color-text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* إخفاء في وضع سطح المكتب */
+        }
         
         /* تنسيق القسم الرئيسي للأداة */
         .tool-section {
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
-            min-height: calc(100vh - 120px); /* ليغطي المساحة كاملة تقريباً */
+            min-height: calc(100vh - 120px); 
         }
         .tool-title {
             font-size: 32px;
@@ -210,9 +223,74 @@
             border-top: 1px solid #333; 
         }
         /* تنسيقات الاستجابة (Media Queries) */
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                background: var(--color-bg-secondary);
+                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+                padding-bottom: 10px;
+                z-index: 999; 
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .main-nav ul li a {
+                border-bottom: 1px solid #333;
+                padding: 15px 0; 
+                display: flex; 
+                justify-content: center;
+                align-items: center;
+            }
+        }
         @media (max-width: 768px) {
-             /* تنسيقات القائمة المنسدلة... (يمكن نسخها من index.html) */
-             .action-buttons {
+            body {
+                font-size: 14px; 
+            }
+            
+            /* ******** إصلاح مشكلة الهيدر في الجوال ******** */
+            .main-logo-img {
+                height: 25px; /* تصغير حجم اللوجو */
+                margin-left: 5px;
+            }
+            
+            .titles-container span {
+                font-size: 11px !important; /* تصغير خطوط الشعار النصية */
+            }
+            
+            .logo-area {
+                flex-shrink: 1; 
+                min-width: 0; 
+            }
+            /* *************************************** */
+
+            .tool-section {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+            .tool-title {
+                font-size: 26px;
+            }
+            .tool-subtitle {
+                font-size: 16px;
+            }
+            .action-buttons {
                 flex-direction: column;
             }
             .btn {
@@ -307,7 +385,6 @@
             try {
                 if (mode === 'encode') {
                     // التشفير: تحويل النص إلى Base64
-                    // btoa() تعمل على سلاسل البيانات (strings)
                     const encodedText = btoa(unescape(encodeURIComponent(inputText)));
                     outputTextarea.value = encodedText;
                 } else if (mode === 'decode') {

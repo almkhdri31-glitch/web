@@ -756,6 +756,7 @@
                 </div>
             `;
         }
+        
         // هـ. الهوايات
         if (hobbies) {
              const hobbiesList = hobbies.split(',').map(h => h.trim()).filter(h => h.length > 0);
@@ -768,14 +769,20 @@
                   sidebarHTML += hobbiesHTML;
              }
         }
+        
         sidebarContent.innerHTML = sidebarHTML;
+
+
         // *********************************************************
         // 3. بناء محتوى العمود الرئيسي (Main Content)
         // *********************************************************
         let mainHTML = '';
+        
         // أ. إضافة عنوان "CV" (على اليسار)
          mainHTML += `
             <h1 id="cv-print-header" style="text-align: left !important;">CV</h1>
+        `
+ 
         // ب. الملخص المهني
         if (summary) {
             mainHTML += `

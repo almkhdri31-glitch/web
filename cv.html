@@ -466,10 +466,8 @@
     </header>
     <div class="container">
     <div class="header-area print-area">
-        
-        <span class="preview-label">شكل السيرة الذاتية بعد الطباعة</span>
+        <span class="preview-label">نموذج السيرة الذاتية بعد الطباعة</span>
         <img src="Https://almkhdri31-glitch.github.io/web/cv_preview.png" alt="شكل السيرة الذاتية بعد الطباعة" class="cv-preview-image">
-        
         <div class="image-upload-container">
             <img id="profile-image" src="" alt="صورة شخصية (اختياري)">
             <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload()">
@@ -478,16 +476,13 @@
             </label>
         </div>
     </div>
-
     <form id="cv-form">
-        
         <h2>المعلومات الشخصية</h2>
         <div class="section-content">
             <div class="form-group-contact">
                 <label for="name">الاسم الكامل:</label>
                 <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
             </div>
-            
             <div class="form-group-contact">
                 <label for="city-country">المدينة والدولة:</label>
                 <input type="text" id="city-country" name="city-country" placeholder="مثال: الرياض، السعودية">
@@ -761,7 +756,6 @@
                 </div>
             `;
         }
-        
         // هـ. الهوايات
         if (hobbies) {
              const hobbiesList = hobbies.split(',').map(h => h.trim()).filter(h => h.length > 0);
@@ -774,20 +768,14 @@
                   sidebarHTML += hobbiesHTML;
              }
         }
-        
         sidebarContent.innerHTML = sidebarHTML;
-
-
         // *********************************************************
         // 3. بناء محتوى العمود الرئيسي (Main Content)
         // *********************************************************
         let mainHTML = '';
-        
         // أ. إضافة عنوان "CV" (على اليسار)
          mainHTML += `
             <h1 id="cv-print-header" style="text-align: left !important;">CV</h1>
-        `;
-
         // ب. الملخص المهني
         if (summary) {
             mainHTML += `
@@ -797,7 +785,6 @@
                 </div>
             `;
         }
-        
         // ج. الخبرة العملية
         if (experienceFreeText) {
             mainHTML += `
@@ -807,7 +794,6 @@
                 </div>
             `;
         }
-        
         // د. التعليم والمؤهلات 
         if (degree || university) {
             mainHTML += `
@@ -820,7 +806,6 @@
                 </div>
             `;
         }
-        
         // هـ. المراجع
         if (references.length > 0) {
              let refHTML = '<h2>المراجع</h2><div class="section-content">';
@@ -837,9 +822,7 @@
             refHTML += '</div>';
             mainHTML += refHTML;
         }
-
         mainContent.innerHTML = mainHTML;
-        
         // 4. إطلاق أمر الطباعة
         window.print();
     }

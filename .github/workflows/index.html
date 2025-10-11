@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT تقنية المعلومات</title>
+    <title>تقنية المعلومات | الأمن السيبراني والشبكات | أدلة وشروحات IT</title>
     <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
     <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
-    <link rel="icon" type="image/png" href="favicon.png"> 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="it_logo.png"> 
+    <link href="https://almkhdri31-glitch.github.io/web/favicon.ico" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* المتغيرات (Variables) */
@@ -19,9 +19,12 @@
             --color-text-subtle: #bdc3c7; 
             --color-brand-primary: #FFC300;     /* الذهبي / الأصفر */
             --color-brand-hover: #DAA520;       /* لون التمرير الذهبي */
-            --color-accent-secondary: #f39c12;  /* البرتقالي (للسيرة الذاتية) */
-            --color-tool-highlight: #2ecc71;    /* الأخضر (للأدوات) */
+            --color-accent-secondary: #f39c12;  /* البرتقالي (لكلمات المرور) */
+            --color-tool-highlight-green: #2ecc71;    /* الأخضر (لأداة Base64) */
+            --color-tool-highlight-blue: #3498db;     /* الأزرق (لحاسبة Subnetting) */
+            --color-video-highlight: #3498db;   
             --color-card-dark: #34495e;         /* لون خلفية البطاقة الموحد */
+            --color-hover-visual: #c0392b;      /* لون بصري عند التمرير (أحمر خفيف) */
         }
         /* الإعدادات الأساسية وتنسيق الخطوط العامة */
         * {
@@ -94,63 +97,80 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center;
+            flex-wrap: nowrap;
         }
 
-        /* ------------------------------------- */
-        /* التنسيقات الجديدة للوجو (الشعار) */
-        /* ------------------------------------- */
+        /* تنسيقات اللوجو (الشعار) */
         .logo-area {
-            /* استخدم Flexbox لمزامنة الشعار والنصوص جنبًا إلى جنب */
             display: flex;
-            align-items: center; /* توسيط عموديًا */
+            align-items: center; 
             text-decoration: none;
             color: inherit;
             font-size: 24px; 
+            flex-shrink: 1; /* للسماح بالتقلص في الجوال */
+            min-width: 0;
         }
 
         .main-logo-img {
-            /* حجم الشعار (اللوجو) */
-            height: 40px; /* ارتفاع مناسب */
+            height: 40px; 
             width: auto; 
-            /* ترك مسافة بعد الشعار ليظهر النص بشكل واضح */
             margin-left: 10px; 
         }
         
         .titles-container {
-            /* لإزالة أي مسافات زائدة بين السطرين */
             line-height: 1.2; 
-            /* محاذاة لليمين للخط العربي */
             text-align: right; 
         }
         
-        /* إزالة التنسيقات المتضاربة القديمة */
-        .logo { 
-            font-size: initial;
-            font-weight: initial;
-            color: initial;
-            text-align: initial !important;
-        }
-        /* ------------------------------------- */
-
         .main-nav ul {
             display: flex;
             gap: 20px;
         }
+        /* تنسيق الروابط في القائمة العلوية */
         .main-nav ul li a {
             padding: 5px 0; 
             transition: all 0.3s;
-            color: var(--color-text-light); 
+            color: var(--color-text-light);
             display: flex;
             align-items: center;
             gap: 5px;
+            font-weight: 400;
         }
+        
+        /* تأثير التمرير (Hover Effect) البصري المميز */
         .main-nav ul li a:hover,
         .main-nav ul li a.active {
             color: var(--color-brand-primary); 
-            background-color: transparent; 
-            border-radius: 0;
             border-bottom: 3px solid var(--color-brand-primary); 
             padding-bottom: 5px; 
+        }
+        
+        /* توحيد ألوان الأيقونات في القائمة لتبدأ باللون الفاتح ثم تتلون عند التمرير */
+        .main-nav ul li a i {
+            color: var(--color-text-light);
+            transition: color 0.3s;
+        }
+
+        .main-nav ul li a:hover i,
+        .main-nav ul li a.active i {
+            color: var(--color-brand-primary) !important; 
+        }
+        
+        /* تخصيص لون رابط مكتبة الفيديو لتمييزها قليلاً */
+        .main-nav ul li .video-link {
+            color: var(--color-video-highlight); 
+            font-weight: 700;
+        }
+
+        .main-nav ul li .video-link i {
+            color: var(--color-video-highlight);
+        }
+        
+        .main-nav ul li .video-link:hover {
+             border-bottom-color: var(--color-video-highlight);
+        }
+        .main-nav ul li .video-link:hover i {
+             color: var(--color-video-highlight) !important;
         }
         .menu-toggle {
             color: var(--color-text-light);
@@ -167,7 +187,6 @@
             justify-content: center;
             text-align: center;
             color: var(--color-text-light);
-           
             background-color: var(--color-bg-main);
             /* يُفضل استخدام صور خلفية احترافية */
             background-image: url('background-hero.jpg'); 
@@ -261,26 +280,25 @@
         }
         /* تخصيص بطاقة الأدوات الجديدة (أخضر) */
         .card-button-hero.tools-card {
-            border-color: var(--color-tool-highlight); 
+            border-color: var(--color-tool-highlight-green); 
         }
 
         .card-button-hero.tools-card i {
-            color: var(--color-tool-highlight); 
+            color: var(--color-tool-highlight-green); 
         }
         .card-button-hero.tools-card:hover {
-            border-color: var(--color-tool-highlight);
+            border-color: var(--color-tool-highlight-green);
         }
-        /* --- التنسيق المُضاف للفيديو الجديد --- */
-        /* تخصيص بطاقة الفيديو الجديدة (لون أخضر/أزرق مميز) */
+        /* --- تنسيق بطاقة الفيديو المربوطة بالصفحة الجديدة --- */
         .card-button-hero.video-card {
-            border-color: var(--color-tool-highlight); /* استخدام اللون الأخضر */
+            border-color: var(--color-video-highlight); 
         }
         .card-button-hero.video-card i {
-            color: var(--color-tool-highlight); /* استخدام اللون الأخضر */
+            color: var(--color-video-highlight); 
         }
         
         .card-button-hero.video-card:hover {
-            border-color: var(--color-tool-highlight);
+            border-color: var(--color-video-highlight);
         }
         /* ------------------------------------- */
         
@@ -324,10 +342,11 @@
             flex-direction: column; 
             justify-content: space-between;
         }
+        /* تأثير بصري أحمر خفيف عند التمرير على بطاقات الخدمات */
         .service-card:hover {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             transform: translateY(-5px);
-            border-color: var(--color-brand-primary); 
+            border-color: var(--color-hover-visual); 
         }
         .service-card h2 {
             color: var(--color-text-light);
@@ -362,6 +381,18 @@
         .service-card a[href="password-tool.html"] .card-icon {
             color: var(--color-accent-secondary) !important;
         }
+        /* تخصيص لون رابط بطاقة Base64 (أخضر) */
+        .service-card a[href="base64-tool.html"] .card-link,
+        .service-card a[href="base64-tool.html"] .card-icon {
+            color: var(--color-tool-highlight-green) !important;
+        }
+        /* تخصيص لون رابط بطاقة Subnetting (أزرق) */
+        .service-card a[href="subnet-calculator.html"] .card-link,
+        .service-card a[href="subnet-calculator.html"] .card-icon {
+            color: var(--color-tool-highlight-blue) !important;
+        }
+
+
         .card-link i { 
             color: var(--color-brand-primary);
         }
@@ -399,7 +430,7 @@
                 width: 100%;
                 text-align: center;
                 position: absolute;
-                top: 70px; /* تم تعديل الموقع ليتناسب مع حجم الهيدر */
+                top: 70px; 
                 left: 0;
                 background: var(--color-bg-secondary);
                 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
@@ -419,7 +450,7 @@
             .main-nav ul li a {
                 border-bottom: 1px solid #333;
                 padding: 15px 0; 
-                display: flex; /* عرض مرن */
+                display: flex; 
                 justify-content: center;
                 align-items: center;
             }
@@ -443,10 +474,14 @@
             body {
                 font-size: 14px; 
             }
-            /* تصغير الشعار في وضع الجوال */
+            /* إصلاح مشكلة الهيدر في الجوال */
             .main-logo-img {
                 height: 30px; 
                 margin-left: 8px;
+            }
+            
+            .titles-container span {
+                font-size: 12px !important; 
             }
 
             .hero-section {
@@ -479,10 +514,10 @@
             <a href="#home" class="logo-area">
                 <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
                 <div class="titles-container">
-                    <span style="display: block; font-size:  24px; font-weight: 900; color: var(--color-brand-primary);">
+                    <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
                  تقنية المعلومات  
                     </span> 
-                    <span style="display: block; font-size: 20px; font-weight: 700; color: var(--color-text-light); margin-top: -9px;"> 
+                    <span style="display: block; font-size: 10px; font-weight: 700; color: var(--color-text-light); margin-top: -1px;"> 
                         INFORMATION TECHNOLOGY  
                     </span>
                 </div>
@@ -492,18 +527,19 @@
                     <li><a href="#home" class="active"><i class="fas fa-home"></i>الرؤية والهدف</a></li>
                     <li><a href="#about"><i class="fas fa-info-circle"></i>من نحن</a></li> 
                     <li><a href="#guides"><i class="fas fa-sitemap"></i>أدلة الإرشاد</a></li>
+                    
                     <li>
-                        <a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">
-                            <i class="fas fa-lock" style="color: var(--color-brand-primary);"></i>
-                            أداة فحص كلمة المرور
+                        <a href="video-library.html" class="video-link">
+                            <i class="fas fa-video"></i>
+                            مكتبة الشروحات التعليمية
                         </a>
                     </li>
-                    <li>
-                        <a href="https://almkhdri31-glitch.github.io/web/network-scanner.html" target="_blank" style="color: var(--color-tool-highlight); font-weight: bold;">
-                            <i class="fas fa-network-wired" style="color: var(--color-tool-highlight);"></i>
-                            الأدوات المجانية (مدقق الشبكة)
-                        </a>
-                    </li>
+                    
+                    <li><a href="base64-tool.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
+
+                    <li><a href="subnet-calculator.html"><i class="fas fa-network-wired"></i>حاسبة Subnetting</a></li>
+
+                    <li><a href="password-tool.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
                 </ul>
             </nav>
@@ -531,15 +567,15 @@
                     <h3> نموذج  لكتابة سيرتك الذاتية  CV وطباعتها او حفظها على جهازك.</h3>
                     <p style="font-size: 14px; color: #ccc;">(أداة مجانية)</p>
                 </a>
-                <a href="#guides" class="card-button-hero tools-card">
+                <a href="tools.html" class="card-button-hero tools-card">
                     <i class="fas fa-tools"></i>
                     <h3>مركز الأدوات المجانية (الأكثر استخداماً)</h3>
                     <p style="font-size: 14px; color: #ccc;">قوة كلمة المرور، مدقق الشبكة، وغيرها...</p>
                 </a>
-                <a href="Https://almkhdri31-glitch.github.io/web/1.mp4" target="_blank" class="card-button-hero video-card">
+                <a href="video-library.html" target="_self" class="card-button-hero video-card">
                     <i class="fas fa-video"></i>
-                    <h3>شاهد الفيديو التعليمي الآن</h3>
-                    <p style="font-size: 14px; color: #ccc;">(شرح أساسيات تقنية المعلومات)</p>
+                    <h3>شاهد الشروحات التعليمية الآن</h3>
+                    <p style="font-size: 14px; color: #ccc;">(مكتبة الشروحات المسارية)</p>
                 </a>
                 </div>
         </div>
@@ -579,25 +615,42 @@
                 تعلم كيف تحمي نفسك وعملك بنفسك.
             </p>
             <div class="services-grid">
+
+                <a href="base64-tool.html" class="service-card" style="border-color: var(--color-tool-highlight-green);">
+                    <i class="fas fa-code-branch card-icon" style="color: var(--color-tool-highlight-green);"></i>
+                    <h2>أداة تشفير وفك تشفير Base64</h2>
+                    <p>حول البيانات الثنائية إلى نص آمن للنقل (والعكس). تعمل بالكامل على متصفحك لضمان الخصوصية.</p>
+                    <span class="card-link" style="color: var(--color-tool-highlight-green);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                </a>
+
+                <a href="subnet-calculator.html" class="service-card" style="border-color: var(--color-tool-highlight-blue);">
+                    <i class="fas fa-network-wired card-icon" style="color: var(--color-tool-highlight-blue);"></i>
+                    <h2>حاسبة Subnetting المتقدمة (IPv4)</h2>
+                    <p>أداة أساسية لمهندسي الشبكات لحساب نطاق الشبكة، وعنوان البث، وعدد المضيفين المتاحين.</p>
+                    <span class="card-link" style="color: var(--color-tool-highlight-blue);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                </a>
                 
-                 <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
+                <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
                     <i class="fas fa-lock card-icon" style="color: var(--color-accent-secondary);"></i>
                     <h2>أداة مُولِّد ومُدقق قوة كلمات المرور</h2>
                     <p>اختبر مدى أمان كلمة مرورك أو قم بتوليد كلمة مرور عشوائية فائقة القوة بضغطة زر. (مُجانية).</p>
                     <span class="card-link" style="color: var(--color-accent-secondary);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
+
                 <a href="network-security-guide.html" class="service-card">
                     <i class="fas fa-network-wired card-icon"></i>
                     <h2>تأمين شبكتك المنزلية بدليل متكامل (CCNP/CCIE)</h2>
                     <p>شرح لثغرات الراوتر وكيفية إعداد المنافذ وتفعيل المصادقة الثنائية (MFA) - **اضغط للقراءة**.</p>
                     <span class="card-link">قراءة الدليل <i class="fas fa-arrow-left"></i></span>
                 </a>
+
                 <a href="nmap-guide.html" class="service-card">
                     <i class="fas fa-search-location card-icon"></i>
                     <h2>دليل فحص المنافذ: Nmap وبدائل الأندرويد</h2>
                     <p>تعلم كيفية استخدام ماسح الشبكة Nmap أو تطبيقات الأندرويد البديلة لترى شبكتك بعين المهاجم - **اضغط للقراءة**.</p>
                     <span class="card-link">شاهد الدليل <i class="fas fa-arrow-left"></i></span>
                 </a>
+                
                 <a href="security-alerts.html" class="service-card">
                     <i class="fas fa-bullhorn card-icon"></i>
                     <h2>مستجدات الأمن والتحذيرات الحرجة (CVEs)</h2>
@@ -610,10 +663,15 @@
     <hr style="border-top: 2px solid var(--color-brand-primary); width: 60%; margin: 0px auto 15px; opacity: 0.3;">
     <footer class="main-footer" id="contact-footer">
         <div class="container text-center">
+            <p style="font-size: 14px; margin-bottom: 5px;">
+                <a href="privacy-policy.html" style="color: var(--color-text-subtle); text-decoration: underline;">سياسة الخصوصية</a>
+                <span style="margin: 0 10px; color: var(--color-text-subtle);">|</span>
+                <a href="contact.html" style="color: var(--color-text-subtle); text-decoration: underline;">اتصل بنا</a>
+            </p>
             <p class="mb-0" style="font-size: 14px; color: var(--color-text-subtle);">
             جميع الحقوق محفوظة &copy;  2025-M.M.S.ALMKHDRI
             </p>
-            </div>
+        </div>
     </footer>
     <script>
         const menuToggle = document.querySelector('.menu-toggle');

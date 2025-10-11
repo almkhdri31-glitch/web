@@ -19,8 +19,8 @@
             --color-text-subtle: #bdc3c7; 
             --color-brand-primary: #FFC300;     /* الذهبي / الأصفر */
             --color-brand-hover: #DAA520;       /* لون التمرير الذهبي */
-            --color-accent-secondary: #f39c12;  /* البرتقالي (للسيرة الذاتية) */
-            --color-tool-highlight: #2ecc71;    /* الأخضر (للأدوات) */
+            --color-accent-secondary: #f39c12;  /* البرتقالي (للسيرة الذاتية وبعض الأدوات) */
+            --color-tool-highlight: #2ecc71;    /* الأخضر (لأداة Base64) */
             --color-video-highlight: #3498db;   /* الأزرق (للفيديو) */
             --color-card-dark: #34495e;         /* لون خلفية البطاقة الموحد */
             --color-hover-visual: #c0392b;      /* لون بصري عند التمرير (أحمر خفيف) */
@@ -388,6 +388,12 @@
         .service-card a[href="password-tool.html"] .card-icon {
             color: var(--color-accent-secondary) !important;
         }
+        /* تخصيص لون رابط بطاقة Base64 (أخضر) */
+        .service-card a[href="base64-tool.html"] .card-link,
+        .service-card a[href="base64-tool.html"] .card-icon {
+            color: var(--color-tool-highlight) !important;
+        }
+
         .card-link i { 
             color: var(--color-brand-primary);
         }
@@ -469,10 +475,14 @@
             body {
                 font-size: 14px; 
             }
-            /* تصغير الشعار في وضع الجوال */
+            /* تصغير الشعار في وضع الجوال (إصلاح مشكلة العرض) */
             .main-logo-img {
                 height: 30px; 
                 margin-left: 8px;
+            }
+            
+            .titles-container span {
+                font-size: 12px !important; /* تصغير خطوط الشعار النصية */
             }
 
             .hero-section {
@@ -526,6 +536,8 @@
                         </a>
                     </li>
                     
+                    <li><a href="base64-tool.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
+
                     <li><a href="password-tool.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
                 </ul>
@@ -602,25 +614,35 @@
                 تعلم كيف تحمي نفسك وعملك بنفسك.
             </p>
             <div class="services-grid">
+
+                <a href="base64-tool.html" class="service-card" style="border-color: var(--color-tool-highlight);">
+                    <i class="fas fa-code-branch card-icon" style="color: var(--color-tool-highlight);"></i>
+                    <h2>أداة تشفير وفك تشفير Base64</h2>
+                    <p>حول البيانات الثنائية إلى نص آمن للنقل (والعكس). تعمل بالكامل على متصفحك لضمان الخصوصية.</p>
+                    <span class="card-link" style="color: var(--color-tool-highlight);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                </a>
                 
-                 <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
+                <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
                     <i class="fas fa-lock card-icon" style="color: var(--color-accent-secondary);"></i>
                     <h2>أداة مُولِّد ومُدقق قوة كلمات المرور</h2>
                     <p>اختبر مدى أمان كلمة مرورك أو قم بتوليد كلمة مرور عشوائية فائقة القوة بضغطة زر. (مُجانية).</p>
                     <span class="card-link" style="color: var(--color-accent-secondary);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
+
                 <a href="network-security-guide.html" class="service-card">
                     <i class="fas fa-network-wired card-icon"></i>
                     <h2>تأمين شبكتك المنزلية بدليل متكامل (CCNP/CCIE)</h2>
                     <p>شرح لثغرات الراوتر وكيفية إعداد المنافذ وتفعيل المصادقة الثنائية (MFA) - **اضغط للقراءة**.</p>
                     <span class="card-link">قراءة الدليل <i class="fas fa-arrow-left"></i></span>
                 </a>
+
                 <a href="nmap-guide.html" class="service-card">
                     <i class="fas fa-search-location card-icon"></i>
                     <h2>دليل فحص المنافذ: Nmap وبدائل الأندرويد</h2>
                     <p>تعلم كيفية استخدام ماسح الشبكة Nmap أو تطبيقات الأندرويد البديلة لترى شبكتك بعين المهاجم - **اضغط للقراءة**.</p>
                     <span class="card-link">شاهد الدليل <i class="fas fa-arrow-left"></i></span>
                 </a>
+                
                 <a href="security-alerts.html" class="service-card">
                     <i class="fas fa-bullhorn card-icon"></i>
                     <h2>مستجدات الأمن والتحذيرات الحرجة (CVEs)</h2>

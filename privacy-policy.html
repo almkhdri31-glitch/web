@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية | منصة تقنية المعلومات IT</title>
+    <meta name="description" content="سياسة الخصوصية والأمان لمنصة تقنية المعلومات IT. نؤكد أن أدواتنا (Base64، Subnetting، كلمات المرور) لا تخزن بيانات المستخدمين وتعمل على جانب العميل.">
+    <meta name="keywords" content="سياسة خصوصية, أمان البيانات, Base64, Subnetting, حماية المستخدم">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* المتغيرات (Variables) - موحدة */
+        :root {
+            --color-bg-main: #0A0A0A;    
+            --color-bg-secondary: #1A1A1A; 
+            --color-bg-card: #1D2B35;    
+            --color-text-light: #f1f1f1;  
+            --color-text-subtle: #bdc3c7; 
+            --color-brand-primary: #FFC300;     
+            --color-brand-hover: #DAA520;       
+            --color-accent-secondary: #f39c12;  
+            --color-tool-highlight-green: #2ecc71;    
+            --color-tool-highlight-blue: #3498db;     
+            --color-video-highlight: #3498db;   
+            --color-card-dark: #34495e;         
+            --color-hover-visual: #c0392b;      
+        }
+        /* التنسيق الأساسي (موحد) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8; /* زيادة المسافة للقراءة المريحة */
+            color: var(--color-text-light); 
+            background-color: var(--color-bg-main);
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: var(--color-brand-primary); transition: color 0.3s; }
+        a:hover { color: var(--color-brand-hover); }
+
+        .container {
+            width: 90%;
+            max-width: 900px; /* تصغير العرض للمحتوى النصي الطويل */
+            margin: auto;
+            overflow: hidden;
+        }
+        /* تنسيق الهيدر (منسوخ ومُصلح) */
+        .main-header {
+            background: var(--color-bg-main); 
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .main-header .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        .logo-area { display: flex; align-items: center; font-size: 24px; flex-shrink: 1; min-width: 0; }
+        .main-logo-img { height: 40px; margin-left: 10px; }
+        .titles-container { line-height: 1.2; text-align: right; }
+        .main-nav { display: none; } /* القائمة الرئيسية لن تظهر في صفحات السياسات لتسهيل التنقل */
+        .menu-toggle { display: none; }
+        
+        /* تنسيق القسم الرئيسي للمحتوى */
+        .content-section {
+            padding: 50px 0 80px;
+            background-color: var(--color-bg-secondary); 
+            min-height: calc(100vh - 120px);
+            text-align: right;
+        }
+        .content-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--color-brand-primary);
+            text-align: center;
+        }
+        .content-subtitle {
+            font-size: 16px;
+            color: var(--color-text-subtle);
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--color-bg-card);
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        .policy-section h2 {
+            font-size: 24px;
+            color: var(--color-text-light);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--color-tool-highlight-blue);
+        }
+        .policy-section p, .policy-section ul {
+            font-size: 16px;
+            color: var(--color-text-subtle);
+            margin-bottom: 20px;
+        }
+        .policy-section ul {
+            padding-right: 25px;
+            list-style-type: disc;
+        }
+        .policy-section li {
+            margin-bottom: 10px;
+        }
+        
+        /* تمييز النصوص الهامة */
+        .highlight-text {
+            color: var(--color-tool-highlight-green);
+            font-weight: 700;
+        }
+
+        /* الفوتر (منسوخ) */
+        .main-footer {
+            background-color: var(--color-bg-secondary); 
+            color: var(--color-text-light);
+            padding: 20px 0; 
+            border-top: 1px solid #333; 
+        }
+        
+        /* تنسيقات الاستجابة (منسوخة ومُصلحة) */
+        @media (max-width: 768px) {
+            .main-logo-img { height: 25px; margin-left: 5px; }
+            .titles-container span { font-size: 11px !important; }
+            .content-title { font-size: 28px; }
+            .policy-section h2 { font-size: 20px; }
+            .policy-section p, .policy-section ul { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
+                <div class="titles-container">
+                    <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
+                 تقنية المعلومات  
+                    </span> 
+                    <span style="display: block; font-size: 10px; font-weight: 700; color: var(--color-text-light); margin-top: -1px;"> 
+                        INFORMATION TECHNOLOGY  
+                    </span>
+                </div>
+            </a>
+            <a href="index.html" style="font-size: 16px; color: var(--color-text-light);"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h1 class="content-title">سياسة الخصوصية</h1>
+            <p class="content-subtitle">
+                آخر تحديث: 11 أكتوبر 2025.
+            </p>
+
+            <div class="policy-section">
+                <p>
+                    نحن في منصة **"تقنية المعلومات IT"** نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح هذه السياسة كيفية جمعنا، واستخدامنا، وحمايتنا للمعلومات المتعلقة باستخدامك لموقعنا وأدواتنا.
+                </p>
+
+                <h2>1. الأمان والخصوصية في الأدوات الخدمية (Base64، Subnetting، كلمات المرور)</h2>
+                <p>
+                    نحن نؤمن بأن خصوصية بياناتك لا يمكن المساومة عليها. لذلك، تم تصميم جميع أدواتنا الخدمية لتعمل بالكامل على **جانب العميل** (Client-Side JavaScript).
+                </p>
+                <ul>
+                    <li>**عدم التخزين:** البيانات التي تقوم بإدخالها في أدوات مثل Base64 أو حاسبة Subnetting أو مدقق كلمات المرور، تتم معالجتها **مباشرة داخل متصفحك** ولا يتم إرسالها أو تخزينها على أي من خوادمنا. هذا يضمن <span class="highlight-text">خصوصية تامة</span> لعمليات التشفير أو الحساب أو فحص قوة كلمات المرور.</li>
+                    <li>**التحويل الفوري:** لا يتم الاحتفاظ بنسخ من عناوين IP أو النصوص أو كلمات المرور المدخلة بعد إغلاق الصفحة.</li>
+                </ul>
+
+                <h2>2. ملفات تعريف الارتباط (Cookies)</h2>
+                <p>
+                    يستخدم موقعنا ملفات تعريف الارتباط لأغراض محدودة لتحسين تجربة المستخدم وتحليل أداء الموقع.
+                </p>
+                <ul>
+                    <li>**Google Analytics:** نستخدم هذه الخدمة لفهم كيفية استخدام الزوار لموقعنا (مثل الصفحات الأكثر زيارة ومدة البقاء). هذه البيانات تكون <span class="highlight-text">مجهولة ولا ترتبط بهوية شخصية محددة</span>.</li>
+                    <li>**ملفات تعريف الارتباط الخاصة بالطرف الثالث (Google AdSense):** إذا قررنا مستقبلاً عرض إعلانات Google AdSense، فإنها قد تستخدم ملفات تعريف ارتباط (مثل ملف تعريف الارتباط DART) لتخصيص الإعلانات بناءً على زياراتك لهذا الموقع ومواقع الويب الأخرى.</li>
+                </ul>
+                
+                <h2>3. استخدام بيانات التسجيل (Log Data)</h2>
+                <p>
+                    مثل معظم المواقع، نقوم بجمع معلومات يرسلها متصفحك تلقائياً ("بيانات التسجيل") عند زيارة موقعنا. قد تتضمن هذه البيانات عنوان بروتوكول الإنترنت (IP) الخاص بك، ونوع المتصفح، والصفحات التي قمت بزيارتها، والوقت والتاريخ. تُستخدم هذه البيانات <span class="highlight-text">لتحسين الموقع واكتشاف الأخطاء التقنية</span> فقط.
+                </p>
+
+                <h2>4. الروابط الخارجية</h2>
+                <p>
+                    قد يحتوي موقعنا على روابط لمواقع خارجية (مثل روابط لمقالات أو أدوات أخرى أو قنوات يوتيوب في قسم مكتبة الشروحات). نحن لسنا مسؤولين عن ممارسات الخصوصية لتلك المواقع. لذا، ننصحك دائماً بمراجعة سياسات الخصوصية الخاصة بها.
+                </p>
+
+                <h2>5. التغييرات على سياسة الخصوصية</h2>
+                <p>
+                    قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سيتم إشعارك بأي تغييرات عن طريق نشر السياسة الجديدة على هذه الصفحة. ننصحك بمراجعة هذه السياسة بشكل دوري.
+                </p>
+
+                <h2>6. الاتصال بنا</h2>
+                <p>
+                    إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يمكنك الاتصال بنا عبر صفحة <a href="contact.html">**الاتصال بنا**</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p class="mb-0" style="font-size: 14px; color: var(--color-text-subtle);">
+            جميع الحقوق محفوظة &copy;  2025-M.M.S.ALMKHDRI
+            </p>
+        </div>
+    </footer>
+    
+</body>
+</html>

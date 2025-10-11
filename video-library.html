@@ -1,1 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة الشروحات التعليمية - IT</title>
+    <meta name="description" content="مكتبة شاملة لكل الفيديوهات التعليمية والإرشادية في الأمن السيبراني وتقنية المعلومات.">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* ----------------------------------------------------- */
+        /* أكواد الـ CSS الأصلية والمُعدَّلة للتحسينات العامة */
+        /* ----------------------------------------------------- */
+        :root {
+            --color-bg-main: #0A0A0A;    
+            --color-bg-secondary: #1A1A1A; 
+            --color-bg-card: #1D2B35;    
+            --color-text-light: #f1f1f1;  
+            --color-text-subtle: #bdc3c7; 
+            --color-brand-primary: #FFC300;     
+            --color-brand-hover: #DAA520;       
+            --color-accent-secondary: #f39c12;  
+            --color-tool-highlight: #2ecc71;    
+            --color-card-dark: #34495e;         
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-light); 
+            background-color: var(--color-bg-main);
+            overflow-x: hidden; 
+            font-size: 16px; 
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .section-title {
+            /* حجم عنوان القسم أصبح أكبر قليلاً */
+            font-size: 32px; 
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: var(--color-text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px; /* تم زيادة عرض الخط السفلي */
+            height: 4px; /* تم زيادة سمك الخط السفلي */
+            background-color: var(--color-brand-primary); 
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        .section-subtitle {
+            /* نص العنوان الفرعي أصبح أصغر قليلاً */
+            font-size: 17px;
+            color: var(--color-text-subtle);
+            margin-bottom: 40px;
+        }
+        /* الهيدر وقائمة التنقل (نفس التنسيق الأصلي) */
+        .main-header {
+            background: var(--color-bg-main); 
+            color: var(--color-text-light);
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .main-header .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center; 
+            text-decoration: none;
+            color: inherit;
+            font-size: 24px; 
+        }
+        .main-logo-img {
+            height: 40px;
+            width: auto; 
+            margin-left: 10px; 
+        }
+        .titles-container {
+            line-height: 1.2; 
+            text-align: right; 
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 20px;
+        }
+        .main-nav ul li a {
+            padding: 5px 0; 
+            transition: all 0.3s;
+            color: var(--color-text-light); 
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: var(--color-brand-primary); 
+            border-bottom: 3px solid var(--color-brand-primary); 
+            padding-bottom: 5px; 
+        }
+        .menu-toggle {
+            color: var(--color-text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none; 
+        }
+        /* قسم المحتوى الرئيسي */
+        .main-content {
+            padding: 80px 0;
+            background-color: var(--color-bg-secondary); 
+        }
+        
+        /* ----------------------------------------------------- */
+        /* تنسيقات مكتبة الفيديوهات (Video Gallery) */
+        /* ----------------------------------------------------- */
+        .video-gallery-grid {
+            /* عرض 2 أو 3 بطاقات في الصف الواحد وتصغيرها على الجوال */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; 
+            margin-top: 40px;
+        }
 
+        .video-card-item {
+            background: var(--color-card-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+            text-align: right;
+            border: 3px solid transparent;
+        }
+
+        .video-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            border-color: var(--color-brand-primary); 
+        }
+
+        .video-card-item img {
+            width: 100%;
+            height: 180px; 
+            object-fit: cover; 
+            display: block;
+        }
+        /* overlay لتظليل الصورة ووضع أيقونة التشغيل */
+        .thumbnail-container {
+            position: relative;
+        }
+        .play-icon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1; /* Always visible */
+            transition: opacity 0.3s;
+        }
+        .play-icon-overlay i {
+            color: var(--color-brand-primary);
+            font-size: 45px;
+            transition: transform 0.3s;
+        }
+        .video-card-item:hover .play-icon-overlay i {
+            transform: scale(1.1);
+        }
+
+        .video-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .video-info h4 {
+            /* عنوان الفيديو */
+            font-size: 20px; 
+            font-weight: 700;
+            color: var(--color-text-light); /* اللون الأبيض/الفاتح */
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            /* النص الوصفي للفيديو */
+            font-size: 15px;
+            color: var(--color-text-subtle);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .watch-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--color-brand-primary); 
+            font-weight: 700;
+            transition: color 0.3s;
+            margin-top: auto; 
+            font-size: 15px;
+        }
+        
+        .watch-link i {
+            font-size: 16px;
+        }
+        
+        .watch-link:hover {
+            color: var(--color-tool-highlight); /* تغيير اللون إلى الأخضر عند التمرير */
+        }
+
+        /* الفوتر (Footer) - موحد */
+        .main-footer {
+            background-color: var(--color-bg-secondary); 
+            color: var(--color-text-light);
+            padding: 20px 0; 
+            border-top: 1px solid #333; 
+        }
+        /* تنسيقات الاستجابة (نفس التنسيق الأصلي مع تحسينات طفيفة) */
+        @media (max-width: 992px) {
+            .menu-toggle { display: block; }
+            .main-nav { 
+                display: none; flex-direction: column; width: 100%; text-align: center;
+                position: absolute; top: 70px; left: 0; background: var(--color-bg-secondary);
+                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4); padding-bottom: 10px; z-index: 999; 
+            }
+            .main-nav.active { display: flex; }
+            .main-nav ul { flex-direction: column; gap: 0; }
+            .main-nav ul li a { border-bottom: 1px solid #333; padding: 15px 0; justify-content: center; }
+            .main-nav ul li a:hover, .main-nav ul li a.active { border-bottom: none; background-color: var(--color-brand-primary); color: var(--color-bg-main); }
+        }
+        @media (max-width: 768px) {
+            body { font-size: 14px; }
+            .main-logo-img { height: 30px; margin-left: 8px; }
+            .section-title { font-size: 26px; }
+            .section-subtitle { font-size: 15px; }
+            .video-gallery-grid {
+                grid-template-columns: 1fr; /* بطاقة واحدة في وضع الجوال */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
+                <div class="titles-container">
+                    <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
+                 تقنية المعلومات  
+                    </span> 
+                    <span style="display: block; font-size: 10px; font-weight: 700; color: var(--color-text-light); margin-top: -1px;"> 
+                        INFORMATION TECHNOLOGY  
+                    </span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#home"><i class="fas fa-home"></i>الرؤية والهدف</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-info-circle"></i>من نحن</a></li> 
+                    <li><a href="index.html#guides"><i class="fas fa-sitemap"></i>أدلة الإرشاد</a></li>
+                    <li>
+                        <a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">
+                            <i class="fas fa-lock" style="color: var(--color-brand-primary);"></i>
+                            أداة فحص كلمة المرور
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://almkhdri31-glitch.github.io/web/network-scanner.html" target="_blank" style="color: var(--color-tool-highlight); font-weight: bold;">
+                            <i class="fas fa-network-wired" style="color: var(--color-tool-highlight);"></i>
+                            الأدوات المجانية (مدقق الشبكة)
+                        </a>
+                    </li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+    
+    <section id="video-library" class="main-content">
+        <div class="container text-center">
+            <h2 class="section-title">مكتبة الشروحات التعليمية</h2>
+            <p class="section-subtitle">
+                تصفح جميع الفيديوهات التعليمية المحدثة في الأمن والشبكات وتقنية المعلومات.
+            </p>
+
+            <div class="video-gallery-grid">
+                
+                <a href="https://almkhdri31-glitch.github.io/web/1.mp4" target="_blank" class="video-card-item">
+                    <div class="thumbnail-container">
+                        <img src="video-thumbnail-1.jpg" alt="شرح أساسيات تقنية المعلومات"> 
+                        <div class="play-icon-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>شرح أساسيات تقنية المعلومات (المسار الأول)</h4>
+                        <p>مقدمة شاملة لأهم المفاهيم والأدوات التي يحتاجها كل مبتدئ في عالم IT.</p>
+                        <span class="watch-link">شاهد الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="https://yourlink.com/video-2.mp4" target="_blank" class="video-card-item">
+                     <div class="thumbnail-container">
+                        <img src="video-thumbnail-2.jpg" alt="دليل تأمين الراوتر">
+                        <div class="play-icon-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>دليل تأمين الراوتر المنزلي (CCNA Tips)</h4>
+                        <p>خطوات إعداد الراوتر وحماية الـ WiFi وتطبيق أفضل ممارسات الأمن على الشبكات المحلية.</p>
+                        <span class="watch-link">شاهد الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="https://yourlink.com/video-3.mp4" target="_blank" class="video-card-item">
+                     <div class="thumbnail-container">
+                        <img src="video-thumbnail-3.jpg" alt="شرح مفهوم VPN">
+                        <div class="play-icon-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>فهم عمل VPN والحماية من تتبع البيانات</h4>
+                        <p>ما هي الشبكات الافتراضية الخاصة، وكيف تختار مزود خدمة موثوق، وكيف تعمل لحماية هويتك.</p>
+                        <span class="watch-link">شاهد الشرح <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                </div>
+        </div>
+    </section>
+
+    <hr style="border-top: 2px solid var(--color-brand-primary); width: 60%; margin: 60px auto 15px; opacity: 0.3;">
+    <footer class="main-footer" id="contact-footer">
+        <div class="container text-center">
+            <p class="mb-0" style="font-size: 14px; color: var(--color-text-subtle);">
+            جميع الحقوق محفوظة &copy;  2025-M.M.S.ALMKHDRI
+            </p>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        // تفعيل وإغلاق القائمة المنسدلة في وضع الجوال
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        const navLinks = document.querySelectorAll('.main-nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // إغلاق القائمة بعد النقر على الرابط في وضع الجوال
+                mainNav.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

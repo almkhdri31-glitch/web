@@ -1,232 +1,637 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أداة الفحص الأمني السريع | محمد</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> <style>
-        .scan-container {
-            min-height: 70vh;
-            padding-top: 50px;
+    <title>تقنية المعلومات | الأمن السيبراني والشبكات | أدلة وشروحات IT</title>
+    <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
+    <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* المتغيرات (Variables) */
+        :root {
+            --color-bg-main: #0A0A0A;    
+            --color-bg-secondary: #1A1A1A; 
+            --color-bg-card: #1D2B35;    
+            --color-text-light: #f1f1f1;  
+            --color-text-subtle: #bdc3c7; 
+            --color-brand-primary: #FFC300;     /* الذهبي / الأصفر */
+            --color-brand-hover: #DAA520;       /* لون التمرير الذهبي */
+            --color-accent-secondary: #f39c12;  /* البرتقالي (لكلمات المرور) */
+            --color-tool-highlight-green: #2ecc71;    /* الأخضر (لأداة Base64) */
+            --color-tool-highlight-blue: #3498db;     /* الأزرق (لحاسبة Subnetting) */
+            --color-video-highlight: #3498db;   
+            --color-card-dark: #34495e;         /* لون خلفية البطاقة الموحد */
+            --color-hover-visual: #c0392b;      /* لون بصري عند التمرير (أحمر خفيف) */
         }
-        .scan-card {
-            background-color: #ffffff;
-            border: 1px solid #ffc107;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        /* الإعدادات الأساسية وتنسيق الخطوط العامة */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        .results-section {
-            display: none; /* يتم إظهارها بالجافاسكريبت */
-            margin-top: 30px;
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-light); 
+            background-color: var(--color-bg-main);
+            overflow-x: hidden; 
+            font-size: 16px; 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .section-title {
+            font-size: 28px; 
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--color-text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-brand-primary); 
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--color-text-subtle);
+            margin-bottom: 40px;
+        }
+        /* الهيدر وقائمة التنقل */
+        .main-header {
+            background: var(--color-bg-main); 
+            color: var(--color-text-light);
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .main-header .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        /* تنسيقات اللوجو (الشعار) */
+        .logo-area {
+            display: flex;
+            align-items: center; 
+            text-decoration: none;
+            color: inherit;
+            font-size: 24px; 
+            flex-shrink: 1; /* للسماح بالتقلص في الجوال */
+            min-width: 0;
+        }
+
+        .main-logo-img {
+            height: 40px; 
+            width: auto; 
+            margin-left: 10px; 
+        }
+        
+        .titles-container {
+            line-height: 1.2; 
+            text-align: right; 
+        }
+        
+        .main-nav ul {
+            display: flex;
+            gap: 20px;
+        }
+        /* تنسيق الروابط في القائمة العلوية */
+        .main-nav ul li a {
+            padding: 5px 0; 
+            transition: all 0.3s;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 400;
+        }
+        
+        /* تأثير التمرير (Hover Effect) البصري المميز */
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: var(--color-brand-primary); 
+            border-bottom: 3px solid var(--color-brand-primary); 
+            padding-bottom: 5px; 
+        }
+        
+        /* توحيد ألوان الأيقونات في القائمة لتبدأ باللون الفاتح ثم تتلون عند التمرير */
+        .main-nav ul li a i {
+            color: var(--color-text-light);
+            transition: color 0.3s;
+        }
+
+        .main-nav ul li a:hover i,
+        .main-nav ul li a.active i {
+            color: var(--color-brand-primary) !important; 
+        }
+        
+        /* تخصيص لون رابط مكتبة الفيديو لتمييزها قليلاً */
+        .main-nav ul li .video-link {
+            color: var(--color-video-highlight); 
+            font-weight: 700;
+        }
+
+        .main-nav ul li .video-link i {
+            color: var(--color-video-highlight);
+        }
+        
+        .main-nav ul li .video-link:hover {
+             border-bottom-color: var(--color-video-highlight);
+        }
+        .main-nav ul li .video-link:hover i {
+             color: var(--color-video-highlight) !important;
+        }
+        .menu-toggle {
+            color: var(--color-text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none; 
+        }
+        /* قسم البطل (Hero Section) */
+        .hero-section {
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-text-light);
+            background-color: var(--color-bg-main);
+            /* يُفضل استخدام صور خلفية احترافية */
+            background-image: url('background-hero.jpg'); 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover; 
+            background-attachment: fixed;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55); 
+            z-index: -1;
+        }
+        .hero-title {
+            font-size: 40px; 
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-subtitle {
+             font-size: 22px; 
+             color: var(--color-text-light);
+             margin-bottom: 30px;
+        }
+       
+        .hero-text {
+            font-size: 17px; 
+            color: var(--color-text-light); 
+            margin-bottom: 40px;
+        }
+        .highlight-text {
+            color: var(--color-brand-primary); 
+        }
+        /* تنسيق البطاقات في قسم Hero */
+        .hero-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px; 
+        }
+        .card-button-hero {
+            /* توحيد اللون الأساسي لخلفية البطاقة */
+            background: var(--color-card-dark); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            color: var(--color-text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 3px solid transparent;
+        }
+        /* تأثير التمرير (Hover Effect) على جميع البطاقات */
+        .card-button-hero:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+            transform: translateY(-5px);
+            background-color: #2c3e50; /* درجة أفتح قليلاً عند التمرير */
+        }
+        .card-button-hero i {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+        /* تخصيص البطاقة الأولى (الإرشادية - ذهبي) */
+        .card-button-hero.primary-card {
+             border-color: var(--color-brand-primary); 
+        }
+        .card-button-hero.primary-card i {
+             color: var(--color-brand-primary);
+        }
+        .card-button-hero.primary-card:hover {
+             border-color: var(--color-brand-hover);
+        }
+        /* تخصيص بطاقة السيرة الذاتية (برتقالي) */
+        .card-button-hero.cv-card {
+            border-color: var(--color-accent-secondary); 
+        }
+        .card-button-hero.cv-card i {
+            color: var(--color-accent-secondary); 
+        }
+        
+        .card-button-hero.cv-card:hover {
+            border-color: var(--color-accent-secondary);
+        }
+        /* تخصيص بطاقة الأدوات الجديدة (أخضر) */
+        .card-button-hero.tools-card {
+            border-color: var(--color-tool-highlight-green); 
+        }
+
+        .card-button-hero.tools-card i {
+            color: var(--color-tool-highlight-green); 
+        }
+        .card-button-hero.tools-card:hover {
+            border-color: var(--color-tool-highlight-green);
+        }
+        /* --- تنسيق بطاقة الفيديو المربوطة بالصفحة الجديدة --- */
+        .card-button-hero.video-card {
+            border-color: var(--color-video-highlight); 
+        }
+        .card-button-hero.video-card i {
+            color: var(--color-video-highlight); 
+        }
+        
+        .card-button-hero.video-card:hover {
+            border-color: var(--color-video-highlight);
+        }
+        /* ------------------------------------- */
+        
+        /* تنسيق أقسام المحتوى الداخلية */
+        .main-content, .quick-tip-section {
+            padding: 80px 0;
+            background-color: var(--color-bg-secondary); 
+        }
+        .tip-card {
+            background: var(--color-bg-card); 
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--color-text-light);
+            width: 100%;
+        }
+       
+        .tip-icon {
+            color: var(--color-brand-primary); 
+            font-size: 40px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: var(--color-bg-card); 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             text-align: right;
+            transition: all 0.3s ease;
+            color: var(--color-text-light);
+            border: 3px solid transparent;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+        }
+        /* تأثير بصري أحمر خفيف عند التمرير على بطاقات الخدمات */
+        .service-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            transform: translateY(-5px);
+            border-color: var(--color-hover-visual); 
+        }
+        .service-card h2 {
+            color: var(--color-text-light);
+            font-size: 22px; 
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            color: var(--color-text-subtle);
+            font-size: 15px; 
+            margin-bottom: 15px;
+        }
+        .card-icon {
+            font-size: 32px;
+            color: var(--color-brand-primary); 
+            margin-bottom: 15px; 
+        }
+        .card-link {
+            color: var(--color-text-light); 
+            transition: all 0.3s;
+            font-size: 15px;
+            display: inline-flex; 
+            align-items: center;
+            gap: 5px;
+            padding: 3px 6px; 
+            border-radius: 4px;
+            border: 2px solid transparent; 
+            margin-top: auto; 
+            color: var(--color-brand-primary); 
+        }
+        /* تخصيص لون رابط بطاقة أداة فحص كلمة المرور */
+        .service-card a[href="password-tool.html"] .card-link,
+        .service-card a[href="password-tool.html"] .card-icon {
+            color: var(--color-accent-secondary) !important;
+        }
+        /* تخصيص لون رابط بطاقة Base64 (أخضر) */
+        .service-card a[href="base64-tool.html"] .card-link,
+        .service-card a[href="base64-tool.html"] .card-icon {
+            color: var(--color-tool-highlight-green) !important;
+        }
+        /* تخصيص لون رابط بطاقة Subnetting (أزرق) */
+        .service-card a[href="subnet-calculator.html"] .card-link,
+        .service-card a[href="subnet-calculator.html"] .card-icon {
+            color: var(--color-tool-highlight-blue) !important;
+        }
+
+
+        .card-link i { 
+            color: var(--color-brand-primary);
+        }
+        .card-link:hover, .card-link:focus {
+            color: var(--color-bg-main); 
+            background-color: var(--color-brand-primary); 
+            border-color: var(--color-brand-primary);
+        }
+        .card-link:hover i { 
+            color: var(--color-bg-main); 
+        }
+        /* الفوتر (Footer) - موحد */
+        .main-footer {
+            background-color: var(--color-bg-secondary); 
+            color: var(--color-text-light);
+            padding: 20px 0; 
+            border-top: 1px solid #333; 
+        }
+        .main-footer .highlight-text {
+            color: var(--color-brand-primary); 
+        }
+        /* تنسيقات الاستجابة (Media Queries) */
+        @media (max-width: 992px) {
+            .main-header .container {
+                justify-content: space-between;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                background: var(--color-bg-secondary);
+                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+                padding-bottom: 10px;
+                z-index: 999; 
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .main-nav ul li a {
+                border-bottom: 1px solid #333;
+                padding: 15px 0; 
+                display: flex; 
+                justify-content: center;
+                align-items: center;
+            }
+            /* تفعيل التمييز عند التمرير في وضع الجوال */
+            .main-nav ul li a:hover,
+            .main-nav ul li a.active {
+                border-bottom: none;
+                background-color: var(--color-brand-primary); 
+                color: var(--color-bg-main); 
+            }
+            /* تعديل لون الأيقونات والنص عند التمرير في وضع الجوال */
+            .main-nav ul li a:hover i,
+            .main-nav ul li a.active i {
+                color: var(--color-bg-main) !important; 
+            }
+            .logo-area {
+                font-size: 20px; 
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px; 
+            }
+            /* إصلاح مشكلة الهيدر في الجوال */
+            .main-logo-img {
+                height: 30px; 
+                margin-left: 8px;
+            }
+            
+            .titles-container span {
+                font-size: 12px !important; 
+            }
+
+            .hero-section {
+                min-height: auto; 
+                padding-top: 80px;
+                padding-bottom: 50px;
+            }
+            .hero-title {
+                font-size: 28px; 
+                line-height: 1.3;
+            }
+            .hero-subtitle {
+                font-size: 17px; 
+            }
+            .hero-text {
+                font-size: 14px; 
+            }
+            .section-title {
+                font-size: 22px; 
+            }
+            .hero-buttons-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="bg-light">
-
-    <div class="container scan-container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card scan-card p-4">
-                    <h2 class="text-center fw-bold text-dark mb-4">أداة تقييم الوضع الأمني السريع</h2>
-                    <p class="text-center lead text-secondary">
-                        أجب عن الأسئلة التالية لمعرفة مدى أمان جهازك وعاداتك الرقمية.
-                    </p>
-
-                    <div id="scan-questions">
-                        
-                        <div class="mb-3 p-3 border-bottom">
-                            <label class="fw-bold mb-2">1. هل تستخدم كلمة مرور موحدة (نفس الكلمة) لأكثر من حساب؟</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1_yes" value="high_risk">
-                                <label class="form-check-label" for="q1_yes">نعم، دائماً</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1_no" value="low_risk" checked>
-                                <label class="form-check-label" for="q1_no">لا، أستخدم كلمات مرور مختلفة لكل حساب</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 p-3 border-bottom">
-                            <label class="fw-bold mb-2">2. هل تقوم بتحديث نظام التشغيل والتطبيقات بشكل دوري؟</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" id="q2_yes" value="low_risk" checked>
-                                <label class="form-check-label" for="q2_yes">نعم، دائماً وبمجرد توفر التحديث</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" id="q2_no" value="high_risk">
-                                <label class="form-check-label" for="q2_no">لا، غالباً ما أتجاهل التحديثات</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 p-3">
-                            <label class="fw-bold mb-2">3. هل لديك برنامج حماية (Antivirus) موثوق مثبت على جهازك؟</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" id="q3_yes" value="low_risk" checked>
-                                <label class="form-check-label" for="q3_yes">نعم، أستخدم برنامج حماية معروف</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" id="q3_no" value="high_risk">
-                                <label class="form-check-label" for="q3_no">لا، ليس لدي برنامج حماية</label>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center mt-4">
-                            <button id="start-scan-btn" class="btn btn-warning btn-lg fw-bold w-75">ابدأ الفحص الأمني</button>
-                        </div>
-                    </div>
-                    
-                    <div id="scan-progress" class="text-center mt-4" style="display: none;">
-                        <p class="lead text-dark">جاري تحليل الوضع الأمني لجهازك...</p>
-                        <div class="progress" style="height: 30px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar-value">0%</div>
-                        </div>
-                        <p class="small mt-2" id="scan-status-text">جاري فحص إعدادات الحماية...</p>
-                    </div>
-
-                    <div id="scan-results" class="results-section p-4 border border-warning">
-                        <h3 class="text-danger fw-bold mb-3">نتائج الفحص الأمني:</h3>
-                        <p class="lead" id="assessment-summary"></p>
-                        
-                        <div id="recommendations-list" class="list-group list-group-flush">
-                            </div>
-
-                        <div class="text-center mt-5">
-                            <p class="small text-muted">تم هذا التقييم بواسطة **محمد الخبير** في الأمن السبراني.</p>
-                        </div>
-                    </div>
-
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="#home" class="logo-area">
+                <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
+                <div class="titles-container">
+                    <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
+                 تقنية المعلومات  
+                    </span> 
+                    <span style="display: block; font-size: 10px; font-weight: 700; color: var(--color-text-light); margin-top: -1px;"> 
+                        INFORMATION TECHNOLOGY  
+                    </span>
                 </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active"><i class="fas fa-home"></i>الرؤية والهدف</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i>من نحن</a></li> 
+                    <li><a href="#guides"><i class="fas fa-sitemap"></i>أدلة الإرشاد</a></li>
+                    
+                    <li>
+                        <a href="video-library.html" class="video-link">
+                            <i class="fas fa-video"></i>
+                            مكتبة الشروحات التعليمية
+                        </a>
+                    </li>
+                    
+                    <li><a href="base64-tool.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
+
+                    <li><a href="subnet-calculator.html"><i class="fas fa-network-wired"></i>حاسبة Subnetting</a></li>
+
+                    <li><a href="password-tool.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+    <section id="home" class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">
+                <span class="highlight-text">مجموعة أدوات احترافية
+        </div>
+    </section>
+    <section id="guides" class="main-content">
+        <div class="container text-center">
+            <h2 class="section-title">أدلة الإرشاد والمحتوى الموثوق</h2>
+            <p class="section-subtitle">
+                تعلم كيف تحمي نفسك وعملك بنفسك.
+            </p>
+            <div class="services-grid">
+
+                <a href="base64-tool.html" class="service-card" style="border-color: var(--color-tool-highlight-green);">
+                    <i class="fas fa-code-branch card-icon" style="color: var(--color-tool-highlight-green);"></i>
+                    <h2>أداة تشفير وفك تشفير Base64</h2>
+                    <p>حول البيانات الثنائية إلى نص آمن للنقل (والعكس). تعمل بالكامل على متصفحك لضمان الخصوصية.</p>
+                    <span class="card-link" style="color: var(--color-tool-highlight-green);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                </a>
+
+                <a href="subnet-calculator.html" class="service-card" style="border-color: var(--color-tool-highlight-blue);">
+                    <i class="fas fa-network-wired card-icon" style="color: var(--color-tool-highlight-blue);"></i>
+                    <h2>حاسبة Subnetting المتقدمة (IPv4)</h2>
+                    <p>أداة أساسية لمهندسي الشبكات لحساب نطاق الشبكة، وعنوان البث، وعدد المضيفين المتاحين.</p>
+                    <span class="card-link" style="color: var(--color-tool-highlight-blue);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                </a>
+                
+                <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
+                    <i class="fas fa-lock card-icon" style="color: var(--color-accent-secondary);"></i>
+                    <h2>أداة مُولِّد ومُدقق قوة كلمات المرور</h2>
+                    <p>اختبر مدى أمان كلمة مرورك أو قم بتوليد كلمة مرور عشوائية فائقة القوة بضغطة زر. (مُجانية).</p>
+                    <span class="card-link" style="color: var(--color-accent-secondary);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                </a>
+
+                <a href="network-security-guide.html" class="service-card">
+                    <i class="fas fa-network-wired card-icon"></i>
+                    <h2>تأمين شبكتك المنزلية بدليل متكامل (CCNP/CCIE)</h2>
+                    <p>شرح لثغرات الراوتر وكيفية إعداد المنافذ وتفعيل المصادقة الثنائية (MFA) - **اضغط للقراءة**.</p>
+                    <span class="card-link">قراءة الدليل <i class="fas fa-arrow-left"></i></span>
+                </a>
+
+                <a href="nmap-guide.html" class="service-card">
+                    <i class="fas fa-search-location card-icon"></i>
+                    <h2>دليل فحص المنافذ: Nmap وبدائل الأندرويد</h2>
+                    <p>تعلم كيفية استخدام ماسح الشبكة Nmap أو تطبيقات الأندرويد البديلة لترى شبكتك بعين المهاجم - **اضغط للقراءة**.</p>
+                    <span class="card-link">شاهد الدليل <i class="fas fa-arrow-left"></i></span>
+                </a>
+                
+                <a href="security-alerts.html" class="service-card">
+                    <i class="fas fa-bullhorn card-icon"></i>
+                    <h2>مستجدات الأمن والتحذيرات الحرجة (CVEs)</h2>
+                    <p>نشرة يومية بأحدث الثغرات الأمنية وكيفية تطبيق التصحيحات اللازمة على نظامك - **اضغط للتفاصيل**.</p>
+                    <span class="card-link">قراءة النشرة <i class="fas fa-arrow-left"></i></span>
+                </a>
             </div>
         </div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </section>
+    <hr style="border-top: 2px solid var(--color-brand-primary); width: 60%; margin: 0px auto 15px; opacity: 0.3;">
+    <footer class="main-footer" id="contact-footer">
+        <div class="container text-center">
+            <p style="font-size: 14px; margin-bottom: 5px;">
+                <a href="privacy-policy.html" style="color: var(--color-text-subtle); text-decoration: underline;">سياسة الخصوصية</a>
+                <span style="margin: 0 10px; color: var(--color-text-subtle);">|</span>
+                <a href="contact.html" style="color: var(--color-text-subtle); text-decoration: underline;">اتصل بنا</a>
+            </p>
+            <p class="mb-0" style="font-size: 14px; color: var(--color-text-subtle);">
+            جميع الحقوق محفوظة &copy;  2025-M.M.S.ALMKHDRI
+            </p>
+        </div>
+    </footer>
     <script>
-        document.getElementById('start-scan-btn').addEventListener('click', () => {
-            
-            // 1. إخفاء الأسئلة وإظهار شريط التقدم
-            document.getElementById('scan-questions').style.display = 'none';
-            document.getElementById('scan-progress').style.display = 'block';
-
-            let progress = 0;
-            const progressBar = document.getElementById('progress-bar-value');
-            const statusText = document.getElementById('scan-status-text');
-            const statusMessages = [
-                'جاري التحقق من كلمات المرور والتشفير...',
-                'فحص الثغرات المحتملة في متصفح الويب...',
-                'تدقيق تحديثات نظام التشغيل والأمان...',
-                'تحليل الوضع الأمني العام للجهاز...'
-            ];
-
-            const interval = setInterval(() => {
-                progress += 5;
-                if (progress <= 100) {
-                    progressBar.style.width = progress + '%';
-                    progressBar.textContent = progress + '%';
-                    
-                    // تغيير رسائل الحالة
-                    if (progress >= 10 && progress < 35) {
-                        statusText.textContent = statusMessages[0];
-                    } else if (progress >= 35 && progress < 60) {
-                        statusText.textContent = statusMessages[1];
-                    } else if (progress >= 60 && progress < 85) {
-                        statusText.textContent = statusMessages[2];
-                    } else if (progress >= 85 && progress < 100) {
-                        statusText.textContent = statusMessages[3];
-                    }
-                    
-                } else {
-                    clearInterval(interval);
-                    // 2. عند الانتهاء، حساب النتائج وعرضها
-                    showResults();
-                }
-            }, 80); // سرعة وهمية للفحص
-
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        // تفعيل وإغلاق القائمة المنسدلة في وضع الجوال
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
         });
-
-        function showResults() {
-            document.getElementById('scan-progress').style.display = 'none';
-            document.getElementById('scan-results').style.display = 'block';
-
-            // حساب مستوى المخاطر بناءً على الإجابات
-            let riskCount = 0;
-            const answers = [
-                document.querySelector('input[name="q1"]:checked').value,
-                document.querySelector('input[name="q2"]:checked').value,
-                document.querySelector('input[name="q3"]:checked').value
-            ];
-
-            // تحديد المخاطر والتوصيات
-            let recommendations = [];
-
-            if (answers[0] === 'high_risk') {
-                riskCount++;
-                recommendations.push({
-                    title: '🛑 خطر: كلمات مرور موحدة',
-                    advice: 'قم فوراً باستخدام مدير كلمات مرور (مثل Bitwarden أو LastPass) لتوليد وتخزين كلمات مرور قوية وفريدة لكل موقع.',
-                    color: 'danger'
-                });
-            }
-            
-            if (answers[1] === 'high_risk') {
-                riskCount++;
-                recommendations.push({
-                    title: '🟠 تحذير: تجاهل التحديثات',
-                    advice: 'التحديثات تسد الثغرات الأمنية! تأكد من تفعيل التحديث التلقائي لنظام التشغيل وكل تطبيقاتك (خصوصاً المتصفحات).',
-                    color: 'warning'
-                });
-            }
-
-            if (answers[2] === 'high_risk') {
-                riskCount++;
-                recommendations.push({
-                    title: '🔴 خطر شديد: لا يوجد برنامج حماية',
-                    advice: 'يجب تثبيت برنامج حماية موثوق (مثل Kaspersky أو Avast أو Bitdefender) يوفر حماية في الوقت الفعلي ضد البرامج الضارة والفيروسات.',
-                    color: 'danger'
-                });
-            }
-
-
-            let summaryText = '';
-            if (riskCount >= 2) {
-                summaryText = '🔴 الوضع الأمني لجهازك **ضعيف جداً** ويحتوي على مخاطر عالية. يرجى مراجعة التوصيات أدناه.';
-                progressBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
-                progressBar.classList.add('bg-danger');
-            } else if (riskCount === 1) {
-                summaryText = '🟠 الوضع الأمني لجهازك **متوسط** ويحتاج إلى بعض التحسينات الهامة.';
-                progressBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
-                progressBar.classList.add('bg-warning');
-            } else {
-                summaryText = '✅ الوضع الأمني لجهازك **جيد جداً**. استمر في تطبيق أفضل الممارسات الأمنية.';
-                recommendations.push({
-                    title: '🌟 نصيحة إضافية: تفعيل المصادقة الثنائية (2FA)',
-                    advice: 'لزيادة الأمان، قم بتفعيل خاصية المصادقة الثنائية على جميع حساباتك الهامة (البريد، البنوك، الشبكات الاجتماعية).',
-                    color: 'info'
-                });
-                progressBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
-                progressBar.classList.add('bg-success');
-            }
-
-            document.getElementById('assessment-summary').textContent = summaryText;
-
-            // عرض التوصيات
-            const recommendationsList = document.getElementById('recommendations-list');
-            recommendationsList.innerHTML = ''; // تفريغ القائمة
-
-            recommendations.forEach(rec => {
-                const listItem = document.createElement('div');
-                listItem.className = `list-group-item list-group-item-action list-group-item-${rec.color} flex-column align-items-start mb-2`;
-                listItem.innerHTML = `
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1 fw-bold">${rec.title}</h5>
-                    </div>
-                    <p class="mb-1">${rec.advice}</p>
-                `;
-                recommendationsList.appendChild(listItem);
+        const navLinks = document.querySelectorAll('.main-nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // إغلاق القائمة بعد النقر على الرابط في وضع الجوال
+                mainNav.classList.remove('active');
             });
-        }
+        });
     </script>
 </body>
 </html>

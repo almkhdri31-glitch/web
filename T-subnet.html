@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة Subnetting المتقدمة | أداة الشبكات والأمن السيبراني</title>
+    <meta name="description" content="أداة مجانية ودقيقة لحساب Subnetting: نطاق الشبكة، العنوان الأول والأخير المتاح، وقناع البث. أساسية لمهندسي الشبكات CCNA/CCNP.">
+    <meta name="keywords" content="Subnetting Calculator, حاسبة شبكات, CCNA, Subnet Mask, أداة IP, CIDR">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* المتغيرات (Variables) - موحدة مع index.html */
+        :root {
+            --color-bg-main: #0A0A0A;    
+            --color-bg-secondary: #1A1A1A; 
+            --color-bg-card: #1D2B35;    
+            --color-text-light: #f1f1f1;  
+            --color-text-subtle: #bdc3c7; 
+            --color-brand-primary: #FFC300;     
+            --color-brand-hover: #DAA520;       
+            --color-accent-secondary: #f39c12;  
+            --color-tool-highlight: #3498db;    /* الأزرق: لون مميز لأداة Subnetting */
+            --color-video-highlight: #2ecc71;   
+            --color-card-dark: #34495e;         
+            --color-hover-visual: #c0392b;      
+        }
+        /* التنسيق الأساسي (منسوخ) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-light); 
+            background-color: var(--color-bg-main);
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .text-center { text-align: center; }
+        /* تنسيقات الهيدر (منسوخة ومُصلحة) */
+        .main-header {
+            background: var(--color-bg-main); 
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .main-header .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        .logo-area {
+            display: flex; align-items: center; 
+            font-size: 24px; flex-shrink: 1; min-width: 0;
+        }
+        .main-logo-img { height: 40px; margin-left: 10px; }
+        .titles-container { line-height: 1.2; text-align: right; }
+        .main-nav { display: none; }
+        .main-nav ul { display: flex; gap: 20px; }
+        .main-nav ul li a {
+            padding: 5px 0; transition: all 0.3s;
+            color: var(--color-text-light); 
+            display: flex; align-items: center; gap: 5px;
+            font-weight: 400;
+        }
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: var(--color-brand-primary); 
+            border-bottom: 3px solid var(--color-brand-primary); 
+            padding-bottom: 5px; 
+        }
+        .main-nav ul li a i { color: var(--color-text-light); transition: color 0.3s; }
+        .main-nav ul li a:hover i,
+        .main-nav ul li a.active i { color: var(--color-brand-primary) !important; }
+        .menu-toggle { 
+            color: var(--color-text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        /* تنسيق القسم الرئيسي للأداة */
+        .tool-section {
+            padding: 80px 0;
+            background-color: var(--color-bg-secondary); 
+            min-height: calc(100vh - 120px);
+        }
+        .tool-title {
+            font-size: 32px; font-weight: 900; margin-bottom: 10px;
+        }
+        .tool-subtitle {
+            font-size: 18px; color: var(--color-tool-highlight); 
+            margin-bottom: 40px;
+        }
+
+        /* تنسيق واجهة الأداة (Tool Interface) */
+        .tool-interface {
+            background: var(--color-bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            max-width: 900px; /* جعلها أعرض قليلاً للنتائج */
+            margin: auto;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-group label {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-brand-primary);
+            white-space: nowrap;
+        }
+        /* تنسيق حقل الإدخال */
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--color-card-dark);
+            border-radius: 8px;
+            background-color: var(--color-bg-main);
+            color: var(--color-text-light);
+            font-family: monospace;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: var(--color-tool-highlight);
+        }
+        .ip-input-container {
+            flex-grow: 1; /* للسماح بحقل الإدخال بالامتداد */
+        }
+
+        /* زر الحساب */
+        .btn-calculate {
+            background-color: var(--color-tool-highlight);
+            color: var(--color-bg-main);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        .btn-calculate:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* قسم النتائج */
+        .results-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: var(--color-bg-main);
+            border-radius: 8px;
+            border: 1px solid var(--color-tool-highlight);
+            text-align: right;
+        }
+
+        .results-section h3 {
+            color: var(--color-tool-highlight);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .result-item {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--color-card-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-item span:first-child {
+            color: var(--color-text-subtle);
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .result-item span:last-child {
+            color: var(--color-text-light);
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: 700;
+            direction: ltr; /* لعناوين IP */
+            text-align: left;
+        }
+        
+        /* قسم الشرح والـ SEO (منسوخ) */
+        .tool-explanation {
+            max-width: 900px;
+            margin: 60px auto 0;
+            text-align: right;
+            border-top: 2px dashed var(--color-card-dark);
+            padding-top: 40px;
+        }
+        .explanation-title {
+            color: var(--color-brand-primary);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .explanation-text {
+            color: var(--color-text-subtle);
+            font-size: 15px;
+        }
+        /* الفوتر (منسوخ) */
+        .main-footer {
+            background-color: var(--color-bg-secondary); 
+            color: var(--color-text-light);
+            padding: 20px 0; 
+            border-top: 1px solid #333; 
+        }
+        /* تنسيقات الاستجابة (منسوخة ومُصلحة) */
+        @media (max-width: 992px) {
+            .menu-toggle { display: block; }
+            .main-nav { display: none; flex-direction: column; width: 100%; text-align: center; position: absolute; top: 70px; left: 0; background: var(--color-bg-secondary); box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4); padding-bottom: 10px; z-index: 999; }
+            .main-nav.active { display: flex; }
+            .main-nav ul { flex-direction: column; gap: 0; }
+            .main-nav ul li a { border-bottom: 1px solid #333; padding: 15px 0; display: flex; justify-content: center; align-items: center; }
+        }
+        @media (max-width: 768px) {
+            .main-logo-img { height: 25px; margin-left: 5px; }
+            .titles-container span { font-size: 11px !important; }
+            .logo-area { flex-shrink: 1; min-width: 0; }
+            .tool-title { font-size: 26px; }
+            .tool-subtitle { font-size: 16px; }
+            .input-group { flex-direction: column; gap: 15px; }
+            .input-group label { margin-bottom: 5px; }
+            .input-group .ip-input-container { width: 100%; }
+            .btn-calculate { width: 100%; }
+            .result-item { flex-direction: column; align-items: flex-end; }
+            .result-item span:first-child { margin-bottom: 5px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
+                <div class="titles-container">
+                    <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
+                 تقنية المعلومات والحلول الذكية  
+                    </span> 
+                    <span style="display: block; font-size: 10px; font-weight: 700; color: var(--color-text-light); margin-top: -1px;"> 
+                    </span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i>الصفحة الرئيسية</a></li>
+                    <li><a href="video-library.html"><i class="fas fa-video"></i>مكتبة الشروحات</a></li>
+                    <li><a href="base64-tool.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
+                    <li><a href="password-tool.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="tool-section">
+        <div class="container text-center">
+            <h1 class="tool-title">حاسبة Subnetting (IPv4)</h1>
+            <h2 class="tool-subtitle">أداة احترافية لحساب نطاقات الشبكة، وقناع البث، وعدد المضيفين المتاحين</h2>
+
+            <div class="tool-interface">
+                <div class="input-group">
+                    <label for="ip-address">عنوان IP للشبكة:</label>
+                    <div class="ip-input-container">
+                        <input type="text" id="ip-address" placeholder="مثال: 192.168.1.0" dir="ltr">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="cidr">CIDR / قناع الشبكة (Subnet Mask):</label>
+                    <div class="ip-input-container">
+                        <select id="cidr">
+                            <option value="8">/8 (255.0.0.0)</option>
+                            <option value="9">/9 (255.128.0.0)</option>
+                            <option value="10">/10 (255.192.0.0)</option>
+                            <option value="11">/11 (255.224.0.0)</option>
+                            <option value="12">/12 (255.240.0.0)</option>
+                            <option value="13">/13 (255.248.0.0)</option>
+                            <option value="14">/14 (255.252.0.0)</option>
+                            <option value="15">/15 (255.254.0.0)</option>
+                            <option value="16">/16 (255.255.0.0)</option>
+                            <option value="17">/17 (255.255.128.0)</option>
+                            <option value="18">/18 (255.255.192.0)</option>
+                            <option value="19">/19 (255.255.224.0)</option>
+                            <option value="20">/20 (255.255.240.0)</option>
+                            <option value="21">/21 (255.255.248.0)</option>
+                            <option value="22">/22 (255.255.252.0)</option>
+                            <option value="23">/23 (255.255.254.0)</option>
+                            <option value="24" selected>/24 (255.255.255.0)</option>
+                            <option value="25">/25 (255.255.255.128)</option>
+                            <option value="26">/26 (255.255.255.192)</option>
+                            <option value="27">/27 (255.255.255.224)</option>
+                            <option value="28">/28 (255.255.255.240)</option>
+                            <option value="29">/29 (255.255.255.248)</option>
+                            <option value="30">/30 (255.255.255.252)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-calculate" onclick="calculateSubnet()"><i class="fas fa-calculator"></i> احسب الشبكة</button>
+
+                <div id="results" class="results-section" style="display:none;">
+                    <h3>نتائج الحاسبة</h3>
+                    <div class="result-item">
+                        <span>قناع الشبكة الثنائي (Subnet Mask):</span>
+                        <span id="subnet-mask-binary"></span>
+                    </div>
+                    <div class="result-item">
+                        <span>عدد المضيفين الكلي المتاح (Hosts):</span>
+                        <span id="total-hosts"></span>
+                    </div>
+                    <div class="result-item">
+                        <span>عنوان الشبكة (Network Address):</span>
+                        <span id="network-address"></span>
+                    </div>
+                    <div class="result-item">
+                        <span>أول عنوان مضيف متاح (Usable First Host):</span>
+                        <span id="first-host"></span>
+                    </div>
+                    <div class="result-item">
+                        <span>آخر عنوان مضيف متاح (Usable Last Host):</span>
+                        <span id="last-host"></span>
+                    </div>
+                    <div class="result-item">
+                        <span>عنوان البث (Broadcast Address):</span>
+                        <span id="broadcast-address"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-explanation">
+                <h3 class="explanation-title">ما هي حاسبة Subnetting ولماذا يحتاجها مهندس الشبكات؟</h3>
+                <p class="explanation-text">
+                    الـ Subnetting هو عملية تقسيم شبكة IP كبيرة إلى شبكات فرعية أصغر وأكثر كفاءة، وهو أساسي لإدارة الشبكات وتوفير عناوين IP وتأمينها. هذه الأداة ضرورية لـ:
+                    <br><br>
+                    * **اختبار شهادات الشبكات (CCNA/CCNP):** تساعد في التحقق من الإجابات المعقدة بسرعة.
+                    * **التخطيط للبنية التحتية:** تضمن أن يتم تخصيص العناوين بشكل صحيح قبل النشر الفعلي.
+                    * **الأمان:** تساعد في فصل الأقسام الحساسة من الشبكة في Subnet خاص بها.
+                    <br><br>
+                    **الأمان والخصوصية:** هذه الأداة تعمل بالكامل في متصفحك (Client-Side JavaScript) ولا يتم إرسال أو تخزين أي من عناوين IP المدخلة على خوادمنا.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p class="mb-0" style="font-size: 14px; color: var(--color-text-subtle);">
+            جميع الحقوق محفوظة &copy;  2025-M.M.S.ALMKHDRI
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // دالة تحويل من IP إلى عدد صحيح (Integer)
+        function ipToDec(ip) {
+            return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0);
+        }
+
+        // دالة تحويل من عدد صحيح إلى IP (Decimal to IP)
+        function decToIp(dec) {
+            return [
+                (dec >>> 24) & 0xFF,
+                (dec >>> 16) & 0xFF,
+                (dec >>> 8) & 0xFF,
+                dec & 0xFF
+            ].join('.');
+        }
+
+        // دالة حساب Subnetting الرئيسية
+        function calculateSubnet() {
+            const ipAddress = document.getElementById('ip-address').value;
+            const cidrBits = parseInt(document.getElementById('cidr').value, 10);
+            const resultsDiv = document.getElementById('results');
+
+            // التحقق من صحة عنوان IP
+            const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+            if (!ipRegex.test(ipAddress)) {
+                alert('الرجاء إدخال عنوان IP صحيح (مثال: 192.168.1.0)');
+                resultsDiv.style.display = 'none';
+                return;
+            }
+
+            const ipDec = ipToDec(ipAddress);
+            
+            // 1. حساب قناع الشبكة (Subnet Mask) بالرقم الصحيح
+            const subnetMaskDec = (-1 << (32 - cidrBits)); 
+            const subnetMaskIp = decToIp(subnetMaskDec);
+
+            // 2. حساب عنوان الشبكة (Network Address)
+            const networkAddressDec = ipDec & subnetMaskDec;
+            const networkAddressIp = decToIp(networkAddressDec);
+            
+            // 3. حساب عنوان البث (Broadcast Address)
+            const hostBits = 32 - cidrBits;
+            const broadcastAddressDec = networkAddressDec + (Math.pow(2, hostBits) - 1);
+            const broadcastAddressIp = decToIp(broadcastAddressDec);
+
+            // 4. حساب عدد المضيفين
+            const totalHosts = Math.pow(2, hostBits);
+            const usableHosts = totalHosts >= 2 ? (totalHosts - 2) : 0; // -2 للشبكة والبث
+
+            // 5. حساب نطاق عناوين المضيفين المتاح
+            const firstHostDec = totalHosts >= 2 ? networkAddressDec + 1 : networkAddressDec;
+            const lastHostDec = totalHosts >= 2 ? broadcastAddressDec - 1 : broadcastAddressDec;
+            const firstHostIp = decToIp(firstHostDec);
+            const lastHostIp = decToIp(lastHostDec);
+
+            // تحويل قناع الشبكة إلى ثنائي للعرض
+            const subnetMaskBinary = subnetMaskDec.toString(2).padStart(32, '0').match(/.{8}/g).join('.');
+            
+            // عرض النتائج
+            document.getElementById('subnet-mask-binary').textContent = subnetMaskIp + ' (' + subnetMaskBinary + ')';
+            document.getElementById('total-hosts').textContent = totalHosts.toLocaleString('en-US') + ' (' + usableHosts.toLocaleString('en-US') + ' Hosts Usable)';
+            document.getElementById('network-address').textContent = networkAddressIp;
+            document.getElementById('first-host').textContent = totalHosts < 2 ? 'غير متاح' : firstHostIp;
+            document.getElementById('last-host').textContent = totalHosts < 2 ? 'غير متاح' : lastHostIp;
+            document.getElementById('broadcast-address').textContent = broadcastAddressIp;
+
+            resultsDiv.style.display = 'block';
+        }
+
+        // تفعيل وإغلاق القائمة المنسدلة في وضع الجوال (للملاحة)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        if (menuToggle) {
+             menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

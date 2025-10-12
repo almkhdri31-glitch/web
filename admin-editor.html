@@ -1,0 +1,17 @@
+// 1. جمع البيانات من الحقول
+let newTitle = document.getElementById('title-input').value;
+let newSummary = document.getElementById('summary-input').value;
+let severity = document.getElementById('severity-select').value; // مثلاً 'high'
+
+// 2. بناء كود HTML الجديد للبطاقة
+let newCardHTML = `
+  <div class="card-container">
+    <span class="alert-tag tag-${severity}">...${severity}</span>
+    <h3>${newTitle}</h3>
+    <p class="alert-details">${newSummary}</p>
+    </div>
+`;
+
+// 3. (الجزء الأصعب) استبدال المحتوى في ملفك:
+// هذا يتطلب استخدام واجهات برمجية للتحرير المتقدم أو الاعتماد على الأداة لتوليد النص للاستبدال اليدوي السهل.
+// أبسط طريقة هي أن يقوم الكود بتوليد النص البرمجي الكامل للبطاقة الجديدة، ثم تقوم أنت بنسخه ولصقه يدويًا في ملف Security-alerts.html القديم قبل الرفع.

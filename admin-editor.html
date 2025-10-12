@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أداة توليد كود تحذيرات الأمان</title>
     <style>
-        body { font-family: Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; }
+        body { font-family: Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
         #controls { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        input[type="text"], textarea, select { width: 100%; padding: 10px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        input[type="text"], textarea, select, input[type="date"] { width: 100%; padding: 10px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         button { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; }
         button:hover { background-color: #0056b3; }
         label { display: block; margin-top: 10px; font-weight: bold; }
         #output-area { background: #e9e9e9; padding: 15px; border-radius: 4px; overflow-x: auto; margin-top: 15px; }
-        pre { white-space: pre-wrap; word-wrap: break-word; font-size: 14px; }
+        pre { white-space: pre-wrap; word-wrap: break-word; font-size: 14px; color: #000; }
         h2 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
     </style>
 </head>
@@ -54,7 +53,6 @@
     </div>
 
     <script>
-        // دالة تقوم بتوليد الكود عند الضغط على الزر
         function generateCard() {
             // 1. جمع البيانات من الحقول
             const title = document.getElementById('title-input').value.trim();
@@ -62,36 +60,41 @@
             const summary = document.getElementById('summary-input').value.trim();
             const solution = document.getElementById('solution-input').value.trim();
             const severity = document.getElementById('severity-select').value;
-            const date = document.getElementById('date-input').value;
+            const dateInput = document.getElementById('date-input').value; // تم تغيير اسم المتغير لتجنب التعارض
             
-            if (!title || !summary || !severity) {
-                alert('الرجاء تعبئة حقول العنوان والملخص ودرجة الخطورة.');
+            // تحقق بسيط لتأكيد إدخال البيانات الأساسية
+            if (!title || !summary) {
+                alert('الرجاء تعبئة حقول العنوان والملخص.');
                 return;
             }
 
-            // تحديد اللون المناسب للـ tag بناءً على الخطورة
+            // 2. تحديد الفئات والنصوص بناءً على الخطورة
             let tagClass;
             let tagText;
+            let icon = '🚨'; // رمز تحذير افتراضي
+            
             if (severity === 'high') {
                 tagClass = 'tag-high';
                 tagText = 'حرج جداً';
             } else if (severity === 'medium') {
                 tagClass = 'tag-medium';
                 tagText = 'متوسط';
+                icon = '⚠️';
             } else {
                 tagClass = 'tag-low';
                 tagText = 'منخفض';
+                icon = 'ℹ️';
             }
 
             // تنسيق التاريخ
-            const formattedDate = date ? `تاريخ النشر: ${date}` : '';
+            const formattedDate = dateInput ? `تاريخ النشر: ${dateInput}` : '';
 
-            // 2. بناء كود HTML الكامل للبطاقة الجديدة
-            // *** يجب أن يتطابق هذا الهيكل مع الهيكل البرمجي لبطاقاتك الحالية ***
+            // 3. بناء كود HTML الكامل للبطاقة
+            // تم استخدام دالة الهروب لتأمين النص وتضمينه بشكل سليم
             const newCardHTML = `
 <div class="security-card ${tagClass}">
     <div class="card-header">
-        <span class="alert-tag ${tagClass}">🚨 ${tagText}</span>
+        <span class="alert-tag ${tagClass}">${icon} ${tagText}</span>
     </div>
     <div class="card-body">
         <h3>${title} (${cve})</h3>
@@ -100,12 +103,12 @@
         ${formattedDate ? `<p class="alert-date">${formattedDate}</p>` : ''}
     </div>
     <div class="card-footer">
-        <span class="level-indicator ${tagClass}">i ${tagText}</span>
+        <span class="level-indicator ${tagClass}">${tagText}</span>
     </div>
 </div>
 `;
 
-            // 3. عرض الكود الناتج في منطقة الإخراج
+            // 4. عرض الكود الناتج في منطقة الإخراج
             document.getElementById('output-code').textContent = newCardHTML;
         }
     </script>

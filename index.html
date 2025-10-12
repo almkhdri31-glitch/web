@@ -355,7 +355,7 @@
         }
         /* ------------------------------------- */
         
-        /* تنسيق أقسام المحتوى الداخلية - لم تتغير */
+        /* تنسيق أقسام المحتوى الداخلية - لم يتغير */
         .main-content, .quick-tip-section {
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
@@ -618,13 +618,13 @@
                     </li>
                     
                     <li class="dropdown-tools">
-                        <a href="T-tools.html" class="tools-link">
+                        <a href="T-tools.html" class="https://almkhdri31-glitch.github.io/web/#guides">
                             <i class="fas fa-toolbox"></i>مركز الأدوات
                         </a>
                         <ul class="dropdown-menu">
-                             <li><a href="T-base64.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
-                             <li><a href="T-subnet.html"><i class="fas fa-network-wired"></i>حاسبة Subnetting</a></li>
-                             <li><a href="T-password.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
+                            <li><a href="T-base64.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
+                            <li><a href="T-subnet.html"><i class="fas fa-network-wired"></i>حاسبة Subnetting</a></li>
+                            <li><a href="T-password.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
                         </ul>
                     </li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
@@ -771,18 +771,25 @@
         const navLinks = document.querySelectorAll('.main-nav ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', (event) => {
-                // منطق محسّن: يحافظ على رابط الانتقال ويعالج إغلاق القائمة في الخلفية
                 const href = link.getAttribute('href');
-                
-                // إذا كان الرابط قسمًا داخليًا (#home) أو فارغًا، أغلق القائمة فورًا.
+                const isDropdownLink = link.closest('.dropdown-menu'); // تحقق إذا كان الرابط داخل القائمة المنسدلة
+
+                // إذا كان الرابط قسمًا داخليًا (#)
                 if (href === '#' || href.startsWith('#')) {
                     mainNav.classList.remove('active');
-                } else {
-                    // إذا كان الرابط يؤدي إلى صفحة أخرى (مثل T-tools.html)
+                } 
+                // إذا كان الرابط داخل القائمة المنسدلة (في وضع الجوال)، دعه ينتقل مباشرة دون تأخير
+                else if (isDropdownLink) {
+                    // لا نفعل أي شيء هنا، نترك المتصفح يقوم بعملية الانتقال
+                    // ونغلق القائمة فوراً
+                     mainNav.classList.remove('active');
+                }
+                 // إذا كان رابطاً رئيسياً (مثل video-library.html) أو البطاقة الثالثة
+                else {
                     // نؤجل إغلاق القائمة قليلاً لضمان بدء عملية الانتقال للصفحة الجديدة.
                     setTimeout(() => {
                        mainNav.classList.remove('active');
-                    }, 50); // تأخير بسيط
+                    }, 50); 
                 }
             });
         });

@@ -1,51 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <title>أداة تعديل التحذيرات</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة توليد كود تحذيرات الأمان</title>
+    <style>
+        body { font-family: Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; }
+        #controls { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input[type="text"], textarea, select { width: 100%; padding: 10px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        #output-area { background: #e9e9e9; padding: 15px; border-radius: 4px; overflow-x: auto; margin-top: 15px; }
+        pre { white-space: pre-wrap; word-wrap: break-word; font-size: 14px; }
+        h2 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+    </style>
 </head>
 <body>
-    
+
     <div id="controls">
-        <h2>إدخال بيانات التحذير الجديد</h2>
+        <h2>🚀 توليد كود بطاقة تحذير أمان جديدة</h2>
         
-        <label for="title-input">العنوان:</label>
-        <input type="text" id="title-input"><br><br>
+        <label for="title-input">عنوان التحذير:</label>
+        <input type="text" id="title-input" placeholder="مثال: ثغرة تنفيذ كود عن بعد في خوادم Exchange">
         
-        <label for="summary-input">الملخص:</label>
-        <textarea id="summary-input"></textarea><br><br>
+        <label for="cve-input">رقم الثغرة (CVE-XXXXX):</label>
+        <input type="text" id="cve-input" placeholder="مثال: CVE-2025-XXXXX">
+
+        <label for="summary-input">الملخص/الوصف القصير:</label>
+        <textarea id="summary-input" rows="3" placeholder="مثال: هذه الثغرة تسمح للمهاجمين بتنفيذ تعليمات برمجية دون مصادقة..."></textarea>
+        
+        <label for="solution-input">الحل/الإجراء المطلوب:</label>
+        <textarea id="solution-input" rows="2" placeholder="مثال: يجب تطبيق تحديث الأمان الأخير (KB504XXXX) فوراً."></textarea>
 
         <label for="severity-select">درجة الخطورة:</label>
         <select id="severity-select">
-            <option value="high">حرج جداً</option>
-            <option value="medium">متوسط</option>
-            </select><br><br>
+            <option value="high">حرج جداً (أحمر)</option>
+            <option value="medium">متوسط (برتقالي)</option>
+            <option value="low">منخفض (أزرق)</option>
+        </select>
+        
+        <label for="date-input">تاريخ النشر (اختياري):</label>
+        <input type="date" id="date-input" value="2025-10-12">
 
         <button onclick="generateCard()">توليد كود البطاقة</button>
     </div>
 
     <hr>
     
-    <h3>الكود الناتج (انسخه والصقه في Security-alerts.html):</h3>
-    <pre id="output-code"></pre>
+    <div id="output-area">
+        <h3>الكود الناتج (انسخه والصقه في ملف Security-alerts.html):</h3>
+        <pre id="output-code">سيظهر الكود هنا بعد التوليد.</pre>
+    </div>
 
     <script>
+        // دالة تقوم بتوليد الكود عند الضغط على الزر
         function generateCard() {
-            // هنا يذهب الكود الذي كتبته سابقاً (مثل let newTitle = document.getElementById('title-input').value;)
+            // 1. جمع البيانات من الحقول
+            const title = document.getElementById('title-input').value.trim();
+            const cve = document.getElementById('cve-input').value.trim();
+            const summary = document.getElementById('summary-input').value.trim();
+            const solution = document.getElementById('solution-input').value.trim();
+            const severity = document.getElementById('severity-select').value;
+            const date = document.getElementById('date-input').value;
             
-            let newTitle = document.g....value; // سحب العنوان
-            let newSummary = document.g....value; // سحب الملخص
-            let severity = document.g....value; // سحب الخطورة
-            
-            // بناء الكود النهائي (يجب أن يكون هنا الكود الكامل للبطاقة)
-            let finalHTML = `
-                <div class="card-container tag-${severity}">
-                    <h3>${newTitle}</h3>
-                    <p>${newSummary}</p>
-                </div>
-            `;
-            
-            // عرض الكود الناتج
-            document.getElementById('output-code').textContent = finalHTML;
+            if (!title || !summary || !severity) {
+                alert('الرجاء تعبئة حقول العنوان والملخص ودرجة الخطورة.');
+                return;
+            }
+
+            // تحديد اللون المناسب للـ tag بناءً على الخطورة
+            let tagClass;
+            let tagText;
+            if (severity === 'high') {
+                tagClass = 'tag-high';
+                tagText = 'حرج جداً';
+            } else if (severity === 'medium') {
+                tagClass = 'tag-medium';
+                tagText = 'متوسط';
+            } else {
+                tagClass = 'tag-low';
+                tagText = 'منخفض';
+            }
+
+            // تنسيق التاريخ
+            const formattedDate = date ? `تاريخ النشر: ${date}` : '';
+
+            // 2. بناء كود HTML الكامل للبطاقة الجديدة
+            // *** يجب أن يتطابق هذا الهيكل مع الهيكل البرمجي لبطاقاتك الحالية ***
+            const newCardHTML = `
+<div class="security-card ${tagClass}">
+    <div class="card-header">
+        <span class="alert-tag ${tagClass}">🚨 ${tagText}</span>
+    </div>
+    <div class="card-body">
+        <h3>${title} (${cve})</h3>
+        <p class="alert-summary">${summary}</p>
+        <p class="alert-solution">**الحل:** ${solution}</p>
+        ${formattedDate ? `<p class="alert-date">${formattedDate}</p>` : ''}
+    </div>
+    <div class="card-footer">
+        <span class="level-indicator ${tagClass}">i ${tagText}</span>
+    </div>
+</div>
+`;
+
+            // 3. عرض الكود الناتج في منطقة الإخراج
+            document.getElementById('output-code').textContent = newCardHTML;
         }
     </script>
 

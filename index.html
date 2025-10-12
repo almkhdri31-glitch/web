@@ -594,7 +594,7 @@
 <body>
     <header class="main-header">
         <div class="container">
-            <a href="it-logo.png" class="logo-area">
+            <a href="#" class="logo-area">
                 <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
                 <div class="titles-container">
                     <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
@@ -767,11 +767,23 @@
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
         });
+
         const navLinks = document.querySelectorAll('.main-nav ul li a');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // إغلاق القائمة بعد النقر على الرابط في وضع الجوال
-                mainNav.classList.remove('active');
+            link.addEventListener('click', (event) => {
+                // منطق محسّن: يحافظ على رابط الانتقال ويعالج إغلاق القائمة في الخلفية
+                const href = link.getAttribute('href');
+                
+                // إذا كان الرابط قسمًا داخليًا (#home) أو فارغًا، أغلق القائمة فورًا.
+                if (href === '#' || href.startsWith('#')) {
+                    mainNav.classList.remove('active');
+                } else {
+                    // إذا كان الرابط يؤدي إلى صفحة أخرى (مثل tools.html)
+                    // نؤجل إغلاق القائمة قليلاً لضمان بدء عملية الانتقال للصفحة الجديدة.
+                    setTimeout(() => {
+                       mainNav.classList.remove('active');
+                    }, 50); // تأخير بسيط
+                }
             });
         });
 

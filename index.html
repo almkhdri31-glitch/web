@@ -430,18 +430,18 @@
             color: var(--color-brand-primary); 
         }
         /* تخصيص لون رابط بطاقة أداة فحص كلمة المرور */
-        .service-card a[href="password-tool.html"] .card-link,
-        .service-card a[href="password-tool.html"] .card-icon {
+        .service-card a[href="T-password.html"] .card-link,
+        .service-card a[href="T-password.html"] .card-icon {
             color: var(--color-accent-secondary) !important;
         }
         /* تخصيص لون رابط بطاقة Base64 (أخضر) */
-        .service-card a[href="base64-tool.html"] .card-link,
-        .service-card a[href="base64-tool.html"] .card-icon {
+        .service-card a[href="T-base64.html"] .card-link,
+        .service-card a[href="T-base64.html"] .card-icon {
             color: var(--color-tool-highlight-green) !important;
         }
         /* تخصيص لون رابط بطاقة Subnetting (أزرق) */
-        .service-card a[href="subnet-calculator.html"] .card-link,
-        .service-card a[href="subnet-calculator.html"] .card-icon {
+        .service-card a[href="T-subnet.html"] .card-link,
+        .service-card a[href="T-subnet.html"] .card-icon {
             color: var(--color-tool-highlight-blue) !important;
         }
 
@@ -618,13 +618,13 @@
                     </li>
                     
                     <li class="dropdown-tools">
-                        <a href="tools.html" class="tools-link">
+                        <a href="T-tools.html" class="tools-link">
                             <i class="fas fa-toolbox"></i>مركز الأدوات
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="base64-tool.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
-                            <li><a href="subnet-calculator.html"><i class="fas fa-network-wired"></i>حاسبة Subnetting</a></li>
-                            <li><a href="password-tool.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
+                             <li><a href="T-base64.html"><i class="fas fa-code-branch"></i>أداة Base64</a></li>
+                             <li><a href="T-subnet.html"><i class="fas fa-network-wired"></i>حاسبة Subnetting</a></li>
+                             <li><a href="T-password.html"><i class="fas fa-lock"></i>أداة فحص كلمة المرور</a></li>
                         </ul>
                     </li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
@@ -654,7 +654,7 @@
                     <h3> نموذج  لكتابة سيرتك الذاتية  CV وطباعتها  .</h3>
                     <p style="font-size: 14px; color: #ccc;">(أداة مجانية)</p>
                 </a>
-                <a href="tools.html" class="card-button-hero tools-card">
+                <a href="T-tools.html" class="card-button-hero tools-card">
                     <i class="fas fa-tools"></i>
                     <h3>مركز الأدوات المجانية (الأكثر استخداماً)</h3>
                     <p style="font-size: 14px; color: #ccc;">قوة كلمة المرور، مدقق الشبكة، وغيرها...</p>
@@ -703,21 +703,21 @@
             </p>
             <div class="services-grid">
 
-                <a href="base64-tool.html" class="service-card" style="border-color: var(--color-tool-highlight-green);">
+                <a href="T-base64.html" class="service-card" style="border-color: var(--color-tool-highlight-green);">
                     <i class="fas fa-code-branch card-icon" style="color: var(--color-tool-highlight-green);"></i>
                     <h2>أداة تشفير وفك تشفير Base64</h2>
                     <p>حول البيانات الثنائية إلى نص آمن للنقل (والعكس). تعمل بالكامل على متصفحك لضمان الخصوصية.</p>
                     <span class="card-link" style="color: var(--color-tool-highlight-green);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
 
-                <a href="subnet-calculator.html" class="service-card" style="border-color: var(--color-tool-highlight-blue);">
+                <a href="T-subnet.html" class="service-card" style="border-color: var(--color-tool-highlight-blue);">
                     <i class="fas fa-network-wired card-icon" style="color: var(--color-tool-highlight-blue);"></i>
                     <h2>حاسبة Subnetting المتقدمة (IPv4)</h2>
                     <p>أداة أساسية لمهندسي الشبكات لحساب نطاق الشبكة، وعنوان البث، وعدد المضيفين المتاحين.</p>
                     <span class="card-link" style="color: var(--color-tool-highlight-blue);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
-                <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
+                <a href="T-password.html" class="service-card" style="border-color: var(--color-accent-secondary);">
                     <i class="fas fa-lock card-icon" style="color: var(--color-accent-secondary);"></i>
                     <h2>أداة مُولِّد ومُدقق قوة كلمات المرور</h2>
                     <p>اختبر مدى أمان كلمة مرورك أو قم بتوليد كلمة مرور عشوائية فائقة القوة بضغطة زر. (مُجانية).</p>
@@ -778,7 +778,7 @@
                 if (href === '#' || href.startsWith('#')) {
                     mainNav.classList.remove('active');
                 } else {
-                    // إذا كان الرابط يؤدي إلى صفحة أخرى (مثل tools.html)
+                    // إذا كان الرابط يؤدي إلى صفحة أخرى (مثل T-tools.html)
                     // نؤجل إغلاق القائمة قليلاً لضمان بدء عملية الانتقال للصفحة الجديدة.
                     setTimeout(() => {
                        mainNav.classList.remove('active');

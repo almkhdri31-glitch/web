@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,7 +6,10 @@
     <title>تقنية المعلومات | الأمن السيبراني والشبكات | أدلة وشروحات IT</title>
     <meta name="description" content="مركز الأمن السيبراني والإرشاد التقني المُحدَّث. دليلك اليومي لأفضل ممارسات الشبكات، والبنية السحابية، وأحدث ثغرات الأمن.">
     <meta name="keywords" content="أمن سيبراني, شبكات, CCNA, CCNP, CCIE, أدلة إرشادية, Nmap, حماية الراوتر, أمن المعلومات">
+    
     <link rel="icon" type="image/png" href="favicon.png"> 
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
@@ -101,14 +103,14 @@
             flex-wrap: nowrap;
         }
 
-        /* تنسيقات اللوجو (الشعار) */
+        /* تنسيقات اللوجو (الشعار) - تحديث */
         .logo-area {
             display: flex;
             align-items: center; 
             text-decoration: none;
             color: inherit;
             font-size: 24px; 
-            flex-shrink: 1; /* للسماح بالتقلص في الجوال */
+            flex-shrink: 1; 
             min-width: 0;
         }
 
@@ -119,10 +121,25 @@
         }
         
         .titles-container {
-            line-height: 1.2; 
+            line-height: 1.1; 
             text-align: right; 
         }
         
+        /* فئات جديدة للشعار */
+        .titles-container .main-title {
+            display: block; 
+            font-size: 15px; 
+            font-weight: 900; 
+            color: var(--color-brand-primary);
+        }
+        .titles-container .sub-title {
+            display: block; 
+            font-size: 11px; 
+            font-weight: 700; 
+            color: var(--color-text-light); 
+            margin-top: 0px; 
+        }
+
         .main-nav ul {
             display: flex;
             gap: 20px;
@@ -377,21 +394,21 @@
             margin-top: auto; 
             color: var(--color-brand-primary); 
         }
-        /* تخصيص لون رابط بطاقة أداة فحص كلمة المرور */
-        .service-card a[href="password-tool.html"] .card-link,
-        .service-card a[href="password-tool.html"] .card-icon {
-            color: var(--color-accent-secondary) !important;
-        }
-        /* تخصيص لون رابط بطاقة Base64 (أخضر) */
-        .service-card a[href="base64-tool.html"] .card-link,
-        .service-card a[href="base64-tool.html"] .card-icon {
-            color: var(--color-tool-highlight-green) !important;
-        }
-        /* تخصيص لون رابط بطاقة Subnetting (أزرق) */
-        .service-card a[href="subnet-calculator.html"] .card-link,
-        .service-card a[href="subnet-calculator.html"] .card-icon {
-            color: var(--color-tool-highlight-blue) !important;
-        }
+        
+        /* تخصيص بطاقة Base64 (أخضر) - التنسيق المُوحَّد */
+        .service-card.base64-card { border-color: var(--color-tool-highlight-green); }
+        .service-card.base64-card .card-icon,
+        .service-card.base64-card .card-link { color: var(--color-tool-highlight-green) !important; }
+
+        /* تخصيص بطاقة Subnetting (أزرق) - التنسيق المُوحَّد */
+        .service-card.subnet-card { border-color: var(--color-tool-highlight-blue); }
+        .service-card.subnet-card .card-icon,
+        .service-card.subnet-card .card-link { color: var(--color-tool-highlight-blue) !important; }
+        
+        /* تخصيص بطاقة كلمة المرور (برتقالي) - التنسيق المُوحَّد */
+        .service-card.password-card { border-color: var(--color-accent-secondary); }
+        .service-card.password-card .card-icon,
+        .service-card.password-card .card-link { color: var(--color-accent-secondary) !important; }
 
 
         .card-link i { 
@@ -481,8 +498,12 @@
                 margin-left: 8px;
             }
             
-            .titles-container span {
-                font-size: 12px !important; 
+            /* تحديث: استخدام الفئات الجديدة لتعديل الخطوط في الجوال */
+            .titles-container .main-title {
+                font-size: 13px !important; 
+            }
+            .titles-container .sub-title { 
+                font-size: 10px !important; 
             }
 
             .hero-section {
@@ -515,11 +536,10 @@
             <a href="#home" class="logo-area">
                 <img src="it_logo.png" alt="IT Logo" class="main-logo-img">
                 <div class="titles-container">
-                    <span style="display: block; font-size:  14px; font-weight: 900; color: var(--color-brand-primary);">
-                 تقنية المعلومات  
+                    <span class="main-title">
+                 تقنية المعلومات والحلول الذكية  
                     </span> 
-                    <span style="display: block; font-size: 10px; font-weight: 700; color: var(--color-text-light); margin-top: -1px;"> 
-                        INFORMATION TECHNOLOGY  
+                    <span class="sub-title"> 
                     </span>
                 </div>
             </a>
@@ -550,7 +570,23 @@
     <section id="home" class="hero-section">
         <div class="container text-center">
             <h1 class="hero-title">
-                <span class="highlight-text">مجموعة أدوات احترافية
+                <span class="highlight-text">أهلاً بك</span> في منصة تقنية <span class="highlight-text">المعلومات IT</span>
+            </h1>
+            <h2 class="hero-subtitle">دليلك اليومي والمُحدَّث لأفضل الممارسات في الأمن السيبراني والشبكات والبنية السحابية.</h2>
+            <p class="hero-text">نقدم لك أحدث الثغرات، ونصائح الحماية، والأدوات المجانية لتبقى خطوة للأمام.</p>
+            
+            <div class="hero-buttons-grid">
+                <a href="#guides" class="card-button-hero primary-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3 style="font-size: 18px; margin-bottom: 5px;">قراءة آخر الأدلة الإرشادية</h3>
+                    <p style="font-size: 14px; margin: 0; color: var(--color-text-subtle);">أدلة احترافية في الأمن والشبكات</p>
+                </a>
+                <a href="cv-tool.html" class="card-button-hero cv-card">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3 style="font-size: 18px; margin-bottom: 5px;">نموذج لكتابة سيرتك الذاتية CV</h3>
+                    <p style="font-size: 14px; margin: 0; color: var(--color-text-subtle);">(أداة مجانية)</p>
+                </a>
+            </div>
         </div>
     </section>
     <section id="guides" class="main-content">
@@ -561,25 +597,25 @@
             </p>
             <div class="services-grid">
 
-                <a href="base64-tool.html" class="service-card" style="border-color: var(--color-tool-highlight-green);">
-                    <i class="fas fa-code-branch card-icon" style="color: var(--color-tool-highlight-green);"></i>
+                <a href="base64-tool.html" class="service-card base64-card">
+                    <i class="fas fa-code-branch card-icon"></i>
                     <h2>أداة تشفير وفك تشفير Base64</h2>
                     <p>حول البيانات الثنائية إلى نص آمن للنقل (والعكس). تعمل بالكامل على متصفحك لضمان الخصوصية.</p>
-                    <span class="card-link" style="color: var(--color-tool-highlight-green);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                    <span class="card-link">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
 
-                <a href="subnet-calculator.html" class="service-card" style="border-color: var(--color-tool-highlight-blue);">
-                    <i class="fas fa-network-wired card-icon" style="color: var(--color-tool-highlight-blue);"></i>
+                <a href="subnet-calculator.html" class="service-card subnet-card">
+                    <i class="fas fa-network-wired card-icon"></i>
                     <h2>حاسبة Subnetting المتقدمة (IPv4)</h2>
                     <p>أداة أساسية لمهندسي الشبكات لحساب نطاق الشبكة، وعنوان البث، وعدد المضيفين المتاحين.</p>
-                    <span class="card-link" style="color: var(--color-tool-highlight-blue);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                    <span class="card-link">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
                 
-                <a href="password-tool.html" class="service-card" style="border-color: var(--color-accent-secondary);">
-                    <i class="fas fa-lock card-icon" style="color: var(--color-accent-secondary);"></i>
+                <a href="password-tool.html" class="service-card password-card">
+                    <i class="fas fa-lock card-icon"></i>
                     <h2>أداة مُولِّد ومُدقق قوة كلمات المرور</h2>
                     <p>اختبر مدى أمان كلمة مرورك أو قم بتوليد كلمة مرور عشوائية فائقة القوة بضغطة زر. (مُجانية).</p>
-                    <span class="card-link" style="color: var(--color-accent-secondary);">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
+                    <span class="card-link">تجربة الأداة <i class="fas fa-arrow-left"></i></span>
                 </a>
 
                 <a href="network-security-guide.html" class="service-card">

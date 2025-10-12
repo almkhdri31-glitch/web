@@ -1,17 +1,53 @@
-// 1. جمع البيانات من الحقول
-let newTitle = document.getElementById('title-input').value;
-let newSummary = document.getElementById('summary-input').value;
-let severity = document.getElementById('severity-select').value; // مثلاً 'high'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>أداة تعديل التحذيرات</title>
+</head>
+<body>
+    
+    <div id="controls">
+        <h2>إدخال بيانات التحذير الجديد</h2>
+        
+        <label for="title-input">العنوان:</label>
+        <input type="text" id="title-input"><br><br>
+        
+        <label for="summary-input">الملخص:</label>
+        <textarea id="summary-input"></textarea><br><br>
 
-// 2. بناء كود HTML الجديد للبطاقة
-let newCardHTML = `
-  <div class="card-container">
-    <span class="alert-tag tag-${severity}">...${severity}</span>
-    <h3>${newTitle}</h3>
-    <p class="alert-details">${newSummary}</p>
+        <label for="severity-select">درجة الخطورة:</label>
+        <select id="severity-select">
+            <option value="high">حرج جداً</option>
+            <option value="medium">متوسط</option>
+            </select><br><br>
+
+        <button onclick="generateCard()">توليد كود البطاقة</button>
     </div>
-`;
 
-// 3. (الجزء الأصعب) استبدال المحتوى في ملفك:
-// هذا يتطلب استخدام واجهات برمجية للتحرير المتقدم أو الاعتماد على الأداة لتوليد النص للاستبدال اليدوي السهل.
-// أبسط طريقة هي أن يقوم الكود بتوليد النص البرمجي الكامل للبطاقة الجديدة، ثم تقوم أنت بنسخه ولصقه يدويًا في ملف Security-alerts.html القديم قبل الرفع.
+    <hr>
+    
+    <h3>الكود الناتج (انسخه والصقه في Security-alerts.html):</h3>
+    <pre id="output-code"></pre>
+
+    <script>
+        function generateCard() {
+            // هنا يذهب الكود الذي كتبته سابقاً (مثل let newTitle = document.getElementById('title-input').value;)
+            
+            let newTitle = document.g....value; // سحب العنوان
+            let newSummary = document.g....value; // سحب الملخص
+            let severity = document.g....value; // سحب الخطورة
+            
+            // بناء الكود النهائي (يجب أن يكون هنا الكود الكامل للبطاقة)
+            let finalHTML = `
+                <div class="card-container tag-${severity}">
+                    <h3>${newTitle}</h3>
+                    <p>${newSummary}</p>
+                </div>
+            `;
+            
+            // عرض الكود الناتج
+            document.getElementById('output-code').textContent = finalHTML;
+        }
+    </script>
+
+</body>
+</html>

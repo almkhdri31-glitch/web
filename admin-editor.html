@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أداة توليد كود تحذيرات الأمان</title>
     <style>
         body { font-family: Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
@@ -60,9 +61,8 @@
             const summary = document.getElementById('summary-input').value.trim();
             const solution = document.getElementById('solution-input').value.trim();
             const severity = document.getElementById('severity-select').value;
-            const dateInput = document.getElementById('date-input').value; // تم تغيير اسم المتغير لتجنب التعارض
+            const dateInput = document.getElementById('date-input').value;
             
-            // تحقق بسيط لتأكيد إدخال البيانات الأساسية
             if (!title || !summary) {
                 alert('الرجاء تعبئة حقول العنوان والملخص.');
                 return;
@@ -71,8 +71,10 @@
             // 2. تحديد الفئات والنصوص بناءً على الخطورة
             let tagClass;
             let tagText;
-            let icon = '🚨'; // رمز تحذير افتراضي
-            
+            let icon = '🚨'; 
+            let cveDisplay = cve ? ` (${cve})` : ''; 
+            let solutionDisplay = solution ? `<p class="alert-solution">**الحل:** ${solution}</p>` : '';
+
             if (severity === 'high') {
                 tagClass = 'tag-high';
                 tagText = 'حرج جداً';
@@ -89,17 +91,17 @@
             // تنسيق التاريخ
             const formattedDate = dateInput ? `تاريخ النشر: ${dateInput}` : '';
 
-            // 3. بناء كود HTML الكامل للبطاقة
-            // تم استخدام دالة الهروب لتأمين النص وتضمينه بشكل سليم
+            // 3. بناء كود HTML الكامل للبطاقة الجديدة
+            // *** هذا الجزء تم تصحيحه لمعالجة إدخالات النصوص التجريبية***
             const newCardHTML = `
 <div class="security-card ${tagClass}">
     <div class="card-header">
         <span class="alert-tag ${tagClass}">${icon} ${tagText}</span>
     </div>
     <div class="card-body">
-        <h3>${title} (${cve})</h3>
+        <h3>${title}${cveDisplay}</h3>
         <p class="alert-summary">${summary}</p>
-        <p class="alert-solution">**الحل:** ${solution}</p>
+        ${solutionDisplay}
         ${formattedDate ? `<p class="alert-date">${formattedDate}</p>` : ''}
     </div>
     <div class="card-footer">

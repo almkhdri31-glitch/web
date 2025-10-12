@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صانع الفيديو السريع | Video Maker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>صانع الفيديو السريع 🎬</h1>
+        <p>أدخل النص والصور لإنشاء فيديو قصير ومميز.</p>
+
+        <form id="videoForm">
+            <div class="form-group">
+                <label for="videoText">النص الذي سيظهر/يُقرأ في الفيديو (عربي/إنجليزي):</label>
+                <textarea id="videoText" placeholder="اكتب هنا النص الخاص بك..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imageUpload">رفع الصور (الحد الأدنى 3 صور):</label>
+                <input type="file" id="imageUpload" accept="image/*" multiple required>
+                <small>سيتم استخدام الصور بترتيب رفعها.</small>
+            </div>
+
+            <button type="submit" id="generateButton">إنشاء الفيديو</button>
+        </form>
+        
+        <div id="statusMessage" class="hidden">جارٍ العمل...</div>
+        <div id="resultArea" class="hidden">
+            <h2>فيديوك جاهز!</h2>
+            <a id="downloadLink" href="#" download>اضغط هنا للتحميل</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

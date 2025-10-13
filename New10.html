@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صانع الفيديو السريع</title>
+    <style>
+        /* التنسيقات CSS */
+        body {
+            direction: rtl;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .icon {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            text-align: right;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        textarea, input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        #fileCount {
+            display: block;
+            text-align: right;
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+        #fileInput {
+            display: none;
+        }
+        .file-label {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover:not(:disabled) {
+            background-color: #1e7e34;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #e3a800;
+            display: none;
+        }
+        #downloadLink {
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+        #videoOutput {
+            width: 100%;
+            height: 250px;
+            background-color: #eee;
+            margin-top: 20px;
+            display: none; /* المكان الذي سيتم فيه محاكاة الفيديو */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">🎬</div>
+        <h1>صانع الفيديو السريع</h1>
+        <p>أدخل النص والصور لإنشاء فيديو قصير ومميز يعمل في المتصفح.</p>
+
+        <label for="textInput">النص الذي سيُقرأ في الفيديو (عربي/إنجليزي):</label>
+        <textarea id="textInput" placeholder="اكتب هنا النص الخاص..." rows="4"></textarea>
+
+        <label for="fileInput">رفع الصور (الحد الأدنى 3 صور):</label>
+        <input type="file" id="fileInput" accept="image/*" multiple onchange="updateFileCount()">
+        
+        <label for="fileInput" class="file-label">اختيار الملفات</label>
+        
+        <span id="fileCount">سيتم استخدام الصور بالترتيب الذي رفعتها به. كل صورة ستُعرض لمدة 5 ثواني تقريباً.</span>
+
+        <button id="createVideoBtn" onclick="createVideoSimulation()">إنشاء الفيديو</button>
+        
+        <div id="status">جاري العمل...</div>
+        
+        <div id="videoOutput">
+            <span id="currentSlide">هنا سيتم عرض الصور والنص المتزامن (محاكاة)</span>
+        </div>
+
+        <div id="downloadLink">
+            <h2>فيديوك جاهز!</h2>
+            <a href="#" id="downloadBtn" onclick="alert('عملية التنزيل تتطلب تسجيل حقيقي بواسطة MediaRecorder API، هذه وظيفة للمحاكاة والتسجيل الخارجي.')">اضغط هنا للتحميل (محاكاة)</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script> </body>
+</html>

@@ -226,54 +226,6 @@
             display: none; 
         }
 
-        /* *************** تنسيقات الشريط الإخباري (الآن إرشادي) *************** */
-        .news-ticker-container {
-            overflow: hidden;
-            white-space: nowrap; 
-            width: 100%;
-            background-color: var(--color-bg-secondary); 
-            padding: 8px 0;
-            border-bottom: 3px solid var(--color-brand-primary); 
-            position: relative; 
-            z-index: 999; 
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-        }
-
-        .news-ticker-content {
-            display: inline-block;
-            animation: marquee 35s linear infinite; /* التمرير مستمر بدون جافاسكريبت */
-            padding-right: 100%; 
-            font-size: 14px;
-        }
-
-        .news-ticker-content:hover {
-            animation-play-state: paused;
-        }
-
-        .news-item {
-            margin-left: 50px; 
-            color: var(--color-text-light); 
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 700;
-        }
-
-        .news-item:hover {
-            color: var(--color-brand-primary);
-        }
-
-        .separator {
-            color: var(--color-accent-secondary);
-            margin: 0 10px;
-            font-weight: 900;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); } 
-            100% { transform: translateX(-100%); } 
-        }
-        /* *************************************************************** */
-
         /* قسم البطل (Hero Section) */
         .hero-section {
             padding: 100px 0;
@@ -719,23 +671,6 @@
             <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
-<div class="news-ticker-container">
-        <div id="rss-ticker-content" class="news-ticker-content">
-            <span style="color:var(--color-brand-primary); font-weight: 900; margin-left: 20px;">[★] إرشادات هامة [★]</span>
-            <span class="news-item" style="font-weight: 500;">
-                حافظ على أمان معلوماتك: استخدم مُولِّد كلمات المرور الموجود في "مركز الأدوات المجانية".
-            </span>
-            <span class="separator"> 🛡️ </span>
-            <span class="news-item" style="font-weight: 500;"> 
-                لحماية شبكتك المنزلية من الاختراق، اضغط على "أدلة الإرشاد" واقرأ دليل تأمين الشبكة.
-            </span>
-            <span class="separator"> 💡 </span>
-             <span class="news-item" style="font-weight: 500;"> 
-                كن على اطلاع دائم: انقر على "مستجدات الأمن والتحذيرات الحرجة" لتصفح آخر ثغرات CVEs.
-            </span>
-            <span class="separator"> ⚡ </span>
-        </div>
-    </div>
 <section id="home" class="hero-section">
         <div class="container text-center">
             <h3 class="hero-title">

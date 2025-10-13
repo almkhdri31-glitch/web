@@ -506,18 +506,24 @@
                 justify-content: center;
                 align-items: center;
             }
-            /* تفعيل التمييز عند التمرير في وضع الجوال */
+            /* ======================================================= */
+            /* ✅ التعديل الأول: إضافة كلاس .active-mobile-highlight لحل مشكلة التظليل */
+            /* ======================================================= */
             .main-nav ul li a:hover,
-            .main-nav ul li a.active {
+            .main-nav ul li a.active,
+            .main-nav ul li a.active-mobile-highlight { 
                 border-bottom: none;
                 background-color: var(--color-brand-primary); 
                 color: var(--color-bg-main); 
             }
             /* تعديل لون الأيقونات والنص عند التمرير في وضع الجوال */
             .main-nav ul li a:hover i,
-            .main-nav ul li a.active i {
+            .main-nav ul li a.active i,
+            .main-nav ul li a.active-mobile-highlight i {
                 color: var(--color-bg-main) !important; 
             }
+            /* ======================================================= */
+
             .logo-area {
                 font-size: 20px; 
             }
@@ -767,31 +773,30 @@
             mainNav.classList.toggle('active');
         });
 
+        // =======================================================
+        // ✅ التعديل الثاني: تحديث كود JavaScript لحل مشكلة الإغلاق والتظليل
+        // =======================================================
         const navLinks = document.querySelectorAll('.main-nav ul li a');
+
         navLinks.forEach(link => {
             link.addEventListener('click', (event) => {
-                const href = link.getAttribute('href');
-                const isDropdownLink = link.closest('.dropdown-menu'); // تحقق إذا كان الرابط داخل القائمة المنسدلة
+                
+                // 1. **حل مشكلة التظليل:** إزالة التظليل عن جميع الروابط وتطبيقه على الرابط المختار 
+                //    (باستخدام الكلاس الجديد active-mobile-highlight).
+                navLinks.forEach(item => item.classList.remove('active-mobile-highlight'));
+                link.classList.add('active-mobile-highlight');
 
-                // إذا كان الرابط قسمًا داخليًا (#)
-                if (href === '#' || href.startsWith('#')) {
+                // 2. **حل مشكلة الإغلاق:** تحديد ما إذا كان الرابط هو الرابط الرئيسي للقائمة المنسدلة (مركز الأدوات)
+                const isDropdownParent = link.closest('.dropdown-tools') && !link.closest('.dropdown-menu');
+
+                // إغلاق القائمة الجانبية في جميع الحالات باستثناء الرابط الأب للقائمة المنسدلة
+                if (!isDropdownParent) {
+                    // نغلق القائمة فوراً
                     mainNav.classList.remove('active');
-                } 
-                // إذا كان الرابط داخل القائمة المنسدلة (في وضع الجوال)، دعه ينتقل مباشرة دون تأخير
-                else if (isDropdownLink) {
-                    // لا نفعل أي شيء هنا، نترك المتصفح يقوم بعملية الانتقال
-                    // ونغلق القائمة فوراً
-                     mainNav.classList.remove('active');
-                }
-                 // إذا كان رابطاً رئيسياً (مثل video-library.html) أو البطاقة الثالثة
-                else {
-                    // نؤجل إغلاق القائمة قليلاً لضمان بدء عملية الانتقال للصفحة الجديدة.
-                    setTimeout(() => {
-                       mainNav.classList.remove('active');
-                    }, 50); 
                 }
             });
         });
+        // =======================================================
 
         // تحديث التاريخ تلقائياً كل سنة
         document.getElementById('current-year').textContent = new Date().getFullYear();

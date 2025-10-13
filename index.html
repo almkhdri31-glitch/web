@@ -242,7 +242,7 @@
         .news-ticker-content {
             display: inline-block;
             animation: marquee 35s linear infinite; /* التمرير مستمر بدون جافاسكريبت */
-            padding-left: 100%; /* <<== التعديل رقم 2: لتبدأ الحركة من اليسار */
+            padding-right: 100%; 
             font-size: 14px;
         }
 
@@ -267,10 +267,10 @@
             margin: 0 10px;
             font-weight: 900;
         }
-        /* <<== التعديل رقم 1: عكس الاتجاه لبدء الحركة من اليسار إلى اليمين (LTR) */
+
         @keyframes marquee {
-            0% { transform: translateX(-100%); } /* تبدأ من خارج الشاشة على اليسار */
-            100% { transform: translateX(100%); } /* تنتهي عند خارج الشاشة على اليمين */
+            0% { transform: translateX(100%); } 
+            100% { transform: translateX(-100%); } 
         }
         /* *************************************************************** */
 

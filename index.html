@@ -226,7 +226,7 @@
             display: none; 
         }
 
-        /* *************** تنسيقات الشريط الإخباري المضافة *************** */
+        /* *************** تنسيقات الشريط الإخباري (الآن إرشادي) *************** */
         .news-ticker-container {
             overflow: hidden;
             white-space: nowrap; 
@@ -241,7 +241,7 @@
 
         .news-ticker-content {
             display: inline-block;
-            animation: marquee 35s linear infinite; 
+            animation: marquee 35s linear infinite; /* التمرير مستمر بدون جافاسكريبت */
             padding-right: 100%; 
             font-size: 14px;
         }
@@ -274,7 +274,7 @@
         }
         /* *************************************************************** */
 
-        /* قسم البطل (Hero Section) - لم يتغير */
+        /* قسم البطل (Hero Section) */
         .hero-section {
             padding: 100px 0;
             min-height: 100vh;
@@ -324,7 +324,7 @@
         .highlight-text {
             color: var(--color-brand-primary); 
         }
-        /* تنسيق البطاقات في قسم Hero - لم يتغير */
+        /* تنسيق البطاقات في قسم Hero */
         .hero-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -399,7 +399,7 @@
         }
         /* ------------------------------------- */
         
-        /* تنسيق أقسام المحتوى الداخلية - لم يتغير */
+        /* تنسيق أقسام المحتوى الداخلية */
         .main-content, .quick-tip-section {
             padding: 80px 0;
             background-color: var(--color-bg-secondary); 
@@ -501,7 +501,7 @@
         .card-link:hover i { 
             color: var(--color-bg-main); 
         }
-        /* الفوتر (Footer) - تم إضافة تنسيق أيقونات السوشيال ميديا */
+        /* الفوتر (Footer) */
         .main-footer {
             background-color: var(--color-bg-secondary); 
             color: var(--color-text-light);
@@ -526,7 +526,7 @@
         .social-icons a:hover {
             color: var(--color-brand-primary);
         }
-        /* *************** تنسيق زر العودة للأعلى المضاف *************** */
+        /* *************** تنسيق زر العودة للأعلى *************** */
         #backToTop {
             display: none; /* مخفي افتراضياً */
             position: fixed; 
@@ -721,9 +721,19 @@
     </header>
 <div class="news-ticker-container">
         <div id="rss-ticker-content" class="news-ticker-content">
-            <span style="color:var(--color-brand-primary);">
-                [★] جاري تحديث آخر تحذيرات الأمن السيبراني والثغرات الحرجة... [★]
+            <span style="color:var(--color-brand-primary); font-weight: 900; margin-left: 20px;">[★] إرشادات هامة [★]</span>
+            <span class="news-item" style="font-weight: 500;">
+                حافظ على أمان معلوماتك: استخدم مُولِّد كلمات المرور الموجود في "مركز الأدوات المجانية".
             </span>
+            <span class="separator"> 🛡️ </span>
+            <span class="news-item" style="font-weight: 500;"> 
+                لحماية شبكتك المنزلية من الاختراق، اضغط على "أدلة الإرشاد" واقرأ دليل تأمين الشبكة.
+            </span>
+            <span class="separator"> 💡 </span>
+             <span class="news-item" style="font-weight: 500;"> 
+                كن على اطلاع دائم: انقر على "مستجدات الأمن والتحذيرات الحرجة" لتصفح آخر ثغرات CVEs.
+            </span>
+            <span class="separator"> ⚡ </span>
         </div>
     </div>
 <section id="home" class="hero-section">
@@ -844,10 +854,11 @@
     <footer class="main-footer" id="contact-footer">
         <div class="container text-center">
              <div class="social-icons">
-                <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                </div>
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook Page"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank" title="X / Twitter Page"><i class="fab fa-twitter"></i></a>
+                 <a href="https://telegram.org/" target="_blank" title="Telegram Page"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://www.youtube.com/" target="_blank" title="YouTube Channel"><i class="fab fa-youtube"></i></a>
+            </div>
             <p style="font-size: 14px; margin-bottom: 5px;">
                 <a href="privacy-policy.html" style="color: var(--color-text-subtle); text-decoration: none;">سياسة الخصوصية</a>
                 <span style="margin: 0 10px; color: var(--color-text-subtle);">|</span>
@@ -894,51 +905,7 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
 
-        // ********************* START: كود جلب الأخبار RSS (المضاف) *********************
-        // تم تزويد الكود برابط موجز أخبار الأمن السيبراني من The Hacker News
-        const RSS_FEED_URL = 'https://feeds.feedburner.com/TheHackerNews'; 
-        
-        // نقطة نهاية الخدمة الوسيطة لتحويل RSS إلى JSON
-        const PROXY_URL = `https://api.rss2json.com/v1/api.json?rss_url=${RSS_FEED_URL}`;
-
-        function fetchAndDisplayNews() {
-            fetch(PROXY_URL)
-                .then(response => response.json())
-                .then(data => {
-                    const ticker = document.getElementById('rss-ticker-content');
-                    ticker.innerHTML = ''; 
-                    
-                    if (data.items && data.items.length > 0) {
-                        data.items.slice(0, 7).forEach(item => {
-                            const link = document.createElement('a');
-                            link.href = item.link; 
-                            link.target = '_blank';
-                            link.classList.add('news-item');
-                            link.textContent = item.title; 
-                            
-                            ticker.appendChild(link);
-                            
-                            const separator = document.createElement('span');
-                            separator.classList.add('separator');
-                            separator.textContent = ' ⚡ ';
-                            ticker.appendChild(separator);
-                        });
-                    } else {
-                         ticker.innerHTML = '<span style="color:var(--color-text-subtle);">عذراً، لم نتمكن من جلب الأخبار حالياً.</span>';
-                    }
-                })
-                .catch(error => {
-                    console.error('خطأ في تحميل الأخبار:', error);
-                    document.getElementById('rss-ticker-content').innerHTML = '<span style="color:var(--color-hover-visual);">خطأ في الاتصال بمصدر الأخبار.</span>';
-                });
-        }
-
-        fetchAndDisplayNews();
-        setInterval(fetchAndDisplayNews, 3600000); // تحديث كل ساعة
-        // ********************* END: كود جلب الأخبار RSS (المضاف) *********************
-
-
-        // ********************* START: كود زر العودة للأعلى (المضاف) *********************
+        // ********************* START: كود زر العودة للأعلى *********************
         let mybutton = document.getElementById("backToTop");
 
         // إظهار الزر عند التمرير 20 بكسل لأسفل
@@ -957,7 +924,9 @@
           document.body.scrollTop = 0; // لمتصفح سفاري
           document.documentElement.scrollTop = 0; // لمتصفحات كروم وفايرفوكس وإيدج
         }
-        // ********************* END: كود زر العودة للأعلى (المضاف) *********************
+        // ********************* END: كود زر العودة للأعلى *********************
+        
+        // ملاحظة: تم حذف كود جلب الأخبار (RSS) بالكامل لضمان عدم ظهور أخطاء الاتصال.
     </script>
 </body>
 </html>

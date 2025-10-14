@@ -14,6 +14,6 @@ Disallow: /cgi-bin/
 Allow: /web/guides/
 Allow: /web/videos/
 Allow: /web/cv-tool/
-Allow: /web/favicon.ico
+Allow: /web/favicon.
 Sitemap: https://almkhdri31-glitch.github.io/web/sitemap.xml
 # التأكد من أن هذا الرابط يقود إلى الملف الذي رفعته أعلاه

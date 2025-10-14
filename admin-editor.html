@@ -1,112 +1,12 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أداة توليد كود تحذيرات الأمان (نسخة توليد الكود النصي)</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        /* ========================================================================= */
-        /* تنسيقات الأداة - (Tool CSS) */
-        /* ========================================================================= */
-        body { font-family: 'Cairo', Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
-        #controls { 
-            background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 30px; 
-            max-width: 800px; margin-left: auto; margin-right: auto;
-        }
-        h2 { border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 20px; color: #007bff; }
-        label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], textarea, select { 
-            width: 100%; padding: 12px; margin: 5px 0; display: block; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; 
-        }
-        
-        /* أزرار الإجراءات */
-        .action-buttons { margin-top: 20px; display: flex; justify-content: space-between; gap: 10px; }
-        .action-buttons button { 
-            padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 49%; transition: background-color 0.3s;
-        }
-        .action-buttons button#add-alert-btn {
-            background-color: #2ecc71; color: white; /* أخضر للإضافة */
-        }
-        .action-buttons button#add-alert-btn:hover { background-color: #27ae60; }
-        .action-buttons button#generate-btn {
-            background-color: #007bff; color: white; /* أزرق للتوليد */
-        }
-        .action-buttons button#generate-btn:hover { background-color: #0056b3; }
-
-        /* قائمة التحذيرات المضافة */
-        #alerts-list-container { margin-top: 25px; }
-        #alerts-list { padding: 15px; border: 1px dashed #aaa; border-radius: 6px; min-height: 80px; background: #f9f9f9; }
-        #alerts-list p { 
-            margin: 0; padding: 8px 0; border-bottom: 1px dotted #ddd; font-size: 15px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        #alerts-list p:last-child { border-bottom: none; }
-        
-        /* منطقة الإخراج */
-        #output-area { background: #e9e9e9; padding: 20px; border-radius: 6px; overflow-x: auto; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        #output-area h3 { color: #333; }
-        pre { 
-            white-space: pre-wrap; word-wrap: break-word; font-size: 13px; color: #000; direction: ltr; text-align: left; 
-            background: #fff; padding: 15px; border-radius: 4px; border: 1px solid #ccc;
-        }
-    </style>
-</head>
-<body>
-
-    <div id="controls">
-        <h2>🚀 أداة توليد كود التحذيرات الأمنية (النسخة النصية)</h2>
-        
-        <label for="title-input">عنوان التحذير:</label>
-        <input type="text" id="title-input" placeholder="مثال: ثغرة تنفيذ كود عن بعد في خوادم Exchange">
-        
-        <label for="cve-input">رقم الثغرة (CVE-XXXXX):</label>
-        <input type="text" id="cve-input" placeholder="مثال: CVE-2025-XXXXX">
-
-        <label for="summary-input">الملخص/الوصف القصير:</label>
-        <textarea id="summary-input" rows="3" placeholder="مثال: هذه الثغرة تسمح للمهاجمين بتنفيذ تعليمات برمجية دون مصادقة..."></textarea>
-        
-        <label for="solution-input">الحل/الإجراء المطلوب (يظهر بـ **الحل:**):</label>
-        <textarea id="solution-input" rows="2" placeholder="مثال: يجب تطبيق تحديث الأمان الأخير (KB504XXXX) فوراً."></textarea>
-
-        <label for="date-input">تاريخ النشر (مثال: 8 أكتوبر 2025):</label>
-        <input type="text" id="date-input" placeholder="مثال: 15 أكتوبر 2025">
-        
-        <label for="severity-select">درجة الخطورة:</label>
-        <select id="severity-select">
-            <option value="critical">حرج جداً</option>
-            <option value="medium">متوسط</option>
-            <option value="low">منخفض</option>
-        </select>
-        
-        <div class="action-buttons">
-            <button id="add-alert-btn" onclick="addAlert()"><i class="fas fa-plus-circle"></i> إضافة تحذير للقائمة</button>
-            <button id="generate-btn" onclick="generateFullPageCode()"><i class="fas fa-code"></i> توليد كود الصفحة الكاملة</button>
-        </div>
-
-        <div id="alerts-list-container">
-            <h3>قائمة التحذيرات المضافة (<span id="alert-count">0</span>):</h3>
-            <div id="alerts-list">
-                <p style="text-align: center; color: #999;">لا توجد تحذيرات مضافة بعد.</p>
-            </div>
-        </div>
-        
-    </div>
-    
-    <div id="output-area">
-        <h3>الكود الناتج (انسخه والصقه كاملاً في ملف Security-alerts.html):</h3>
-        <pre id="output-code">سيظهر الكود هنا بعد التوليد.</pre>
-    </div>
-
     <script>
+        // 1. المصفوفة التي تخزن التحذيرات
         let alertsData = []; 
         
         const outputCodeArea = document.getElementById('output-code');
         const alertsList = document.getElementById('alerts-list');
         const alertCountSpan = document.getElementById('alert-count');
         
+        // 2. وظيفة تحديث القائمة المرئية والعداد
         function updateAlertList() {
             if (alertsData.length === 0) {
                 alertsList.innerHTML = '<p style="text-align: center; color: #999;">لا توجد تحذيرات مضافة بعد.</p>';
@@ -126,15 +26,16 @@
             alertCountSpan.textContent = alertsData.length;
         }
         
-        // وظيفة حذف التحذير من القائمة
+        // 3. وظيفة حذف التحذير
         function removeAlert(index) {
             alertsData.splice(index, 1); 
             updateAlertList(); 
             outputCodeArea.textContent = 'تم تحديث القائمة. يرجى إعادة توليد الكود.';
         }
 
-        // الوظيفة الأساسية لإضافة التحذير إلى المصفوفة
+        // 4. الوظيفة الأساسية لإضافة التحذير إلى المصفوفة (الزر الأخضر)
         function addAlert() {
+            // جلب القيم
             const title = document.getElementById('title-input').value.trim();
             const cve = document.getElementById('cve-input').value.trim();
             const summary = document.getElementById('summary-input').value.trim();
@@ -147,44 +48,45 @@
                 return;
             }
             
-            // 1. إضافة التحذير إلى المصفوفة
+            // إضافة التحذير إلى المصفوفة
             alertsData.push({ title, cve, summary, solution, severity, date });
             
-            // 2. تحديث القائمة المرئية
+            // تحديث القائمة المرئية (هذا يزيد العداد)
             updateAlertList();
             
-            // 3. مسح الحقول استعداداً للتحذير التالي
+            // مسح الحقول (علامة نجاح الإضافة)
             document.getElementById('title-input').value = '';
             document.getElementById('cve-input').value = '';
             document.getElementById('summary-input').value = '';
             document.getElementById('solution-input').value = '';
             document.getElementById('date-input').value = '';
-            document.getElementById('severity-select').value = 'critical'; 
+            document.getElementById('severity-select').value = 'critical'; // إعادة درجة الخطورة للوضع الافتراضي
             
             outputCodeArea.textContent = `✅ تم إضافة التحذير بنجاح! لديك الآن ${alertsData.length} تحذيرات مضافة في القائمة. اضغط على "توليد كود الصفحة الكاملة" للحصول على الكود النهائي.`;
         }
 
 
+        // 5. وظيفة توليد كود الصفحة الكاملة (الزر الأزرق)
         function generateFullPageCode() {
-            // **هذا هو التحقق الذي يمنع ظهور الصفر:**
             if (alertsData.length === 0) {
-                alert('⚠️ لا يمكن التوليد. العداد صفر. الرجاء الضغط على "إضافة تحذير للقائمة" (الزر الأخضر) لإضافة تحذير واحد على الأقل أولاً.');
+                alert('⚠️ العداد صفر. الرجاء الضغط على "إضافة تحذير للقائمة" (الزر الأخضر) لإضافة تحذير واحد على الأقل أولاً.');
                 outputCodeArea.textContent = 'العداد صفر. الرجاء إضافة تحذير واحد على الأقل باستخدام الزر الأخضر.';
                 return;
             }
             
             let cardsHTML = '';
             
-            // 1. التكرار على جميع التحذيرات المولدة
+            // 6. تكرار على البيانات المخزنة وتوليد كود البطاقات
             alertsData.forEach(alert => {
                 
                 let tagClass;
                 let cardClass = '';
                 let tagText;
                 let icon; 
+                // نستخدم التنسيق الذي طلبته في الصورة (CVE-2025-XXXXX)
                 let cveDisplay = alert.cve ? ` (${alert.cve})` : ''; 
                 
-                // تحديد الفئات والنصوص بناءً على الخطورة
+                // تحديد الفئات بناءً على الخطورة
                 if (alert.severity === 'critical') {
                     tagClass = 'tag-critical';
                     cardClass = 'critical-alert';
@@ -201,16 +103,17 @@
                     icon = '<i class="fas fa-info-circle"></i>';
                 }
 
-                // بناء أجزاء البطاقة
+                // بناء جزء الحل
                 const solutionHTML = alert.solution ? 
                     `<p class="patch-info">
                         **الحل:** ${alert.solution}
                     </p>` : '';
                     
+                // بناء جزء التاريخ
                 const dateHTML = alert.date ? 
                     `<p style="font-size: 13px; color: var(--color-text-subtle); margin-top: 15px;">تاريخ النشر: ${alert.date}</p>` : '';
 
-                // بناء كود HTML الكامل للبطاقة الجديدة
+                // كود HTML النظيف للبطاقة الواحدة
                 const newCardHTML = `
                 <div class="alert-card-container ${cardClass}">
                     <span class="alert-tag ${tagClass}">${icon} ${tagText}</span>
@@ -226,7 +129,7 @@
                 cardsHTML += newCardHTML;
             });
 
-            // 2. بناء الصفحة النهائية (الكود النصي النظيف)
+            // 7. بناء كود الصفحة الكاملة (النص النظيف)
             const finalPageCode = `
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -243,7 +146,7 @@
     <style>
         /*
         ========================================================================= */
-        /* 🎨 المتغيرات (Variables) - نفس متغيرات الصفحة الرئيسية تماماً */
+        /* 🎨 المتغيرات (Variables) */
         /* ========================================================================= */
         :root {
             --color-bg-main: #0A0A0A;    
@@ -540,31 +443,7 @@
 <body>
 
     <header class="main-header">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            
-            <a class="logo" href="index.html" style="font-size: 10px; text-align: left;">
-                <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
-                   أمن المعلومات والحلول الذكية
-                </span> 
-                <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
-                </span>
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html#home">الرؤية والهدف</a></li>
-                    <li><a href="index.html#about">من نحن</a></li> 
-                    <li><a href="index.html#guides" class="active">أدلة الإرشاد</a></li>
-                    
-                    <li><a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">أداة فحص كلمة المرور</a></li>
-                    
-                    <li><a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" style="color: var(--color-accent-secondary); font-weight: bold;">الأدوات المجانية (مدقق الشبكة)</a></li>
-                    
-                    <li><a href="contact.html">الاتصال بنا</a></li> 
-                </ul>
-            </nav>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        </div>
-    </header>
+        </header>
     
     <div class="content-header">
         <div class="container">
@@ -581,8 +460,7 @@
             <div class="article-grid">
                 
                 ${cardsHTML}
-                
-            </div>
+                </div>
             
             <div class="text-center" style="margin-top: 50px;">
                  <a href="index.html#guides" class="card-link" style="font-size: 18px; border: 2px solid var(--color-brand-primary); padding: 10px 20px; border-radius: 8px;">
@@ -594,23 +472,7 @@
     </section>
 
     <footer class="main-footer" id="contact-footer">
-        <div class="container text-center">
-            <div class="social-links mb-3">
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
-            </div>
-            
-            <p class="mb-1">
-                <a href="mailto:" class="highlight-text" style="font-weight: bold;"></a>
-            </p>
-            
-            <p class="mb-0">
-                <a href="index.html#home" class="highlight-text" style="font-weight: bold; margin-left: 10px;"> </a>
-  <span class="highlight-text"></span>
-            </p>
-        </div>
-    </footer>
+        </footer>
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
@@ -631,12 +493,10 @@
 </html>
             `;
             
-            // 3. عرض الكود النهائي
+            // 8. عرض الكود النهائي
             outputCodeArea.textContent = finalPageCode.trim();
         }
         
         // تشغيل وظيفة تحديث القائمة عند تحميل الصفحة
         updateAlertList();
     </script>
-</body>
-</html>

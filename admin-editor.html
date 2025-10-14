@@ -1,63 +1,358 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أداة توليد كود تحذيرات الأمان (نسخة توليد الكود النصي)</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <title>السيرة الذاتية - CV</title>
     <style>
-        /* ========================================================================= */
-        /* تنسيقات الأداة - (Tool CSS) */
-        /* ========================================================================= */
-        body { font-family: 'Cairo', Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
-        #controls { 
-            background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 30px; 
-            max-width: 800px; margin-left: auto; margin-right: auto;
-        }
-        h2 { border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 20px; color: #007bff; }
-        label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], textarea, select { 
-            width: 100%; padding: 12px; margin: 5px 0; display: block; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; 
+        /* ********************************************************* */
+        /* تنسيقات النموذج (صفحة الإدخال) - بدون تغيير */
+        /* ********************************************************* */
+        body {
+            font-family: 'Arial', 'Helvetica Neue', sans-serif; 
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 0; 
+            margin: 0;
+            direction: rtl; 
         }
         
-        /* أزرار الإجراءات */
-        .action-buttons { margin-top: 20px; display: flex; justify-content: space-between; gap: 10px; }
-        .action-buttons button { 
-            padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 49%; transition: background-color 0.3s;
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="url"], textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+            display: block;
         }
-        .action-buttons button#add-alert-btn {
-            background-color: #2ecc71; color: white; /* أخضر للإضافة */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
-        .action-buttons button#add-alert-btn:hover { background-color: #27ae60; }
-        .action-buttons button#generate-btn {
-            background-color: #007bff; color: white; /* أزرق للتوليد */
-        }
-        .action-buttons button#generate-btn:hover { background-color: #0056b3; }
 
-        /* قائمة التحذيرات المضافة */
-        #alerts-list-container { margin-top: 25px; }
-        #alerts-list { padding: 15px; border: 1px dashed #aaa; border-radius: 6px; min-height: 80px; background: #f9f9f9; }
-        #alerts-list p { 
-            margin: 0; padding: 8px 0; border-bottom: 1px dotted #ddd; font-size: 15px;
-            display: flex; justify-content: space-between; align-items: center;
+        header {
+            background-color: #17202A;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        #alerts-list p:last-child { border-bottom: none; }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+        }
+        footer {
+            background-color: #17202A;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px; 
+            font-size: 0.9em;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto; 
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cv-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #17202A;
+            margin-bottom: 5px;
+            letter-spacing: 5px;
+        }
+
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        #profile-image {
+            width: 100px !important;
+            height: 100px !important;
+            max-width: 100px !important; 
+            max-height: 100px !important; 
+            background-color: #e9ecef; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #007bff;
+            display: block; 
+            margin: 0 auto 10px auto; 
+            opacity: 0.7; 
+        }
         
-        /* منطقة الإخراج */
-        #output-area { background: #e9e9e9; padding: 20px; border-radius: 6px; overflow-x: auto; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        #output-area h3 { color: #333; }
-        pre { 
-            white-space: pre-wrap; word-wrap: break-word; font-size: 13px; color: #000; direction: ltr; text-align: left; 
-            background: #fff; padding: 15px; border-radius: 4px; border: 1px solid #ccc;
+        #profile-image[src]:not([src=""]) {
+            opacity: 1; 
+            border: 2px solid #28a745; 
         }
+
+        .image-upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            display: block;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff; /* الخط الأزرق الذي سيتم تعديله في الطباعة */
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 20px; 
+            font-weight: 600; 
+        }
+
+        .section-content {
+            margin-bottom: 20px;
+            padding-right: 15px;
+        }
+        
+        .print-button-on-form {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .print-area {
+             display: flex !important; 
+        }
+        form {
+             display: block !important; 
+        }
+        
+        #printable-cv {
+            display: none; 
+        }
+        
+        .skills-options div {
+             display: inline-block;
+             margin-left: 10px;
+             margin-bottom: 5px;
+        }
+
+        .language-entry, .reference-entry {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .language-entry input[type="text"], 
+        .language-entry input[type="number"] {
+            width: calc(50% - 15px);
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .reference-entry input {
+            margin-bottom: 10px;
+        }
+        
+        /* ********************************************************* */
+        /* تنسيقات صفحة الطباعة (الحل الهندسي لمشاكل التقطيع والوضوح) */
+        /* ********************************************************* */
+        @media print {
+            
+            @page {
+                margin: 0.5cm !important; 
+                padding: 0 !important;
+            }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-family: 'Arial', 'Helvetica Neue', sans-serif !important; 
+                font-size: 12px !important; 
+            }
+            
+            /* إخفاء عناصر النموذج الأساسية */
+            .print-area, form, .print-actions, .print-button-on-form, header, footer { 
+                display: none !important;
+            }
+            
+            #printable-cv {
+                display: block !important; 
+                width: 100% !important; 
+                position: relative; 
+                background: white;
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            
+            /* تفعيل طباعة الألوان */
+            .sidebar-column, .main-content-column h2, .lang-bar-fill, #cv-print-header {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* ********************************************************* */
+            /* 1. نظام الأعمدة ومنع التقطيع */
+            /* ********************************************************* */
+            
+            #print-content-columns {
+                display: grid !important; 
+                grid-template-columns: 35% 65% !important; 
+                gap: 0; 
+                position: relative;
+            }
+            
+            /* العمود الجانبي الملون (Sidebar - على اليمين) */
+            .sidebar-column {
+                background-color: #5B4F46 !important; 
+                color: #FFFFFF !important; /* النص العادي: أبيض ناصع لتباين ممتاز */
+                padding: 20px 10px 10px 10px !important; 
+                order: 1; 
+            }
+            
+            /* عمود المحتوى الرئيسي (على اليسار) */
+            .main-content-column {
+                padding: 20px 20px 20px 15px !important; 
+                order: 2; 
+                background: white;
+            }
+
+            /* منع قطع المحتوى داخل الأقسام (الحل الرئيسي لمشكلة التقطيع) */
+            .main-content-column h2, 
+            .sidebar-column h2,
+            .section-content,
+            .language-entry-print,
+            .reference-entry-print {
+                page-break-inside: avoid !important; /* للطباعة */
+                -webkit-column-break-inside: avoid !important; /* لمتصفحات كروم */
+                break-inside: avoid !important; /* للجميع */
+            }
+            
+            /* ********************************************************* */
+            /* 2. تحسين وضوح العناوين في العمود الرئيسي (اللون الأبيض) */
+            /* ********************************************************* */
+            
+            /* العناوين في العمود الرئيسي (أسود داكن مع خط رمادي) */
+            .main-content-column h2 {
+                color: #17202A !important; /* لون النص: أسود داكن */
+                border-bottom: 2px solid #6c757d !important; /* لون الخط السفلي: رمادي غامق احترافي */
+                padding-bottom: 3px !important; 
+                margin-top: 15px !important; 
+                font-size: 16px !important; 
+                font-weight: 700 !important;
+                display: block !important;
+                border-left: none !important; 
+                padding-left: 0 !important;
+            }
+            
+            .main-content-column h2::after {
+                display: none !important; 
+            }
+            
+            /* تنسيق عنوان "CV" في العمود الرئيسي (على اليسار) */
+            #cv-print-header {
+                 text-align: left !important; /* كلمة CV على اليسار */
+                 font-size: 30px !important; 
+                 margin-bottom: 10px !important;
+                 letter-spacing: 5px !important; 
+                 border-bottom: 2px solid #6c757d !important; /* رمادي غامق */
+                 padding-bottom: 5px;
+                 color: #17202A !important; /* أسود داكن */
+            }
+            
+            /* ********************************************************* */
+            /* 3. تنسيق العناوين داخل العمود الجانبي (البني الداكن) */
+            /* ********************************************************* */
+            
+            .header-sidebar-container-print {
+                text-align: center !important; 
+                margin-bottom: 20px !important;
+                color: white !important; 
+            }
+             
+            .sidebar-column h2 {
+                color: #f8f9fa !important; /* العناوين الفرعية داخل البني: رمادي فاتح (أنيق وجذاب) */
+                border-bottom: 1px solid #f8f9fa !important; /* خط فاصل رمادي فاتح */
+            }
+
+            .image-upload-container-print {
+                display: block !important;
+                width: 80px !important; 
+                height: 80px !important;
+                margin: 0 auto 8px auto !important; 
+            }
+
+            .image-upload-container-print img {
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: 50% !important;
+                object-fit: cover !important;
+                border: 2px solid #fff !important; 
+            }
+            
+            .header-sidebar-container-print h1 {
+                font-size: 18px !important; 
+                margin: 5px 0 0 0 !important;
+            }
+            
+            .header-sidebar-container-print h3 {
+                font-size: 12px !important; 
+                margin: 2px 0 0 0 !important;
+            }
+            
+            .lang-bar-fill {
+                 background-color: #f8f9fa !important; /* لون ملء شريط اللغة: رمادي فاتح */
+            }
+             
+             .main-content-column .section-content {
+                margin-bottom: 10px !important;
+            }
+            .main-content-column p, .main-content-column li {
+                font-size: 12px !important;
+                line-height: 1.4 !important;
+                color: #333 !important; /* ضمان أن النص في العمود الأبيض أسود داكن */
+            }
+        }
+    </style>
+</head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة توليد كود تحذيرات الأمان</title>
+    <style>
+        body { font-family: Tahoma, Arial, sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
+        #controls { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input[type="text"], textarea, select, input[type="date"] { width: 100%; padding: 10px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        #output-area { background: #e9e9e9; padding: 15px; border-radius: 4px; overflow-x: auto; margin-top: 15px; }
+        pre { white-space: pre-wrap; word-wrap: break-word; font-size: 14px; color: #000; }
+        h2 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <div id="controls">
-        <h2>🚀 أداة توليد كود التحذيرات الأمنية (النسخة النصية)</h2>
+        <h2>🚀 توليد كود بطاقة تحذير أمان جديدة</h2>
         
         <label for="title-input">عنوان التحذير:</label>
         <input type="text" id="title-input" placeholder="مثال: ثغرة تنفيذ كود عن بعد في خوادم Exchange">
@@ -68,572 +363,90 @@
         <label for="summary-input">الملخص/الوصف القصير:</label>
         <textarea id="summary-input" rows="3" placeholder="مثال: هذه الثغرة تسمح للمهاجمين بتنفيذ تعليمات برمجية دون مصادقة..."></textarea>
         
-        <label for="solution-input">الحل/الإجراء المطلوب (يظهر بـ **الحل:**):</label>
+        <label for="solution-input">الحل/الإجراء المطلوب:</label>
         <textarea id="solution-input" rows="2" placeholder="مثال: يجب تطبيق تحديث الأمان الأخير (KB504XXXX) فوراً."></textarea>
 
-        <label for="date-input">تاريخ النشر (مثال: 8 أكتوبر 2025):</label>
-        <input type="text" id="date-input" placeholder="مثال: 15 أكتوبر 2025">
-        
         <label for="severity-select">درجة الخطورة:</label>
         <select id="severity-select">
-            <option value="critical">حرج جداً</option>
-            <option value="medium">متوسط</option>
-            <option value="low">منخفض</option>
+            <option value="high">حرج جداً (أحمر)</option>
+            <option value="medium">متوسط (برتقالي)</option>
+            <option value="low">منخفض (أزرق)</option>
         </select>
         
-        <div class="action-buttons">
-            <button id="add-alert-btn" onclick="addAlert()"><i class="fas fa-plus-circle"></i> إضافة تحذير للقائمة</button>
-            <button id="generate-btn" onclick="generateFullPageCode()"><i class="fas fa-code"></i> توليد كود الصفحة الكاملة</button>
-        </div>
+        <label for="date-input">تاريخ النشر (اختياري):</label>
+        <input type="date" id="date-input" value="2025-10-12">
 
-        <div id="alerts-list-container">
-            <h3>قائمة التحذيرات المضافة (<span id="alert-count">0</span>):</h3>
-            <div id="alerts-list">
-                <p style="text-align: center; color: #999;">لا توجد تحذيرات مضافة بعد.</p>
-            </div>
-        </div>
-        
+        <button onclick="generateCard()">توليد كود البطاقة</button>
     </div>
+
+    <hr>
     
     <div id="output-area">
-        <h3>الكود الناتج (انسخه والصقه كاملاً في ملف Security-alerts.html):</h3>
+        <h3>الكود الناتج (انسخه والصقه في ملف Security-alerts.html):</h3>
         <pre id="output-code">سيظهر الكود هنا بعد التوليد.</pre>
     </div>
 
     <script>
-        let alertsData = []; 
-        
-        const outputCodeArea = document.getElementById('output-code');
-        const alertsList = document.getElementById('alerts-list');
-        const alertCountSpan = document.getElementById('alert-count');
-        
-        function updateAlertList() {
-            if (alertsData.length === 0) {
-                alertsList.innerHTML = '<p style="text-align: center; color: #999;">لا توجد تحذيرات مضافة بعد.</p>';
-                alertCountSpan.textContent = '0';
-                return;
-            }
-
-            alertsList.innerHTML = '';
-            alertsData.forEach((alert, index) => {
-                const p = document.createElement('p');
-                const levelText = alert.severity === 'critical' ? 'حرج' : alert.severity === 'medium' ? 'متوسط' : 'منخفض';
-                const deleteButton = `<button style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 16px;" onclick="removeAlert(${index})"><i class="fas fa-trash"></i></button>`;
-                
-                p.innerHTML = `<span><strong>(${index + 1}) ${levelText}:</strong> ${alert.title}</span> ${deleteButton}`;
-                alertsList.appendChild(p);
-            });
-            alertCountSpan.textContent = alertsData.length;
-        }
-        
-        function removeAlert(index) {
-            alertsData.splice(index, 1); 
-            updateAlertList(); 
-            outputCodeArea.textContent = 'تم تحديث القائمة. يرجى إعادة توليد الكود.';
-        }
-
-        // الوظيفة التي تسبب المشكلة: تم التأكد من تخزين البيانات ومسح الحقول
-        function addAlert() {
+        function generateCard() {
+            // 1. جمع البيانات من الحقول
             const title = document.getElementById('title-input').value.trim();
             const cve = document.getElementById('cve-input').value.trim();
             const summary = document.getElementById('summary-input').value.trim();
             const solution = document.getElementById('solution-input').value.trim();
             const severity = document.getElementById('severity-select').value;
-            const date = document.getElementById('date-input').value.trim();
-
+            const dateInput = document.getElementById('date-input').value;
+            
             if (!title || !summary) {
-                alert('الرجاء تعبئة حقول العنوان والملخص قبل الإضافة.');
+                alert('الرجاء تعبئة حقول العنوان والملخص.');
                 return;
             }
-            
-            // 1. إضافة التحذير إلى المصفوفة (التخزين يتم هنا)
-            alertsData.push({ title, cve, summary, solution, severity, date });
-            
-            // 2. تحديث القائمة المرئية (هذا يزيد العداد)
-            updateAlertList();
-            
-            // 3. مسح الحقول (تأكيد نجاح الإضافة)
-            document.getElementById('title-input').value = '';
-            document.getElementById('cve-input').value = '';
-            document.getElementById('summary-input').value = '';
-            document.getElementById('solution-input').value = '';
-            document.getElementById('date-input').value = '';
-            document.getElementById('severity-select').value = 'critical'; 
-            
-            outputCodeArea.textContent = `✅ تم إضافة التحذير بنجاح! لديك الآن ${alertsData.length} تحذيرات مضافة في القائمة. اضغط على "توليد كود الصفحة الكاملة" للحصول على الكود النهائي.`;
-        }
 
-        // الوظيفة التي تنشئ الكود النصي القابل للنسخ
-        function generateFullPageCode() {
-            if (alertsData.length === 0) {
-                alert('⚠️ العداد صفر. الرجاء الضغط على "إضافة تحذير للقائمة" (الزر الأخضر) لإضافة تحذير واحد على الأقل أولاً.');
-                outputCodeArea.textContent = 'العداد صفر. الرجاء إضافة تحذير واحد على الأقل باستخدام الزر الأخضر.';
-                return;
+            // 2. تحديد الفئات والنصوص بناءً على الخطورة
+            let tagClass;
+            let tagText;
+            let icon = '🚨'; 
+            let cveDisplay = cve ? ` (${cve})` : ''; 
+            let solutionDisplay = solution ? `<p class="alert-solution">**الحل:** ${solution}</p>` : '';
+
+            if (severity === 'high') {
+                tagClass = 'tag-high';
+                tagText = 'حرج جداً';
+            } else if (severity === 'medium') {
+                tagClass = 'tag-medium';
+                tagText = 'متوسط';
+                icon = '⚠️';
+            } else {
+                tagClass = 'tag-low';
+                tagText = 'منخفض';
+                icon = 'ℹ️';
             }
-            
-            let cardsHTML = '';
-            
-            // 1. توليد كود البطاقات (مثلما يظهر في موقعك الداكن)
-            alertsData.forEach(alert => {
-                
-                let tagClass;
-                let cardClass = '';
-                let tagText;
-                let icon; 
-                let cveDisplay = alert.cve ? ` (${alert.cve})` : ''; 
-                
-                if (alert.severity === 'critical') {
-                    tagClass = 'tag-critical'; cardClass = 'critical-alert'; tagText = 'حرج جداً'; icon = '<i class="fas fa-exclamation-triangle"></i>';
-                } else if (alert.severity === 'medium') {
-                    tagClass = 'tag-medium'; tagText = 'متوسط'; icon = '<i class="fas fa-info-circle"></i>';
-                } else {
-                    tagClass = 'tag-medium'; tagText = 'منخفض'; icon = '<i class="fas fa-info-circle"></i>';
-                }
 
-                const solutionHTML = alert.solution ? 
-                    `<p class="patch-info">
-                        **الحل:** ${alert.solution}
-                    </p>` : '';
-                    
-                const dateHTML = alert.date ? 
-                    `<p style="font-size: 13px; color: var(--color-text-subtle); margin-top: 15px;">تاريخ النشر: ${alert.date}</p>` : '';
+            // تنسيق التاريخ
+            const formattedDate = dateInput ? `تاريخ النشر: ${dateInput}` : '';
 
-                const newCardHTML = `
-                <div class="alert-card-container ${cardClass}">
-                    <span class="alert-tag ${tagClass}">${icon} ${tagText}</span>
-                    <h3>${alert.title}${cveDisplay}</h3>
-                    <p class="alert-details">
-                        ${alert.summary}
-                    </p>
-                    ${solutionHTML}
-                    ${dateHTML}
-                </div>
-                `;
-                
-                cardsHTML += newCardHTML;
-            });
-
-            // 2. بناء الصفحة النهائية (الكود النصي النظيف)
-            const finalPageCode = `
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مستجدات الأمن والتحذيرات الحرجة</title>
-    <meta name="description" content="نشرة يومية بأحدث الثغرات الأمنية (CVEs) وكيفية تطبيق التصحيحات اللازمة على نظامك.">
-    
-    <link rel="icon" type="image/png" href="favicon.png"> 
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        /*
-        ========================================================================= */
-        /* 🎨 المتغيرات (Variables) */
-        /* ========================================================================= */
-        :root {
-            --color-bg-main: #0A0A0A;    
-            --color-bg-secondary: #1A1A1A; 
-            --color-bg-card: #1D2B35;    
-            --color-text-light: #f1f1f1;  
-            --color-text-subtle: #bdc3c7; 
-            --color-brand-primary: #FFC300;  
-            --color-brand-hover: #DAA520;   
-            --color-accent-secondary: #f39c12;
-            --color-tool-highlight: #2ecc71; 
-            --color-alert-critical: #e74c3c; /* لون جديد للتنبيهات الحرجة */
-            --color-alert-medium: #f39c12;  /* لون جديد للتنبيهات المتوسطة */
-        }
-
-
-        /* ========================================================================= */
-        /* الإعدادات الأساسية وتنسيق الخطوط العامة */
-        /* ========================================================================= */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            line-height: 1.6;
-            color: var(--color-text-light); 
-            background-color: var(--color-bg-main);
-            overflow-x: hidden; 
-            font-size: 16px; 
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 28px; 
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--color-text-light);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--color-brand-primary); 
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--color-text-subtle);
-            margin-bottom: 40px;
-        }
-        
-        /* ========================================================================= */
-        /* الهيدر وقائمة التنقل */
-        /* ========================================================================= */
-         .main-header {
-            background: var(--color-bg-main); 
-            color: var(--color-text-light);
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .main-header .container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-        }
-        
-        .main-nav ul {
-            display: flex;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 24px; 
-            font-weight: 900;
-            color: var(--color-brand-primary);
-            text-align: left !important;
-        }
-
-        .main-nav ul li a {
-            padding: 5px 0; 
-            transition: all 0.3s;
-            color: var(--color-text-light); 
-        }
-
-        .main-nav ul li a:hover,
-        .main-nav ul li a.active {
-            color: var(--color-brand-primary); 
-            background-color: transparent; 
-            border-radius: 0;
-            border-bottom: 3px solid var(--color-brand-primary); 
-            padding-bottom: 5px; 
-        }
-
-        .menu-toggle {
-            color: var(--color-text-light);
-            font-size: 24px;
-            cursor: pointer;
-            display: none; 
-        }
-        /* نهاية تنسيق الهيدر */
-
-        /* ========================================================================= */
-        /* تنسيق قسم المحتوى الداخلي (Content Section) */
-        /* ========================================================================= */
-        .content-section {
-            padding: 80px 0;
-            background-color: var(--color-bg-secondary);
-            min-height: 80vh; 
-        }
-
-        .content-header {
-            padding: 40px 0;
-            background-color: var(--color-bg-main);
-            text-align: center;
-            border-bottom: 3px solid var(--color-brand-primary);
-        }
-
-        .article-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        /* تغيير البطاقة من رابط إلى حاوية محتوى (div) لإزالة زر "للمزيد" */
-        .alert-card-container { 
-            background: var(--color-bg-card); 
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            border-right: 5px solid var(--color-alert-medium); /* لون التنبيه الافتراضي */
-        }
-        
-        .alert-card-container.critical-alert {
-            border-right-color: var(--color-alert-critical);
-        }
-        
-        .alert-card-container h3 {
-            font-size: 20px;
-            color: var(--color-text-light);
-            margin-bottom: 10px;
-        }
-
-        /* تنسيق المحتوى التفصيلي الجديد */
-        .alert-card-container .alert-details {
-            font-size: 15px;
-            color: var(--color-text-subtle);
-            margin-bottom: 15px;
-        }
-        
-        .alert-card-container .patch-info {
-            font-size: 14px;
-            color: var(--color-brand-primary);
-            font-weight: bold;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #333;
-        }
-        
-        .alert-tag {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .tag-critical {
-            background-color: var(--color-alert-critical);
-            color: var(--color-text-light);
-        }
-        
-        .tag-medium {
-            background-color: var(--color-alert-medium);
-            color: var(--color-bg-main);
-        }
-
-        /* ========================================================================= */
-        /* الفوتر (Footer) */
-        /* ========================================================================= */
-        .main-footer {
-            background-color: var(--color-bg-secondary); 
-            color: var(--color-text-light);
-            padding: 20px 0; 
-            border-top: 1px solid #333; 
-        }
-        
-        .social-links a {
-            color: var(--color-brand-primary); 
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--color-text-light); 
-        }
-        
-        .main-footer .highlight-text {
-            color: var(--color-brand-primary); 
-        }
-        /* نهاية تنسيق الفوتر */
-
-        /* ========================================================================= */
-        /* تنسيقات الاستجابة (Media Queries) */
-        /* ========================================================================= */
-        @media (max-width: 992px) {
-            .main-header .container {
-                justify-content: space-between;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .main-nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                background: var(--color-bg-secondary);
-                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
-                padding-bottom: 10px;
-                z-index: 999; 
-            }
-            .main-nav.active {
-                display: flex;
-            }
-            .main-nav ul {
-                flex-direction: column;
-                gap: 0;
-            }
-            .main-nav ul li a {
-                border-bottom: 1px solid #333;
-                padding: 15px 0; 
-                display: block; 
-            }
-            .main-nav ul li a:hover,
-            .main-nav ul li a.active {
-                border-bottom: none;
-                background-color: var(--color-brand-primary); 
-                color: var(--color-bg-main); 
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px; 
-            }
-            .article-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <header class="main-header">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            
-            <a class="logo" href="index.html" style="font-size: 10px; text-align: left;">
-                <span style="display: block; font-size: 24px; font-weight: 900; color: var(--color-brand-primary);">
-                   أمن المعلومات والحلول الذكية
-                </span> 
-                <span style="display: block; font-size: 18px; font-weight: 700; color: var(--color-text-light); margin-top: -5px;"> 
-                </span>
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html#home">الرؤية والهدف</a></li>
-                    <li><a href="index.html#about">من نحن</a></li> 
-                    <li><a href="index.html#guides" class="active">أدلة الإرشاد</a></li>
-                    
-                    <li><a href="password-tool.html" style="color: var(--color-brand-primary); font-weight: bold;">أداة فحص كلمة المرور</a></li>
-                    
-                    <li><a href="https://my-first-site-gold-seven.vercel.app/network-scanner.html" target="_blank" style="color: var(--color-accent-secondary); font-weight: bold;">الأدوات المجانية (مدقق الشبكة)</a></li>
-                    
-                    <li><a href="contact.html">الاتصال بنا</a></li> 
-                </ul>
-            </nav>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        </div>
-    </header>
-    
-    <div class="content-header">
-        <div class="container">
-            <h1 class="section-title">نشرة التحذيرات الأمنية والـ CVEs</h1>
-            <p class="section-subtitle">
-                متابعة يومية لأهم الثغرات الأمنية (Common Vulnerabilities and Exposures) التي قد تؤثر على أنظمتك.
-            </p>
-        </div>
+            // 3. بناء كود HTML الكامل للبطاقة الجديدة
+            // *** هذا الجزء تم تصحيحه لمعالجة إدخالات النصوص التجريبية***
+            const newCardHTML = `
+<div class="security-card ${tagClass}">
+    <div class="card-header">
+        <span class="alert-tag ${tagClass}">${icon} ${tagText}</span>
     </div>
+    <div class="card-body">
+        <h3>${title}${cveDisplay}</h3>
+        <p class="alert-summary">${summary}</p>
+        ${solutionDisplay}
+        ${formattedDate ? `<p class="alert-date">${formattedDate}</p>` : ''}
+    </div>
+    <div class="card-footer">
+        <span class="level-indicator ${tagClass}">${tagText}</span>
+    </div>
+</div>
+`;
 
-    <section id="alerts" class="content-section">
-        <div class="container">
-            
-            <div class="article-grid">
-                
-                ${cardsHTML}
-                </div>
-            
-            <div class="text-center" style="margin-top: 50px;">
-                 <a href="index.html#guides" class="card-link" style="font-size: 18px; border: 2px solid var(--color-brand-primary); padding: 10px 20px; border-radius: 8px;">
-                        <i class="fas fa-arrow-left"></i>
-                        </a>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="main-footer" id="contact-footer">
-        <div class="container text-center">
-            <div class="social-links mb-3">
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="#" target="_blank" class="mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
-            </div>
-            
-            <p class="mb-1">
-                <a href="mailto:" class="highlight-text" style="font-weight: bold;"></a>
-            </p>
-            
-            <p class="mb-0">
-                <a href="index.html#home" class="highlight-text" style="font-weight: bold; margin-left: 10px;"> </a>
-  <span class="highlight-text"></span>
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
-        
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-
-        const navLinks = document.querySelectorAll('.main-nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-            });
-        });
+            // 4. عرض الكود الناتج في منطقة الإخراج
+            document.getElementById('output-code').textContent = newCardHTML;
+        }
     </script>
+
 </body>
 </html>
-            `;
-            
-            // 3. عرض الكود النهائي
-            outputCodeArea.textContent = finalPageCode.trim();
-        }
-        
-        // تشغيل وظيفة تحديث القائمة عند تحميل الصفحة
-        updateAlertList();
-    </script>
-</body> 
-</html> ```
-
-### 📝 الإجراء المطلوب منك:
-
-1.  **استبدل الكود:** انسخ الكود أعلاه بالكامل، واستبدل به محتوى ملف الأداة (`generator_tool.html`).
-2.  **التأكد من الخطوات (مهم جداً):**
-    * **أولاً:** املأ الحقول.
-    * **ثانياً:** اضغط على الزر **الأخضر (إضافة تحذير للقائمة)**. **ستلاحظ أن الحقول تم مسحها، وأن العداد أصبح 1.**
-    * **ثالثاً:** اضغط على الزر **الأزرق (توليد كود الصفحة الكاملة)**.
-3.  **النتيجة:** سيظهر الكود النصي الكامل الآن في منطقة الإخراج، وهو جاهز للنسخ واللصق في ملف `Security-alerts.html`.
-
-أنا واثق بنسبة 100% أن هذا التعديل سيحل المشكلة لأننا عالجنا الآن مصدرين محتملين للخطأ: (1) عدم تخزين البيانات، و (2) عدم إغلاق وسم `</body>` و `</html>
